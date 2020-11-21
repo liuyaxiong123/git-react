@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script type='text/babel'>
+    class MyComponent extends React.Component {
+        constructor (props){
+            super();
+            //props.name = 'Jack'; 错误
+            console.log(props);
+        }
+        render (){           
+            return (
+                <div>
+                    <p>{this.props.num}</p>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <MyComponent num={12} name='Ada' />
+        ,
+        document.querySelector('#app')
+    )
+</script>
+
+</html>

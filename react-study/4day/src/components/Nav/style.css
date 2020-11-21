@@ -1,0 +1,13 @@
+ul{
+    display:flex;
+    list-style:none;
+}
+ul li{
+    margin:10px;
+}
+.active{
+    color:red;
+}
+.select{
+    color:yellowgreen;
+}

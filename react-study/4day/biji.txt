@@ -1,0 +1,94 @@
+react-router:处理路由访问,实现SPA单页应用
+1.安装  5.2.0
+cnpm install react-router-dom --save
+2.使用
+ 1).Router配合Route基本用法 (router/index.jsx)
+   import { BrowserRouter as Router, Route } from 'react-router-dom'
+   import { HashRouter as Router, Route } from 'react-router-dom'
+   引入组件
+   import Home from '../components/Home'
+   import Mine from '../components/Mine'
+
+
+   <Router>
+    <Route path='/home' component={Home}></Route>
+    <Route path='/mine' component={Mine}></Route>
+   </Router>
+  2).路由跳转严格模式
+    exact : 属性精准匹配 其他多余的部分不会匹配  /mine/ 允许访问
+    strict : 更加精准度的匹配   /mine/ 禁止访问
+    <Router>
+        <Nav />
+        <Route exact path='/' component={Home}></Route>
+        <Route path='/home' component={Home}></Route>
+        <Route exact strict path='/mine' component={Mine}></Route>
+    </Router>
+  3).Link添加路由点击跳转
+    Nav/index.jsx
+    import { Link } from 'react-router-dom'
+    <li>
+        <Link to='/home'>Home页面</Link>
+    </li>
+    <li>
+        <Link to='/mine'>Mine页面</Link>
+    </li>
+    router/index.jsx
+    <Router>
+        <Nav />
+    </Router>
+  4).404组件(找不到的路由 渲染404组件)
+    import NotFound ...
+    <Router>
+        <Nav />
+        {/* Switch:使用404组件 必须添加Switch 用于渲染与路径匹配的第一个子 Route */}
+        <Switch>
+            <Route exact path='/' component={Home}></Route>
+            <Route path='/home' component={Home}></Route>
+            <Route exact strict path='/mine' component={Mine}></Route>
+            <Route path='*' component={NotFound}></Route>
+        </Switch>
+    </Router>
+    5).NavLink添加路由点击跳转
+    特点 : 可以设置高亮提示 ,默认选中组件类为active 样式自己写
+           可以设置选中路由的class  (activeClassName)
+           可以设置选中路由的样式    (activeStyle)
+    Nav/index.jsx
+    import { Link,NavLink } from 'react-router-dom'
+    <li>
+        <NavLink activeClassName='select' to='/home'>Home页面</NavLink>
+    </li>
+    <li>
+        <NavLink activeStyle={{fontSize:'25px',color:'blue'}} to='/mine'>Mine页面</NavLink>
+    </li>
+    6).动态路由
+    语法
+    " ? " : 代表该动态值可有可无,没有时不会显示404组件
+    <Route path='/ucenter/:id?/:name' component={Ucenter}></Route>
+
+    跳转:
+    <NavLink to={{
+        pathname:'/ucenter/10003/Ada',
+        search:"?phone=10023423",
+        hash:'#the-hash',
+        state:{flag:true},
+        query:{a:5}
+    }}>Ucenter页面</NavLink>
+
+    在Ucenter组件内使用props接收所有传递的值
+    this.props.match.params : 接收动态路由的信息
+    this.props.location : 接收所有路由跳转时传递的信息
+    this.props.history : 做JS操作跳转时使用(常用 push goBack)
+    7).Redirect重定向
+    from : 可以指定访问某个路径时重定向
+    to : 定向到那个路由
+    <Redirect from='/hellomine' to='/' />
+    8).Prompt组件
+     when : 如果是true 会显示提示 如果是false直接没用了
+     message : 提示信息
+     <Prompt when={Boolean} message='内容为空,确定要离开?' />
+    9).withRouter
+    高阶组件 当该组件不是被路由管理的组件时 我们无法获取到props路由相关的信息,可以withRouter将该组件转换为路由组件管理
+    引入:
+    import { withRouter } from 'react-router-dom'
+    调用:
+    export default withRouter(Item);

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script type='text/babel'>
+    class App extends React.Component{
+        constructor (){
+            super()
+            this.state = {
+                msg:'hello react'
+            }
+        }
+        componentWillMount (){
+            console.log(this.state,this.props);/*能找到 因为组件初始化完毕*/
+            console.log(document.querySelector('#box'));/*null*/
+            console.log('组件渲染前');
+        }
+        componentDidMount (){
+            console.log(this.state,this.props);/*能找到*/
+            console.log(document.querySelector('#box'));/*能找到*/
+            console.log('组件渲染后');
+        }
+        render (){
+            return <div id='box'>{this.state.msg}</div>
+        }
+    }
+
+    ReactDOM.render(
+        <App data={{name:'Ada'}} />
+        ,
+        document.getElementById('app')
+    )
+</script>
+</html>

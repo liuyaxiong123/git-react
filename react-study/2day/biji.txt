@@ -1,0 +1,23 @@
+react
+1.组件生命周期函数:
+componentWillMount : 组件DOM渲染完成之前(无法获取DOM元素)
+componentDidMount : 组件DOm渲染完成之后
+componentWillUpdate(nextProps, nextState) : state或者props更新之前触发
+componentDidUpdate(prevProps, prevState) : state或者props更新之后触发
+shouldComponentUpdate(newProps,newState) : 接收一个boolean作为返回值,控制组件是否做视图更新.
+componentWillReceiveProps(newProps) : props改变时触发
+componentWillUnmount : 组件卸载前触发
+2.搭建react脚手架
+全局下载 npm install create-react-app -g 
+初始化项目 create-react-app projectName
+运行项目 npm start
+拉取webpack相关配置 npm run eject
+3.数据三兄弟
+    1).state
+    2).props 
+     在使用props的组件内,根据官方推荐使用第三方库prop-types对接收的props数据做相关验证
+    3).context
+4.获取DOM元素
+ 创建Ref : this.box = React.createRef()
+ 挂载Ref : <div ref={this.box}>孙子组件</div>
+ 获取元素 : console.log(this.box.current);

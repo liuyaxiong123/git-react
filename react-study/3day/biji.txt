@@ -1,0 +1,41 @@
+1.数据三兄弟
+    1).state
+    2).props 
+     在使用props的组件内,根据官方推荐使用第三方库prop-types对接收的props数据做相关验证
+    3).context
+     可以在一个组件树共享数据
+     组件树Yeye --> Erzi --> Sunzi
+     使用 const { Provider, Consumer } = React.createContext();
+     发布数据 <Provider value={} > ... </Provider>
+     使用数据 <Consumer>
+                {
+                    (context) => ( <div>...</div> )
+                }
+             </Consumer>
+2.Fragments
+Fragment 可以为一组元素提供一个父节点 并不会渲染到DOM中 不可以添加事件绑定之类 可以添加key属性
+3.组件使用
+我们可以在使用自定义组件时在内部添加一些组件
+<Header>
+    <div name='new'>新闻</div>
+</Header>
+在Header.jsx内部访问
+this.props.children 访问或渲染
+React.Children 对内部this.props.children 进行操作
+React.Children.count(this.props.children) : 获取子组件个数
+React.Children.only(this.props.children) : 检测是否只包含一个子组件,如果是返回该组件 ,如果不是抛错
+React.Children.map(this.props.children,(item)=>{}) : 映射子组件并可以对其进行一系列的操作
+4.错误边界
+比如有个别组件出错,整个项目都会蹦,采用错误边界组件处理,这种组件可以捕获并打印发生在其子组件树任何位置的 JavaScript 错误，并且，它会渲染出备用 UI，而不是渲染那些崩溃了的子组件树。
+static getDerivedStateFromError(error) {
+    console.log(error);
+    // 更新 state 使下一次渲染能够显示降级后的 UI
+    return { hasError: true };
+}
+componentDidCatch(error, errorInfo) {
+    console.log(error,errorInfo);
+}
+5.高阶组件
+比如两个长得类似的组件只有个别内容不太一样,可以通过高阶组件进行封装.复用性.
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script type='text/babel'>
+    /*声明组件语法(继承自React.Component) 注意:首字母必须大写*/
+    class MyComponent extends React.Component {
+        constructor() {
+            super();
+            this.a = '呵呵哒';//数据这样存储改变后视图不会更新
+            this.state = { //状态必须放在名为state的变量里
+                num: 1,
+                list1: ['apple', 'banana', 'pear'],
+                list2: ['苹果', '香蕉', '梨子']
+            }
+        }
+        changeA() {
+            this.a = '修改的';
+            console.log(this.a);
+        }
+        async changeNum() {
+            //this.state.num += 1; //错的 视图不会更新
+
+            //修改state数据必须使用setState方法否则视图不会更新 注意:setState是异步更新数据
+            // this.setState({
+            //     num : this.state.num+1
+            // },()=>{
+            //     console.log(this.state.num);
+            // }) 
+
+            await this.setStateAsync({ num: this.state.num + 1 })
+            console.log(this.state.num);
+        }
+        setStateAsync(state) {
+            return new Promise((resolve) => {
+                this.setState(state, resolve);
+            })
+        }
+        render() {
+            let { list1, list2 } = this.state;
+            return (
+                <div>
+                    <button onClick={this.changeA.bind(this)}>修改a</button>
+                    <p>{this.a}</p>
+                    <button onClick={this.changeNum.bind(this)}>修改num</button>
+                    <p>{this.state.num}</p>
+                    <div>
+                        {
+                            //条件判断 
+                            this.state.num % 2 == 0
+                                ?
+                                list1.map((item)=>{
+                                    //key的作用(给每一条数据添加唯一索引) ['apple', 'banana', 'pear']如果会更新变化 只更新改变或者新添加的数据
+                                    return <p key={item}>{item}</p>;
+                                })
+                                :
+                                list2.map((item)=>{
+                                    return <p key={item}>{item}</p>;
+                                })
+                        }
+                    </div>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <MyComponent />
+        ,
+        document.querySelector('#app')
+    )
+</script>
+
+</html>

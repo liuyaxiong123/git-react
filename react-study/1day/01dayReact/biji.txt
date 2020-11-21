@@ -1,0 +1,66 @@
+一介绍:
+来自Facebook,2013年诞生
+React它比较关注清晰,直接的View视图层解决方案.它的功能全部以构建组件视图为核心,并且提供控制器和生命周期函数,在React中没有指令,没有过滤器等..
+React非常轻,只提供组件化相关的少量的API,简化了一切可以简化的东西.
+React搭配Redux管理状态,搭配JSX(JavaScript+XML)语法编写页面结构.
+React使用Virtual(虚拟的意思) DOM技术,核心概念就是计算比较改变前后的DOM区别,然后用最少的DOM操作语句对DOM进行操作
+Virtual DOM技术用的diff算法.diff算法是一个比较计算层次结构区别的算法.用来计算DOM之间的差异.
+二使用:
+引入第三方cdn资源方式
+1.JSX语法(JavaScript+XML):
+  1).必须有一个根元素包裹
+  2).可以使用括号
+    return (
+    <div>
+        <h1>hello react</h1>
+        <span>哈哈哈</span>
+    </div>
+    )
+  3).标签必须闭合
+   <br> : 错误
+   <br /> : 正确
+  4).注释
+   {/*注释*/}
+  5).class要写成className
+  6).JS表达式用 {} 单大括号包裹
+  7).样式使用
+  例如:
+  style='color:red' : 错误的
+  使用双大括号 font-size类似样式使用驼峰写法
+  style={{"background":"purple",'fontSize':20+'px'}}
+2.组件:
+    组件创建 注意:组件首字母必须大写
+    class ComponentName extends React.Component{
+
+    }
+    组件使用
+    <ComponentName />
+
+3.事件绑定:
+    1).绑定事件使用 onClick={this.handler.bind(this)} onMouseOver 驼峰写法react会自动识别
+    2).监听触发函数时this上下文有问题,所以需要使用bind方法设置this上下文
+    3).绑定函数时使用{}而不是""
+
+4.数据操作:
+    1).state
+    状态机(state Machines),通过与用户的交互,实现不同状态,渲染UI,并且让界面和数据保持一致
+    定义state : 在构造函数中使用this.state属性即可
+    使用state : 在JSX中 {this.state.name}
+    改变state : this.setState({name:'xxx'}) 
+    2).props
+    就是定义在自定义组件标签上面的属性值,react崇尚数据的单项流动,所以设计的时候就是让数据从父组件流向子组件,props在子组件中是只读的,不能修改的.
+      (1).可以无脑在组建中通过this.props访问
+        例如:
+        <p>{this.props.name}</p>
+      (2).可以在constructor中访问
+       constructor(props){
+           //props.name = 'xxx'; 报错
+       }  
+5.表单元素
+受控组件
+value属性受state的控制 必须添加onChange进行数据改变监听并更新
+<input type="text" value={this.state.name} onChange={this.changeName.bind(this)} />
+非受控组件
+<input type="text" defaultValue='18' />
+    
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script type='text/babel'>
+    class MyComponent extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                name: '',
+                age:''
+            }
+        }
+        changeName(e) {
+            console.log(e.target.value);
+            this.setState({
+                name: e.target.value
+            })
+        }
+        changeAge (num,e){
+            console.log(num,e);
+            this.setState({
+                age:e.target.value
+            })
+        }
+        submitHandler (e){
+            e.preventDefault();
+            console.log(this.state);
+        }
+        render() {
+            return (
+                <div>
+                    <form onSubmit={this.submitHandler.bind(this)}>
+                        {/*受控组件*/}
+                        <input type="text" value={this.state.name} onChange={this.changeName.bind(this)} />
+                        <p>{this.state.name}</p>
+                        {/*非受控组件*/}
+                        <input type="text" defaultValue='18' />
+                        <br />
+                        <input type="text" defaultValue={this.state.age} onChange={
+                            ()=>{
+                                this.changeAge(2,event)
+                            }
+                        }/>
+                        <p>{this.state.age}</p>
+                        <button type='submit'>提交</button>
+                    </form>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <MyComponent />
+        ,
+        document.querySelector('#app')
+    )
+</script>
+
+</html>

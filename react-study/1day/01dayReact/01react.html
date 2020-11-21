@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        .active{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 注释 -->
+    <div id="app"></div>
+</body>
+<script type='text/babel'>
+    /*JSX*/
+    let app = (<div>
+        {/*注释*/}
+        <h1 title='hello'>hello <br/> react</h1>
+        <span className='active'>哈哈哈</span>
+        <span>{5+5}</span>
+        <span>{['apple','banana','pear'].join(' ')}</span>
+        <span>{true?'真的':'假的'}</span>
+        <span style={{"background":"purple",'fontSize':20+'px'}}>设置样式</span>
+    </div>);
+    /*导出*/
+    ReactDOM.render(
+        app,
+        document.getElementById('app')
+    )
+</script>
+</html>
