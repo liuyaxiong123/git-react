@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>响应式布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 100vw;
+            height: 100vh;
+            background: #ccc;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrap .item1 {
+            display: flex;
+            width: 100%;
+            flex-grow: 2;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .wrap .item2 {
+            width: 100%;
+            display: flex;
+            flex-grow: 5;
+        }
+
+        .wrap .item3 {
+            flex-grow: 1;
+            background: #000;
+        }
+
+        .wrap .item1>div {
+            width: 200px;
+            height: 100px;
+            background: skyblue;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .wrap .item2 div:nth-child(1) {
+            flex-grow: 2;
+            background: red;
+        }
+
+        .wrap .item2 div:nth-child(2) {
+            width: 900px;
+            background: skyblue;
+            margin: 0 20px 0 20px;
+        }
+
+        .wrap .item2 div:nth-child(3) {
+            flex-grow: 3;
+            background: pink;
+        }
+        /* 1024-768 */
+        @media screen and (max-width:1023px) and (min-width: 768px) {
+            .wrap .item2 {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                flex-grow: 5;
+            }
+            .wrap .item2 div:nth-child(1) {
+                width: 100px;
+                background: red;
+                order:1;
+            }
+
+            .wrap .item2 div:nth-child(2) {
+                width: 100vw;
+                order: 3;
+                background: skyblue;
+                margin:0;
+            }
+
+            .wrap .item2 div:nth-child(3) {
+                order:2;
+                width: 200px;
+                background: pink;
+            }
+
+        }
+
+        /* 767-640 */
+        @media screen and (max-width:767px) and (min-width: 640px) {
+            .item1{
+                flex-wrap:wrap;
+                align-content: space-evenly;
+                justify-content: space-evenly;
+            }
+            .wrap .item1>div{
+                width: 250px;
+                height:30px;
+                line-height: 30px;
+            }
+            .wrap .item2{
+                flex-wrap: wrap;
+            }
+            .wrap .item2 div{
+                width: 100vw;
+            }
+            .wrap .item2 div:nth-child(2){
+                margin: 0;
+            }
+        }
+
+        /* 640以下 */
+        @media screen and (max-width:639px) {
+            .wrap .item2{
+                flex-wrap: wrap;
+            }
+            .wrap .item2 div{
+                width: 100vw;
+            }
+            .wrap .item2 div:nth-child(2){
+                margin: 0;
+            }
+            .item1{
+                flex-wrap:wrap;
+                align-content: space-evenly;
+                justify-content: space-evenly;
+            }
+            .wrap .item1>div{
+                width: 300px;
+                height:30px;
+                line-height: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="item1">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="item2">
+            <div></div>
+            <div>
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+                柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿柴豪辉是我儿
+            </div>
+            <div></div>
+        </div>
+        <div class="item3"></div>
+    </div>
+</body>
+
+</html>

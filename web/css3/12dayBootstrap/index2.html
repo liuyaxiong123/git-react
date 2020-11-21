@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图片懒加载-简单</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        .container li {
+            float: left;
+            margin: 10px 10px;
+        }
+
+        .container li img {
+            width: 240px;
+            height: 180px;
+        }
+
+        p {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="container">
+        <li><a href="#"><img
+                    src="https://upload.jianshu.io/users/upload_avatars/7113407/afd40038-a508-4bcc-9ce4-1331d865bccc?imageMogr2/auto-orient/strip|imageView2/1/w/80/h/80/format/webp"
+                    data-src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" /></a></li>
+        <li><a href="#"><img
+                    src="https://upload.jianshu.io/users/upload_avatars/7113407/afd40038-a508-4bcc-9ce4-1331d865bccc?imageMogr2/auto-orient/strip|imageView2/1/w/80/h/80/format/webp"
+                    data-src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" /></a></li>
+        <li><a href="#"><img
+                    src="https://upload.jianshu.io/users/upload_avatars/7113407/afd40038-a508-4bcc-9ce4-1331d865bccc?imageMogr2/auto-orient/strip|imageView2/1/w/80/h/80/format/webp"
+                    data-src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" /></a></li>
+        <li><a href="#"><img
+                    src="https://upload.jianshu.io/users/upload_avatars/7113407/afd40038-a508-4bcc-9ce4-1331d865bccc?imageMogr2/auto-orient/strip|imageView2/1/w/80/h/80/format/webp"
+                    data-src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" /></a></li>
+        <li><a href="#"><img
+                    src="https://upload.jianshu.io/users/upload_avatars/7113407/afd40038-a508-4bcc-9ce4-1331d865bccc?imageMogr2/auto-orient/strip|imageView2/1/w/80/h/80/format/webp"
+                    data-src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" /></a></li>
+        <li><a href="#"><img
+                    src="https://upload.jianshu.io/users/upload_avatars/7113407/afd40038-a508-4bcc-9ce4-1331d865bccc?imageMogr2/auto-orient/strip|imageView2/1/w/80/h/80/format/webp"
+                    data-src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" /></a></li>
+        <li><a href="#"><img
+                    src="https://upload.jianshu.io/users/upload_avatars/7113407/afd40038-a508-4bcc-9ce4-1331d865bccc?imageMogr2/auto-orient/strip|imageView2/1/w/80/h/80/format/webp"
+                    data-src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" /></a></li>
+
+    </ul>
+
+    <script>
+        $('img[data-src]').each(function () {
+            if (checkShow($(this)) && !isLoaded($(this))) {
+
+                loadImg($(this));
+            }
+        })
+        $(window).on('scroll', function () {
+            $('img[data-src]').each(function () {
+                if (checkShow($(this)) && !isLoaded($(this))) {
+
+                    loadImg($(this));
+                }
+            })
+        })
+
+        function checkShow($img) {
+            var scrollTop = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            var offsetTop = $img.offset().top;
+
+            if (offsetTop < (scrollTop + windowHeight) && offsetTop > scrollTop) {
+                return true;
+            }
+            return false;
+        }
+
+        function isLoaded($img) {
+            return $img.attr('data-src') === $img.attr('src');
+        }
+
+        function loadImg($img) {
+            $img.attr('src', $img.attr('data-src'));
+        }
+    </script>
+</body>
+
+</html>

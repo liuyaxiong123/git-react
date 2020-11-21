@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>万花筒</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        canvas{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600">
+        您好，请您更换高版本浏览器
+    </canvas>
+</body>
+<script>
+    var canvas=document.querySelector('#canvas');
+    var ctx=canvas.getContext('2d');
+    var arr=[];//存储矩形块
+    //第一个计时器：创建块(指定块的初始样式)
+    var time1=setInterval(function(){
+        var rect={
+            angle:0,//初始度数
+            num:150,//初始位置(x,y)
+            scales:1,//初始缩放比例
+            rgb:'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')',
+        }
+        arr.push(rect);
+    },1000)
+    //第二个计时器：改变每一个块的位置
+    var timer2=setInterval(function(){
+        for(var i=0;i<arr.length;i++){
+            arr[i].angle+=2;
+            arr[i].num-=0.2;
+            arr[i].scales-=0.002;
+            if(arr[i].num<=0){//如果已经到基点的位置了，删除这一项
+                arr.splice(i,1);
+                continue;
+            }
+            if(arr[i].scales<=0.2){
+                arr[i].scales=0.2;
+            }
+        }
+    },60)
+    //第三个计时器：绘制每一个块
+    var time3=setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(var i=0;i<arr.length;i++){
+            ctx.save();
+            ctx.translate(300,300);
+            ctx.rotate(arr[i].angle*Math.PI/180);
+            ctx.scale(arr[i].scales,arr[i].scales)
+            ctx.fillStyle=arr[i].rgb;
+            ctx.fillRect(arr[i].num,arr[i].num,30,30); 
+            ctx.restore();
+        }
+    },10)
+</script>
+</html>

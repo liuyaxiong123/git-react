@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .container{
+            width: 500px;height: 400px;
+            border: 1px solid #000;
+        }
+        img{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    您拖动了第<b id="txt"></b>张图片
+    <div class="container">
+
+    </div>
+    <img src="image/1.jpg" alt="">
+    <img src="image/2.jpg" alt="">
+    <img src="image/3.jpg" alt="">
+</body>
+<script>
+    var img=document.querySelectorAll('img');
+    var con=document.querySelector('.container');
+    var txt=document.querySelector('#txt');
+    var a;
+    for(var i=0;i<img.length;i++){
+        img[i].index=i;
+        img[i].ondragstart=function(ev){
+            ev.dataTransfer.setData('url',this.src);
+            txt.innerHTML=this.index+1;
+            a=this.index;
+        }
+    }
+    con.ondragover=function(ev){
+        ev.preventDefault();
+    }
+    con.ondrop=function(ev){
+        console.log(ev.dataTransfer.getData('url'));
+        document.body.style.background='url('+ev.dataTransfer.getData('url')+') center center no-repeat';
+        document.body.style.backgroundSize='cover';
+        con.appendChild(img[a]);
+    }
+</script>
+</html>

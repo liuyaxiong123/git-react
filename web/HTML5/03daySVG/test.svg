@@ -1,0 +1,115 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 声明文档格式 -->
+<!-- svg默认大小300*150 -->
+<svg width='800' height='500' version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+    <!-- 
+        rect:矩形标签 
+        x:设置绘制矩形x坐标点
+        y:设置绘制矩形Y坐标点
+        width：宽
+        height：高
+        fill：填充颜色
+        stroke：描边
+        stroke-width：描边宽度
+        opacity:设置透明度
+        rx:设置x圆角
+        ry:设置Y圆角(一般用一个就行)
+    -->
+    <!-- <rect x='10' y='10' width='100' height='100' fill='blue' stroke='#333' stroke-width='5' opacity='0.5' ry='10' /> -->
+
+    <!-- 
+        circle:绘制圆
+        cx:圆心x轴坐标点
+        cy：圆心y轴坐标点
+        r：半径
+     -->
+    <!-- <circle cx='200' cy='100' r='50' fill='pink' stroke='#333' stroke-width='4'/> -->
+
+    <!-- 
+        ellipse:绘制椭圆
+        rx:水平半径
+        ry：垂直半径
+     -->
+    <!-- <ellipse cx='350' cy='100' rx='50' ry='70' fill='skyblue'  /> -->
+
+    <!-- 
+        line:绘制线
+        x1:x起点坐标
+        y1：y起点坐标
+        x2：x终点坐标
+        y2：y终点坐标 
+    -->
+    <!-- <line x1='10' y1='10' x2='200' y2='100' stroke-width='3' stroke='#000' /> -->
+
+    <!-- 
+        polygon:绘制多边形(不少于三条边的图形)
+        points：定义多边形
+     -->
+    <!-- <polygon points='200,100,300,200,100,200' fill='transparent' stroke='red' stroke-width='3' /> -->
+    
+    <!-- <polygon points='200,100,300,100,400,200,100,200' fill='blue' /> -->
+
+    <!-- <polygon points='200,100,300,100,250,200,150,200' fill='red' /> -->
+
+    <!-- 
+        polyline:绘制折线 
+        points:定义折线的每一个点
+    -->
+    <!-- <polyline points='100,100,200,100,200,200' style='stroke:red;stroke-width:5;fill:transparent'/> -->
+
+    <!-- g:group缩写 组 -->
+    <!-- <g fill='none' stroke='pink' stroke-width='5'>
+        <rect width='200' height='60' x='50' y='50' />
+        <rect width='40' height='200' x='130' y='110'/>
+    </g> -->
+
+    <!-- svg:定义渐变 必须包裹在defs标签里
+    linearGradient:声明线性渐变
+    线性渐变包含水平 垂直 或角型渐变
+    id代表当前渐变颜色标识符
+    x1：代表水平起点
+    x2：代表水平终点
+    y1：代表垂直起点
+    y2：代表垂直终点
+    当y1和y2相等，而x1和x2不同时，可创建水平渐变
+    当x1和x2相等，而y1和y2不同时，可创建垂直渐变
+    当x1和x2不同，且y1和y2不同时，可创建角形渐变
+    stop设置渐变颜色，它分为很多状态 offset代表状态 -->
+
+    <!-- <defs>
+        <linearGradient id='orange_color' x1='0%' x2='100%' y1='0%' y2='0%'>
+            <stop offset='0%' stop-color='#ff0' />
+            <stop offset='50%' stop-color='#0f0' />
+            <stop offset='100%' stop-color='#00f' />
+        </linearGradient>
+    </defs> -->
+    <!-- 使用 -->
+    <!-- <circle cx='200' cy='200' r='100' fill='url(#orange_color)'/> -->
+
+
+    <!-- r:定义外圈 规定渐变长度 -->
+    <defs>
+        <radialGradient id='grey_blue' r='100%' fx='20%' fy='20%'>
+            <stop offset='0%' stop-color='#ccc' />
+            <stop offset='100%' stop-color='#00f' />
+        </radialGradient>
+    </defs>
+    <circle cx='200' cy='200' r='100' fill='url(#grey_blue)'/>
+
+    <!-- 
+        path:定义绘制路径
+        d:规定绘制路径
+            M: 两参数，起点x坐标 y坐标
+            H：一个参数，绘制平行线
+            V：一个参数，绘制垂直线
+            L：结束点，会跟起始点进行闭合
+            Z：结束
+        以上内容可以大写可以小写，大写表示绝对定位
+        小写表示相对定位(相对于上一个点的位置进行设置)
+    -->
+    <!-- <path d='M 10 10 H 90 V 90 H 10 Z' fill='red' /> -->
+    <path d='M 10 10 h 90 v 90 h -90 Z' fill='red' />
+</svg>

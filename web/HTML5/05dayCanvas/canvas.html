@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas {
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="700">
+        不支持
+    </canvas>
+</body>
+<script>
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+
+    //图形组合方式：
+    // ctx.beginPath();
+    // ctx.fillStyle='#f00';
+    // ctx.fillRect(10,10,100,100);//画一个填充矩形
+    // ctx.globalCompositeOperation='copy';//设置图形组合方式
+    // ctx.fillStyle='#0f0';
+    // ctx.fillRect(80,80,100,100);
+    // ctx.closePath();
+
+    //图形阴影:
+    // ctx.beginPath();
+    // ctx.shadowColor='#233';//设置阴影颜色
+    // ctx.shadowOffsetX=-5;//水平偏移
+    // ctx.shadowOffsetY=5;//垂直偏移
+    // ctx.shadowBlur=10;//模糊度 不可以有负值
+    // ctx.fillRect(10,10,100,100);
+    // ctx.closePath();
+
+    //图形渐变
+    // ctx.beginPath();
+    //创建线性渐变轨迹：createLinearGradient(起点x坐标，起点y坐标，终点x坐标，终点y坐标)；
+    // var grd=ctx.createLinearGradient(10,10,200,10);//从左往右
+    // grd.addColorStop(0,'#f00');
+    // grd.addColorStop(1,'#00f');
+    // ctx.fillStyle=grd;
+    //创建放射性渐变轨迹：createRedialBradient(圆开始的x坐标，圆开始的y坐标，圆开始的半径，圆结束的x坐标，圆结束的y坐标，圆结束的半径，)
+    // var grd=ctx.createRadialGradient(150,150,0,150,150,150);
+    // grd.addColorStop(0,'#f00');
+    // grd.addColorStop(1,'#00f');
+    // ctx.arc(150,150,150,0,2*Math.PI,false);
+    // ctx.fillStyle=grd;
+    // ctx.fill();
+    // ctx.closePath();
+
+    //绘制图像：
+    var image = new Image();
+    image.src = '1.jpg';
+    image.onload = function () {
+        //第一种绘制图像方法
+        // ctx.drawImage(image, 0, 0,300,200); //drawImage(图形对象，x,y,width,height);
+        // ctx.drawImage(image,40,402,200,200,10,10,98,98);//drawImage(图像对象，原图裁剪的x坐标点，原图裁剪的y坐标点，裁剪的宽度，裁剪的高度，显示在画布内的x坐标，显示在画布内的y坐标，显示在画布中的宽度，显示在画布中的高度)
+
+        //第二种绘制图像的方法：
+        //创建需要绘制的图像对象
+        // var imgObj=ctx.createPattern(image,'no-repeat');
+        // ctx.fillStyle=imgObj;
+        // ctx.fillRect(0,0,800,700);
+    }
+
+    //裁剪：
+    // ctx.arc(150,150,50,0,2*Math.PI,false);
+    // ctx.clip();
+    // ctx.fillRect(150,150,10,10);
+
+    //图形处理：
+    // ctx.beginPath();
+    // ctx.fillStyle='yellow';
+    // ctx.fillRect(0,0,30,30);
+    // var Data=ctx.getImageData(0,0,30,30);//获取画布内指定区域的像素数据 getImageData(起点x坐标，起点y坐标，width,height)
+    // ctx.putImageData(Data,50,50);//将获取到的图像的数据放到画布中 putImageData(图像数据，x，y)
+    // ctx.closePath();
+
+    //图像输出:
+    // var img=document.createElement('img');
+    // img.src=canvas.toDataURL('image/png',1);
+    // document.body.appendChild(img);
+    // console.log(canvas.toDataURL('image/jpeg',1))
+
+    
+    // ctx.fillStyle = 'yellow';
+    // var num=0;
+    // setInterval(function () {
+    //     ctx.clearRect(0,0,canvas.width,canvas.height);
+    //     ctx.beginPath();
+    //     ctx.save();//保存当前状态
+    //     num++;
+    //     if(num>=360){
+    //         num=0;
+    //     }
+    //     // ctx.rotate(Math.PI/180*45);//旋转
+    //     // ctx.scale(2,1.5);//缩放
+    //     ctx.translate(100, 100); //重新映射画布位置
+    //     ctx.rotate(Math.PI / 180 * num);
+    //     ctx.fillRect(-50, -50, 100, 100);
+    //     ctx.restore();//恢复canvas原始状态
+    //     ctx.closePath();
+    // },30)
+
+    ctx.save();
+    ctx.translate(100,100);
+    ctx.fillStyle='yellow';
+    ctx.fillRect(0,0,100,100);
+
+    ctx.restore();
+    ctx.arc(150,150,50,0,2*Math.PI,false);
+    ctx.fill();
+    
+</script>
+
+</html>

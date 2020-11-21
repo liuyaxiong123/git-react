@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回收站</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 500px;height: 400px;
+            border: 2px solid;
+        }
+        p{
+            display: inline-block;
+            text-align: center;
+            width: 50px;height: 40px;
+            line-height: 40px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        
+    </div>
+    <p draggable="true">aaa</p>
+    <p draggable="true">bbb</p>
+    <p draggable="true">ccc</p>
+    <p draggable="true">ddd</p>
+</body>
+<script>
+    var now;
+    var box=document.querySelector('.box');
+    var p=document.querySelectorAll('p');
+    for(var i=0;i<p.length;i++){
+        (function(j){
+            p[j].ondragstart=function(){
+                now=j;
+            }
+        })(i);
+    }
+    box.ondragover=function(ev){
+        ev.preventDefault();
+    }
+    box.ondrop=function(){
+        p[now].remove();
+    }
+</script>
+</html>

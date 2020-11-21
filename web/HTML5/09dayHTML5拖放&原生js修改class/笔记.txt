@@ -1,0 +1,43 @@
+HTML5拖放：
+HTML标签属性：
+draggable
+值:
+true:允许元素被拖放
+false：不允许元素被拖放
+事件：
+拖放元素的事件：
+ondragstart:开始拖放时触发
+ondrag:拖拽过程中持续触发
+ondragend:元素拖拽停止
+投放区元素的事件：
+ondragenter:进入投放区时触发
+ondragover:在投放区移动时触发
+ondragleave：在离开投放区时触发
+ondrop:在投放区投放时触发
+注意：默认情况元素不允许被放置，
+ondrop事件不会触发，一定在dragover事件触发时阻止事件默认行为。
+
+拖放事件触发时，事件对象上存在 dataTransfer属性可用于存储数据
+设置数据：
+ev.dataTransfer.setData(name,value)
+获取数据：
+ev.dataTransfer.getData(name)
+设置拖放的图标:
+ev.dataTransfer.setDragImage(Img,x,y)
+
+操作class类：兼容到IE10
+元素.classList.add('类名'):添加类
+                .remove('类名')：删除类
+                .toggle('类名')：来回切换类
+                .item(角标)：获取某一个类
+                .contains('类名'):检测是否包含某个类 返回boolean
+                .length:获取有多少个类
+                .value:获取所有的类(返回字符串)
+
+语句：捕获错误信息(不能捕获语法错误，可以捕获运行方法，属性执行过程中出错)
+try{
+    运行代码
+}catch(e){
+    e：错误信息
+    出错了运行代码.....
+}

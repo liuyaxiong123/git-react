@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>百叶窗</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 800px;
+            height: 500px;
+            margin:100px auto;
+            border:1px solid;
+        }
+        .box li{
+            width: 100px;
+            height: 500px;
+            overflow: hidden;
+            float:left;
+            list-style: none;
+        }
+        .box li img{
+            width: 400px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    function byc(){
+        this.maxw=400;
+        this.minw=100;
+        this.length=5;
+        this.init();
+    }
+    byc.prototype.init=function(){
+        this.box=document.createElement('div');
+        this.box.className='box';
+        this.ul=document.createElement('ul');
+        for(var i=0;i<this.length;i++){
+            this.li=document.createElement('li');
+            this.img=document.createElement('img');
+            this.img.src='image/'+(i+1)+'.jpg';
+            this.li.appendChild(this.img);
+            this.ul.appendChild(this.li);
+        }
+        this.box.appendChild(this.ul);
+        document.body.appendChild(this.box);
+        var lis=document.querySelectorAll('li');
+        lis[0].style.width=this.maxw+'px';
+        this.Click(lis);
+    }
+    //添加事件
+    byc.prototype.Click=function(obj){
+        var that=this;
+        for(var z=0;z<obj.length;z++){
+            obj[z].index=z;
+            obj[z].onmouseenter=function(){
+                that.tab(this.index,obj);
+            }
+        }
+    }
+    byc.prototype.tab=function(idx,obj){
+        for(var j=0;j<obj.length;j++){
+            this.startMove(obj[j],{width:this.minw});
+        }
+        this.startMove(obj[idx],{width:this.maxw});
+    }
+    byc.prototype.startMove=function (obj,json,fn){
+        clearInterval(obj.time);
+        var _this=this;
+        obj.time=setInterval(function(){
+            var stop=true;//假设没有不到终点的值了
+            for(i in json){
+                if(i=='opacity'){
+                    //获取透明度样式的写法
+                    var style=Math.round(parseFloat(_this.getStyle(obj,i))*100);
+                    }else{
+                        //获取带px样式的写法
+                        var style=parseInt(_this.getStyle(obj,i));
+                    }
+                    var speed=(json[i]-style)/10;
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(style!=json[i]){
+                        stop=false;//意思就是说如果运动的样式其中有没到目标点的,把stop变成false
+                    }
+                    if(i=='opacity'){
+                        //运动透明度
+                        obj.style.opacity=(style+speed)/100;
+                        obj.style.filter='alpha(opacity='+(style+speed)+')';
+                    }else{
+                        //运动其他样式
+                        obj.style[i]=style+speed+'px';
+                    }
+            }
+            if(stop){
+                //判断如果stop还是true的情况下，说明没有不到终点的值了
+                clearInterval(obj.time);
+                if(fn) fn();
+            }
+        },10)
+    }
+    byc.prototype.getStyle=function(obj,cur){
+        if(obj.currentStyle){
+            return obj.currentStyle[cur];
+        }else{
+            return getComputedStyle(obj)[cur];
+        }
+    }
+    new byc();
+</script>
+</html>

@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/*
+语法:
+通过$声明变量,变量作用域也是具备块 {} 级作用域,在外部不能访问内部变量
+变量声明对_或-使用不敏感
+*/
+// $bodyColor:yellow;
+// $m_b:30px;
+// body{
+//     $bodyColor:blue;
+//     background: $bodyColor;//blue
+//     $bodyColor:red;
+//     background: $bodyColor;//red
+// }
+// div{
+//     background: $bodyColor;//yellow
+//     margin-bottom: $m-b;
+// }
+//-----------------------------
+/*嵌套关系*/
+// body{
+//     background: yellow;
+//     div{
+//         font-size: 30px;
+//         span{
+//             color:red;
+//         }
+//         p{
+//             color:blue;
+//         }
+//         &:hover{
+//             border: 1px solid #000;
+//         }
+//     }
+// }
+//------------
+/*属性嵌套*/
+// div{
+//     width: 200px;
+//     height: 200px;
+//     border:{
+//         style:solid;
+//         top:{
+//             width: 5px;
+//             color:blue;
+//         }
+//         bottom:{
+//             width: 5px;
+//             color:red;
+//         }
+//         left:{
+//             width: 5px;
+//             color:green;
+//         }
+//     }
+//     background:{
+//         color:purple;
+//         image:url('image/1.jpg');
+//         repeat:no-repeat;
+//         position:0 0;
+//     }
+// }
+//---------------------------
+/*
+    混合(mixin)
+    混合的作用是为了继承 复用。
+    语法:
+    定义 @mixin names{}
+    使用 @include names;
+*/
+// @mixin headerStyle{
+//     width: 100%;
+//     height: 100px;
+//     &:hover{
+//         background: orange;
+//     }
+//     span{
+//         color:#333;
+//         font-size: 14px;
+//     }
+//     a{
+//         text-decoration: none;
+//     }
+// }
+// header{
+//     @include headerStyle;
+// }
+//-----------------------
+/*
+    传参,为了使混合使用更灵活，我们传递参数来指定不同的样式，参数可以设置默认值
+*/
+@mixin headerStyle($h:200px,$bgColor:#f00){
+    width: 100%;
+    height: $h;
+    &:hover{
+        background: $bgColor;
+    }
+    span{
+        color:#333;
+        font-size: 14px;
+    }
+    a{
+        text-decoration: none;
+    }
+}
+header{
+    @include headerStyle(300px,#ff0);
+}
+div{
+    @include headerStyle($bgColor:#000);
+}
+footer{
+    @include headerStyle;
+}
+

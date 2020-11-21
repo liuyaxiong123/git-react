@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .box{
+            width: 20px;height: 20px;
+            margin:200px auto;
+            background:#f0f;
+            /* scale()2d缩放 */
+            /* transform: scale(1.5,2); */
+            /* transform: scale(2);同时缩放x和y两个轴 */
+            transform:scale3d(1.5,2,1);/*scale3d(x轴，y轴，z轴)3d缩放*/
+            transform: scaleX(1.5) scaleY(2) scaleZ(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

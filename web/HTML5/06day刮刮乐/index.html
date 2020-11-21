@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>刮刮乐</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 300px;
+            height: 400px;
+            background: #000;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 400px;
+            font-size: 50px;
+            color:yellow;
+            letter-spacing: 15px;
+            position:relative;
+        }
+        #canvas{
+            position:absolute;
+            left: 0;top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <span id="content"></span>
+        <canvas id="canvas">
+            不支持
+        </canvas>
+    </div>
+</body>
+<script>
+    var content=document.querySelector('#content');
+    var canvas=document.querySelector('#canvas');
+    var ctx=canvas.getContext('2d');
+    canvas.width=300;
+    canvas.height=400;
+
+    var arr=['一等奖','谢谢惠顾','二等奖','三等奖','四等奖','谢谢惠顾','谢谢惠顾','谢谢惠顾','谢谢惠顾'];
+
+    //设置奖品
+    content.innerHTML=arr[Math.floor(Math.random()*arr.length)];
+
+    //画布填充
+    ctx.beginPath();
+    ctx.fillStyle='#ccc';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.closePath();
+
+    //设备检测 设置应该监听的事件
+    var device = /iphone|ipad|android|opear mini|iemobile|ipod|webos/i.test(window.navigator.userAgent);
+    var startEvName = device ? 'touchstart' : 'mousedown';
+    var moveEvName = device ? 'touchmove' : 'mousemove';
+    var endEvName = device ? 'touchend' : 'mouseup';
+
+    /*画圆*/
+    function draw(ev){
+        var x = (device ? ev.touches[0].clientX : ev.clientX) - box.offsetLeft;//圆心x坐标
+        var y = (device ? ev.touches[0].clientY : ev.clientY) - box.offsetTop;//圆心y坐标
+        ctx.beginPath();
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle='#0f0';
+        ctx.arc(x,y,20,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    /*添加事件绑定*/
+    canvas.addEventListener(startEvName,function(){
+        canvas.addEventListener(moveEvName,draw,false);
+        document.addEventListener(endEvName,function(){
+            canvas.removeEventListener(moveEvName,draw,false);
+        },false);
+    },false)
+
+</script>
+</html>

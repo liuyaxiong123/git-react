@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>忽闪</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #one{
+            position: absolute;
+            top:150px;
+            left:0px;
+        }
+        #two{
+            position: absolute;
+            top:200px;
+            left:100px;
+        }
+        #three{
+            position: absolute;
+            top:150px;
+            left:295px;
+        }
+        #four{
+            position: absolute;
+            top:170px;
+            left:550px;
+        }
+        #five{
+            position: absolute;
+            top:100px;
+            left:844px;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/ad_1.png" alt=""  id="one">
+    <img src="img/ad_2.png" alt="" id="two">
+    <img src="img/ad_3.png" alt="" id="three">
+    <img src="img/ad_4.png" alt="" id="four">
+    <img src="img/ad_5.png" alt="" id="five">
+</body>
+<script>
+    var timer=null,idx=1;
+    function Hs(time){
+        this.img=document.querySelectorAll('img');
+        this.timer=null;
+        this.time=time;
+        this.Load();
+    }
+    Hs.prototype.Load=function(){
+        var that=this;
+        var now=0;
+        this.timer=setInterval(function(){
+            now++;
+            if(now%2==0){
+                that.startMove(that.img[that.time],{opacity:0});
+            }else{
+                that.startMove(that.img[that.time],{opacity:100});
+            }
+            if(now>10){
+                clearInterval(that.timer);
+            }
+        },100)
+    }
+    Hs.prototype.startMove=function (obj,json,fn){
+        clearInterval(obj.time);
+        var _this=this;
+        obj.time=setInterval(function(){
+            var stop=true;//假设没有不到终点的值了
+            for(i in json){
+                if(i=='opacity'){
+                    //获取透明度样式的写法
+                    var style=Math.round(parseFloat(_this.getStyle(obj,i))*100);
+                    }else{
+                        //获取带px样式的写法
+                        var style=parseInt(_this.getStyle(obj,i));
+                    }
+                    var speed=(json[i]-style)/10;
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(style!=json[i]){
+                        stop=false;//意思就是说如果运动的样式其中有没到目标点的,把stop变成false
+                    }
+                    if(i=='opacity'){
+                        //运动透明度
+                        obj.style.opacity=(style+speed)/100;
+                        obj.style.filter='alpha(opacity='+(style+speed)+')';
+                    }else{
+                        //运动其他样式
+                        obj.style[i]=style+speed+'px';
+                    }
+            }
+            if(stop){
+                //判断如果stop还是true的情况下，说明没有不到终点的值了
+                clearInterval(obj.time);
+                if(fn) fn();
+            }
+        },10)
+    }
+    Hs.prototype.getStyle=function(obj,cur){
+        if(obj.currentStyle){
+            return obj.currentStyle[cur];
+        }else{
+            return getComputedStyle(obj)[cur];
+        }
+    }
+    new Hs(0);
+    timer=setInterval(function(){
+        new Hs(idx);
+        idx++;
+        if(idx>4){
+            clearInterval(timer);
+        }
+    },1000)
+</script>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery点击调色板变换背景</title>
+    <style>
+        button,
+        hr,
+        input {
+            overflow: visible
+        }
+
+        audio,
+        canvas,
+        progress,
+        video {
+            display: inline-block
+        }
+
+        progress,
+        sub,
+        sup {
+            vertical-align: baseline
+        }
+
+        html {
+            font-family: sans-serif;
+            line-height: 1.15;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%
+        }
+
+        body {
+            margin: 0
+        }
+
+        menu,
+        article,
+        aside,
+        details,
+        footer,
+        header,
+        nav,
+        section {
+            display: block
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: .67em 0
+        }
+
+        figcaption,
+        figure,
+        main {
+            display: block
+        }
+
+        figure {
+            margin: 1em 40px
+        }
+
+        hr {
+            box-sizing: content-box;
+            height: 0
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: monospace, monospace;
+            font-size: 1em
+        }
+
+        a {
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects
+        }
+
+        a:active,
+        a:hover {
+            outline-width: 0
+        }
+
+        abbr[title] {
+            border-bottom: none;
+            text-decoration: underline;
+            text-decoration: underline dotted
+        }
+
+        b,
+        strong {
+            font-weight: bolder
+        }
+
+        dfn {
+            font-style: italic
+        }
+
+        mark {
+            background-color: #ff0;
+            color: #000
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        audio:not([controls]) {
+            display: none;
+            height: 0
+        }
+
+        img {
+            border-style: none
+        }
+
+        svg:not(:root) {
+            overflow: hidden
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: sans-serif;
+            font-size: 100%;
+            line-height: 1.15;
+            margin: 0
+        }
+
+        button,
+        button,
+        select {
+            text-transform: none
+        }
+
+        [type=submit],
+        [type=reset],
+        button,
+        html [type=button] {
+            -webkit-appearance: button
+        }
+
+        [type=button]::-moz-focus-inner,
+        [type=reset]::-moz-focus-inner,
+        [type=submit]::-moz-focus-inner,
+        button::-moz-focus-inner {
+            border-style: none;
+            padding: 0
+        }
+
+        [type=button]:-moz-focusring,
+        [type=reset]:-moz-focusring,
+        [type=submit]:-moz-focusring,
+        button:-moz-focusring {
+            outline: ButtonText dotted 1px
+        }
+
+        fieldset {
+            border: 1px solid silver;
+            margin: 0 2px;
+            padding: .35em .625em .75em
+        }
+
+        legend {
+            box-sizing: border-box;
+            color: inherit;
+            display: table;
+            max-width: 100%;
+            padding: 0;
+            white-space: normal
+        }
+        textarea {
+            overflow: auto
+        }
+
+        [type=checkbox],
+        [type=radio] {
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        [type=number]::-webkit-inner-spin-button,
+        [type=number]::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        [type=search]::-webkit-search-cancel-button,
+        [type=search]::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        summary {
+            display: list-item
+        }
+
+        [hidden],
+        template {
+            display: none
+        }
+
+        /*# sourceMappingURL=normalize.min.css.map */
+        .wrapper {
+            width: 100vw;
+            height: 100vh;
+            -webkit-transition: background .3s;
+            transition: background .3s
+        }
+
+        .palette {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto
+        }
+
+        .palette .palette_item_wrapper {
+            -webkit-transition: -webkit-transform .4s;
+            transition: -webkit-transform .4s;
+            transition: transform .4s;
+            transition: transform .4s, -webkit-transform .4s;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+            -webkit-transition-delay: .4s;
+            transition-delay: .4s
+        }
+
+        .palette.palette__opened .palette_item_wrapper {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s
+        }
+
+        .palette.palette__opened .palette_color {
+            -webkit-transition-delay: .2s;
+            transition-delay: .2s
+        }
+
+        .palette.palette__opened .palette_color:nth-child(1) {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        .palette.palette__opened .palette_color:nth-child(2) {
+            -webkit-transform: rotate(36deg);
+            transform: rotate(36deg)
+        }
+
+        .palette.palette__opened .palette_color:nth-child(3) {
+            -webkit-transform: rotate(72deg);
+            transform: rotate(72deg)
+        }
+
+        .palette.palette__opened .palette_color:nth-child(4) {
+            -webkit-transform: rotate(108deg);
+            transform: rotate(108deg)
+        }
+
+        .palette.palette__opened .palette_color:nth-child(5) {
+            -webkit-transform: rotate(144deg);
+            transform: rotate(144deg)
+        }
+
+        .palette.palette__opened .palette_color:nth-child(6) {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg)
+        }
+
+        .palette.palette__opened .palette_color:nth-child(7) {
+            -webkit-transform: rotate(216deg);
+            transform: rotate(216deg)
+        }
+
+        .palette.palette__opened .palette_color:nth-child(8) {
+            -webkit-transform: rotate(252deg);
+            transform: rotate(252deg)
+        }
+
+        .palette.palette__opened .palette_color:nth-child(9) {
+            -webkit-transform: rotate(288deg);
+            transform: rotate(288deg)
+        }
+
+        .palette.palette__opened .palette_color:nth-child(10) {
+            -webkit-transform: rotate(324deg);
+            transform: rotate(324deg)
+        }
+
+        .palette .palette_color,
+        .palette .palette_color__main {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            border-style: solid;
+            border-color: #fff;
+            -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, .6);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, .6)
+        }
+
+        .palette .palette_color__main {
+            background-color: #e16969;
+            width: 100px;
+            height: 100px;
+            -webkit-transition: background .3s;
+            transition: background .3s;
+            border-width: 6px;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto
+        }
+
+        .palette .palette_color {
+            width: 50px;
+            height: 50px;
+            display: block;
+            -webkit-transform-origin: 250% 50%;
+            transform-origin: 250% 50%;
+            -webkit-transition: -webkit-transform .5s;
+            transition: -webkit-transform .5s;
+            transition: transform .5s;
+            transition: transform .5s, -webkit-transform .5s;
+            border-width: 3px;
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            margin: auto
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="palette">
+            <div class="palette_item_wrapper">
+                <div data-color="#e169c3" class="palette_color"></div>
+                <div data-color="#b569e1" class="palette_color"></div>
+                <div data-color="#7169e1" class="palette_color"></div>
+                <div data-color="#69b8e1" class="palette_color"></div>
+                <div data-color="#69e1d4" class="palette_color"></div>
+                <div data-color="#6ce169" class="palette_color"></div>
+                <div data-color="#bee169" class="palette_color"></div>
+                <div data-color="#e1a169" class="palette_color"></div>
+                <div data-color="#83091d" class="palette_color"></div>
+                <div data-color="#83091d" class="palette_color"></div>
+            </div>
+            <div class="palette_color__main"></div>
+        </div>
+    </div>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script>
+        var _$paletteElement = $('.palette_color'); function _colorizePaletteItems() { $.each(_$paletteElement, function (i) { $(this).css('background-color', $(this).data('color')); }) }
+        function _togglePalette() { $('.palette_color__main').on('click', function () { $('.palette').toggleClass('palette__opened'); }) }
+        function _initSetColor() { $('.palette_color').on('click', function () { var color = $(this).data('color'); _setColor(color); }) }
+        function _setColor(color) { $('.palette_color__main').css('background', color); $('.wrapper').css('background', color); }
+        _colorizePaletteItems(); _togglePalette(); _initSetColor();
+    </script>
+</body>
+
+</html>

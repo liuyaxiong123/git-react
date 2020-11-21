@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手风琴</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        li{
+            list-style: none;
+        }
+        .box{
+            width: 800px;
+            height: 600px;
+            border:1px solid;
+            margin:200px auto;
+        }
+        .box li{
+            width: 800px;
+            height: 100px;
+            background:rgb(95, 167, 209);
+            overflow: hidden;
+            color:#fff;
+        }
+        .box li div{
+            height: 100px;
+            border-bottom: 1px solid #000;
+            color:#000;
+            line-height: 100px;
+            padding-left:20px;
+        }
+        .box li p{
+            height: 200px;
+            line-height: 50px;
+            word-wrap:break-word;
+            padding-left:20px;
+        }
+        .box li div.active{
+            background: yellow;
+        }
+        .box li div{
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    function sfq(){
+        this.length=4;
+        this.maxh=300;
+        this.minh=100;
+        this.init();
+    }
+    sfq.prototype.init=function(){
+        this.box=document.createElement('div');
+        this.box.className='box';
+        this.ul=document.createElement('ul');
+        for(var i=0;i<this.length;i++){
+            this.li=document.createElement('li');
+            this.div=document.createElement('div');
+            this.p=document.createElement('p');
+            this.div.innerHTML='坚实的积分离开的说法快递费开山刀浮点数经济法近段时间辅导教师富家大室';
+            this.p.innerHTML='上课多了几分的设计费大数据凉快地方了科技的反馈拉风了快捷打开放假倒计时发卡的设计费卡电视剧发卡的设计费进度款拉设计费了开始放假卡的设计费垦利街道分开了的接口了解到副书记的设计费看';
+            this.li.appendChild(this.div);
+            this.li.appendChild(this.p);
+            this.ul.appendChild(this.li);
+        }
+        this.box.appendChild(this.ul);
+        document.body.appendChild(this.box);
+        var lis=document.querySelectorAll('li');
+        lis[0].style.height=this.maxh+'px';
+        lis[0].children[0].className='active';
+        this.Click(lis);
+    }
+    sfq.prototype.Click=function(obj){
+        var that=this;
+        for(var i=0;i<obj.length;i++){
+            obj[i].children[0].index=i;
+            obj[i].children[0].onclick=function(){
+                that.bind(this.index,obj);
+            }
+        }
+    }
+    sfq.prototype.bind=function(idx,obj){
+        var that=this;
+        for(var j=0;j<obj.length;j++){
+            obj[j].children[0].className='';
+            this.startMove(obj[j],{height:this.minh});
+        }
+        obj[idx].children[0].className='active';
+        this.startMove(obj[idx],{height:this.maxh});
+    }
+    sfq.prototype.startMove=function (obj,json,fn){
+        clearInterval(obj.time);
+        var _this=this;
+        obj.time=setInterval(function(){
+            var stop=true;//假设没有不到终点的值了
+            for(i in json){
+                if(i=='opacity'){
+                    //获取透明度样式的写法
+                    var style=Math.round(parseFloat(_this.getStyle(obj,i))*100);
+                    }else{
+                        //获取带px样式的写法
+                        var style=parseInt(_this.getStyle(obj,i));
+                    }
+                    var speed=(json[i]-style)/10;
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(style!=json[i]){
+                        stop=false;//意思就是说如果运动的样式其中有没到目标点的,把stop变成false
+                    }
+                    if(i=='opacity'){
+                        //运动透明度
+                        obj.style.opacity=(style+speed)/100;
+                        obj.style.filter='alpha(opacity='+(style+speed)+')';
+                    }else{
+                        //运动其他样式
+                        obj.style[i]=style+speed+'px';
+                    }
+            }
+            if(stop){
+                //判断如果stop还是true的情况下，说明没有不到终点的值了
+                clearInterval(obj.time);
+                if(fn) fn();
+            }
+        },10)
+    }
+    sfq.prototype.getStyle=function(obj,cur){
+        if(obj.currentStyle){
+            return obj.currentStyle[cur];
+        }else{
+            return getComputedStyle(obj)[cur];
+        }
+    }
+    new sfq();
+</script>
+</html>

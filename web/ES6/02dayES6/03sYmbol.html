@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //作用：用来表示独一无二的值
+    // let s = Symbol();
+    // console.log(typeof s);//symbol
+    
+    //------------------------------
+
+    // let obj={
+    //     name:'xiaoming',
+    //     html:function(){
+    //         alert(1);
+    //     }
+    // };
+
+    // obj['name'] = 'xiaohong';
+    // obj.html = function (){
+    //     alert(2);
+    // }
+    // console.log(obj.name);
+    // obj.html();
+
+    //-------------------
+    //让新增的属性和方法不和原始的冲突
+    // let name=Symbol('name');
+    // let html=Symbol('html');
+    // let obj = {
+    //     [name]:'xiaoming',
+    //     [html]:function(){
+    //         alert(1);
+    //     }
+    // }
+    // // console.log(obj[name]);
+    // // obj[html]();
+    // obj['name']='xiaohong';
+    // obj['html']=function(){
+    //     alert(2);
+    // }
+    // console.log(obj[name],obj['name']);
+
+    //---------------------------------------
+    //注意：一定要用变量保存Symbol,如下的写法是错误的，因为每一个Symbol都是独立的，这样会导致我们永远取不到xiaohong的值了
+    // let obj = {
+    //     [Symbol('name')]:'xiaohong',
+    // }
+    // console.log(obj[name]);
+    //-------------------------------
+
+    //通过Symbol添加的属性无法通过for...in 循环取到值
+    // let name=Symbol('name');
+    // let html = Symbol('html');
+    // let obj = {
+    //     a:5,
+    //     b:5,
+    //     [name]:'xiaoming',
+    //     [html]:function(){
+    //         alert(1);
+    //     }
+    // }
+    // console.log(obj);
+    // for(i in obj){
+    //     console.log(i);
+    //     console.log(obj[i]);
+    // }
+    //获取对象内部所有的键名
+    // console.dir(Reflect.ownKeys(obj));
+    //查看对象上的所有的Symbol属性
+    // console.dir(Object.getOwnPropertySymbols(obj));
+    //循环取出对象内部所有的值
+    // let s_name_all=Reflect.ownKeys(obj);
+    // for(i of s_name_all.values()){
+    //     console.log(i);//获取对象内所有的键名
+    //     console.log(obj[i]);//获取对象内所有的值
+    // }
+    //循环取出对象内部所有Symbol的值
+    // let s_name=Object.getOwnPropertySymbols(obj);
+    // for(j of s_name.values()){
+    //     console.log(j);//对象内所有symbol的属性名
+    //     console.log(obj[j]);//对象内所有symbol的属性值
+    // }
+    //-----------------------
+    //注意： Symbol函数每一个都是独立的，不同的symbol不相等,参数只是表示对当前symbol值的描述
+    // let s1=Symbol();
+    // let s2=Symbol();
+    // console.log(s1 === s2);//false
+
+    // let s3=Symbol('foo');
+    // let s4=Symbol('foo');
+    // console.log(s3 === s4);//false
+
+    // let obj ={
+    //     [s3]:1,
+    //     [s4]:2
+    // };
+    // console.log(obj[s3],obj[s4]);
+    //-------------------------------
+    //Symbol值不能与其它类型的值进行运算，会报错
+    // let s=Symbol();
+    // console.log(s+'a');//报错
+    //---------------------------
+    //读取Symbol这个函数的描述信息，通过description属性
+    // const s=Symbol('foo');
+    // console.log(s.description);
+    
+
+</script>
+</html>

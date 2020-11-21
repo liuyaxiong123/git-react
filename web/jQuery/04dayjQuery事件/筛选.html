@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <title>筛选</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        span {
+            cursor: pointer;
+        }
+
+        .active {
+            background: blue;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        #ul li dl {
+            overflow: hidden;
+            margin: 5px;
+        }
+
+        #ul dl dt,
+        #ul dl dd {
+            float: left;
+        }
+
+        #ul li dl dt img {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="txt">
+    <span>男</span>
+    <span>女</span>
+    <span class='active'>ALL</span>
+    <ul id="ul">
+        <!-- <li>
+            <dl>
+                <dt><img src="image/1.jpg" alt=""></dt>
+                <dd>
+                    <h6>王刚</h6>
+                    <p>描述信息</p>
+                </dd>
+            </dl>
+        </li> -->
+    </ul>
+</body>
+<script>
+    var personArr = [
+        { name: '王港', src: 'image/3.jpg', des: '颈椎不好', sex: 'm' },
+        { name: '张三', src: 'image/4.jpg', des: '描述信息2', sex: 'm' },
+        { name: '李四', src: 'image/5.jpg', des: '描述信息3', sex: 'm' },
+        { name: '王麻子', src: 'image/1.jpg', des: '描述信息4', sex: 'm' },
+        { name: '阿海', src: 'image/2.jpg', des: '描述信息5', sex: 'm' },
+        { name: '刘莹', src: 'image/5.jpg', des: '我是谁', sex: 'f' },
+        { name: '王秀莹', src: 'image/4.jpg', des: '我很好看', sex: 'f' },
+        { name: '刘金雷', src: 'image/1.jpg', des: '你没有见过陌生的脸', sex: 'm' },
+        { name: '刘飞翔', src: 'image/2.jpg', des: '瓜皮刘', sex: 'm' }
+    ];
+    var spans = document.querySelectorAll('span');
+    //页面初始化渲染DOM
+    createPerson(personArr);
+    function createPerson(arr) {
+        ul.innerHTML = '';
+        for (var i = 0; i < arr.length; i++) {
+            var li = document.createElement('li');
+            li.innerHTML = '<dl><dt><img src="' + arr[i].src + '"></dt><dd><h6>' + arr[i].name + '</h6><p>' + arr[i].des + '</p></dd></dl>';
+            ul.appendChild(li);
+        }
+    }
+    var arr = ['m', 'f'];
+    //切换性别
+    $(function () {
+        for (var j = 0; j < $(spans).length; j++) {
+            $(spans).eq(j).click(function () {
+                $('#txt').val('');
+                $(this).attr('class', 'active').siblings('span').attr('class', '');
+                var idx = $(this).index()-1;
+                if (idx != 2) {
+                    //过滤所有男性或女性
+                    var newArr = personArr.filter(function (item, index) {
+                        return item.sex == arr[idx];
+                    });
+                    createPerson(newArr);
+                } else {
+                    createPerson(personArr);
+                }
+            })
+            //模糊搜索
+            $('#txt').on('input',function () {
+                if ($(this).val() != '') {
+                    var gh=$(this).val();
+                    var newArr = personArr.filter(function (item, index) {
+                        //过滤出所有名字中包含文本框内容的那一项
+                        return item.name.indexOf(gh) != -1;
+                    });
+                    createPerson(newArr);
+                } else {
+                    createPerson(personArr);
+                }
+            })
+        }
+    })
+    //切换性别
+    // for(var j=0;j<spans.length;j++){
+    //     spans[j].index=j;
+    //     spans[j].onclick=function(){
+    //         txt.value='';
+    //         var _this=this;
+    //         for(var i=0;i<spans.length;i++){
+    //             spans[i].className='';
+    //         }
+    //         this.className='active';
+    //         if(this.index!=2){
+    //             //过滤所有男性或女性
+    //             var newArr=personArr.filter(function(item,index){
+    //             return item.sex==arr[_this.index];
+    //         });
+    //         createPerson(newArr);
+    //         }else{
+    //             createPerson(personArr);
+    //         }
+    //     }
+    // }
+    // //模糊搜索
+    // txt.oninput=function(){
+    //     var _this=this;
+    //     if(this.value!=''){
+    //         var newArr=personArr.filter(function(item,index){
+    //             //过滤出所有名字中包含文本框内容的那一项
+    //             return item.name.indexOf(_this.value)!=-1;
+    //         });
+    //         createPerson(newArr);
+    //     }else{
+    //         createPerson(personArr);
+    //     }
+    // }
+</script>
+
+</html>

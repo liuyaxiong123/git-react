@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .outer {
+            display: grid;
+            /* height: 800px; */
+            /* width: 800px; */
+            /* grid-template-columns: repeat(3, 33.33%); */
+            /* grid-template-rows: repeat(3, 33.33%); */
+            grid-template-columns: repeat(auto-fill, 100px);
+        }
+
+        p {
+            width: 100px;height: 100px;
+            border: 1px solid #000;
+            place-items:end center;
+            grid-gap:20px 20px;
+            /* place-content:end center; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <p>滴</p>
+        <p>滴</p>
+        <p>滴</p>
+        <p>滴</p>
+        <p>滴</p>
+        <p>滴</p>
+        <p>滴</p>
+        <p>滴</p>
+        <p>滴</p>
+    </div>
+</body>
+
+</html>

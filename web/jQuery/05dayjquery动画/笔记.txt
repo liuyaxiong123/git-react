@@ -1,0 +1,35 @@
+jQuery动画：
+1.控制显示隐藏：
+$('选择器').hide(时间戳/(slow,fast),动画执行完毕后回调fn)
+$('选择器').show(时间戳/(slow,fast),动画执行完毕后回调fn)
+$('选择器').toggle(时间戳/(slow,fast),动画执行完毕后回调fn)
+
+2.控制淡入淡出:
+$('#box').fadeOut(时间戳/(slow,fast),动画执行完毕后回调fn)
+$('#box').fadeIn(时间戳/(slow,fast),动画执行完毕后回调fn)
+$('#box').fadeToggle(时间戳/(slow,fast),动画执行完毕后回调fn)
+
+3.控制上拉下滑:
+$('#box').slideUp(时间戳/(slow,fast),动画执行完毕后回调fn)
+$('#box').slideDown(时间戳/(slow,fast),动画执行完毕后回调fn)
+$('#box').slideToggle(时间戳/(slow,fast),动画执行完毕后回调fn)
+
+4.自定义动画:(底层是计时器控制的，可以改变带px的样式，透明度)
+$('#box').animate({样式},时间戳/(slow,fast),动画执行完后回调fn)
+delay(时间戳):延迟
+stop()：停止当前动画 执行其他动画
+stop(true):停止所有动画
+stop(true,ture):停止所有动画，并瞬间执行完当前动画
+
+$('#box').is(':hidden') 判断当前元素是否为隐藏状态，隐藏返回true，反之为false
+$('#box').is(':animated') 判断当前元素是否处在动画状态，正在动画返回true，反之返回false
+
+5.jq循环
+$.each(对象,function(ind,item){
+    ind对应角标
+    item对应每一项值
+})
+$('#ul li').each(function(ind,item){
+    ind对应角标
+    item对应每一项值
+})

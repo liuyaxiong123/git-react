@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文字渐变</title>
+    <style>
+        .box{
+            font-size: 60px;
+            width: 500px;
+            margin: 200px auto;
+            background: -webkit-linear-gradient(left,pink,yellow,skyblue,#000,yellowgreen);
+            background: linear-gradient(to right,pink,yellow,skyblue,#000,yellowgreen);
+            background-position: 0 0;
+            -webkit-text-fill-color:transparent;
+            -webkit-background-clip: text;
+            animation:move 4s linear infinite;
+        }
+        @keyframes move{
+            from{
+                background-position: 0 0;
+                transform:rotate(0deg) scale(1);
+            }
+            50%{
+                transform:rotate(180deg) scale(1.5);;
+            }
+            to{
+                background-position: 500px 0px;
+                transform:rotate(360deg) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">一段可选文字</div>
+</body>
+</html>

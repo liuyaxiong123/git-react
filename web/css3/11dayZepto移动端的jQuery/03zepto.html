@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .outer{
+            width: 200px;height: 200px;
+            background: blue;
+            color:#fff;
+            margin: 100px auto;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="按钮">
+    <div class="outer">
+        <p>aa</p>
+        <p>bb</p>
+    </div>
+</body>
+<script src="js/zepto.min.js"></script>
+<script src="js/zeptoFX.js"></script>
+<script src="js/zeptoOut.js"></script>
+<script src="js/zeptois.js"></script>
+<script>
+    $('input[type=button]').on('click',function(){
+        // $('.outer').fadeOut(300,function(){
+        //     console.log('执行完毕');
+        // });
+        // $('.outer').fadeIn(500,function(){
+        //     console.log('执行完毕');
+        // })
+        // $('.outer').fadeTo(400,0.8,function(){
+        //     console.log('执行完毕');
+        // })
+        // $('.outer').fadeToggle();
+        $('.outer').toggle(300,function(){
+            console.log($('.outer').is(':hidden'))
+        });
+    })
+    //------------------------
+    /*$('.outer').animate({
+        // 'width':400,
+        // 'height':400,
+        'background':'yellow',
+        'color':'red',
+        // 'transform':'scale(2) rotateY(45deg)'
+        'scaleX':2,
+        'rotateZ':'45deg',
+        'translateX':'200px',
+    },'slow',function(){
+        console.log('执行完毕');
+    })*/
+    //----------------
+
+</script>
+
+</html>

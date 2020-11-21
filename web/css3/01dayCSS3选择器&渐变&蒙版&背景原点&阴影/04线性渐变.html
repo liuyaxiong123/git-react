@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;height: 200px;margin: 10px;float:left;
+        }
+        /* 线性渐变 linear-gradient(颜色值 占的空间，颜色值 占得空间，颜色值...)*/
+        div:nth-child(1){
+            background:-webkit-linear-gradient(pink 20%,skyblue 20px,yellowgreen);
+            background:-moz-linear-gradient(pink 20%,skyblue 20px,yellowgreen);
+            background:-ms-linear-gradient(pink 20%,skyblue 20px,yellowgreen);
+            background:-o-linear-gradient(pink 20%,skyblue 20px,yellowgreen);
+            background:linear-gradient(pink 20%,skyblue 20px,yellowgreen);
+            /* 默认方向  从上往下 */
+        }
+        div:nth-child(2){
+            /* background:-webkit-linear-gradient(left,#f00,#0ff);*/
+            /* background:-moz-linear-gradient(left,#f00,#0ff); */
+            /* background:-ms-linear-gradient(left,#f00,#0ff); */
+            /* background:-o-linear-gradient(left,#f00,#0ff); */
+            background:linear-gradient(to right,#f00,#0ff);/*注意w3c标准不同*/
+            /* 从左往右 */
+        }
+        div:nth-child(3){
+            /* 从左上角到有下角 */
+            /* background:-webkit-linear-gradient(bottom,#f00,#0ff);从下往上 */
+            /* background:linear-gradient(to top,#f00,#0ff); */
+            /* background:-webkit-linear-gradient(top right,#f00,#0ff); */
+            background:linear-gradient(to bottom right,#f00,#0ff);
+        }
+        div:nth-child(4){
+            /* 从左往右 */
+            /* background: -webkit-linear-gradient(30deg,#f00,#0ff); */
+            /* 从左下角往右下角 */
+            background: linear-gradient(45deg,#f00,#0ff);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div id="box"></div>
+</body>
+<script>
+    var du=0;
+    setInterval(function(){
+        du++;
+        if(du>=360){
+            du=0;
+        }
+        box.style.background='-webkit-linear-gradient('+du+'deg,#f00,#0ff)';
+    },50)
+</script>
+</html>

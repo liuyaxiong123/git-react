@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>机试</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body,
+        html {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background: #ccc;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .wrap ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrap ul li {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            border: 10px solid #fff;
+            z-index: 99;
+        }
+
+        .wrap ul li span {
+            position: absolute;
+            left: 50%;
+            top: 210px;
+            margin-left: -25px;
+            font-size: 18px;
+            opacity: 0;
+            transition: all .4s linear;
+        }
+
+        .wrap ul li:hover span {
+            opacity: 100;
+            transform: scale(1.3);
+        }
+
+        .wrap ul li.active {
+            border: 10px solid red;
+        }
+
+        .wrap .yq {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            margin-left: -100px;
+            border-radius: 50%;
+            transition: all .5s linear;
+            border: 10px solid #fff;
+            color: #fff;
+            text-align: center;
+            line-height: 200px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li><span>lalala</span></li>
+            <li><span>lalala</span></li>
+            <li><span>lalala</span></li>
+            <li><span>lalala</span></li>
+            <li><span>lalala</span></li>
+        </ul>
+        <div class="yq">点击</div>
+    </div>
+</body>
+<script>
+    var minX = $('.yq').offset().left;
+    var maxX = $('.yq').offset().left + $('.yq').width();
+    var minY = $('.yq').offset().top;
+    var maxY = $('.yq').offset().top + $('.yq').height();
+    var arrx;
+    var index = 0;
+    $(function () {
+        $('li').each(function (idx, item) {
+            $(item).css({
+                'background': 'url(img/' + (idx + 1) + '.jpg) center center',
+                'backgroundSize': 'cover',
+                'left': idx * 325 + 200 + 'px',
+                'top': '300px',
+            });
+
+            $(item).mousedown(function () {
+                arrx = idx * 325 + 200 + 'px';
+                index = idx;
+                show($(this), $('.yq'));
+            })
+            $(item).mouseup(function (ev) {
+
+                if (ev.clientX > minX && ev.clientX < maxX && ev.clientY > minY &&
+                    ev.clientY < maxY) {
+                    $(item).css({
+                        'border-radius': 0,
+                        'border': 0,
+                        'zIndex': 100
+                    })
+                    $('.yq').css({
+                        'zIndex': 101,
+                    })
+                    $(item).empty();
+                    $(item).velocity({
+                        'width': '100%',
+                        'height': '100%',
+                        'left': 0,
+                        'top': 0,
+                    }, 'slow')
+                } else {
+                    $(this).css({
+                        'border-color': '#fff',
+                        // 'left':arrx,
+                        // 'top':'300px'
+                    })
+                    $('.yq').css({
+                        'border-color': '#fff',
+                        'color': '#fff',
+                        'background': '#ccc'
+                    })
+                }
+                $(document).off('mousemove');
+            })
+            $('.yq').on('click', function () {
+                $(this).css({
+                    'border': '10px solid #fff',
+                })
+                $(this).velocity({
+                    'width': '200px',
+                    'height': '200px',
+                    'border-color': '#fff',
+
+                })
+                $('ul>li').eq(index).css({
+                    'border': '10px solid #fff',
+                    'left': arrx,
+                    'top': '300px',
+                    'border-radius': '50%',
+                })
+                $('ul>li').eq(index).velocity({
+                    'width': '200px',
+                    'height': '200px',
+                }, function () {
+                    $(item).css({
+                        'zIndex': 99,
+                    })
+                    $('.yq').css({
+                        'zIndex': 0,
+                        'background': '#ccc'
+                    })
+                })
+            })
+        })
+    })
+
+    function show(obj, dj) {
+        obj.velocity({
+            'border-color': '#0f0'
+        }, 'fast')
+        dj.velocity({
+            'border-color': '#0f0'
+        }, 'fast')
+        $(document).on('mousemove', function (ev) {
+            obj.css({
+                'left': ev.clientX - 100 + 'px',
+                'top': ev.clientY - 100 + 'px'
+            })
+            if (ev.clientX > minX && ev.clientX < maxX && ev.clientY > minY &&
+                ev.clientY < maxY) {
+                dj.velocity({
+                    'background-color': '#DC143C',
+                    'border-color': '#DC143C',
+                    'color': '#000',
+                    'scale': 1.2,
+                }, 'fast')
+            }
+        })
+    }
+</script>
+
+</html>

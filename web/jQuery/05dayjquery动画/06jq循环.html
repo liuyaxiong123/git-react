@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>循环</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <ul id="ul">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    // $.each($('#ul li'),function(indx,item){
+    //     console.log(indx,item);
+    //     if(indx%2==0){
+    //         $(item).css('background','red');
+    //     }else{
+    //         $(item).css('background','blue');
+    //     }
+    // })
+    //-----------------------------------
+    // $('#ul li').each(function(ind,item){
+    //     console.log(ind,item);
+    //     if(ind%2==0){
+    //         $(item).css('background','red');
+    //     }else{
+    //         $(item).css('background','blue');
+    //     }
+    // })
+    //-----------------------
+    var arr=['apple','bannaa','orange','pear','peach'];
+    var json={name:'Ada',age:18,sex:'0'};
+    //可以循环数组  josn
+    $.each(json,function(ind,item){
+        console.log(ind,item);
+    })
+
+    var arr1=[23,4232,4545,64,6535];
+    var sh=0;
+    $.each(arr1,function(ind,item){
+        sh+=item;
+    })
+    console.log(sh);
+</script>
+</html>

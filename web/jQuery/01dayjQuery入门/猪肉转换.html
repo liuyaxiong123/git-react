@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>猪肉转化</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{
+            text-decoration: none;
+        }
+        #box{
+            width: 1500px;
+            height: 800px;
+            margin:100px auto;
+            position:relative;
+        }
+        .lft{
+            width: 600px;
+            height: 800px;
+            float:left;
+            border:1px solid;
+            padding-left:50px;
+            box-sizing: border-box;
+        }
+        .rit{
+            width: 600px;
+            height: 800px;
+            float:right;
+            border:1px solid;
+            padding-left:50px;
+            box-sizing: border-box;
+        }
+        a{
+            position:absolute;
+            width: 300px;
+            height: 50px;
+            font-size:45px;
+        }
+        #box .btn1{
+            left:50%;
+            margin-left:-150px;
+            top:50%;
+            margin-top:-50px;
+        }
+        #box .btn2{
+            left:50%;
+            margin-left:-150px;
+            top:50%;
+        }
+        input{
+            margin-bottom:40px;
+            width: 30px;height: 30px;
+        }
+        label{
+            font-size:50px;
+            font-family:'楷体';
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="lft">
+            <div class="moe">
+                <input type="checkbox" id="mt">
+                <label for="mt">馒头</label>
+            </div>
+            <div class="moe">
+                <input type="checkbox" id="kl">
+                <label for="kl">考拉</label>
+            </div>
+            <div class="moe">
+               <input type="checkbox" id="wg">
+                <label for="wg">乌龟</label> 
+            </div>
+            <div class="moe">
+                <input type="checkbox" id="sl">
+                <label for="sl">树懒</label>
+            </div>
+            <div class="moe">
+                <input type="checkbox" id="nr">
+                <label for="nr">牛肉</label>
+            </div>
+            <div class="moe">
+               <input type="checkbox" id="jr">
+                <label for="jr">鸡肉</label> 
+            </div>
+            <div class="moe">
+                <input type="checkbox" id="zr">
+                <label for="zr">猪肉</label>
+            </div>
+            <div class="moe">
+                <input type="checkbox" id="td">
+                <label for="td">土豆</label>
+            </div>
+        </div>
+        <div class="rit"></div>
+        <a href="javascript:;" class="btn1"> >>>>>>>>> </a>
+        <a href="javascript:;" class="btn2"> <<<<<<<<< </a>
+    </div>
+</body>
+<script>
+    function zh(){
+        this.lft=document.querySelector('.lft');
+        this.rit=document.querySelector('.rit');
+        this.divs=document.querySelectorAll('.moe');
+        this.a1=document.querySelector('.btn1');
+        this.a2=document.querySelector('.btn2');
+        this.click();
+    }
+    //点击事件
+    zh.prototype.click=function(){
+        var that=this;
+        this.a1.onclick=function(){
+            that.move(that.rit,that.lft);
+        }
+        this.a2.onclick=function(){
+            that.move(that.lft,that.rit);
+        }
+    }
+    zh.prototype.move=function(x,y){
+        for(var i=0;i<this.divs.length;i++){
+            if(this.divs[i].children[0].checked){
+                this.divs[i].children[0].checked=false;
+                y.removeChild(this.divs[i]);
+                x.insertBefore(this.divs[i],x.children[0]);
+            }
+        }
+    }
+    new zh();
+</script>
+</html>

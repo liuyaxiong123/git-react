@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>画板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 800px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #canvas {
+            background: #ccc;
+        }
+
+        .bt,
+        .qsb {
+            text-align: center;
+        }
+
+        #xpc {
+            width: 20px;
+            height: 20px;
+            background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575474269170&di=d4d5d5ae38850b454f6715020f55a08b&imgtype=0&src=http%3A%2F%2Fku.90sjimg.com%2Felement_origin_min_pic%2F18%2F08%2F05%2F48286a183f3874bb0fbb029766214ff7.jpg%2521%2Ffwfh%2F804x804%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue);
+            background-size: cover;
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+
+        .xpc {
+            text-align: center;
+        }
+        .zt{
+            text-align: center;
+        }
+        div{
+            margin-bottom: 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <canvas width="800" height="600" id="canvas"></canvas>
+        <div id="xpc"></div>
+    </div>
+    <div class="bt">
+        <button id="btn">清除画布</button>
+    </div>
+    <div class="qsb">
+        取色器：<input type="color" id="qsb">
+    </div>
+    <div class="xpc">
+        <button id="btn2">橡皮檫</button>
+    </div>
+    <div class="zt">
+        字体大小：<input type="range" max="100" min="0" value="2" id="range">
+    </div>
+</body>
+<script>
+    var context = canvas.getContext('2d')
+    var x, y, ys;
+    var suo = true;
+
+    function fn(ev) {
+        x = ev.clientX - outer.offsetLeft;
+        y = ev.clientY - outer.offsetTop;
+        context.lineTo(x, y);
+        context.lineWidth = range.value;
+        context.strokeStyle = ys;
+        context.stroke();
+    }
+    canvas.addEventListener('mousedown', function (ev) {
+        var ev = ev || window.event;
+        x = ev.clientX - outer.offsetLeft;
+        y = ev.clientY - outer.offsetTop;
+        context.beginPath();
+        context.moveTo(x, y);
+        canvas.addEventListener('mousemove', fn, false)
+    }, false)
+    document.addEventListener('mouseup', function () {
+        canvas.removeEventListener('mousemove', fn, false);
+        context.closePath();
+    }, false)
+    btn.onclick = function () {
+        context.clearRect(0, 0, 800, 600);
+    }
+    qsb.onchange = function () {
+        ys = this.value;
+    }
+    btn2.onclick = function (ev) {
+        if (suo) {
+            xpc.style.display = 'block';
+        } else {
+            xpc.style.display = 'none';
+        }
+        suo = !suo;
+        if (!suo) {
+            canvas.addEventListener('mousemove', fn2, false);
+        }
+    }
+
+    function fn2(ev) {
+        var l=ev.clientX-outer.offsetLeft-10;
+        var t=ev.clientY-outer.offsetTop-10
+        xpc.style.left = l+'px';
+        xpc.style.top = t+'px';
+        context.clearRect(l, t, 20, 20);
+    }
+
+</script>
+
+</html>

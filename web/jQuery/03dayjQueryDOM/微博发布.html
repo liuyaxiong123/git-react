@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>微博发布</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        #outer {
+            width: 580px;
+            height: 580px;
+            margin: 0 auto;
+            background: #ccc;
+            border: 1px solid #000;
+            padding: 20px;
+            overflow: auto;
+        }
+
+        #inp1 {
+            width: 500px;
+            height: 30px;
+        }
+
+        #inp2 {
+            width: 500px;
+        }
+
+        #pp {
+            margin-left: 400px;
+        }
+
+        span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <p>姓名:</p>
+        <input type="text" id="inp1">
+        <p>内容：</p>
+        <textarea name="" id="inp2" cols="30" rows="10" maxlength="200"></textarea>
+        <p id="pp">
+            <span>还可以输入 <i id="i">200</i> 个字</span>
+        </p>
+        <input type="button" id="btn" value="发布留言">
+        <h1>显示留言</h1>
+        <ul id="ul"></ul>
+    </div>
+</body>
+<script>
+    $(function () {
+        $('#btn').click(function () {
+            var ali = $('<li></li>');
+            ali.html('<h5 style="width:500px;height:40px;background:red;">' + $('#inp1').val() + '<span style="float:right;" onclick="fn(this)">×</span></h5><p style="width:500px;height:50px;">' + $('#inp2').val() + '</p>').css('list-style', 'none');
+            $('#ul').prepend(ali);
+            $('#inp1').val('');
+            $('#inp2').val('');
+        })
+        $('#inp2').on('input', function () {
+            $('#i').html(200 - $(this).val().length);
+            if ($('#i').html() == 0) {
+                $('i').css('color', 'red');
+            } else {
+                $('i').css('color', '#000');
+            }
+        })
+    })
+    function fn(obj) {
+        var tan = confirm('是否确定删除');
+        if (tan == true) {
+            obj.parentNode.parentNode.remove();
+        }
+    }
+</script>
+
+</html>

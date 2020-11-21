@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;height: 200px;margin: 10px;float:left;
+        }
+        /* 径向渐变：radial-gradient(颜色值 占得空间，颜色值，...) */
+        div:nth-child(1){
+            background: -webkit-radial-gradient(#f0f 20%,#f00);
+            background: -moz-radial-gradient(#f0f 20%,#f00);
+            background: -ms-radial-gradient(#f0f 20%,#f00);
+            background: -o-radial-gradient(#f0f 20%,#f00);
+            background: radial-gradient(#f0f 20%,#f00);
+        }
+        div:nth-child(2){
+            /* background: radial-gradient(20px 20px,#f0f 20%,#f00);不生效 */
+            background: -webkit-radial-gradient(20px 20px,#f0f 20%,#f00);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+</body>
+</html>

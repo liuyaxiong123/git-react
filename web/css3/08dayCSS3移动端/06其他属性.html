@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 170px;
+            border: 1px solid #000;
+        }
+        .box p{
+            white-space: nowrap;/*强制文本不换行*/
+            overflow: hidden;
+            text-overflow: ellipsis;/*超出内容显示省略号*/
+        }
+        @font-face{
+            font-family:'TengXiangKong';/*自定义字体名称*/
+            src: url(file/腾祥孔淼卡通字体.ttf);/*引入字体文件*/
+        }
+        @font-face{
+            font-family:'lala';
+            src: url(file/LikeCockatoosBold.ttf);
+        }
+        div:nth-child(1){
+            font-family: 'TengXiangKong';
+            font-size: 50px;
+        }
+        div:nth-child(2){
+            font-family: 'lala';
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div>多斯拉克附近受得了距离</div>
+    <div>fack chaihaohui</div>
+    <div class="box">
+        <p>超酷的IT技术学习平台(此处省略)</p>
+        <p>超酷的IT技术学习平台(此处省略)</p>
+        <p>超酷的IT技术学习平台(此处省略)</p>
+        <p>超酷的IT技术学习平台(此处省略)</p>
+    </div>
+</body>
+</html>

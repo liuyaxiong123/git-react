@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>字符</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr='kdsjkfjdsklf';
+    ss(arr);
+    function ss(arr){
+        var show=[];
+        var show2=[];
+        for(var i=0;i<arr.length;i++){
+            show.push(arr.indexOf(arr[i]));
+        }
+        show.sort();
+        // console.log(show);
+        var now=0;
+        for(var j=0;j<show.length-1;j++){
+            var sd=show[j];
+            for(var x=j+1;x<show.length;x++){
+                var pd=show[x];
+                if(sd==pd){
+                    now++;
+                }
+            }
+            show2.push(now);
+            now=0;
+        }
+        console.log(show);
+    }
+</script>
+</html>

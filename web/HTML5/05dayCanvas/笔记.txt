@@ -1,0 +1,42 @@
+Canvas:
+图形组合方式：
+新画图形是压在原图形上或者原图覆盖新图形等等一系列新图与原图形的结合方式叫做图形的结合，大概分为十一种方式；比如：显示新图覆盖原图、或者只显示原图和新图相重叠部分等等
+
+图形阴影：
+ctx.shadowColor:阴影颜色
+ctx.shadowOffsetX:阴影水平偏移
+ctx.shadowOffsetY:阴影垂直偏移
+
+图形渐变：
+01)线性
+var grd=ctx.createLinearGradient(起点x，起点y，终点x，终点y);
+grd.addColorStop(0,'#f00');
+grd.addColorStop(1,'#0f0');
+ctx.fillStyle=grd;
+02）径向
+var grd=ctx.createRadialGradient(起点x，起点y，开始半径，终点x，终点y，终点半径)
+grd.addColorStop(0,'#f00');
+grd.addColorStop(1,'#0f0');
+ctx.fillStyle=grd;
+
+图形处理输出：
+01）图像处理
+var Data=ctx.getImageData(起点x，起点y，width，height)
+ctx.putImageData(Data,显示在画布内的x，y)
+02)图像输出
+canvas.toDataURL('image/png',1);
+
+绘制图像：
+01）drawImage(图像对象，x，y)
+    drawImage(图像对象，x,y,width,height);
+    drawImage(图像对象，原图裁剪的x坐标点，原图裁剪的y坐标点，裁剪的宽度，裁剪的高度，显示在画布内的x坐标，显示在画布内的y坐标，显示在画布中的宽度，显示在画布中的高度)
+02）var imgObj=ctx.createPattern(图像对象,'no-repeat');
+    ctx.fillStyle=imgObj;
+
+图形旋转，缩放，重新映射，保存和恢复状态：
+ctx.rotate(圆周率值)：旋转画布
+ctx.scale(x,y)：缩放画布
+ctx.translate(x,y)：位移画布(重新映射画布的基点位置)
+ctx.save():保存当前状态
+ctx.restore()：恢复画布原始状态
+

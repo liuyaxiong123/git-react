@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>方块</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #box{
+            width: 200px;
+            height: 200px;
+            margin: 300px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg) rotateY(-30deg);
+        }
+        #box div{
+            width: 200px;
+            height: 200px;
+            background: #000;
+            position:absolute;
+            transition:all 2s linear;
+        }
+        #box div:nth-child(1){
+            background:#0f0;
+            transform:translateZ(100px);
+        }
+        #box div:nth-child(2){
+            background: blue;
+            transform:translateZ(-100px);
+        }
+        #box div:nth-child(3){
+            background: red;
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+        #box div:nth-child(4){
+            background: purple;
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        #box div:nth-child(5){
+            background: yellow;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        #box div:nth-child(6){
+            background: #000;
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+        #box div:nth-child(7){
+            background:#0f0;
+            transform:translateZ(200px);
+        }
+        #box div:nth-child(8){
+            background: blue;
+            transform:translateZ(-200px);
+        }
+        #box div:nth-child(9){
+            background: red;
+            transform: rotateY(90deg) translateZ(-200px);
+        }
+        #box div:nth-child(10){
+            background: purple;
+            transform: rotateY(90deg) translateZ(200px);
+        }
+        #box div:nth-child(11){
+            background: yellow;
+            transform: rotateX(90deg) translateZ(200px);
+        }
+        #box div:nth-child(12){
+            background: #000;
+            transform: rotateX(90deg) translateZ(-200px);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+<script>
+    var div=box.querySelectorAll('div');
+    box.onmouseover=function(){
+        div[6].style='transform:translateZ(300px)';
+        div[7].style='transform:translateZ(-300px)';
+        div[8].style='transform: rotateY(90deg) translateZ(-300px)';
+        div[9].style='transform: rotateY(90deg) translateZ(300px)';
+        div[10].style='transform: rotateX(90deg) translateZ(300px)';
+        div[11].style='transform: rotateX(90deg) translateZ(-300px)';
+    }
+    box.onmouseout=function(){
+        div[6].style='transform:translateZ(200px)';
+        div[7].style='transform:translateZ(-200px)';
+        div[8].style='transform: rotateY(90deg) translateZ(-200px)';
+        div[9].style='transform: rotateY(90deg) translateZ(200px)';
+        div[10].style='transform: rotateX(90deg) translateZ(200px)';
+        div[11].style='transform: rotateX(90deg) translateZ(-200px)';
+    }
+</script>
+</html>

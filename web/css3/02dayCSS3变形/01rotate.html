@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rotate 2d旋转</title>
+    <style>
+        #wrap{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+        #wrap div{
+            width: 200px;
+            height: 200px;
+            background:orange;
+            transform: rotate(0deg);
+            /* 2d旋转 
+            设置旋转的基点：
+            值：left top bottom right 
+            px单位：x y */
+            transform-origin: bottom;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div>一段文本</div>
+    </div>
+</body>
+</html>

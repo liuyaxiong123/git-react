@@ -1,0 +1,48 @@
+jQuery类名的操作：
+
+$('.box').addClass('类名'):添加类
+$('.box').removeClass('类名'):删除类
+$('.box').hasClass('类名'):检测是否包含类  返回boolean
+$('.box').toggleClass('类名'):来回切换类
+
+jQuery功能类函数:
+1.循环：
+$.each(对象，function(index,item){
+    index  对应的角标
+    item   对应内容
+})
+
+2.过滤：
+$.grep(对象,function(item,index){
+    //item  每一项内容
+    //index   对应角标
+    return boolean;
+})
+例子：(数组过滤并排序)
+var arr=[2,3,33,7,22,3,6,33,0,77,22,99];
+    //数组过滤
+var newArr=$.grep(arr,function(item,index){
+    return arr.indexOf(item)===index;
+}).sort(function(n1,n2){
+    return n1-n2;
+})
+
+3.验证一个变量是否为数组：
+$.isArray(数组)
+
+4.验证一个变量是否为函数
+$.isFunction(变量)
+(注意：typeof 能够检测出的数据类型(number string boolean object undefined function))
+
+5.验证一个对象是否为空：
+$.isEmptyObject(对象)
+
+6.将json对象转换为表单数据格式：
+$.param(json)
+
+7.将json字符串转换为json对象
+$.parseJSON(字符串)
+(js中json对象和json文件要求格式是不一样的)
+
+8.改变函数的this指针：
+$.proxy(要修改指针的函数，修改的this)

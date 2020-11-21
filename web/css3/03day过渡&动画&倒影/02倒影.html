@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒影</title>
+    <style>
+        .box {
+            width: 340px;
+            height: 340px;
+            margin: 340px auto;
+        }
+
+        .box img {
+            /* -webkit-box-reflect: below; */
+            /* left right above(上)  below(下) */
+            -webkit-box-reflect: right 10px linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1));
+        }
+
+        p {
+            font-size: 50px;
+            -webkit-box-reflect: below 10px linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p>一段文本</p>
+        <img src="image/02.jpg" alt="">
+    </div>
+</body>
+
+</html>

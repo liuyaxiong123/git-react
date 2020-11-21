@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过渡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #0f0;
+            /* transition-property: width, height, background; */
+            /* 需要过渡的属性 */
+            /* transition-duration: .5s; */
+            /* 过渡时间 */
+            /* transition-timing-function: linear; */
+            /* 过渡的类型 */
+            /* transition-delay: 1s; */
+            /* 过渡延迟时间 */
+            transition:width .5s linear,height .5s linear 0.5s,background .5s linear 1s;
+            /* 复合写法 */
+            /* transition:all .5s linear; */
+        }
+
+        #box:hover{
+            width: 400px;
+            height: 400px;
+            background: blue;
+            /* transform:scale(2) rotate(45deg); */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">文本</div>
+</body>
+<script>
+    window.onload = function () {
+        box.onclick = function () {
+            this.style = 'width:400px;height:400px;background:blue';
+        }
+    }
+</script>
+
+</html>

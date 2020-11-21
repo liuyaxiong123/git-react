@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        #canvas {
+            background-color: #dedede;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    var ctx = canvas.getContext('2d');
+    var device = /iphone|ipad|android|opear mini|iemobile|webos/i.test(window.navigator.userAgent);
+    var startEvName = device ? 'touchstart' : 'mousedown';
+    var moveEvName = device ? 'touchmove' : 'mousemove';
+    var endEvName = device ? 'touchend' : 'mouseup';
+
+    function Resize() {
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+    }
+    window.onresize = Resize;
+    window.onload = function () {
+        Resize();
+        canvas.addEventListener(startEvName, function () {
+            canvas.addEventListener(moveEvName, show, false);
+            canvas.addEventListener(endEvName, function () {
+                canvas.removeEventListener(moveEvName, show, false);
+            }, false)
+        }, false)
+    }
+
+    function show(ev) {
+        var i = 10;
+        var r=50;
+        var x = (device ? ev.touches[0].clientX : ev.clientX); //圆心x坐标
+        var y = (device ? ev.touches[0].clientY : ev.clientY); //圆心y坐标
+        setInterval(function () {
+            r+=10;
+            ctx.beginPath();
+            ctx.fillStyle = 'red';
+            ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+            ctx.fill();
+            ctx.closePath();
+        }, 300)
+    }
+</script>
+
+</html>

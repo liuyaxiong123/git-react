@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>聚拢</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 600px;
+            height: 600px;
+            border:1px solid;
+            margin:200px auto;
+            position:relative;
+            
+        }
+        .box div{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            position:absolute;
+        }
+        .box div:nth-child(1){
+            left:-200px;
+            top:-200px;
+        }
+        .box div:nth-child(2){
+            right:-200px;
+            top:-200px;
+        }
+        .box div:nth-child(3){
+            left:-200px;
+            bottom:-200px;
+        }
+        .box div:nth-child(4){
+            right:-200px;
+            bottom:-200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+<script>
+    function jl(p,x){
+        this.box=document.querySelector('.box');
+        this.dom=document.querySelectorAll('.box div');
+        this.p=p;
+        this.x=x;
+        this.Enter();
+    }
+    jl.prototype.Enter=function(){
+        var that=this;
+        this.box.onmouseenter=function(){
+            that.startMove(that.dom[0],{left:that.p,top:that.p});
+            that.startMove(that.dom[1],{right:that.p,top:that.p});
+            that.startMove(that.dom[2],{left:that.p,bottom:that.p});
+            that.startMove(that.dom[3],{right:that.p,bottom:that.p});
+        }
+        this.box.onmouseleave=function(){
+            that.startMove(that.dom[0],{left:that.x,top:that.x});
+            that.startMove(that.dom[1],{right:that.x,top:that.x});
+            that.startMove(that.dom[2],{left:that.x,bottom:that.x});
+            that.startMove(that.dom[3],{right:that.x,bottom:that.x});
+        }
+    }
+    jl.prototype.startMove=function (obj,json,fn){
+        clearInterval(obj.time);
+        var _this=this;
+        obj.time=setInterval(function(){
+            var stop=true;//假设没有不到终点的值了
+            for(i in json){
+                if(i=='opacity'){
+                    //获取透明度样式的写法
+                    var style=Math.round(parseFloat(_this.getStyle(obj,i))*100);
+                    }else{
+                        //获取带px样式的写法
+                        var style=parseInt(_this.getStyle(obj,i));
+                    }
+                    var speed=(json[i]-style)/10;
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(style!=json[i]){
+                        stop=false;//意思就是说如果运动的样式其中有没到目标点的,把stop变成false
+                    }
+                    if(i=='opacity'){
+                        //运动透明度
+                        obj.style.opacity=(style+speed)/100;
+                        obj.style.filter='alpha(opacity='+(style+speed)+')';
+                    }else{
+                        //运动其他样式
+                        obj.style[i]=style+speed+'px';
+                    }
+            }
+            if(stop){
+                //判断如果stop还是true的情况下，说明没有不到终点的值了
+                clearInterval(obj.time);
+                if(fn) fn();
+            }
+        },10)
+    }
+    jl.prototype.getStyle=function(obj,cur){
+        if(obj.currentStyle){
+            return obj.currentStyle[cur];
+        }else{
+            return getComputedStyle(obj)[cur];
+        }
+    }
+    new jl(100,-200);
+</script>
+</html>

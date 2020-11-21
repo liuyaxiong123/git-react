@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //扩展运算符 ...
+    // let arr=[1,2,3];
+    // console.log(arr[0],arr[1],arr[2]);//1,2,3
+    // console.log(...arr);//1,2,3
+    //把数组内容展开，逐个取出来 ...arr===>1 2 3
+
+    //掌握扩展运算符作用：找准对应关系
+    // function fn(a,b,c){
+    //     console.log(a,b,c);
+    // }
+    // fn(...arr);
+
+    // function fn(a,b,c,d,e,f,g){
+    //     console.log(a,b,c,d,e,f,g);//1 2 1 2 3 3 undefined
+    // }
+    // fn(1,2,...arr,3);
+    //-----------------
+
+    //不引用复制数组
+    // let arr2=[...arr];
+    // arr2.push(4);
+    // console.log(arr2,arr);// [1, 2, 3, 4]    [1, 2, 3]
+    //----------------
+
+    //栗子：
+    var xiaoming={
+        "name":"小明",
+        "age":12,
+        "sex":"男",
+        "friends":[
+            {
+                "id":10001,
+                "name":"小红",
+                "age":13,
+            },
+            {
+                "id":10002,
+                "name":"小强",
+                "age":14,
+            },
+            {
+                "id":10003,
+                "name":"小花",
+                "age":18,
+            },
+            
+        ]
+    };
+    //题目1：不允许更改小明，返回一个新对象，这个对象和小明相同，仅让小明的年龄变为15岁
+    // var xiaoming2={
+    //     ...xiaoming,
+    //     "age":15
+    // }
+    // console.log(xiaoming,xiaoming2);
+    
+    //题目2：不允许改xiaoming,让小明只有15岁以下的朋友
+    // var xiaoming2={
+    //     ...xiaoming,
+    //     "friends":xiaoming.friends.filter(function(item){
+    //         return item.age<15;
+    //     })
+    // }
+    // console.log(xiaoming,xiaoming2);
+    //题目3：不允许改小明,让小明增加一个朋友，88岁
+    // var xiaoming2={
+    //     ...xiaoming,
+    //     "friends":[
+    //         ...xiaoming.friends,
+    //         {"name":'老王',"age":88}
+    //     ]
+    // }
+    // console.log(xiaoming2);
+    //题目4：不允许改小明，增加一个朋友(老王，88岁,id自动编号())
+    // var arr = xiaoming.friends.map(function(item){
+    //     console.log(item);
+    //     return item.id;
+    // })
+    // console.log(arr);
+    // var xiaoming2={
+    //     ...xiaoming,
+    //     "friends":[
+    //         ...xiaoming.friends,
+    //         {
+    //             "id":Math.max.apply(null,xiaoming.friends.map(function(item){
+    //                 return item.id;
+    //             }))+1,
+    //             "name":'老王',
+    //             "age":88
+    //         }
+    //     ]
+    // }
+    // console.log(xiaoming2);
+
+    //题目5：不允许改小明，让小强的age变为22
+    var xiaoming2={
+        ...xiaoming,
+        "friends":
+            xiaoming.friends.map(function(item){
+                if(item.name=='小强'){
+                    return {
+                        ...item,
+                        'age':22
+                    }
+                }
+                return item;
+            })
+        
+    }
+    console.log(xiaoming2);
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100vw;
+            height: 400px;
+            background: blue;
+            font-size: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    box.addEventListener('touchstart', fnStart, false);
+    box.addEventListener('touchmove', fnMove, false);
+    box.addEventListener('touchend', fnEnd, false);
+
+    function fnStart(ev) {
+        startX = ev.touches[0].clientX;
+        startY = ev.touches[0].clientY;
+    }
+
+    function fnMove(ev) {
+        endX = ev.touches[0].clientX;
+        endY = ev.touches[0].clientY;
+    }
+
+    function fnEnd() {
+        console.log(startX, endX);
+        if (startX - endX > 40) {
+            box.innerHTML = '向左滑动';
+        }
+        if (startX - endX < -40) {
+            box.innerHTML = '向右滑动';
+        }
+        if (startY - endY > 40) {
+            box.innerHTML = '向上滑动';
+        }
+        if (startY - endY < -40) {
+            box.innerHTML = '向下滑动';
+        }
+    }
+</script>
+
+</html>

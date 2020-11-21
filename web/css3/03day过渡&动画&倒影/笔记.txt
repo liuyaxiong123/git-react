@@ -1,0 +1,61 @@
+transform：
+skew(x轴，y轴):变形(拉伸)
+skewX(度数)：X轴拉伸
+skewY(度数):y轴拉伸
+
+倒影：只有webkit内核浏览器支持
+-webkit-box-reflect: right 10px linear-gradient(to right,rgba(0,0,0,0.1),rgba(0,0,0,1));  方向  间距  倒影透明度渐变
+方向：left right above(上)  below(下)
+注意 ：倒影不占空间
+
+过渡属性：
+transition-property: width, height, background;需要过渡的属性
+transition-duration: .5s; 过渡时间 
+transition-timing-function: linear; 过渡的类型 
+类型：ease ,linear,ease-in,ease-in-out,贝塞尔曲线
+transition-delay: 1s; 过渡延迟时间 
+transition:width .5s linear,height .5s linear 0.5s,background .5s linear 1s; 复合写法 过渡单个属性
+transition:all .5s linear;过渡所有属性   过渡所有属性
+
+动画：
+animation:
+
+animation-name: move; 动画名称
+animation-duration: 5s; 动画执行时间 
+animation-timing-function: ease-in; 动画执行方式 
+animation-delay: 1s; 动画延迟时间
+animation-iteration-count: 1; 动画执行次数默认1  infinite(无限循环) 
+animation-direction: alternate; 动画执行方式 默认：normal(正常播放)  alternate：轮流反向播放 
+animation-fill-mode: backwards; 动画播放完毕以后停留的状态 forwards(动画执行完毕后停留在结束状态) both(动画执行完毕后停留在结束状态) backwards(动画执行完毕后停留在开始状态)
+animation-play-state:设置动画暂停或播放(一般配合js使用)  paused：暂停动画   running：播放动画
+animation:move 5s ease-in 2s 2 alternate both;复合写法
+name  时间 类型  延迟时间  次数  播放方式   结束状态
+
+keyframes:
+
+@keyframes name {
+    from {
+        。。。
+    }
+
+    50% {
+        。。。
+    }
+
+    to {
+        。。。
+    }
+}
+@-webkit-keyframes name {
+    0% {
+        。。。
+    }
+
+    50% {
+        。。。
+    }
+
+    100% {
+        。。。
+    }
+}

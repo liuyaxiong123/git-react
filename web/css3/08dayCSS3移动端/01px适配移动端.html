@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        div {
+            width: 640px;
+            height: 100%;
+            margin: 0 auto;
+            background: red;
+            text-align: center;
+            font-size: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>文本</div>
+</body>
+<script>
+    //DOM在页面中加载步骤
+    // 1.dom文档，html结构.
+    // 2.加载外部css  js文件
+    // 3.解析并执行脚本代码
+    // 4.DOM树结构加载完毕 DOMContentLoaded
+    // 5.加载外部图片，视屏，音频。
+    // 6.页面加载完毕 onload
+    //DOMContentLoaded
+    (function (win,doc) {
+        var resetPage = function () {
+            var devieWidth = document.documentElement.clientWidth;
+            //计算比例：设备宽/标准页面尺寸
+            var scale = devieWidth / 640;
+            if (devieWidth >= 640) {
+                document.body.style.zoom = 1;
+            } else {
+                document.body.style.zoom = scale;
+            }
+        }
+        if(!doc.addEventListener) return;
+        doc.addEventListener('DOMContentLoaded',resetPage,false);
+        win.addEventListener('resize',resetPage,false);
+    })(window, document)
+    //----------------------------------
+    // function resetPage() {
+    //     var devieWidth = document.documentElement.clientWidth;
+    //     var scale = devieWidth / 640;
+    //     if (devieWidth >= 640) {
+    //         document.body.style.zoom = 1;
+    //     } else {
+    //         document.body.style.zoom = scale;
+    //     }
+    // }
+    // window.onload = resetPage;
+    // window.onresize = resetPage;
+</script>
+
+</html>

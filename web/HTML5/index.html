@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr=[];
+    var newarr=[];
+    var dd=[];
+    var json={
+        data:[
+            {'p':arr},
+            {'a':newarr}
+        ]
+    }
+    $('.clearfix .li').each(function(idx,item){
+        arr.push($(item).find('p a').html());
+        dd=[];
+        $(item).find('ul li').each(function(ixd,itm){
+            dd.push($(itm).find('a').html());
+        })
+        newarr.push(dd);
+    })
+    
+
+</script>
+</html>

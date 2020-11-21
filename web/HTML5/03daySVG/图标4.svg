@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 声明文档格式 -->
+<!-- svg默认大小300*150 -->
+<svg width='800' height='800' version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+
+    <g stroke='#fff' stroke-width='3'>
+        <rect width='300' height='150' x='50' y='50' fill='none' />
+        <rect width='200' height='100' x='70' y='75' fill='none'/>
+        <rect width='30' height='10' x='290' y='75' fill='#000'/>
+        <rect width='30' height='10' x='290' y='95' fill='#000'/>
+        <rect width='30' height='10' x='290' y='115' fill='#000'/>
+        
+    </g>
+    
+</svg>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="animate.min.css">
+    <style>
+        div{
+            width: 200px;height: 200px;border: 10px solid #000;
+            margin: 50px auto;
+            margin-bottom: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- data-wow-duration（动画持续时间）
+    data-wow-delay（动画延迟时间）属性
+    data-wow-offset 开始动画的距离(与浏览器底部相关) 
+    data-wow-itertion 动画的次数重复(无限次：infinite) -->
+    <div class="animated tada" data-wow-duration='.4s' data-wow-delay=".4s">一段文本</div>
+    <div class="wow rotateIn">一段文本</div>
+    <div class="wow bounceOut">一段文本</div>
+</body>
+<script src="wow.js"></script>
+<script>
+    new WOW().init();
+</script>
+</html>

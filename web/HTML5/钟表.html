@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>钟表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width='600' height="600">
+        浏览器不支持！
+    </canvas>
+</body>
+<script>
+    var canvas = document.querySelector('#canvas');
+    var context = canvas.getContext('2d');
+    var deg = Math.PI / 180;
+    context.translate(300,300);
+    function dialPlate() { //创建表盘 
+        context.beginPath();
+        context.arc(0, 0, 150, 0, 360 * deg);
+        context.lineWidth = 3;
+        context.stroke();
+        context.closePath();
+        //创建刻度
+        for (var i = 1; i <= 60; i++) {
+            context.beginPath();
+            context.save();
+            context.rotate(6 * i * deg);
+            context.moveTo(0, -150);
+            if (i % 15 == 0) {
+                context.strokeStyle = '#000';
+                context.lineWidth = 3;
+                context.lineTo(0, -135);
+                context.stroke();
+            } else if (i % 5 == 0) {
+                context.strokeStyle = '#000';
+                context.lineWidth = 2;
+                context.lineTo(0, -140);
+                context.stroke();
+            } else {
+                context.strokeStyle = '#000';
+                context.lineWidth = 1;
+                context.lineTo(0, -145);
+                context.stroke();
+            }
+            context.restore();
+            context.closePath();
+        }
+        //创建数字
+        for (var i = 1; i <= 12; i++) {
+            context.beginPath();
+            context.save();
+            context.rotate(30 * i * deg);
+            context.textAlign = 'center';
+            if (i % 3 == 0) {
+                context.font = "normal 28px arial";
+                context.fillText(i, 0, -110);
+            } else {
+                context.font = "normal 20px arial";
+                context.fillText(i, 0, -120);
+            }
+            context.restore();
+            context.closePath();
+        }
+        //中心点
+        context.beginPath();
+        context.arc(0, 0, 5, 0, 360 * deg);
+        context.fill();
+        context.closePath();
+    }
+
+    function Pointer() { //创建指针
+        var date=new Date();
+        var s=date.getSeconds()*6;
+        var m=date.getMinutes()*6+(s/60);
+        var h=date.getHours()%12*5*6+(m/12);
+        //秒针
+        context.beginPath();
+        context.save();
+        context.lineWidth = 1;
+        context.strokeStyle = '#000';
+        context.rotate(s * deg);
+        context.moveTo(0, 20);
+        context.lineTo(0, -130);
+        context.stroke();
+        context.restore();
+        context.closePath();
+        //分针
+        context.beginPath();
+        context.save();
+        context.lineWidth = 2;
+        context.strokeStyle = '#000';
+        context.rotate(m * deg);
+        context.moveTo(0, 10);
+        context.lineTo(0, -120);
+        context.stroke();
+        context.restore();
+        context.closePath();
+        //时针
+        context.beginPath();
+        context.save();
+        context.lineWidth = 3;
+        context.strokeStyle = '#000';
+        context.rotate(h * deg);
+        context.moveTo(0, 0);
+        context.lineTo(0, -110);
+        context.stroke();
+        context.restore();
+        context.closePath();
+    }
+
+    dialPlate();
+    Pointer();
+    setInterval(function () {
+        context.clearRect(-150, -150, 400, 400); //清除画布
+        dialPlate();
+        Pointer();
+    }, 1000)
+</script>
+
+</html>

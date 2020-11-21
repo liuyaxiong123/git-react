@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="outer">
+        <p>aa</p>
+        <p>bb</p>
+    </div>
+</body>
+<script src="js/zepto.min.js"></script>
+<script>
+    // $('p:nth-child(1)').html('哈哈');
+    // console.log($('p:nth-child(1)').parent().parent());
+    // console.log($('p:nth-child(1)').next());
+    // console.log($('.outer').find('p'));
+    // console.log($('.outer').attr('class'));
+    // $('.outer').addClass('bbb');
+    // console.log($('.outer').hasClass('outer'));
+    // $('.outer').append($('<P>ccc</p>'))
+    // $('<P>ccc</p>').appendTo($('.outer'));
+    // $('.outer').prepend($('<P>000</p>'));
+    // $('p').eq(0).remove();
+
+    console.log(
+        $('.outer').width(),
+        $('.outer').offset(),
+        $('.outer').position()
+    );
+</script>
+
+</html>

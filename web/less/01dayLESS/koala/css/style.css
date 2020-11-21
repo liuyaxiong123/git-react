@@ -1,0 +1,17 @@
+/*多行注释编译时会被保留*/
+/*变量声明*/
+#app {
+  background: yellow;
+}
+#app h1 {
+  font-size: 20px;
+}
+#app h1 small {
+  color: red;
+}
+#app h1:hover {
+  text-decoration: underline;
+}
+#app h2 {
+  font-size: 20px;
+}

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>觅未创意</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <style>
+        h4 {
+            font-weight: bold;
+        }
+
+        /*导航*/
+        .header .navbar-brand img {
+            height: 28px;
+            display: inline;
+            margin-top: -4px;
+        }
+
+        @media (max-width:768px) {
+            .header .navbar-brand img {
+                height: 30px;
+                margin-top: -6px;
+            }
+        }
+
+        .navbar-toggle {
+            display: block;
+        }
+
+        .navbar-header {
+            width: 100%;
+        }
+
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+        }
+
+        .navbar-default .navbar-toggle .icon-bar {
+            background: #2f2e2e;
+        }
+
+        .navbar-toggle .icon-bar {
+            width: 26px;
+            height: 3px;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+        }
+
+        @media (max-width:768px) {
+            .navbar-nav {
+                float: left !important;
+            }
+        }
+
+        .navbar-default .navbar-toggle:focus,
+        .navbar-default .navbar-toggle:hover {
+            background-color: transparent;
+        }
+
+        @media (min-width: 768px) {
+            .header .navbar-collapse {
+                display: none !important;
+            }
+
+            .header .navbar-collapse.in {
+                display: block !important;
+            }
+        }
+
+        .navbar-default {
+            border: 0;
+        }
+
+        /*cover*/
+        #cover {
+            background: url(img/header-bg.jpg) center no-repeat;
+            background-size: cover;
+        }
+
+        .card {
+            width: 360px;
+            height: 465px;
+            margin: 300px auto;
+            background-color: #fff;
+            padding: 70px 60px;
+        }
+
+        .card p {
+            font-family: "Arial black", "宋体", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 90px;
+            line-height: 1;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .card span {
+            font-size: 80px;
+            line-height: 0.5;
+        }
+
+
+        @media (max-width: 768px) {
+            #cover {
+                margin: 0 15px;
+            }
+
+            .card {
+                width: 220px;
+                height: 284px;
+                margin: 100px auto;
+                padding: 40px 40px;
+            }
+
+            .card p {
+                font-size: 60px;
+                line-height: 0.92;
+                margin-bottom: 10px;
+            }
+
+            .card span {
+                font-size: 60px;
+            }
+        }
+
+        #services {
+            padding: 120px 0 100px 0;
+        }
+
+        #services .title div {
+            height: 3px;
+            width: 40px;
+            background-color: #f7931d;
+            margin: 20px auto 35px auto;
+        }
+
+        @media (max-width:768px) {
+            #services {
+                padding: 100px 0;
+            }
+        }
+
+        /*portfolio*/
+        #portfolio .container-wrap {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        #portfolio .container-wrap>div {
+            transition: all .3s linear;
+            position: absolute;
+            width: 360px;
+            height: 270px;
+            margin: 5px;
+            background: #000;
+        }
+
+        #portfolio .container-wrap>div img {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width:768px) {
+            #portfolio .container-wrap>div {
+                width: 631px !important;
+                height: 493px;
+            }
+        }
+
+        #portfolio .container-wrap>div {
+            overflow: hidden;
+        }
+
+        #portfolio .container-wrap>div img {
+            transition: all .3s linear;
+        }
+
+        #portfolio .container-wrap .mask {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: all 0.3s ease-out;
+        }
+
+        #portfolio .container-wrap .mask h2 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: transparent;
+            margin: 0;
+            padding: 16px;
+            font-size: 21px;
+            line-height: 24px;
+            font-weight: 300;
+            transition: all .3s ease-out;
+        }
+
+        #portfolio .container-wrap .mask p {
+            color: transparent;
+            padding: 16px;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 300;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            text-align: right;
+            transition: all 0.3s ease-out;
+        }
+
+        #portfolio .container-wrap .mask::after {
+            box-sizing: border-box;
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: transparent;
+            border: 0px solid rgba(255, 255, 255, 0.2);
+            transition: border 0.3s ease-out;
+        }
+
+        #portfolio .container-wrap>div:hover img {
+            transform: scale(1.2);
+        }
+
+        #portfolio .container-wrap>div:hover .mask {
+            background: rgba(0, 0, 0, .7);
+        }
+
+        #portfolio .container-wrap>div:hover .mask::after {
+            border-width: 20px;
+        }
+
+        #portfolio .container-wrap>div:hover .mask p {
+            bottom: 20px;
+            right: 20px;
+            color: #fff;
+        }
+
+        #portfolio .container-wrap>div:hover .mask h2 {
+            left: 20px;
+            top: 20px;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            #portfolio .container-wrap {
+                width: 100% !important;
+            }
+        }
+
+        /*about*/
+        #about {
+            padding: 120px 0 100px 0;
+        }
+
+        #about .container {
+            max-width: 900px;
+        }
+
+        #about .title div {
+            height: 3px;
+            width: 40px;
+            background-color: #f7931d;
+            margin: 20px auto 35px auto;
+        }
+
+        @media (max-width:768px) {
+            #about {
+                padding: 100px 0;
+            }
+        }
+
+        #about .row .let h1 {
+            font-size: 65px;
+            line-height: 0.82;
+            font-weight: bold;
+        }
+
+        #about .row .let .dz {
+            letter-spacing: 2px;
+        }
+
+        #about .row .rit img {
+            width: 100%;
+        }
+
+        #about .row .rit {
+            letter-spacing: 1px;
+        }
+
+        @media (max-width:768px) {
+            #about .row .col-sm-6 {
+                text-align: center !important;
+            }
+
+            #about .row .let {
+                margin-bottom: 20px;
+            }
+        }
+
+        #about .carousel-inner {
+            margin-top: 120px;
+        }
+
+        #about .carousel-inner .item img {
+            height: 160px;
+            width: 160px;
+            margin-bottom: 15px;
+        }
+
+        #about .carousel-inner .item {
+            text-align: center;
+        }
+
+        #about .carousel-inner .item p {
+            margin: 40px auto;
+            font-size: 16px;
+            max-width: 650px;
+        }
+
+        #myCarousel {
+            height: 365px;
+        }
+
+        #myCarousel ol li {
+            background: #ccc;
+            width: 12px;
+            height: 12px;
+            margin: 5px 7px;
+        }
+
+        #myCarousel ol li.active {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+
+        #myCarousel .carousel-indicators {
+            bottom: 0;
+        }
+
+        /*contact*/
+        #contact {
+            background: url(img/footer-bg.jpg) center top no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        #contact .container-fluid {
+            padding: 90px 0 90px 0;
+            background-color: rgba(47, 46, 46, 0.7);
+        }
+
+        #contact .container-fluid .container {
+            margin-bottom: 50px;
+        }
+
+        #contact .container-fluid .container img {
+            width: 130px;
+        }
+
+        /*footer*/
+        #footer {
+            background-color: #2f2e2e;
+            color: #999;
+            padding: 30px 0;
+        }
+
+        @media (max-width:768px) {
+            #footer span {
+                display: block;
+            }
+
+            #contact {
+                background: url(img/slide2.jpg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="img/logo1.png" alt="">
+                        觅未创意
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="#">服务介绍</a></li>
+                        <li><a href="#">最新案列</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="$">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="cover">
+        <div class="container">
+            <div class="card text-center">
+                <p>
+                    CRE
+                    <br>
+                    ATIV
+                    <br>
+                    ITY.
+                </p>
+                <span class="glyphicon glyphicon-chevron-down" id="xz"></span>
+            </div>
+        </div>
+    </div>
+    <div id="services">
+        <div class="container">
+            <div class="title">
+                <h4 class="text-center">服务介绍</h4>
+                <div></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="img/2.jpg" alt="" class="img-responsive center-block">
+                    <h4>咨询&设计</h4>
+                    <p>市场调研、产品定位、品牌核心价值提炼、品牌个性与品牌形象塑造、营销传播方案等策略内容。品牌形象、视觉识别系统（VI）设计、产品包装、销售道具、广告宣传品等设计内容。品牌／产品命名、Slogan、品牌故事、广告主题、创意脚本、活动标题、推文、软文等文案内容。
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--efb29d3ceb521b296f95e688a9d480e09f27f763/3.jpg"
+                        alt="" class="img-responsive center-block">
+                    <h4>电商运营</h4>
+                    <p>我们提供一体化电商全网运营服务，包括定制与开发，全网平台运维、咨询与增值服务等。我们构建并驱动品牌电商价值。我们深耕化妆品、时尚、服装、家居、母婴、宠物等垂直类电商领域，以国际化团队为数十家国内外知名品牌提供专业高效的品牌电商服务。
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29FIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--885cce5012f229f14dc51fc0c47ce556d26214c1/1.jpg"
+                        alt="" class="img-responsive center-block">
+                    <h4>内容营销</h4>
+                    <p>我们通过提供优质内容和“觅未盒子”小程序为品牌提供一站式口碑内容营销服务。深耕小红书、抖音、微博、B站、微信等社交平台。合作超过1000+优质达人和群主，涵盖时尚、美妆、健身、美食、母婴等领域。覆盖超过10000+平台用户。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="portfolio">
+        <div class="container-fluid">
+            <div class="container-wrap">
+                <div>
+                    <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f388959c0ec7c5ccd3d2a47d49c388035065ff31/10.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a8f67ab4c71789f727798eec8df862dbd1613f6/9-5.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebfb9390665fa401ec3be7c6629caacd89c24436/8_.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9917400c9c9e83154e4b849324d1565d47e7745b/11.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba922286fac4bf7a5cd3ee9c20ad94d6054d2afe/5-2.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--931cb163938a82abd8ffc1032d6f0f757f6c1d80/13.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c2e3f7b6346bde464f4b2b1799f0c705ec6f221f/4.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBZUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--49334eb997cbf4da92134ac5647627718198e6ad/15-2.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBadz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03d12a199cf481ad663a22fbd4c42b78b08e9053/14-1.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--006ff5a6aeb50056673b566a42b3830c5917ddfd/16.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--578c87906910074f91563fb17db931d32ca27a9a/3.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f057dc77a679289afae08f3e46e4d879ea4b216/7.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBVQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f2001207b454644ea004f96adf1ce480f50b1a4/6.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBZZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9932c1def104625bdd56875fae680a0d37c45cf/1.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+                <div><img
+                        src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBXQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c4126a32bf4170938d73705ab9a31b3e5f0a2e9a/2.jpg"
+                        alt="">
+                    <div class="mask">
+                        <h2>途家盛捷服务公寓</h2>
+                        <p>品牌</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="about">
+        <div class="container">
+            <div class="title">
+                <h4 class="text-center">关于我们</h4>
+                <div></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 let wow fadeInLeft" data-wow-duration='.4s' data-wow-delay=".4s">
+                    <h1>MEWE <br>
+                        <span>IDEA.COM</span>
+                    </h1>
+                    <h4>觅未创意™</h4>
+                    <div class="dz">
+                        北京市朝阳区酒仙桥路14号兆维工业园C3座<br>
+                        <span>电话：+86-10-80813586</span><br>
+                        <span>邮箱：business@meweidea.com
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-6 rit wow fadeInRight" data-wow-duration='.4s' data-wow-delay=".4s">
+                    <p>我们是领先的品牌咨询&服务平台，由各领域精英组成，包括国际4A美术指导，知名设计公司设计总监、策略总监，知名互联网公司UI负责人、技术主管；</p>
+                    <p>我们是一支经验丰富、具有国际化视野和创新能力的团队；</p>
+                    <p>我们坚持“与梦想者同行”，致力于成为“从中国制造到中国创造”这场变革的重要参与者。</p>
+                    <div class="xt">
+                        <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b37e22d9b1e31366982c2f02368b8a531b925e39/city.png"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+            <div id="myCarousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div><img
+                                src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba5350504b22b906c3f0f9c10d724c5f2c87389f/duyan.png"
+                                class="img-circle"></div>
+                        <h4>杜燕 / 创意执行总监<span></span></h4>
+                        <p>曾就职于法国阳狮，日本电通等知名4A广告公司；服务客户：雀巢，联想，中粮，索尼爱立信，万科等；擅长：品牌梳理与定位、视觉设计、包装设计</p>
+                    </div>
+                    <div class="item">
+                        <div><img
+                                src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f605e866c87f6279c756991ebc8cad68ab71a30/xiaofu.png"
+                                class="img-circle"></div>
+                        <h4>张振福 / 项目负责人<span></span></h4>
+                        <p>曾就职于中国知名设计公司和4A广告公司；服务客户：伊利，远洋，中粮，白象，三全等；擅长：品牌VI、包装设计、视觉广告</p>
+                    </div>
+                    <div class="item">
+                        <div><img
+                                src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBXdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51afbeda2afe1fc6371234d72efc2a8fb893b02f/pony.png"
+                                class="img-circle"></div>
+                        <h4>Pony / 项目负责人<span></span></h4>
+                        <p>曾职于国际知名4A广告公司；服务客户：雀巢咖啡等；擅长：插画设计、广告创意、视觉设计</p>
+                    </div>
+                    <div class="item">
+                        <div><img
+                                src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBYQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81a34cf4b799c54b52a0d0cb26a8a41ff54a9682/hcx.png"
+                                class="img-circle"></div>
+                        <h4>何春香 / 资深策略<span></span></h4>
+                        <p>就职于国际知名4A广告公司；服务客户：Jeep，蒙牛，拉斐尔，能量豆等；擅长：品牌策略、广告策划</p>
+                    </div>
+                    <div class="item">
+                        <div><img
+                                src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBYUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e2303f302d52fd2daa6d9a6eb458efd9431b88cf/vian.png"
+                                class="img-circle"></div>
+                        <h4>Vion / 文案总监<span></span></h4>
+                        <p>曾就职于国际知名4A广告公司；服务客户：京东，杜蕾斯，雀巢等；擅长：广告策划、创意文案、传播推广</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contact">
+        <div class="container-fluid">
+            <div class="container text-center">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cdbd13b4a4015c6845b4b44cb4bc132a41309c0b/1.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--432afbcf7793261ebcd66249cc4ea2973c95ab3d/2.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--022ee43a71a4b6f9d8ad9c07cc77eff181d1509f/3.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--30093540962b3d73bc05bc03ef9c7d3c789a87ad/4.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a3bc07efa3a7082a86630d88485c455b3309f73/5.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d99a8153cba7563490e1cce0dd9c993025bc638/6.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ec51d56b40be131d974d49f73bd6cd84074e3700/8.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04434937493488ce91994124e69d6c7fd148fca9/9.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a7c2736ff33fb181301ecbfb8b9cf353a11c8640/10.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a77f45b973037cd9db9e3bf97f94ac081d1f540/11.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be44077fd14e69543a1dfcfd373fcf38cc86d01d/12.png"
+                    alt="">
+                <img src="http://www.meweidea.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84ed7f3ad7c39c4e4d0134ce9165925146b07ccd/7.png"
+                    alt="">
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container text-center">
+            © 2016-2019 北京觅未创意科技有限公司 版权所有
+            <span>京ICP备16046633号</span>
+        </div>
+    </div>
+</body>
+<script src="https://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/wow.js"></script>
+<script>
+    new WOW().init();
+    $(function () {
+        $('.card').hover(
+            function () {
+                $('.card span').addClass('animated rotateIn');
+            },
+            function () {
+                $('.card span').removeClass('animated rotateIn');
+            }
+        );
+        var h = $('#services').offset().top;
+        $('#xz').on('click', function () {
+            $('html,body').animate({
+                scrollTop: h
+            })
+        })
+    })
+    window.onload = window.onresize = setP;
+
+    function setP() {
+        var w = window.innerWidth;
+        var ele = $('#portfolio .container-wrap>div');
+        var len = ele.length;
+        var _w = ele.width() + 10;
+        var _h = ele.height() + 10;
+        var num = parseInt(w / _w);
+        $('#portfolio .container-wrap').css({
+            width: num * _w,
+            height: Math.ceil(len / num) * _h
+        })
+        ele.each(function (idx) {
+            $(this).css({
+                left: num == 1 ? 0 : idx % num * _w,
+                top: parseInt(idx / num) * _h
+            })
+        })
+    }
+</script>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>获取节点&操作属性</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        body{
+            position: relative;
+            width: 2000px;
+            height: 2000px;
+        }
+        ul{
+            position: absolute;
+            left:20px;top:20px;
+        }
+        li{
+            list-style: none;
+            width: 100px;height: 100px;
+            border: 1px solid;
+            padding:0 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>
+            <p>b</p>
+        </li>
+        <li class="e">e</li>
+    </ul>
+</body>
+<script>
+    console.log($('li:eq(0)').width());//获取宽度
+    console.log($('li:eq(0)').height());//获取高度
+    console.log($('li:eq(0)').css('border-width'));//获取样式
+    console.log($('li:eq(0)').outerWidth());//获取offsetWidth
+    console.log($('li:eq(0)').innerWidth());//获取clientWidth
+    console.log($('li:eq(0)').offset().top);//获取元素的offset属性  offsetLeft offsetTop
+    console.log($('#ul').position().top);//获取元素的position属性值  返回json对象
+    $(document).click(function(){
+        console.log($(window).scrollTop());
+        console.log($(window).scrollLeft());
+    })
+
+    //-----------------------
+    //子节点
+    //console.log($('#ul').children());
+    //父节点
+    // console.log($('li:eq(0)').parent());
+    //所有父节点
+    // console.log($('li:eq(0)').parents());
+    //寻找ul内所有的p元素
+    // console.log($('#ul').find('p'));
+    //寻找相对定位的父元素
+    // console.log($('#ul').offsetParent());
+</script>
+</html>

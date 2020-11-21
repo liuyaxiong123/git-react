@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>event1</title>
+</head>
+<body>
+    <input type="text"  id="txt">
+    <input type="button" value="按钮" id="btn">
+    <div id="box"></div>
+</body>
+<script>
+    /*
+        storage事件，在storage存储的内容改变时触发
+        1.必须放在服务器下运行
+        2.同一个浏览器至少开两个页面
+        3.这个页面改localStroage,另一个页面监听storage事件，(很容易犯的错，在同一个页面内更改本地存储信息，在同一个页面监听storage事件，这样是没有效果的)
+    */
+    btn.onclick=function(){
+        localStorage.setItem('name',txt.value);
+    }
+    window.addEventListener('storage',function(ev){
+        console.log(ev);
+        box.innerHTML='被修改的key的名字：'+ev.key+',\n被修改以前:'+ev.oldValue+',\n修改之后：'+ev.newValue+',\n修改的页面'+ev.url;
+    },false)
+</script>
+</html>

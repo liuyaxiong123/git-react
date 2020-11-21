@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>轮播图</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 500px;
+            height: 400px;
+            margin: 50px auto;
+            background: skyblue;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #inner {
+            width: 2500px;
+            height: 400px;
+            position: absolute;
+            left: -500px;
+            top: 0;
+        }
+
+        #inner p {
+            float: left;
+        }
+
+        #code {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            margin-left: -90px;
+        }
+
+        #code span {
+            float: left;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 25px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 20px;
+            color: yellow;
+            background: skyblue;
+        }
+
+        #inner p img {
+            width: 500px;
+            height: 400px;
+        }
+
+        #inner2 a {
+            text-decoration: none;
+            font-size: 30px;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+        }
+
+        #lef {
+            left: 0;
+        }
+
+        #rit {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <p><img src="image/1.jpg" alt=""></p>
+            <p><img src="image/2.jpg" alt=""></p>
+            <p><img src="image/3.jpg" alt=""></p>
+        </div>
+        <div id="code">
+            <span style="background:green">1</span>
+            <span>2</span>
+            <span>3</span>
+        </div>
+        <div id="inner2">
+            <a href="javascript:;" id="lef">&lt;</a>
+            <a href="javascript:;" id="rit">&gt;</a>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        var timer = null;
+        var dex = 0;
+        var p1 = $('#inner p:eq(0)').clone(true);
+        var p2 = $('#inner p:eq(2)').clone(true);
+        $('#inner').append(p1);
+        $('#inner').prepend(p2);
+        var w = $('#inner p:eq(0)').outerWidth();
+        $('#code span').on('mouseover', function () {
+            if (!$('#inner').is(':animated')) {
+                var ind = $(this).index();
+                dex = ind;
+                $('#code span').css('background', 'skyblue').eq(ind).css('background', 'green');
+                $('#inner').animate({
+                    left: -(ind + 1) * w
+                }, 500)
+            }
+        })
+        $('#lef').on('click', function () {
+            if (!$('#inner').is(':animated')) {
+                if (dex >= 0) {
+                    dex--;
+                    $('#code span').css('background', 'skyblue').eq(dex < 0 ? $('#code span').length - 1 : dex).css('background', 'green');
+                    $('#inner').animate({
+                        left: -(dex + 1) * w
+                    }, 500, function () {
+                        if (dex < 0) {
+                            dex = $('#code span').length;
+                            $('#inner').css('left', -$('#code span').length * 500 + 'px');
+                        }
+                    })
+                }
+            }
+        })
+        $('#rit').on('click',show);
+        function show() {
+            if (!$('#inner').is(':animated')) {
+                if (dex < 3) {
+                    dex++;
+                    $('#code span').css('background', 'skyblue').eq(dex >= $('#code span').length ? 0 : dex).css('background', 'green');
+                    $('#inner').animate({
+                        left: -(dex + 1) * w
+                    }, 500, function () {
+                        if (dex >= $('#code span').length) {
+                            dex = 0;
+                            $('#inner').css('left', -w + 'px');
+                        }
+                    })
+                }
+            }
+        }
+        timer = setInterval(show, 2000);
+        $('#outer').on({
+            mouseover: function () {
+                clearInterval(timer);
+            },
+            mouseout: function () {
+                timer = setInterval(show, 2000);
+            }
+        })
+    })
+</script>
+
+</html>

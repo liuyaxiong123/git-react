@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6函数扩展</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //函数的扩展
+    //1.参数,不能直接为函数的参数指定默认值，只能采用变通的方法
+    // function log(x,y){
+        // y = y||'world';
+    //     if(typeof y=='undefined'){
+    //         y = y||'world';
+    //     }
+    //     console.log(x,y);
+    // }
+    // log('hello');//hello world
+    // log('hello','China');//hello China      
+    // log('hello',false);//hello false
+    //-----------------------
+
+    //ES6语法允许给参数指定默认值
+    // function log(x,y='world'){
+    //     console.log(x,y);
+    // }
+    // log('hello');//hello world
+    // log('hello','China');//hello China      
+    // log('hello',false);//hello false
+    //----------------------------
+
+    //rest参数(注意：必须放在最后一位)
+    // var arr=['apple','banana','pear'];
+    // function fn(a,b,...arg){
+    //     console.log(a,b,arg);//1 2  [3, 4, 5, 6]
+    // }
+    // fn(1,2,3,4,5,6);
+
+    //报错：Rest parameter must be last formal parameter
+    // var arr=['apple','banana','pear'];
+    // function fn(a,...arg,b){
+    //     console.log(a,b,arg);
+    // }
+    // fn(1,2,3,4,5,6);
+    //------------------------------
+
+    //注意1.参数变量是默认声明的,所以不能使用let和const再次声明
+    // function  foo(x){
+    //     //let x=1;//报错
+    //     //const x=1;//报错
+    //     var x=1;//不报错
+    // }
+    //------------------------
+    //注意2.使用参数默认值时，函数不能有同名参数
+    // function foo(x,x,y){
+    //     console.log(x,y);
+    // }
+    // foo(5,6,7);//不报错 6 7  前面被覆盖
+    // function foo(x,x,y=1){
+    //     console.log(x,y);
+    // }
+    // foo(5,6,7);//报错Duplicate parameter name not allowed in this context
+    //-----------------------
+    //注意3，指定默认值以后，函数的length属性，将会返回没有指定默认值的参数的个数，也就是说，指定默认值后，length属性将失真
+    // function fn1(a,b=5){
+
+    // }
+    // fn1(3,4,5);
+    // console.log(fn1.length);//1
+    // console.dir(fn1);//以对象的形式去打印
+    //------------------------------------
+
+    // var x=1;
+    // function f(x,y=x){
+    //     console.log(y);//2
+    // }
+    // f(2);
+
+    //-------------------
+    // let x=1;
+    // function f(y=x){
+    //     let x=2;
+    //     console.log(y);//1
+    // }
+    // f();
+    // console.log(f.name);//name 属性 返回函数名
+    //---------------------
+    
+
+    //2.箭头函数
+    // var v='abc';
+    // var f=v=>v;
+    // console.dir(f);
+    //等价于：
+    // var f=function (v){
+    //     return v;
+    // }
+    // console.log(f);
+    //-----------------
+    //如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分
+    // var f = () => 5;
+    // console.dir(f);
+    // //等同于
+    // var f = function (){
+    //     return 5;
+    // }
+    // console.log(f);
+
+    // var sum=(num1,num2)=>num1+num2;
+    // console.log(sum(7,8));
+    // //等同于
+    // var sum = function (num1,num2){
+    //     return num1+num2;
+    // }
+    // console.log(sum(5,6));
+
+    //箭头函数目的是为了简化代码
+    // let arr=[56,78,111,666,333,2,90];
+    // arr.sort(function(n1,n2){
+    //     return n1-n2;
+    // });
+    
+    // arr.sort((n1,n2)=>n1-n2);
+    // console.log(arr);
+
+    //-------------------
+    //由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上大括号，否则会报错
+    //报错Uncaught SyntaxError: Unexpected token 
+    // let f = id => {id:id,name:'Ada'};// function (id){return id;}
+
+    //不报错
+    // let f =id => ({id:id,name:'Ada'});
+    //-----------------
+    //如果代码执行内容比较多，用{}包裹
+    // let f= ()=>{
+    //     console.log('abc');
+    //     alert('abc');
+    //     return {id:5};
+    // }
+    // f();
+    //------------------
+    //不能做构造函数 通过new初始化
+    // let sum=()=>5;
+    // new sum();//报错 sum is not a constructor
+    //---------------------
+    //箭头函数内部没有arguments对象
+    let sum=(...arg)=>{
+        console.log(arg);// ["apple", "banana", "pear"]
+    }
+    sum('apple','banana','pear');
+   
+</script>
+</html>

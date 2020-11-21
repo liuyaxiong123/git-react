@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算机</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        .outer {
+            box-sizing: border-box;
+            padding: 20px;
+            margin: 200px auto;
+            width: 50vh;
+        }
+
+        .input {
+            height: 10vh;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .input #txt {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            font-size: 20px;
+            outline: none;
+        }
+
+        td {
+            width: 100px;
+            height: 80px;
+            background: skyblue;
+            color: #fff;
+            text-align: center;
+        }
+
+        td:hover {
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="input">
+            <input type="text" id="txt" autocomplete="off" disabled>
+        </div>
+        <table border='1' cellspacing="7" cellspading = '7'>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>+</td>
+                <td class="paqi">c</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>-</td>
+                <td rowspan="3" class="paqi">=</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>*</td>
+            </tr>
+            <tr>
+                <td class="paqi">+/-</td>
+                <td>0</td>
+                <td>.</td>
+                <td>/</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    var suo = true;
+    $('td:not(.paqi)').click(function () {
+        $('#txt').val($('#txt').val() + $(this).html());
+    })
+    $('.paqi:eq(0)').click(function () {
+        $('#txt').val('');
+    })
+    
+    $('.paqi:eq(1)').click(function () {
+        try{
+            $('#txt').val(eval($('#txt').val()));
+        }catch(e){
+            $('#txt').val('输入错误');
+        }
+    })
+    $('.paqi:eq(2)').click(function () {
+        var vle = $('#txt').val();
+        if (suo) {
+            $('#txt').val(`-${val}`);
+        } else {
+            var reg = /-|[(]|[)]/g;
+            $('#txt').val(vle.replace(reg, ''));
+        }
+        suo = !suo;
+    })
+</script>
+
+</html>

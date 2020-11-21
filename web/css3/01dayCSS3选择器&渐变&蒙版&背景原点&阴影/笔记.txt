@@ -1,0 +1,67 @@
+CSS3:
+是一个css2升级版，在原始基础上增加了许多新属性，
+比如：选择器，阴影，倒影，渐变，蒙版，旋转，变形，动画，布局
+
+首先了解浏览器内核：
+IE:Trident
+谷歌：webkit 新版(Blink)
+火狐：Gecko
+欧朋：老版本(Presto)  新版本(webkit)
+Safari(苹果):webkit
+
+-webkit-  谷歌内核前缀
+-moz-   火狐内核前缀
+-ms-   IE内核前缀
+-o-    欧朋内核前缀
+border-radius   W3C标准
+
+选择器：
+::selection:设置文本默认选中状态(注意只能设置color和background)
+
+阴影：
+文本阴影：
+text-shadow:水平偏移(允许负值)  垂直偏移(允许负值)  模糊度(不能有负值) 阴影颜色值 
+可以指定多个文本阴影 每一组中间用,隔开  兼容IE10
+
+盒阴影：
+box-shadow:水平偏移(允许负值)  垂直偏移(允许负值)  模糊度(不能有负值)  阴影外延伸值(允许负值)   阴影颜色值  内阴影(inset)
+可以指定多个盒子阴影 每一组中间用,隔开  兼容IE9
+
+背景：
+设置背景原点 
+background-origin: border-box; 
+background-origin: content-box; 
+background-origin: padding-box; 默认
+
+设置背景切割 
+background-clip:padding-box; 
+background-clip:border-box; 默认
+background-clip:content-box; 
+
+设置背景大小 
+background-size: 520px 520px; 
+background-size: cover;等比缩放到完全覆盖容器 
+background-size: contain;将背景图像等比缩放到宽度或高度与容器的宽度或高度相等，背景图像始终被包含在容器内
+
+渐变：
+线性渐变：
+linear-gradient(起始位置，颜色值 占的空间，颜色值 占得空间，颜色值 占得空间...)
+起点位置值：
+单词：left right top bottom
+度数： 0-360deg (degrees缩写)
+
+径向渐变：
+-webkit-radial-gradient(原点位置，颜色值 占得空间，颜色值...):带内核前缀语法
+原点位置值：x轴  y轴
+
+radial-gradient(颜色值 占得空间，颜色值...)：w3c标准语法
+
+文本渐变：
+text-fill-color webkit内核私有的属性，不属于w3c标准，只有支持webkit内核才能用，文本填充颜色 
+按照文本进行切割  -webkit-background-clip: text;
+
+蒙版：
+-webkit-mask-image:url()
+-webkit-mask-repeat:重复方式
+-webkit-mask-position:x,y
+-webkit-mask：image position repeat;

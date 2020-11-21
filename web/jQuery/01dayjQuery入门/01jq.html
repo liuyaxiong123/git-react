@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>jQuery</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="box">盒子</div>
+    <ul>
+        <li>aa</li>
+        <li>bb</li>
+        <li>cc</li>
+        <li>dd</li>
+    </ul>
+</body>
+<script>
+    //jQuery 类   $ 类代表jQuery
+    // console.log(jQuery);
+    // console.log($);
+    // console.log(jQuery===$);
+    // console.log(jQuery.prototype,$.prototype);
+    // console.log(jQuery('#box'));
+    // console.log($('#box'));//通过$实例化的jQuery对象
+    // console.log(box);//原生的dom元素
+
+    //设置标签样式：
+    // 设置单条样式，并支持链式调用
+    // $('#box').css('color','red').css('font-size','40px');
+
+    //设置单条样式
+    // $('li').css('background','blue');
+
+    //设置多条样式：
+    // $('#box').css({
+    //     width:'300px',
+    //     background:'blue',
+    //     height:'400px',
+    //     fontSize:'30px'
+    // })
+
+    //------------------
+    //绑定事件
+    // $('li').mouseover(function(){
+    //     console.log('呵呵哒');
+    // });
+    //-----------
+    // window.onload=function(){
+    //     console.log('呵呵哒');
+    // }
+    // window.onload=function(){
+    //     console.log('呵呵哒2');
+    // }
+
+    //DOM加载完毕触发事件
+    // $(document).ready(function(){
+    //     console.log('呵呵哒');
+    // })
+    // $(document).ready(function(){
+    //     console.log('呵呵哒2');
+    // })
+    // $(function(){
+    //     console.log('呵呵哒3');
+    // })
+    // $('#box').click(function(){
+    //     console.log('box');
+    // })
+    // $('#box').click(function(){
+    //     console.log('box2');
+    // })
+
+</script>
+</html>

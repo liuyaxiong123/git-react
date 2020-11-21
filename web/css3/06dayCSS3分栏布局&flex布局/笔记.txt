@@ -1,0 +1,76 @@
+分栏布局：
+column-count:number;  默认auto，设置栏数
+
+column-width:120px; 设置栏宽度，并不是每一栏真正是120的宽，他是按照块的大小平均分配栏数，找到最近尺寸 (近似值)
+
+column-gap:50px; 设置每栏间隔
+
+column-rule:3px dotted blue; 设置间隔线样式
+
+分栏的内部的元素： 
+column-span:all;  设置是否跨栏显示 ，火狐不支持，兼容到IE10
+
+弹性布局：
+2009年w3c提出一种新的方案：flex布局
+2009年：display:box;
+2011年：display:flexbox;提出奇葩版本，主要是为了兼容IE
+2012年：display:flex; 2012年最新修正语法版本，浏览器支持性比较好，也将成为以后的标准语法
+
+设置弹性盒子：
+display:flex;
+display:-webkit-flex;/*Safari*/
+display:inline-flex; 行元素设置弹性盒子
+跟flex相关属性：
+容器相关属性：
+
+1.flex-direction:设置项目排列方向
+值(4个)：
+row:默认，从左往右排
+row-reverse:从右往左排
+column:从上往下排列
+column-reverse:从下往上排列
+
+2.flex-wrap:设置项目如何换行
+值(3个)：
+nowwrap:默认，内容多了不换行，会进行压缩
+wrap:自动换行
+wrap-reverse:自动换行，第一行在下方
+
+3.flex-flow: flwx-direction和flex-wrap复合属性
+默认 flex-flow:row nowwrap;
+
+4.justify-content:设置项目水平对齐方式
+值：
+flex-start:项目排列起始位置
+flex-end：项目排列结束位置
+center:居中对齐
+space-between:两端对齐(每一个项目中间的间隔是相等的)
+space-around:两端对齐(，项目之间的间隔比项目与边框的间隔大一倍)
+space-evenly:两端对齐(每一个项目中间的间隔是相等的,包括两端的间隔)
+
+5.align-items:项目在交叉轴对齐方式
+值：
+flex-start:交叉轴起点
+flex-end:交叉轴终点
+center:居中
+baseline:按照每个项目第一行文本基线对齐
+stretch:默认，如果项目未设置高度或设为auto，将占满整个容器的高度
+
+6.align-content:属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+值:
+flex-start:项目交叉轴的排列起始位置
+flex-end:项目交叉轴排列结束位置
+center：居中
+space-between:两端对齐(每一个项目中间的间隔是相等的)
+space-around:两端对齐(每一个项目中间的间隔是相等的，项目之间的间隔比项目与边框的间隔大一倍)
+stretch:默认，轴线占满整个交叉轴
+space-evenly:两端对齐(每一个项目中间的间隔是相等的,包括两端的间隔)
+
+项目相关的属性(6个):
+1.order:
+定义项目的排列顺序。数值越小，排列越靠前，允许有负值，默认为0。
+
+2.flex-grow:分配剩余空间，值为数值，会寻找所有项目的flex-grow属性，把所有项目flex-grow不是0的属性值加到一起按比例分配。
+比如:
+两个项目flex-grow:1;那么剩余空间由他俩平均分配，
+两个项目flex-grow一个是3一个是2，剩余空间一个占3/5，一个占2/5

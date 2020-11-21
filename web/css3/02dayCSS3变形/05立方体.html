@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .wrap{
+            width: 200px;
+            height: 200px;
+            position:relative;
+            margin: 200px auto;
+            background: #ccc;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg) rotateY(-30deg) scale3d(1.5,1.5,2);
+        }
+        .wrap div{
+            width: 200px;
+            height: 200px;
+            position:absolute;
+            font-size: 45px;
+            line-height: 200px;
+            text-align: center;
+            opacity: 0.7;
+        }
+        .wrap div:nth-child(1){/*前*/
+            background:#0f0;
+            transform:translateZ(100px);
+        }
+        .wrap div:nth-child(2){
+            background: blue;
+            transform:translateZ(-100px);
+        }
+        .wrap div:nth-child(3){
+            background: red;
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+        .wrap div:nth-child(4){
+            background: purple;
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .wrap div:nth-child(5){
+            background: yellow;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .wrap div:nth-child(6){
+            background: #000;
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div>前</div>
+        <div>后</div>
+        <div>左</div>
+        <div>右</div>
+        <div>上</div>
+        <div>下</div>
+    </div>
+</body>
+</html>

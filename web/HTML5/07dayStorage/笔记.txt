@@ -1,0 +1,35 @@
+本地存储：
+原来在浏览器里存储信息最早用cookie，cookie有大小限制。
+
+
+特点：它不发送http请求，本地存储信息就存储在本地，不会跟着你在请求的url把数据带给后台
+01）：localStorage
+永久性存储
+localStorage.setItem(key,value);设置信息
+localStorage.getItem(key);读取信息
+localStorage.key(0):获取键名
+localStorage.length:长度
+localStorage.removeItem(key);删除一条数据
+localStorage.clear():删除所有数据
+
+02）:sessionStorage
+临时性存储
+localStorage.setItem(key,value);设置信息
+localStorage.getItem(key);读取信息
+localStorage.key(0):获取键名
+localStorage.length:长度
+localStorage.removeItem(key);删除一条数据
+localStorage.clear():删除所有数据
+
+storage事件，在storage存储的内容改变时触发
+        1.必须放在服务器下运行
+        2.同一个浏览器至少开两个页面
+        3.这个页面改localStroage,另一个页面监听storage事件，(很容易犯的错，在同一个页面内更改本地存储信息，在同一个页面监听storage事件，这样是没有效果的)
+可以从事件对象身上拿到信息：
+ev.key
+ev.oldValue
+ev.newValue
+ev.url
+
+将json对象转换为原始格式字符串
+JSON.stringify()

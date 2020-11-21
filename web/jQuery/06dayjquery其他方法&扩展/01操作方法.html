@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>操作方法</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .bbb {
+            color: yellow;
+        }
+
+        .ccc {
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="安妮">
+    <div class="box">内容</div>
+</body>
+<script>
+    $('input:eq(0)').on('click', function () {
+        //添加类
+        // $('.box').addClass('bbb').addClass('ccc');
+        //删除类
+        // $('.box').removeClass('bbb');
+        //检测某个元素是否包含某个类
+        // console.log($('.box').hasClass('bbb'));
+        // $('.box').toggleClass('bbb');
+    });
+    // var code = 'jksjfkldsjflksj432jsdklfjljflkfk2324';
+    // var str = '';
+    // for (var i = 0; i < 4; i++) {
+    //     var n = Math.floor(Math.random() * code.length);
+    //     var r = Math.floor(Math.random() * 256);
+    //     var g = Math.floor(Math.random() * 256);
+    //     var b = Math.floor(Math.random() * 256);
+    //     // $('.box').html($('.box').html()+code.charAt(n));
+    //     str += '<span style="color:rgb('+r+','+g+','+b+')">'+code.charAt(n)+'</span>';
+    // }
+    // $('.box').html(str);
+
+    var arr=[2,3,33,7,22,3,6,33,0,77,22,99];
+    //数组过滤
+    var newArr=$.grep(arr,function(ele,idx){
+        //过滤数组中角标小于5的小于22的
+        // return idx<5&&ele<22;
+        //过滤出所有字母
+        // return isNaN(ele);
+        //数组去重
+        return arr.indexOf(ele)===idx;
+    }).sort(function(n1,n2){
+        return n1-n2;
+    })
+    // console.log(newArr);
+    //----------------------------
+    //检测是否为数组 
+    var json={};
+    console.log($.isArray(json));//false
+    var tmpFn=function(){
+        console.log(1);
+    }
+
+    //检测某个变量是否为函数
+    console.log($.isFunction(tmpFn));//true
+    console.log(typeof tmpFn);//function
+
+    //检测对象内容是否为空  如果是空返回true  反之false
+    console.log($.isEmptyObject(json));//true
+
+    var j={
+        name:'Ada',
+        sex:'nv'
+    }
+    //将json数据转换为表单数据
+    console.log($.param(j));
+
+    var json='{"name":"Ada","pwd":"abc"}';
+    // console.log(eval('('+json+')'));
+    // console.log(JSON.parse(json));
+    console.log($.parseJSON(json));
+
+    //改变函数this指向：$.proxy(函数，this指针);
+    $('.box').on('click',function(){
+        setTimeout($.proxy(function(){
+            $(this).addClass('ccc');
+        },this),1000)
+        
+    })
+</script>
+
+</html>

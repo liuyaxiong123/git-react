@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>炫彩小球</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+        }
+
+        #mycanvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="mycanvas"></canvas>
+</body>
+<script>
+    var mycanvas = document.querySelector('#mycanvas');
+    var ctx = mycanvas.getContext('2d');
+
+    mycanvas.width = window.innerWidth;
+    mycanvas.height = window.innerHeight;
+
+    var ballsArr = []; //小球的数组
+    function Ball(x, y) { //构造函数
+        this.x = x; //圆心的x坐标
+        this.y = y; //圆心的y坐标
+        this.r = 30; //圆的半径
+        this.color = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math
+            .floor(Math.random() * 256) + ')'; //绘制的圆的颜色
+        this.dx = Math.random() * 8 - 4; //x的变化
+        this.dy = parseInt(Math.random() * 8 - 4); //y的变化
+        ballsArr.push(this);
+    }
+
+    //更新绘制的圆的位置 更新圆的半径大小
+    Ball.prototype.update = function () {
+        this.x += this.dx;
+        this.y += this.dy;
+        this.r--;
+        //如果半径减到0了，从数组中删除自己
+        if (this.r <= 0) {
+            this.godie();
+        }
+    }
+    //删除
+    Ball.prototype.godie=function(){
+        for(var i=0;i<ballsArr.length;i++){
+            //如果数组中其中一项跟自身相等，删除
+            if(ballsArr[i]==this){
+                ballsArr.splice(i,1);
+            }
+        }
+    }
+    //绘制圆：
+    Ball.prototype.render = function () {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    //鼠标在画布移动时创建球
+    mycanvas.onmousemove = function (event) {
+        new Ball(event.clientX, event.clientY);
+    }
+    setInterval(function(){
+        /*清空画布*/
+        ctx.clearRect(0,0,mycanvas.width,mycanvas.height);
+        //渲染更新 所有小球
+        for(var i=0;i<ballsArr.length;i++){
+            ballsArr[i].update();
+            //如果update以后这个对象还在 进行绘制
+            ballsArr[i]&&ballsArr[i].render();
+        }
+    },20)
+</script>
+
+</html>

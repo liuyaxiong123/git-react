@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的扩展</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //JSON对象内，属性名和属性值相同的情况，可以采用简写方式
+    // const foo = 'bar';
+    // const bar = {foo};//等同于{foo：foo}
+    // console.log(bar);
+
+    // function f(x,y){
+    //     return {x,y};//等同于{x:x,y:y}
+    // }
+    // console.log(f(1,2));//{x,1,y:2}
+    //----------------------
+    // const o={
+    //     method:function(){
+    //         return 'hello';
+    //     }
+    // }
+    // console.log(o.method());
+    //等同于
+    // let x=10;
+    // const o={
+    //     x,
+    //     method (){
+    //         return 'hello';
+    //     }
+    // }
+    // console.log(o);
+    //--------------
+    //扩展运算符 2015(es6) 2016(es7) 2017(es8) 扩展运算符是es8中的语法,注意：一定要放到最后
+    // let {b,d,...x}={
+    //     a:'a',
+    //     b:'b',
+    //     c:'c',
+    //     d:'d'
+    // }
+    // console.log(d,b,x);//d b {c: "c", a: "a"}
+
+    // let [a,...y]=['apple','banana','pear','orange'];
+    // console.log(a,y);//apple  ["banana", "pear", "orange"]
+    //--------------------
+    // 新增方法：
+    //Object.is()判断俩值是否相等,返回bool 行为类似于 ===
+    // console.dir(Object);
+    // console.log(Object.is('1',1));//false
+    //该方法主要是为了修复NaN不相等的问题
+    // console.log(Object.is(NaN,NaN));//true
+    // console.log(NaN === NaN);//false
+    //------------------------
+    //Object.assign() 用于合并对象
+    let obj1 = {a:5};
+    let obj2 = {b:6};
+    let obj3 = {c:7};
+    // let newobj= {
+    //     ...obj1,
+    //     ...obj2,
+    //     ...obj3
+    // };
+    let newobj=Object.assign(obj1,obj2,obj3);
+    console.log(newobj);
+
+</script>
+</html>

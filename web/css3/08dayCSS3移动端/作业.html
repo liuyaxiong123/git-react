@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow: hidden;
+        }
+        #outer {
+            width: 100vw;
+            height: 60vh;
+            position: relative;
+        }
+
+        #inner {
+            position: absolute;
+            width: 700%;
+            height: 100%;
+            left: -100vw;
+            top: 0;
+        }
+
+        ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        li {
+            float: Left;
+            width:100vw;
+            height: 100%;
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <ul>
+                <li><img src="img/5.jpg" alt=""></li>
+                <li><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+                <li><img src="img/5.jpg" alt=""></li>
+                <li><img src="img/1.jpg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    var lis = document.querySelectorAll('li');
+    var device = /iphone|ipad|android|opear mini|iemobile|webos/i.test(window.navigator.userAgent);
+    var startEvName = device ? 'touchstart' : 'mousedown';
+    var moveEvName = device ? 'touchmove' : 'mousemove';
+    var endEvName = device ? 'touchend' : 'mouseup';
+    var ljz = lis[0].offsetWidth / 4;
+    var x_p;
+    var x;
+    var now = 1;
+    var that;
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].index = i;
+        lis[i].addEventListener(startEvName, fnStart, false);
+    }
+
+    function fnStart(ev) {
+        ev.preventDefault();
+        that = this;
+        x = device ? ev.touches[0].clientX : ev.clientX;
+        document.addEventListener(moveEvName, fnMove, false);
+        document.addEventListener(endEvName, fnEnd, false);
+    }
+
+    function fnMove(ev) {
+        x_p = device ? ev.touches[0].clientX : ev.clientX;
+        var movex = x - x_p > 0 ? (-(x - x_p)) : (x_p - x);
+        inner.style.left = -that.offsetWidth * that.index + movex + 'px';
+    }
+
+    function fnEnd() {
+        document.removeEventListener(moveEvName, fnMove, false);
+        now = that.index;
+        if (Math.abs(x - x_p) < ljz) {
+            startMove(inner, {
+                left: -that.offsetWidth * now
+            });
+
+        } else {
+            if (x - x_p < -ljz) {
+                if (now >= 1) {
+                    now--;
+                    startMove(inner, {
+                        left: -now * that.offsetWidth
+                    }, function () {
+                        if (now < 1) {
+                            now = lis.length-2;
+                            inner.style.left = -now * that.offsetWidth + 'px';
+                        }
+                    })
+                }
+            }
+            if (x - x_p > ljz) {
+                if (now < 6) {
+                    now++;
+                    startMove(inner, {
+                        left: -now * that.offsetWidth
+                    }, function () {
+                        if (now >= lis.length-1) {
+                            now = 1;
+                            inner.style.left = -now*that.offsetWidth + 'px';
+                        }
+                    })
+                }
+            }
+        }
+    }
+    //运动函数
+    function startMove(obj, json, fn) {
+        clearInterval(obj.time);
+        obj.time = setInterval(function () {
+            var stop = true; //假设没有不到终点的值了
+            for (i in json) {
+                if (i == 'opacity') {
+                    //获取透明度样式的写法
+                    var style = Math.round(parseFloat(getStyle(obj, i)) * 100);
+                } else {
+                    //获取带px样式的写法
+                    var style = parseInt(getStyle(obj, i));
+                }
+                var speed = (json[i] - style) / 30;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (style != json[i]) {
+                    stop = false; //意思就是说如果运动的样式其中有没到目标点的,把stop变成false
+                }
+                if (i == 'opacity') {
+                    //运动透明度
+                    obj.style.opacity = (style + speed) / 100;
+                    obj.style.filter = 'alpha(opacity=' + (style + speed) + ')';
+                } else {
+                    //运动其他样式
+                    obj.style[i] = style + speed + 'px';
+                }
+            }
+            if (stop) {
+                //判断如果stop还是true的情况下，说明没有不到终点的值了
+                clearInterval(obj.time);
+                if (fn) fn();
+            }
+        }, 10)
+    }
+    //获取非行间样式
+    function getStyle(obj, cur) {
+        if (obj.currentStyle) {
+            return obj.currentStyle[cur];
+        } else {
+            return getComputedStyle(obj)[cur];
+        }
+    }
+</script>
+
+</html>

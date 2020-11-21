@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正弦&余弦</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        #bit {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="bit">
+
+        </div>
+    </div>
+</body>
+<script>
+    //数学公式 球正弦值：sin α =x/r对边比斜边  求余弦值：cos α =y/r斜边比邻边
+    var i = 0;
+    setInterval(function () {
+        i++;
+        if(i>=360){
+            i=0;
+        }
+        var du = Math.PI / 180 * i; //30度弧度值
+        var r = 150;
+        var x = Math.sin(du) * r + 147;
+        var y = Math.cos(du) * r + 147;
+        bit.style.left = x + 'px';
+        bit.style.top = y + 'px';
+    }, 10)
+</script>
+
+</html>

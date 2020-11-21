@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>透明度轮播</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 500px;
+            height: 400px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #inner {
+            width: 500px;
+            height: 400px;
+        }
+
+        #inner p {
+            width: 500px;
+            height: 400px;
+        }
+
+        #code {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            margin-left: -90px;
+        }
+
+        #code span {
+            float: left;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 25px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 20px;
+            color: yellow;
+            background: skyblue;
+        }
+
+        #inner p img {
+            width: 500px;
+            height: 400px;
+        }
+
+        #inner2 a {
+            text-decoration: none;
+            font-size: 30px;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+        }
+
+        #lef {
+            left: 0;
+        }
+
+        #rit {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <p><img src="image/1.jpg" alt=""></p>
+        </div>
+        <div id="code">
+            <span style="background:green">1</span>
+            <span>2</span>
+            <span>3</span>
+        </div>
+        <div id="inner2">
+            <a href="javascript:;" id="lef">&lt;</a>
+            <a href="javascript:;" id="rit">&gt;</a>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        var dex = 0;
+        $('#code span').on('click', function () {
+            var idx = $(this).index();
+            if (dex != idx) {
+                dex=idx;
+                $(this).css('background', 'green').siblings('span').css('background', 'skyblue');
+                var opa = $(this).attr('opacity');
+                $('#inner p img').fadeOut(200, function () {
+                    $(this).attr('src', 'image/' + (idx + 1) + '.jpg').fadeIn(200);
+                });
+            }
+
+        })
+        $('#lef').on('click', function () {
+            dex--;
+            if (dex < 0) {
+                dex = 2;
+            }
+            $('#inner p img').fadeOut(200, function () {
+                $(this).attr('src', 'image/' + (dex + 1) + '.jpg').fadeIn(200);
+            });
+            $('#code span').css('background', 'skyblue').eq(dex).css('background', 'green');
+        })
+        $('#rit').on('click', show);
+        function show() {
+            dex++;
+            if (dex > 2) {
+                dex = 0;
+            }
+            $('#inner p img').fadeOut(200, function () {
+                $(this).attr('src', 'image/' + (dex + 1) + '.jpg').fadeIn(200);
+            });
+            $('#code span').css('background', 'skyblue').eq(dex).css('background', 'green');
+        }
+        timer = setInterval(show, 2000);
+        $('#outer').on({
+            mouseover: function () {
+                clearInterval(timer);
+            },
+            mouseout: function () {
+                timer = setInterval(show, 2000);
+            }
+        })
+    })
+</script>
+
+</html>

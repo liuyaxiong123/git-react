@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        ;
+        (function (win, doc) {
+            var resetPage = function () {
+                var _doc = doc.documentElement; //html标签
+                var devieWidth = _doc.clientWidth;
+                //计算比例：设备宽/标准页面尺寸
+                var scale = devieWidth / 640;
+                if (devieWidth >= 640) {
+                    _doc.style.fontSize = '100px';
+                } else {
+                    _doc.style.fontSize = scale * 100 + 'px';
+                }
+            }
+            if (!doc.addEventListener) return;
+            doc.addEventListener('DOMContentLoaded', resetPage, false);
+            win.addEventListener('resize', resetPage, false);
+        })(window, document)
+    </script>
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .outer {
+            width: 6.4rem;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+        }
+
+        .hdf {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .swiper-slide div .hd {
+            width: 10% !important;
+            animation: sy 2s infinite;
+        }
+
+        @keyframes sy {
+            form {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translate(0, -100%)
+            }
+        }
+
+        /* 第一页 */
+        .slide1 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/1-bg.jpg);
+            background-size: cover;
+        }
+
+        .slide1>div {
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide1 div>img {
+            width: 70%;
+        }
+
+        .slide1 div:nth-child(1) {
+            position: absolute;
+        }
+
+        .slide1 div:nth-child(2) {
+            margin-top: 28%;
+        }
+
+        .slide1 div:nth-child(3) {
+            margin-top: 5%;
+        }
+
+        /* 第二页 */
+        .slide2 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/bj-2.png);
+            background-size: cover;
+        }
+
+        .slide2>div:nth-child(1) {
+            position: relative;
+            text-align: center;
+            margin-top: 20%;
+        }
+
+        .slide2>div:nth-child(1) img:nth-child(1) {
+            width: 90%;
+        }
+
+        .slide2>div:nth-child(1) .jz {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slide2>div:nth-child(1) div:nth-child(2) img {
+            width: 90%;
+            box-shadow: 2px 2px 20px #666, -2px -2px 20px #666;
+        }
+
+        .slide2 div:nth-child(2) {
+            position: absolute;
+            bottom: 15%;
+            left: 1.535rem;
+            position: absolute;
+            width: 3.16rem;
+        }
+
+        .slide2 div:nth-child(2) div {
+            width: 1rem;
+            height: 0.6rem;
+            position: relative;
+            float: left;
+            font-size: 0.18rem;
+            text-align: center;
+            line-height: 0.6rem;
+            color: #FFFFFF;
+            font-family: "黑体";
+            box-shadow: 0px 0px 30px 5px #000000;
+        }
+
+        .slide2 div:nth-child(2) .jj {
+            animation: jj 2s ease;
+        }
+
+        @keyframes jj {
+            form {
+                transform: rotate(0);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(1) {
+            background: #675aa0;
+            animation-delay: 2s;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(1)::before {
+            content: "";
+            position: absolute;
+            top: -0.3rem;
+            left: 0px;
+            border-bottom: 0.3rem solid #675aa0;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(1)::after {
+            content: "";
+            position: absolute;
+            bottom: -0.3rem;
+            left: 0px;
+            border-top: 0.3rem solid #675aa0;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(2) {
+            background: #ffb700;
+            margin-top: -0.94rem;
+            margin-left: -0.9rem;
+            animation-delay: 2.5s;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(2)::before {
+            content: "";
+            position: absolute;
+            top: -0.3rem;
+            left: 0px;
+            border-bottom: 0.3rem solid #ffb700;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(2)::after {
+            content: "";
+            position: absolute;
+            bottom: -0.3rem;
+            left: 0px;
+            border-top: 0.3rem solid #ffb700;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(3) {
+            background: #0096e3;
+            margin-left: 0.08rem;
+            animation-delay: 3s;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(3)::before {
+            content: "";
+            position: absolute;
+            top: -0.3rem;
+            left: 0px;
+            border-bottom: 0.3rem solid #0096e3;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(3)::after {
+            content: "";
+            position: absolute;
+            bottom: -0.3rem;
+            left: 0px;
+            border-top: 0.3rem solid #0096e3;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(4) {
+            background: #ee534d;
+            margin-left: -1.53rem;
+            margin-top: -0.94rem;
+            animation-delay: 3.5s;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(4)::before {
+            content: "";
+            position: absolute;
+            top: -0.3rem;
+            left: 0px;
+            border-bottom: 0.3rem solid #ee534d;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(4)::after {
+            content: "";
+            position: absolute;
+            bottom: -0.3rem;
+            left: 0px;
+            border-top: 0.3rem solid #ee534d;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(5) {
+            background: #1b2d57;
+            margin-left: 0.08rem;
+            animation-delay: 4s;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(5)::before {
+            content: "";
+            position: absolute;
+            top: -0.3rem;
+            left: 0px;
+            border-bottom: 0.3rem solid #1b2d57;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        .slide2 div:nth-child(2) div:nth-child(5)::after {
+            content: "";
+            position: absolute;
+            bottom: -0.3rem;
+            left: 0px;
+            border-top: 0.3rem solid #1b2d57;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+        }
+
+        /* 第三页 */
+        .slide3 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/page3.jpg);
+            background-size: cover;
+        }
+
+        /* 第四页 */
+        .slide4 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/bj-4.png);
+            background-size: cover;
+        }
+
+        .slide4 div:nth-child(1) {
+            font-size: 0.5rem;
+            font-family: "宋体";
+            text-align: center;
+            margin-top: 20%;
+            color: #FFFFFF;
+        }
+
+        .slide4 div:nth-child(2) {
+            position: absolute;
+            bottom: 20%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide4 div:nth-child(2) img {
+            width: 80%;
+        }
+
+        /* 第五页 */
+        .slide5 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/9-bg.jpg);
+            background-size: cover;
+        }
+
+        .slide5 div:nth-child(2) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide5 div:nth-child(2) img {
+            width: 55%;
+        }
+
+        .slide5 div:nth-child(3) {
+            font-size: 0.2rem;
+            color: #fff;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 45%;
+        }
+
+        /* 第六页 */
+        .slide6 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/9-bg.jpg);
+            background-size: cover;
+        }
+
+        .slide6 div:nth-child(2) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide6 div:nth-child(2) img {
+            width: 55%;
+        }
+
+        .slide6 div:nth-child(3) {
+            font-size: 0.2rem;
+            color: #fff;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 45%;
+        }
+
+        /* 第七页 */
+        .slide7 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/9-bg.jpg);
+            background-size: cover;
+        }
+
+        .slide7 div:nth-child(2) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide7 div:nth-child(2) img {
+            width: 55%;
+        }
+
+        .slide7 div:nth-child(3) {
+            font-size: 0.2rem;
+            color: #fff;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 45%;
+        }
+
+        /* 第八页 */
+        .slide8 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/9-bg.jpg);
+            background-size: cover;
+        }
+
+        .slide8 div:nth-child(2) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide8 div:nth-child(2) img {
+            width: 55%;
+        }
+
+        .slide8 div:nth-child(3) {
+            font-size: 0.2rem;
+            color: #fff;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 45%;
+        }
+
+        /* 第九页 */
+        .slide9 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/9-bg.jpg);
+            background-size: cover;
+        }
+
+        .slide9 .bbj {
+            text-align: center;
+            position: absolute;
+            top: 0;
+        }
+
+        .slide9 .bbj img {
+            margin: 0;
+            width: 100%;
+        }
+
+        .slide9>div {
+            text-align: center;
+            width: 100%;
+        }
+
+        .slide9>div:nth-child(3) {
+            margin-top: 0.64rem;
+        }
+
+        .slide9 div img {
+            width: 1.6rem;
+            margin: 0.128rem 0.256rem;
+        }
+
+        /* 第十页 */
+        .slide10 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/9-bg.jpg);
+            background-size: cover;
+            color: #fff;
+        }
+
+        .slide10 div:nth-child(1) {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slide10 div:nth-child(2) {
+            font-size: 0.4rem;
+            width: 85%;
+            margin: 0 auto;
+            margin-top: 15%;
+        }
+
+        .slide10 div:nth-child(3) {
+            font-size: 0.3rem;
+            font-family: "微软雅黑";
+            color: #FFFFFF;
+            width: 85%;
+            padding: 0 7.5%;
+            margin-top: 10%;
+        }
+
+        .slide10 div:nth-child(4) {
+            text-align: center;
+            margin-top: 15%;
+        }
+
+        .slide10 div:nth-child(4) img {
+            width: 85%;
+        }
+
+        /* 第十一页 */
+        .slide11 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/9-bg.jpg);
+            background-size: cover;
+        }
+
+        .slide11 div:nth-child(1) {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slide11>div {
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide11 div:nth-child(2) img {
+            width: 100%;
+        }
+
+        .slide11 div:nth-child(n+3) img {
+            width: 30%;
+            margin: 3% 3%;
+        }
+
+        /* 第十二页 */
+        .slide12 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/page11.jpg);
+            background-size: cover;
+        }
+
+        .slide12 div {
+            text-align: center;
+        }
+
+        .slide12 div img {
+            width: 90%;
+        }
+
+        .slide12 div:nth-child(1) {
+            margin-top: 38%;
+        }
+
+        /* 第13页 */
+        .slide13 {
+            background: url(http://jiasiqi.gotoip1.com/project/jishi/img/9-bg.jpg);
+            background-size: cover;
+        }
+
+        .slide13>div {
+            width: 100%;
+            color: #fff;
+        }
+
+        .slide13 div:nth-child(1) {
+            margin-top: 15%;
+            text-align: center;
+        }
+
+        .slide13 div:nth-child(1) img {
+            width: 60%;
+        }
+
+        .slide13 div:nth-child(2) {
+            text-align: center;
+            position: absolute;
+            top: 30%;
+        }
+
+        .slide13 div:nth-child(2) img {
+            width: 100%;
+        }
+
+        .slide13 div:nth-child(3) {
+            text-align: center;
+            font-size: 0.22rem;
+        }
+
+        .slide13 div:nth-child(4) {
+            font-size: 0.3rem;
+            text-align: center;
+            margin-top: 6%;
+        }
+
+        .slide13 div:nth-child(5) {
+            text-align: center;
+            margin-top: 4%;
+        }
+
+        .slide13 div:nth-child(5) img {
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide1">
+                    <div class="ani" swiper-animate-effect="rotateOutDownRight" swiper-animate-duration="15s"
+                        swiper-animate-delay="2s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-3.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-2.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.8s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-1.png"
+                            alt=""></div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide2">
+                    <div>
+                        <img src="http://jiasiqi.gotoip1.com/project/jishi/img/2-2.png" alt="" class="ani"
+                            swiper-animate-effect="fadeInDownBig" swiper-animate-duration="1s"
+                            swiper-animate-delay="0.8s">
+                        <div class="jz">
+                            <img src="http://jiasiqi.gotoip1.com/project/jishi/img/2-1.png" alt="" class="ani"
+                                swiper-animate-effect="fadeInDownBig" swiper-animate-duration="1s"
+                                swiper-animate-delay="0.3s">
+                        </div>
+                    </div>
+                    <div class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s"
+                        swiper-animate-delay="1.5s">
+                        <div>解决方案</div>
+                        <div>培训</div>
+                        <div>外包服务</div>
+                        <div>IT咨询</div>
+                        <div>产品研发</div>
+                    </div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide3">
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide4">
+                    <div class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s">产学研创高效教育模式</div>
+                    <div class="ani" swiper-animate-effect="rubberBand" swiper-animate-duration="1s"
+                        swiper-animate-delay="1.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/page4i.png"
+                            alt=""></div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide5">
+                    <div class="ani" swiper-animate-effect="rotateOutDownRight" swiper-animate-duration="15s"
+                        swiper-animate-delay="2s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-3.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="flip" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/page5i.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="fadeInUpBig" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s">
+                        博看文思的客户遍布全球，研发项目涉及电子商务、IT服务、P2P、SNS、大数据、智能硬件、可穿戴设备、云计算等各行各业，博看文思自主研发的APP产品被多次评为“精品应用”。博看文思的项目成果不仅极大地满足了客户的需求，并且强有力地推动了移动互联网行业的发展。
+                    </div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide6">
+                    <div class="ani" swiper-animate-effect="rotateOutDownRight" swiper-animate-duration="15s"
+                        swiper-animate-delay="2s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-3.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="flip" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/page6i.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="fadeInUpBig" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s">
+                        博看文思团队由中、美300余位专家组成，拥有国内先进的自主知识产权的游戏物理引擎、3D引擎和手机跨平台开发框架，与包括世界500强在内的多家企业进行项目外包、技术解决方案等综合服务。
+                    </div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide7">
+                    <div class="ani" swiper-animate-effect="rotateOutDownRight" swiper-animate-duration="15s"
+                        swiper-animate-delay="2s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-3.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="flip" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/page7i.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="fadeInUpBig" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s">
+                        博看文思专注于移动互联网高端人才培养，课程涵盖了iOS、HTML5和Android应用领域，先后在北京、广州、厦门、西安等地建立实训中心，累计为企业输送了6万名高级移动开发人才。
+                    </div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide8">
+                    <div class="ani" swiper-animate-effect="rotateOutDownRight" swiper-animate-duration="15s"
+                        swiper-animate-delay="2s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-3.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="flip" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/page8i.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="fadeInUpBig" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s">
+                        作为国家自主创新示范区常青藤创业园所在地，博看文思用成熟的产品策划、构架、开发、上线等流程，鼓励大学生自主创业，博看提供创业初期最缺乏的项目（不低于5000美金），博看文思与创业团队全方位合作，共同研发、推广产品。
+                    </div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide9">
+                    <div class="ani" swiper-animate-effect="rotateOutDownRight" swiper-animate-duration="15s"
+                        swiper-animate-delay="2s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-3.png"
+                            alt=""></div>
+                    <div class="bbj ani" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/8-1.png"
+                            alt=""></div>
+                    <div>
+                        <img src="http://jiasiqi.gotoip1.com/project/jishi/img/81.png" alt="" class="ani"
+                            swiper-animate-effect="flipInY" swiper-animate-duration="1s" swiper-animate-delay="1s"><img
+                            src="http://jiasiqi.gotoip1.com/project/jishi/img/82.png" alt=""
+                            src="http://jiasiqi.gotoip1.com/project/jishi/img/81.png" alt="" class="ani"
+                            swiper-animate-effect="flipInY" swiper-animate-duration="1s" swiper-animate-delay="1.5s">
+                    </div>
+                    <div>
+                        <img src="http://jiasiqi.gotoip1.com/project/jishi/img/83.png" alt=""
+                            src="http://jiasiqi.gotoip1.com/project/jishi/img/81.png" alt="" class="ani"
+                            swiper-animate-effect="flipInY" swiper-animate-duration="1s" swiper-animate-delay="2s"><img
+                            src="http://jiasiqi.gotoip1.com/project/jishi/img/84.png" alt=""
+                            src="http://jiasiqi.gotoip1.com/project/jishi/img/81.png" alt="" class="ani"
+                            swiper-animate-effect="flipInY" swiper-animate-duration="1s" swiper-animate-delay="2.5s">
+                    </div>
+                    <div>
+                        <img src="http://jiasiqi.gotoip1.com/project/jishi/img/85.png" alt=""
+                            src="http://jiasiqi.gotoip1.com/project/jishi/img/81.png" alt="" class="ani"
+                            swiper-animate-effect="flipInY" swiper-animate-duration="1s" swiper-animate-delay="3s"><img
+                            src="http://jiasiqi.gotoip1.com/project/jishi/img/86.png" alt=""
+                            src="http://jiasiqi.gotoip1.com/project/jishi/img/81.png" alt="" class="ani"
+                            swiper-animate-effect="flipInY" swiper-animate-duration="1s" swiper-animate-delay="3.5s">
+                    </div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide10">
+                    <div class="ani" swiper-animate-effect="rotateOutDownRight" swiper-animate-duration="15s"
+                        swiper-animate-delay="2s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-3.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s">合作企业</div>
+                    <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.7s"
+                        swiper-animate-delay="0.8s">
+                        战略联盟与合作伙伴关系是博看文思业务持续发展的重要保证，博看文思已经与行业领导者建立了战略合作伙伴关系，紧密的合作伙伴关系，确保博看文思能够满足客户的各种需求，并为客户提供最优秀的解决方案。
+                    </div>
+                    <div class="ani" swiper-animate-effect="fadeInUpBig" swiper-animate-duration="1s"
+                        swiper-animate-delay="1.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/qyhz.png"
+                            alt=""></div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+
+                </div>
+                <div class="swiper-slide slide11">
+                    <div class="ani" swiper-animate-effect="rotateOutDownRight" swiper-animate-duration="15s"
+                        swiper-animate-delay="2s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/1-3.png"
+                            alt=""></div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/10-1.png" alt="" class="ani"
+                            swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s"
+                            swiper-animate-delay="0.3s"></div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/101.jpg" alt="" class="ani"
+                            swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s"
+                            swiper-animate-delay="0.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/102.jpg"
+                            alt="" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s"
+                            swiper-animate-delay="0.3s"></div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/103.jpg" alt="" class="ani"
+                            swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s"
+                            swiper-animate-delay="0.7s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/104.jpg"
+                            alt="" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s"
+                            swiper-animate-delay="0.7s"></div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/105.jpg" alt="" class="ani"
+                            swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s"
+                            swiper-animate-delay="1.1s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/106.jpg"
+                            alt="" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s"
+                            swiper-animate-delay="1.5s"></div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/107.jpg" alt="" class="ani"
+                            swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s"
+                            swiper-animate-delay="1.9s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/108.jpg"
+                            alt="" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s"
+                            swiper-animate-delay="2.1s"></div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide12">
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/11_02.png" alt="" class="ani"
+                            swiper-animate-effect="flipInX" swiper-animate-duration="0.3s" swiper-animate-delay="0.3s">
+                    </div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/11_03.png" alt="" class="ani"
+                            swiper-animate-effect="flipInX" swiper-animate-duration="0.3s" swiper-animate-delay="0.6s">
+                    </div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/11_04.png" alt="" class="ani"
+                            swiper-animate-effect="flipInX" swiper-animate-duration="0.3s" swiper-animate-delay="0.9s">
+                    </div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/11_05.png" alt="" class="ani"
+                            swiper-animate-effect="flipInX" swiper-animate-duration="0.3s" swiper-animate-delay="1.2s">
+                    </div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/11_06.png" alt="" class="ani"
+                            swiper-animate-effect="flipInX" swiper-animate-duration="0.3s" swiper-animate-delay="1.5s">
+                    </div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/11_07.png" alt="" class="ani"
+                            swiper-animate-effect="flipInX" swiper-animate-duration="0.3s" swiper-animate-delay="1.8s">
+                    </div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/11_08.png" alt="" class="ani"
+                            swiper-animate-effect="flipInX" swiper-animate-duration="0.3s" swiper-animate-delay="2.1s">
+                    </div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/11_09.png" alt="" class="ani"
+                            swiper-animate-effect="flipInX" swiper-animate-duration="0.3s" swiper-animate-delay="2.4s">
+                    </div>
+                    <div><img src="http://jiasiqi.gotoip1.com/project/jishi/img/11_10.png" alt="" class="ani"
+                            swiper-animate-effect="flipInX" swiper-animate-duration="0.3s" swiper-animate-delay="2.7s">
+                    </div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+                <div class="swiper-slide slide13">
+                    <div class="ani" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="1s"
+                        swiper-animate-delay="0.3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/p12t.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="rotateOut" swiper-animate-duration="20s"
+                        swiper-animate-delay="0.5s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/p12s.png"
+                            alt=""></div>
+                    <div class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1.5s"
+                        swiper-animate-delay="1s">
+                        <p>电话：4006-333-186</p>
+                        <p>地址：北京石景山区总工会二层</p>
+                    </div>
+                    <div class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="1s"
+                        swiper-animate-delay="2s">长按二维码，对话博看文思</div>
+                    <div class="ani" swiper-animate-effect="flipInX" swiper-animate-duration="1s"
+                        swiper-animate-delay="3s"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/p12e.jpg"
+                            alt=""></div>
+                    <div class="hdf"><img src="http://jiasiqi.gotoip1.com/project/jishi/img/arrow.png" alt=""
+                            class="hd"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/swiper.min.js"></script>
+<script src="js/swiper.animate1.0.3.min.js"></script>
+<script>
+    window.onload = function () {
+        var swiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            initialSlide: 0, //默认slide索引
+            keyboard: true,
+            mousewheel: true,
+            grabCursor: true,
+            watchSlidesProgress: true,
+            on: {
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画    
+                    if (this.slides[1].progress == 0) {
+                        $('.swiper-slide div').addClass('jj');
+                    } else {
+                        $('.swiper-slide div').removeClass('jj');
+                    }
+                },
+            }
+        });
+    }
+</script>
+
+</html>

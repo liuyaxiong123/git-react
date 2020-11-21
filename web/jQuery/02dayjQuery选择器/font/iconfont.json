@@ -1,0 +1,23 @@
+{
+  "id": "1433232",
+  "name": "我爱我的祖国",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10809198",
+      "name": "五角星 星型 ",
+      "font_class": "changyongtubiao-xianxingdaochu-zhuanqu-",
+      "unicode": "e70b",
+      "unicode_decimal": 59147
+    },
+    {
+      "icon_id": "10864779",
+      "name": "五角星 星型 收藏",
+      "font_class": "changyongtubiao-mianxing-",
+      "unicode": "e783",
+      "unicode_decimal": 59267
+    }
+  ]
+}

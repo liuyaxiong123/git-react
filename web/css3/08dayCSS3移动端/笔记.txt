@@ -1,0 +1,30 @@
+一：移动端适配：
+1.zoom属性
+    通过改变body的缩放比例，从而让页面内容整体进行缩放
+
+2.rem单位：
+    继承html跟元素的font-size字体大小
+    rem大小会跟随html跟元素的font-size字体大小变化而变化，
+    因为html根元素默认的font-size字体大小是16px
+    所以页面中换算比例为1rem=16px
+    通过改变html的font-size字体大小，通过rem尺寸单位做适配
+
+二：设备检测，移动端事件
+touchstart:手指摁下触发
+touchmove：手指在屏幕上移动时触发
+touchend：手指抬起时触发
+onclick:在移动端触发时会有200毫秒延迟
+
+移动端获取坐标点：ev.touchs[0].clientX
+
+三：其他css3属性：
+text-overflow:ellipsis  显示省略符号来代表被修剪的文本
+配合：
+overflow:hidden;
+white-space:nowrap;强制文本不换行
+
+设置自定义字体：
+@font-face{
+    font-family:'自定义字体';
+    src:url();引入字体文件
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>选择器</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="box" class="active">
+        <p>p1</p>
+        <p class="p2">p2</p>
+        <p class="p3">p3</p>
+        <div>haha</div>
+        <span>span</span>
+        <p>p4</p>
+    </div>
+    <div class="article">文章</div>
+    <h1>h1</h1>
+    <h1>h2</h1>
+    <p>p</p>
+    <span>span</span>
+    <div>
+        <h1>h3</h1>
+    </div>
+    <!-- <input type="text"><br>
+    <input type="password"><br>
+    <input type="checkbox" class="aaa"><br>
+    <input type="checkbox" checked><br>
+    <input type="button" value="按钮" disabled> -->
+</body>
+<script>
+    $(function () {
+        //表单选择器
+        // 获取所有input表单元素
+        // console.log($(':input'));
+        // //获取所有的文本框
+        // console.log($(':text'));
+        // //获取所有的复选框
+        // console.log($(':checkbox'))
+        // //获取所有的密码框
+        // console.log($(':password'));
+        // //获取所有拥有aaa类名的复选框
+        // console.log($('.aaa:checkbox'));
+        // //所有被禁止操作的表单元素
+        // console.log($(':disabled'));
+        // //获取所有可操作的表单元素
+        // console.log($(':enabled'));
+        // //所有选中状态的单选或复选按钮
+        // console.log($(':checked'));
+        //-------------
+
+        //属性选择器
+        //拥有所有拥有class属性的div
+        // $('div[class]').css({
+        //     background:'red'
+        // })
+        //获取所有class等于active的div标签
+        // $('div[class=active]').css({
+        //     background:'red'
+        // })
+        //所有class是以ac开头的div标签
+        // $('div[class^=ac]').css({
+        //     background:'yellow'
+        // })
+        //所有class是以ive结尾的div标签
+        // $('div[class$=ive]').css({
+        //     background:'yellow'
+        // })
+        //所有class中包含iv内容的div标签
+        // $('div[class*=iv]').css({
+        //     background:'red'
+        // })
+
+        //过滤选择器：
+        //获取指定某一个元素，从1开始
+        // $('.active>p:nth-child(1)').css({
+        //     background:'red'
+        // })
+        //-----------
+        //除了类名为p2的
+        // $('.active>p:not(.p2)').css({
+        //     background:'blue'
+        // })
+        //获取角标小于2的
+        // $('.active>p:lt(2)').css({
+        //     background:'red'
+        // })
+        // //角标大于2的
+        // $('.active>p:gt(2)').css({
+        //     background:'blue'
+        // })
+        //---------------------------------
+        //获取active下所有p元素的角标为1的
+        // $('.active>p:eq(1)').css({
+        //     'background':'yellow'
+        // })
+        // $('.active>P').eq(2).css({
+        //     background:'pink'
+        // })
+        //----------
+        //所有偶数
+        // $('.active>p:odd').css({
+        //     background:'yellow'
+        // })
+        // //所有奇数
+        // $('.active>p:even').css({
+        //     background:'red'
+        // })
+        //------------------
+        //获取active下所有子代p元素的最后一个（只会获取到最后一个active下的最后一个p元素）
+        // $('.active>p:last').css({
+        //     'background':'red'
+        // })
+        //获取active下所有子代p元素的最后一个（获取到所有active下的最后一个p元素，注意：p元素必须是active下的最后元素）
+        // $('.active>p:last-child').css({
+        //     'background':'red'
+        // })
+        //获取active下所有子代p元素的第一个（只会获取第一个active下的第一个p元素）
+        // $('.active>p:first').css({
+        //     'background':'blue'
+        // })
+        //获取active下所有子代p元素的第一个（会获取所有active下的第一个p元素）
+        // $('.active>p:first-child').css({
+        //     'background':'red'
+        // })
+        //-------
+        //获取某一个标签同级相邻的其他元素
+        // $('.p2').siblings('.p3').css({
+        //     'color':'pink'
+        // })
+        //--------------------------
+
+        //常用选择器
+        //ID选择器
+        // $('#box').css({
+        //     'color':'blue'
+        // })
+        // $(box).css({
+        //     'color':'red'
+        // })
+        //class选择器
+        // $('.active').css({
+        //     'color':'pink'
+        // })
+        //标签名选择器
+        // $('div').css({
+        //     'color':'pink'
+        // })
+        //子代选择器
+        // $('.active>p').css({
+        //     'color':'pink'
+        // })
+        //群组选择器
+        // $('div,h1,span').css({
+        //     'color':'pink'
+        // })
+        //后代选择器
+        // $('.active div').css({
+        //     'color':'red'
+        // })
+        //通用选择器
+        // $('*').css({
+        //     'color':'red'
+        // })
+        //----------------------------------
+        //获取某一个元素的下紧邻的h1(挨着的)
+        // $('.active+h1').css({
+        //     'background':'blue'
+        // })
+        //------------
+        //获取某一个元素后边同级所有的h1
+        // $('.active~h1').css({
+        //     'background':'red'
+        // })
+        //----------
+        //获取某个元素的下一个
+        // $('span').next().css({
+        //     'background':'blue'
+        // })
+        //--------
+        //获取某一个元素的上一个
+        // $('span').prev().css({
+        //     'background':'blue'
+        // })
+        //------------
+        //某一个标签后面同级所有的h1 
+        $('.active').nextAll('h1').css({
+            'background': 'red'
+        })
+        //---------
+
+    })
+</script>
+<script>
+    var arr2 = [];
+    var mon = '10000000000000';
+    for (var i = 0; i < mon.length; i++) {
+        dsf{
+
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%)
+        }
+        margin:0 auto;
+        
+
+        console.log(mon.charAt(i));
+        var arr = mon.split('').reverse();
+    }
+    // console.log(arr);
+    for (var j = 0; j < arr.length; j++) {
+
+        if ((j-2) % 3 == 0) {
+            arr[j] = arr[j] + ',';
+        }
+        arr2.push(arr[j]);
+    }
+    console.log(arr2);
+    var arr3 = arr2.reverse().join('');
+    console.log(arr3);
+</script>
+
+</html>

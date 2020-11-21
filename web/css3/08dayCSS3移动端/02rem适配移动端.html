@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rem适配</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        /* html{
+            font-size:64.6875px;
+        } */
+        div {
+            width: 6.4rem;
+            height: 100%;
+            font-size: 0.35rem;
+            text-align: center;
+            background: blue;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>文本</div>
+</body>
+<script>
+    /*
+    rem单位：继承html跟元素的font-size字体大小
+    rem大小会跟随html跟元素的font-size字体大小变化而变化，
+    因为html根元素默认的font-size字体大小是16px
+    所以页面中换算比例为1rem=16px
+    */
+    ;(function (win, doc) {
+        var resetPage = function () {
+            var _doc = doc.documentElement;//html标签
+            var devieWidth = _doc.clientWidth;
+            //计算比例：设备宽/标准页面尺寸
+            var scale = devieWidth / 640;
+            if (devieWidth >= 640) {
+                _doc.style.fontSize = '100px';
+            } else {
+                _doc.style.fontSize = scale * 100 + 'px';
+            }
+        }
+        if (!doc.addEventListener) return;
+        doc.addEventListener('DOMContentLoaded', resetPage, false);
+        win.addEventListener('resize', resetPage, false);
+    })(window, document)
+</script>
+
+</html>

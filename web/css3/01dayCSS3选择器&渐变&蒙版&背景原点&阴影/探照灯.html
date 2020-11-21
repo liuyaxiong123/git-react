@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>探照灯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        #outer {
+            width: 1000px;
+            height: 600px;
+            margin: 100px auto;
+            background: url(image/07.jpg) center center no-repeat;
+            -webkit-mask: url(image/01.png) no-repeat;
+            -webkit-mask-position: 0px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer"></div>
+</body>
+<script>
+    var spedX,//x轴运动速度
+        spedY,//y轴运动速度
+        dx = 0,//x轴位置
+        dy = 0,//y轴位置
+        maxX = outer.clientWidth - 260, //x轴运动最大值
+        maxY = outer.clientHeight - 260;//y轴运动最大值
+    setInterval(function () {
+        if (dy >= maxY) {
+            spedY = -1;
+        }
+        if (dy <= 0) {
+            spedY = 1;
+        }
+        dy += spedY;
+        if (dx >= maxX) {
+            spedX = -1;
+        }
+        if (dx <= 0) {
+            spedX = 1;
+        }
+        dx += spedX;
+        outer.style['-webkit-mask-position']=dx+'px'+' '+dy+'px';
+    }, 1)
+</script>
+
+</html>

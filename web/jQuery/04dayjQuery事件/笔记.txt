@@ -1,0 +1,28 @@
+jq绑定的事件会叠加
+
+绑定事件：
+1.绑定事件：bind   移除事件：unbind
+2.绑定事件： on     移除事件： off  (1.7以上jq添加  推荐使用)
+3.事件委托方式绑定事件：delegate(element,type,fn)
+4.一次性事件：one(type,fn)
+5.hover事件：hover(fn1,fn2)
+6.toggle事件：轮流执行click事件（注意：最少有两个函数，1.9以上版本已弃用）：toggle(fn1,fn2,fn3,……)
+7.自定义事件：语法：
+添加自定义事件：$('element').on('myclick',function(){})
+触发自定义事件：$('element').trigger('myclick');
+
+事件对象：
+jq中的事件对象跟原生js事件基本一样，在原始的基础上添加一些兼容处理
+比如：
+ev.stopPropagation()  阻止冒泡
+ev.preventDefault()   阻止事件默认行为
+添加一个属性：
+ev.data
+
+转换：
+将原生DOM元素转换为jq对象
+var div=document.getElementsByTagName('div')[0];
+$(div).css('color','red');
+将jq对象转化为原生dom元素
+console.log($('#box').get(0));
+$('#box').get(0).style.background='blue';

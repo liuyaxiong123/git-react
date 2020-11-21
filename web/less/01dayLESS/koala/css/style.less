@@ -1,0 +1,191 @@
+
+/*多行注释编译时会被保留*/
+//单行注释不会保留
+/*变量声明*/
+// @color:green;
+// @size:40px;
+// #app{
+//     background: @color;
+//     h1{
+//         font-size:@size;
+//     }
+//     h2{
+//         font-size:@size;
+//     }
+// }
+//---------------------------
+//变量值作为选择器和属性名
+// @kuandu:width;
+// @gaodu:height;
+// .@{kuandu}{
+//     display: block;
+//     @{kuandu}:200px;
+//     @{gaodu}:200px;
+// }
+//---------------------------------
+//变量值作为url路径
+// @imgurl:'../image/';
+// .@{kuandu}{
+//     background:@color url("@{imgurl}bg.jpg") center center;
+//     background-size: cover;
+// }
+//----------------------------------
+//变量作用域：块级作用域，外部无法访问内部变量值，块内部可以访问外部变量值，在less中使用变量遵循就近原则，访问就近的最后一个变量
+// @var :0;
+// .@{kuandu}{
+//     @var :1;
+//     index:@var;//1
+//     span{
+//         index:@var;//1
+//     }
+// }
+// h1{
+//     @var2:2;
+//     index:@var2;
+//     @var2:3;
+// }
+// h2{
+//     index:@var;//0
+//     //font-size: @var2;//报错
+// }
+//------------------------------
+//混合(minxins)
+//基本混合：就是一种将一系列属性从一个规则引入到另一个规则集的方式 &符号代表当前作用域选择器自身。
+
+// .resets{
+//     color:#333;
+//     font-family: Arial,"宋体","楷体";
+//     font-size:14px;
+//     &:hover{
+//         border: 5px solid #000;
+//     }
+// }
+// header,footer{
+//     .resets;
+//     background: yellow;
+// }
+// h1{
+//     .resets;
+// }
+//----------------------
+//不带输出的混合
+// .border(){
+//     border:5px solid red;
+// }
+// h1{
+//     .border;
+// }
+// h2{
+//     .border;
+// }
+//----------------------------
+//带参数的混合
+// .border(@color){
+//     border:5px solid @color;
+// }
+// h1{
+//     .border(red);
+// }
+// h2{
+//     .border(green);
+// }
+//------------------
+//带参数并且有默认值的混合(mixins)
+// .border(@color:yellow){
+//     border:5px solid @color;
+// }
+// h1{
+//     .border();
+// }
+// h2{
+//     .border(green);
+// }
+//-------------------
+//带多个参数的混合： ，号是每一个参数的分隔符   ：号是给参数设定默认值
+// .mixin(@color:red,@padding:10px,@margin:20px){
+//     color:@color;
+//     padding:@padding;
+//     margin:@margin;
+// }
+// h1{
+//     .mixin(green);
+// }
+// h2{
+//     .mixin(yellow,30px,50px);
+// }
+// header,footer{
+//     .mixin(@padding:30px,@margin:60px);
+// }
+//------------------
+//@arguments:获取混合的参数集合
+// .border(@s:solid,@c:yellow){
+//     border:20px @arguments;
+// }
+// h1{
+//     .border(dotted);
+// }
+// h2{
+//     .border(@c:red);
+// }
+//---------------------
+//重复声明的混合(mixins)
+// .border(all,@w:5px){
+//     border-radius: @w;
+// }
+// .border(t_l,@w:5px){
+//     border-top-left-radius: @w;
+// }
+// .border(t_r,@w:5px){
+//     border-top-right-radius: @w;
+// }
+// .border(b_l,@w:5px){
+//     border-bottom-left-radius: @w;
+// }
+// .border(b_r,@w:5px){
+//     border-bottom-right-radius: @w;
+// }
+// header{
+//     background: #3333;
+//     .border(all);
+// }
+// footer{
+//     background: yellowgreen;
+//     .border(t_r,10px);
+//     .border(b_l,20px);
+// }
+//----------------------------------
+//运算：rgb模式 它的值是0-255之间
+// header{
+//     width:(500-50)*2+24px;
+//     height:800-200px;
+//     font-size: 50/2px;
+//     background: #f00+300;
+// }
+//---------------------------
+//混合(mixins)运算
+// .average(@x,@y){
+//     @average:(@x+@y)/2;
+//     @h:@x+@y;
+// }
+// header{
+//     .average(20px, 50px);//一定要执行
+//     padding:@average;
+//     margin:@h;
+// }
+//-----------
+//嵌套规则 通过{}来对嵌套处理，大括号内定义元素样式，这种看起来更像一个模块开发
+#app{
+    background: yellow;
+    h1{
+        font-size:20px;
+        small{
+            color:red;
+        }
+        &:hover{
+            text-decoration: underline;
+        } 
+    }
+    h2{
+        font-size: 20px;
+    }
+}

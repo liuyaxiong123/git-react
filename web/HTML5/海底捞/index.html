@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>海底捞</title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script>
+        ;
+        (function (win, doc) {
+            var resetPage = function () {
+                var _doc = doc.documentElement; //html标签
+                var devieWidth = _doc.clientWidth;
+                //计算比例：设备宽/标准页面尺寸
+                var scale = devieWidth / 1920;
+                if (devieWidth >= 1920) {
+                    _doc.style.fontSize = '100px';
+                } else {
+                    _doc.style.fontSize = scale * 100 + 'px';
+                }
+            }
+            if (!doc.addEventListener) return;
+            doc.addEventListener('DOMContentLoaded', resetPage, false);
+            win.addEventListener('resize', resetPage, false);
+        })(window, document)
+    </script>
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        /*头部*/
+        header {
+            width: 100%;
+            position: fixed;
+            z-index: 9999999;
+        }
+
+        .navbar-nav {
+            position: relative;
+            float: none;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .navbar-nav li {
+            flex-grow: 1.5;
+
+        }
+
+        .navbar-nav li a {
+            padding: 0;
+            font-size: 18px;
+            text-align: center;
+            line-height: 106px;
+        }
+
+        .navbar-nav li:nth-child(4) {
+            flex-grow: 3;
+        }
+
+        .logo {
+            position: absolute;
+            right: 30px;
+            top: 35px;
+            padding: 0;
+        }
+
+        .logo li {
+            float: left;
+            line-height: 34px;
+            margin-left: 10px;
+        }
+
+        .logo li img {
+            width: 34px;
+            height: 34px;
+        }
+
+        .collapse {
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav {
+                display: block;
+            }
+        }
+
+        @media (max-width: 1600px) {
+
+            .navbar-nav li a {
+                top: 30px;
+            }
+
+            .navbar-nav .img {
+                top: 0;
+            }
+
+            .navbar-nav .img img {
+                margin-top: 25px;
+            }
+
+            .logo {
+                position: absolute;
+                top: 15px;
+                transition: all .5s linear;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            #logo2 {
+                position: absolute !important;
+                left: 25px !important;
+                top: -23px !important;
+            }
+
+            #logo2 a {
+                line-height: 0px !important;
+            }
+
+            .navbar-nav li {
+                padding: 15px 0 0 0;
+            }
+
+            .logo {
+                position: absolute;
+                right: 0px;
+                margin-right: 80px;
+                top: 15px;
+                transition: all .5s linear;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                position: absolute;
+                right: 0px;
+                margin-right: 65px;
+                top: 7px;
+                transition: all .5s linear;
+            }
+
+            #logo2 {
+                display: none;
+            }
+
+            .navbar-nav li {
+                padding: 0 !important;
+            }
+
+            .navbar-nav li a {
+                padding: 0;
+                font-size: 14px;
+                text-align: left !important;
+                line-height: 40px !important;
+            }
+
+            .navbar-nav {
+                margin-left: 11px;
+            }
+
+            .navbar-nav li a {
+                top: 0 !important;
+            }
+
+            #lg {
+                display: block !important;
+            }
+        }
+
+        /*第一页*/
+        .outer {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+        }
+
+        .swiper-pagination-y {
+            position: fixed;
+            z-index: 100;
+            margin-top: -32px;
+            top: 50%;
+            left: 20px;
+            opacity: 1;
+        }
+
+        .swiper-pagination-y span {
+            border-radius: 0;
+            width: 15px;
+            height: 3px;
+            margin: 7px;
+            position: relative;
+        }
+
+        .my-bullet-active-y {
+            width: 25px !important;
+            height: 3px;
+            border-radius: 0;
+            background: red;
+        }
+
+        .swiper-pagination-x span {
+            width: 12px;
+            height: 12px;
+            margin: 7px;
+            position: relative;
+        }
+
+        .my-bullet-active-x {
+            background: red;
+        }
+
+        #p1 {
+            background: url(https://www.haidilao.com/eportal/fileDir/zh/template/page/hdl_index_v2/second_bg.png) rgb(242, 95, 59);
+        }
+
+        #p1 .by {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+
+        #p1 .by:nth-child(1) {
+            width: 19rem;
+            height: 19rem;
+        }
+
+        #p1 .by:nth-child(2) {
+            width: 15rem;
+            height: 15rem;
+        }
+
+        #p1 .by:nth-child(3) {
+            width: 10rem;
+            height: 10rem;
+        }
+
+        #p1 .by:nth-child(4) {
+            width: 5rem;
+            height: 5rem;
+        }
+
+        #p2 {
+            background: #fff;
+        }
+
+        #p2 .by {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 3px solid coral;
+        }
+
+        #p2 .by:nth-child(1) {
+            width: 19rem;
+            height: 19rem;
+        }
+
+        #p2 .by:nth-child(2) {
+            width: 15rem;
+            height: 15rem;
+        }
+
+        #p2 .by:nth-child(3) {
+            width: 10rem;
+            height: 10rem;
+        }
+
+        #p2 .by:nth-child(4) {
+            width: 5rem;
+            height: 5rem;
+        }
+
+        .xiami {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #p1 .lxt {
+            width: 80%;
+            height: 60%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: url(https://www.haidilao.com/eportal/fileDir/zh/template/page/hdl_index_v2/second_lx.png) center center no-repeat;
+            background-size: 80% 80%;
+        }
+
+        #p1>img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 4.8rem;
+        }
+
+        #p2 p:nth-child(4) {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 4.8rem;
+            height: 4.8rem;
+            background: #d3a24e;
+            border-radius: 50%;
+        }
+
+        #p2 p:nth-child(4) img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .xiami {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            height: 10rem;
+            width: 100%;
+        }
+
+        .huoguo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            height: 10rem;
+            width: 100%;
+        }
+
+        .huoguo>img {
+            position: absolute;
+        }
+
+        .huoguo img:nth-child(1) {
+            width: 5rem;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .huoguo img:nth-child(2) {
+            width: 6.5rem;
+            right: 2rem;
+            bottom: 2rem
+        }
+
+        .huoguo img:nth-child(3) {
+            width: 13rem;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .xiami img {
+            position: absolute;
+        }
+
+        .xiami img:nth-child(1) {
+            width: 5.2rem;
+            left: 9rem;
+            top: 2rem;
+        }
+
+        .xiami img:nth-child(2) {
+            width: 10.5rem;
+            left: 4.5rem;
+            top: 4rem;
+        }
+
+        .xiami img:nth-child(3) {
+            width: 5.3rem;
+            right: 5rem;
+            top: 6.2rem;
+        }
+
+        .xiami img:nth-child(4) {
+            width: 2.8rem;
+            right: 2rem;
+            top: 7.5rem;
+        }
+
+        /* 第二页 */
+        .page2 .by {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border-radius: 50%;
+            border: 3px solid red;
+        }
+
+        .page2 .by:nth-child(1) {
+            width: 19rem;
+            height: 19rem;
+            margin-left: -9.5rem;
+            margin-top: -9.5rem;
+        }
+
+        .page2 .by:nth-child(2) {
+            width: 15rem;
+            height: 15rem;
+            margin-left: -7.5rem;
+            margin-top: -7.5rem;
+        }
+
+        .page2 .by:nth-child(3) {
+            width: 10rem;
+            height: 10rem;
+            margin-left: -5rem;
+            margin-top: -5rem;
+        }
+
+        #fixed-y {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 4.8rem;
+            height: 4.8rem;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 99999;
+            transition: opacity .1s linear;
+        }
+
+        #fixed-y>img {
+            width: 4.8rem;
+            height: 4.8rem;
+        }
+
+        .video {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 4.8rem;
+            height: 4.8rem;
+            border-radius: 50%;
+            overflow: hidden;
+            text-align: center;
+            line-height: 4.8rem;
+        }
+
+        .video video {
+            width: 8.5rem;
+        }
+
+        /* 第三页 */
+        .page3 .row {
+            margin-top: 20%;
+        }
+
+        .page3 .row .img {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-align: center;
+        }
+
+        .page3 .row .img img {
+            width: 100%;
+            transition: all .3s linear;
+        }
+
+        .page3 .row .img .mk {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 1;
+        }
+
+        .page3 .row .col-sm-4 .img:hover .mk {
+            opacity: 0;
+        }
+
+        .page3 .row .col-sm-4:hover img {
+            transform: scale(1.1);
+        }
+
+        .page3 .row .col-sm-4:hover .text>span:nth-child(2) {
+            color: red;
+        }
+
+        @media (max-width:768px) {
+            .page3 .row .img {
+                width: 60%;
+                margin: 0 auto;
+            }
+        }
+
+        .page3 .text {
+            display: flex;
+            width: 80%;
+            margin: 28px auto 25px;
+            margin-bottom: 20%;
+            position: relative;
+            justify-content: space-between;
+        }
+
+        .page3 .text::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 10%;
+            height: 2px;
+            background: #aaa;
+            top: 25px;
+            left: 0;
+        }
+
+        .page3 .text::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 10%;
+            height: 2px;
+            background: #aaa;
+            top: 25px;
+            right: 0;
+        }
+
+        .page3 .text span:nth-child(1) {
+            font-size: 50px;
+            color: #aaa;
+            height: 50px;
+            line-height: 50px;
+            margin-left: 20px;
+            position: absolute;
+            left: 20%;
+            top: 0;
+        }
+
+        .page3 .text span:nth-child(2) {
+            position: absolute;
+            left: 46%;
+            font-weight: 700;
+        }
+
+        .page3 .text span:nth-child(3) {
+            padding-left: 47%;
+            display: block;
+            padding-top: 8%;
+        }
+
+        .page3 p {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border-radius: 50%;
+            border: 1px solid red;
+        }
+
+        .jdh p {
+            animation: go 3s linear forwards;
+        }
+
+        @keyframes go {
+            10% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+
+            20% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            30% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        .page3 p:nth-child(1) {
+            margin-left: -6rem;
+            margin-top: -6rem;
+            width: 12rem;
+            height: 12rem;
+        }
+
+        .page3 p:nth-child(2) {
+            margin-left: -5rem;
+            margin-top: -5rem;
+            width: 10rem;
+            height: 10rem;
+        }
+
+        .page3 p:nth-child(3) {
+            margin-left: -4rem;
+            margin-top: -4rem;
+            width: 8rem;
+            height: 8rem;
+        }
+
+        .next {
+            width: 0.3rem;
+            height: 0.4rem;
+            position: absolute;
+            bottom: .5rem;
+            left: 50%;
+            margin-left: -0.13rem;
+            z-index: 99999999999;
+            background: url(https://www.haidilao.com/zh/uiFramework/commonResource/image/2019072517302390281.png) center center;
+            background-size: cover;
+            animation: move 1s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(0, 3rem);
+            }
+
+            100% {
+                transform: translate(0, 0rem);
+            }
+        }
+
+        /*第四页*/
+        .page4 .inner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .page4 .innerx{
+            animation: ly .5s linear 1s both;
+        }
+
+        .page4 .inner p {
+            width: 5rem;
+            height: 5rem;
+            margin-left: -2.5rem;
+            margin-top: -2.5rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border: 1px solid red;
+            border-radius: 50%;
+            transition: all 1s ease-out;
+        }
+
+        .page4 .innerx p {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border: 1px solid red;
+            border-radius: 50%;
+        }
+
+        .page4 .innerx p:nth-child(1) {
+            width: 18rem;
+            height: 18rem;
+            margin-left: -9rem;
+            margin-top: -9rem;
+        }
+
+        .page4 .innerx p:nth-child(2) {
+            width: 14rem;
+            height: 14rem;
+            margin-left: -7rem;
+            margin-top: -7rem;
+        }
+
+        .page4 .innerx p:nth-child(3) {
+            width: 8rem;
+            height: 8rem;
+            margin-left: -4rem;
+            margin-top: -4rem;
+        }
+
+        .page4 .inner p:nth-child(4) {
+            transition: none;
+            text-align: center;
+            border: 0;
+            width: 5rem;
+            height: 5rem;
+            margin-left: -2.5rem;
+            margin-top: -2.5rem;
+        }
+
+        .page4 .inner p:nth-child(4) img {
+            width: 100%;
+        }
+
+        .page4 .hdf {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 50%;
+            margin-top: 20%;
+            text-align: center;
+        }
+        .page4 .sd{
+            animation: tm .5s linear 1s both;
+        }
+        @keyframes tm{
+            0% {
+                left: 50%;
+            }
+
+            100% {
+                left: 30%;
+            }
+        }
+        @keyframes ly {
+            0% {
+                left: 50%;
+                opacity: 1;
+            }
+
+            100% {
+                left: 30%;
+                opacity: 0.5;
+            }
+        }
+
+        .page4 .hdf .swiper-slide>span {
+            font-size: 0.2rem;
+            font-weight: 300;
+            color: #000;
+        }
+
+        .page4 .hdf .ys span {
+            color: red;
+        }
+
+        .swiper-button-prev {
+            width: 36px;
+            height: 36px;
+
+            background: url(https://www.haidilao.com/zh/template/page/hdl_index_v2/c_Left.png);
+            background-size: cover;
+            position: absolute;
+            left: -36px;
+            top: 60%;
+        }
+
+        .swiper-button-prev:hover {
+            background: url(https://www.haidilao.com/zh/template/page/hdl_index_v2/c_Left_hov.png);
+        }
+
+        .swiper-button-prev::after {
+            content: ''
+        }
+
+        .swiper-button-next {
+            width: 36px;
+            height: 36px;
+            background: url(https://www.haidilao.com/zh/template/page/hdl_index_v2/c_Right.png);
+            background-size: cover;
+            position: absolute;
+            right: -36px;
+            top: 60%;
+        }
+
+        .swiper-button-next:hover {
+            background: url(https://www.haidilao.com/zh/template/page/hdl_index_v2/c_Right_hov.png);
+        }
+
+        .swiper-button-next::after {
+            content: ''
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#">
+                        <img style="display:none" src="https://www.haidilao.com/english/2019/07/2019071713424793214.png"
+                            alt="" id="lg">
+                    </a>
+                    <ul class="logo">
+                        <li><img src="https://www.haidilao.com/zh/uiFramework/commonResource/image/2019071116400286284.png"
+                                alt=""></li>
+                        <li><img src="https://www.haidilao.com/zh/uiFramework/commonResource/image/2019073114170364631.png"
+                                alt=""></li>
+                        <li>中国</li>
+                        <li>|</li>
+                        <li>En</li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="example-navbar-collapse" container>
+                    <ul class="nav navbar-nav">
+                        <li class="col-lg-2"><a href="#">关于海底捞</a></li>
+                        <li class="col-lg-2"><a href="#">海底捞美食</a></li>
+                        <li class="col-lg-2"><a href="#">服务中心</a></li>
+                        <li id="logo2" class="col-lg-0"><a class="img" href="#"><img
+                                    src="https://www.haidilao.com/english/2019/07/2019071713424793214.png" alt=""></a>
+                        </li>
+                        <li class="col-lg-2"><a href="#">投资者关系</a></li>
+                        <li class="col-lg-2"><a href="#">加入海底捞</a></li>
+                        <li class="col-lg-2"><a href="#">海底捞会员</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="outer">
+        <div class="swiper-container swiper-container-y">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide page1">
+                    <div class="swiper-container swiper-container-x">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" id="p1">
+                                <p class="by ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                                    swiper-animate-delay="1s"></p>
+                                <p class="by ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                                    swiper-animate-delay="0.7s"></p>
+                                <p class="by ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                                    swiper-animate-delay="0.4s"></p>
+                                <div class="lxt"></div>
+                                <img src="img/海底捞.svg" alt="" class="ani" swiper-animate-effect="fadeIn"
+                                    swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">
+                                <div class="xiami">
+                                    <img src="https://www.haidilao.com/zh/template/page/hdl_index_v2/second_zi_s.png?timestamp=1568786611927"
+                                        alt="" class="ani" swiper-animate-effect="fadeInLeft"
+                                        swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+                                    <img src="https://www.haidilao.com/zh/template/page/hdl_index_v2/second_zi_b.png?timestamp=1568786611927"
+                                        alt="" class="ani" swiper-animate-effect="fadeInDown"
+                                        swiper-animate-duration="0.5s" swiper-animate-delay="1s">
+                                    <img src="https://www.haidilao.com/zh/template/page/hdl_index_v2/second_pic.png?timestamp=1568786611927"
+                                        alt="" class="ani" swiper-animate-effect="fadeInRight"
+                                        swiper-animate-duration="0.5s" swiper-animate-delay="1.5s">
+                                    <img src="https://www.haidilao.com/zh/uiFramework/commonResource/image/2019080711474391992.png"
+                                        alt="" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                                        swiper-animate-delay="1.5s">
+                                </div>
+                            </div>
+                            <div class="swiper-slide" id="p2">
+                                <p class="by ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                                    swiper-animate-delay="1s"></p>
+                                <p class="by ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                                    swiper-animate-delay="0.7s"></p>
+                                <p class="by ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                                    swiper-animate-delay="0.4s"></p>
+                                <p>
+                                    <img src="img/海底捞2.svg" alt="">
+                                </p>
+
+                                <div class="huoguo">
+                                    <img src="https://www.haidilao.com/zh/uiFramework/commonResource/image/2019080814332448624.png"
+                                        alt="" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                                        swiper-animate-delay="1s">
+                                    <img src="https://www.haidilao.com/zh/uiFramework/commonResource/image/2019082609522435376.png"
+                                        alt="" class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s"
+                                        swiper-animate-delay="1.3s">
+                                    <img src="https://www.haidilao.com/zh/uiFramework/commonResource/image/2019080814333243997.png"
+                                        alt="" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                                        swiper-animate-delay="1.6s">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination swiper-pagination-x"></div>
+                    </div>
+                    <div class="next"></div>
+                </div>
+                <div class="swiper-slide page2">
+                    <p class="by ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s"
+                        swiper-animate-delay="0.8s"></p>
+                    <p class="by ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s"
+                        swiper-animate-delay="0.6s"></p>
+                    <p class="by ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s"
+                        swiper-animate-delay="0.4s"></p>
+                    <div class="video">
+                        <video src="https://www.haidilao.com/zh/uiFramework/commonResource/zip/about_video/small.mp4"
+                            autoplay muted loop></video>
+                    </div>
+                    <div class="next"></div>
+                </div>
+                <div class="swiper-slide page3">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s"
+                                swiper-animate-delay="0.3s">
+                                <div class="img">
+                                    <img src="https://www.haidilao.com/english/2019/07/2019072015265178966.png" alt="">
+                                    <img src="https://www.haidilao.com/eportal/fileDir/english/template/page/hdl_index_v2/pp_gray.png"
+                                        alt="" class="mk">
+                                </div>
+                                <div class="text">
+                                    <span>B</span>
+                                    <span>海底捞品牌</span>
+                                    <span>rand</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s"
+                                swiper-animate-delay="0.6s">
+                                <div class="img">
+                                    <img src="https://www.haidilao.com/english/2019/07/2019072015265166050.png" alt="">
+                                    <img src="https://www.haidilao.com/eportal/fileDir/english/template/page/hdl_index_v2/pp_gray.png"
+                                        alt="" class="mk">
+                                </div>
+                                <div class="text">
+                                    <span>B</span>
+                                    <span>海底捞品牌</span>
+                                    <span>rand</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s"
+                                swiper-animate-delay="0.9s">
+                                <div class="img">
+                                    <img src="https://www.haidilao.com/english/2019/07/2019072015265150392.png" alt="">
+                                    <img src="https://www.haidilao.com/eportal/fileDir/english/template/page/hdl_index_v2/pp_gray.png"
+                                        alt="" class="mk">
+                                </div>
+                                <div class="text">
+                                    <span>B</span>
+                                    <span>海底捞品牌</span>
+                                    <span>rand</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="next"></div>
+                </div>
+                <div class="swiper-slide page4">
+                    <div class="inner">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p><img src="https://www.haidilao.com/zh/template/page/hdl_index_v2/hiQ_bg2.png?timestamp=1575551404188"
+                                alt="" id="lj"></p>
+                    </div>
+                    <div class="hdf">
+                        <div class="swiper-container swiper-container-z">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide ys"><span>中国</span></div>
+                                <div class="swiper-slide"><span>新加坡</span></div>
+                                <div class="swiper-slide"><span>美国</span></div>
+                                <div class="swiper-slide"><span>韩国</span></div>
+                                <div class="swiper-slide"><span>日本</span></div>
+                                <div class="swiper-slide"><span>加拿大</span></div>
+                                <div class="swiper-slide"><span>澳大利亚</span></div>
+                                <div class="swiper-slide"><span>马来西亚</span></div>
+                                <div class="swiper-slide"><span>越南</span></div>
+                                <div class="swiper-slide"><span>英国</span></div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination swiper-pagination-y"></div>
+        </div>
+    </div>
+    <div id="fixed-y">
+        <img src="img/海底捞red.svg" alt="">
+    </div>
+</body>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/swiper.animate1.0.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    window.onload = function () {
+        var swiper = new Swiper('.swiper-container-y', {
+            initialSlide: 0, //默认slide索引
+            direction: 'vertical', //设置滑动方向 vertical垂直滑动 默认水平滑动
+            mousewheel: true, //鼠标滚轮控制
+            grabCursor: true, //抓手
+            pagination: { //分页
+                el: '.swiper-pagination-y',
+                bulletActiveClass: 'my-bullet-active-y',
+                clickable: true
+            },
+            watchSlidesProgress: true,
+            on: { //注册事件
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                },
+                slideChangeTransitionStart: function () {
+                    if (this.slides[1].progress == 0) {
+                        $('#fixed-y').css('opacity', '1');
+                    } else {
+                        $('#fixed-y').css('opacity', '0');
+                    }
+                    if (this.slides[2].progress == 0) {
+                        $('.page3').addClass('jdh');
+                        $('.page3 p').css('display', 'block');
+                        $('#fixed-y').css('display', 'none');
+                    } else {
+                        $('.page3').removeClass('jdh');
+                        $('.page3 p').css('display', 'none');
+                        $('#fixed-y').css('display', 'block');
+                    }
+                    if (this.slides[3].progress == 0) {
+                        $('.page4 .hdf').addClass('sd');
+                        $('.page4 .inner').addClass('innerx');
+                    } else {
+                        $('.page4 .inner').removeClass('innerx');
+                        $('.page4 .hdf').removeClass('sd');
+                    }
+                
+                }
+            }
+        });
+        var swiper2 = new Swiper('.swiper-container-x', {
+            grabCursor: true, //抓手
+            effect: 'fade',
+            pagination: {
+                el: '.swiper-pagination-x',
+                bulletActiveClass: 'my-bullet-active-x',
+                clickable: true,
+            },
+            autoplay: true,
+            loop: true,
+            on: { //注册事件
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                }
+            }
+        });
+        var swiperz = new Swiper('.swiper-container-z', {
+            grabCursor: true,
+            slidesPerView: 8,
+            // slideToClickedSlide:true,
+            on: {
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                }
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }
+        })
+        $('.page4 .swiper-slide').on('click', function () {
+            $(this).addClass('ys').siblings('.swiper-slide').removeClass('ys');
+        })
+        $('.next').on('click', function () {
+            swiper.slideNext(400, false);
+        })
+    }
+</script>
+
+</html>

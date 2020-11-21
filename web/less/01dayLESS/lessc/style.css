@@ -1,0 +1,10 @@
+div {
+  background: red;
+  font-size: 20px;
+}
+div:hover span {
+  color: yellow;
+}
+div span {
+  color: blue;
+}

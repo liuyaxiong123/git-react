@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set数据结构</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //特点：元素是不能重复的
+    // let st = new Set([1,323,4541,1,1,1,64,621,64,6,9]);
+    // console.log(st);//Set(5) {Set(7) {1, 323, 4541, 64, 621, …}}
+
+    //数组去重:
+    var arr=[1,45,6,744,7,7,1,55];
+    var quchong=Array.from([...new Set(arr)]);
+    console.log(quchong);
+    //-------------------
+    // let st = new Set('abcaaaaaaaaaaabbbbbbbbbbbb');
+    // console.log(st);//Set(3) {"a", "b", "c"}
+    // console.log(st.size);//获取对象内容的长度
+
+    //字符串去重：
+    // let str = 'abcaaabbbcccdddfff';
+    // let quchongstr=[...new Set(str)].join('');
+    // console.log(quchongstr);//abcdf
+    //-------------
+    // let st = new Set('abcaaaabbbccddd');
+
+    //add 添加一个内容
+    // st.add('haha');
+    //delete 删除一项内容
+    // st.delete('b');
+    //has判断是否存在某个元素 返回bool
+    //clear 清除所有的
+    // st.clear();
+    //keys 获取所有的值
+    //forEach 循环取值
+    // console.log(st.keys());
+    // st.forEach(function(item){
+    //     console.log(item);
+    // })
+    //----
+    //不能用for...in循环Set
+    // for(j in st){
+    //     console.log(j);
+    // }
+    //可以使用for...of 循环
+    // for(let i of st){
+    //     console.log(i);
+    // }
+    // console.log(st);
+    //通过Array.from()将Set转换为数组
+    // let arr=Array.from(st);
+    // console.log(arr);
+</script>
+</html>

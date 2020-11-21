@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>jQuery事件</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button>移除</button>
+    <div id="box"></div>
+    <input type="text">
+</body>
+<script>
+    $(function () {
+        //绑定事件：on   移除事件：off
+        $('#box').on('click', function () {
+            console.log('笑脸');
+        });
+        $('#box').on('click', b);
+        function b() {
+            console.log('哭脸');
+        }
+        $('#box').on({
+            mouseover: function () {
+                console.log('移上来了');
+            },
+            mouseout: function () {
+                console.log('移出去了');
+            }
+        })
+
+        //移除事件
+        $('button').click(function () {
+            // $('#box').off();//移除所有的事件
+            // $('#box').off('mouseover');//移除指定的事件
+            $('#box').off('click', b);//移除指定事件及指定函数
+        })
+
+        //绑定事件所绑定是原生js事件*/
+        $('input').on('input', function () {
+            console.log($(this).val());
+        });
+        
+    })
+</script>
+
+</html>

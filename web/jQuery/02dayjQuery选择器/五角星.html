@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>五角星</title>
+    <link rel="stylesheet" href="font/iconfont.css">
+    <style>
+        *{margin: 0;padding: 0;}
+        li{
+            list-style: none;
+            float:left;
+            cursor:pointer;
+        }
+        .box{
+            height: 50px;
+            width: 273px;
+        }
+        .icon{
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        <ul>
+            <li class="iconfont icon">&#xe783;</li>
+            <li class="iconfont icon">&#xe783;</li>
+            <li class="iconfont icon">&#xe783;</li>
+            <li class="iconfont icon">&#xe783;</li>
+            <li class="iconfont icon">&#xe783;</li>
+        </ul>
+    </div> -->
+</body>
+<script>
+    function dxx(x){
+        this.length=x;
+        this.init();
+    }
+    dxx.prototype.init=function(){
+        this.box=document.createElement('div');
+        this.box.className='box';
+        this.ul=document.createElement('ul');
+        for(var i=0;i<this.length;i++){
+            this.lis=document.createElement('li');
+            this.lis.innerHTML='&#xe783;';
+            this.lis.className='iconfont icon';
+            this.ul.appendChild(this.lis);
+        }
+        this.box.appendChild(this.ul);
+        document.body.appendChild(this.box);
+        this.Enter();
+    }
+    dxx.prototype.Enter=function(){
+        var that=this;
+        var lis=document.querySelectorAll('li');
+        for(var i=0;i<lis.length;i++){
+            (function(j){
+                lis[j].onmouseenter=function(){
+                    lis[j].style.color='red';
+                    for(var z=j;z>0;z--){
+                        lis[z-1].style.color='red';
+                    }
+                    for(var x=j;x<that.length-1;x++){
+                        lis[x+1].style.color='';
+                    }
+                }
+            })(i)
+        }
+        this.Leave(lis);
+    }
+    dxx.prototype.Leave=function(obj){
+        var box=document.querySelector('.box');
+        box.onmouseleave=function(){
+            for(var n=0;n<obj.length;n++){
+                obj[n].style.color='';
+            }
+        }
+    }
+    new dxx(5);
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>旋转缩放</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #canvas{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+</body>
+<script>
+    var canvas=document.querySelector('#canvas');
+    var ctx=canvas.getContext('2d');
+    var num=0;
+    var sf=1;
+    var speed;
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.beginPath();
+        ctx.save();
+        if(sf>=2){
+            speed=-0.1;
+        }
+        if(sf<=1){
+            speed=0.1;
+        }
+        sf+=speed;
+        num++;
+        if(num>=360){
+            num=0;
+        }    
+        ctx.translate(200, 200); //重新映射画布位置
+        ctx.rotate(Math.PI / 180 * num);
+        ctx.scale(sf,sf);//缩放
+        ctx.fillStyle='#0f0';
+        ctx.fillRect(-100,-100,200,200);
+        ctx.restore();
+        ctx.closePath();
+    },30)
+</script>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>video标签</title>
+</head>
+<body>
+    <!-- 
+        autoplay:视频准备就绪后，自动播放，需要添加muted 
+        controls:添加控件
+        loop：循环播放
+        muted：静音
+        poster:视频未播放之前显示的图像
+        preload：预加载
+    -->
+
+
+    <video controls id="video">
+        <source src="image/video.mp4"/>
+        <!-- <source src="image/apple.ogg"/> -->
+        您的浏览器版本太低了，不支持video视频播放，请更换高版本浏览器
+    </video>
+    <input type="button" value="播放" id="btn">
+    <!-- <audio src=""></audio> -->
+</body>
+<script>
+    var video=document.querySelector('#video');
+
+    video.load();//让视频进行加载
+    btn.onclick=function(){
+        // console.log(video.paused);//检测是否处在暂停状态 返回boolean值  只读属性
+        // if(video.paused){
+        //     video.play();//控制视频播放
+        //     this.value='暂停';
+        // }else{
+        //     video.pause()//控制视频暂停
+        //     this.value='播放';
+        // }
+        //-----------------------------
+        //console.log(video.playbackRate);//当前播放的速度
+        // video.playbackRate=0.5;//设置播放速度
+        //-------------------------
+        //console.log(video.ended);//视频是否播放完毕返回boolean值  只读属性
+        //----------------------------------------
+        //video.currentTime+=5;
+        //-------------------------------
+        //video.webkitRequestFullScreen();//让视频全屏的方法
+        //video.mozRequestFullScreen();//让视频全屏的方法
+        //------------------------------
+        console.log(video.canPlayType('video/webm; codecs="vp8.0, vorbis"'));
+
+    }
+    //-------------------------------------------------
+    //canplay:视频可以播放时触发，每下载一段触发一次，会触发很多次
+
+    /*video.addEventListener('canplay',function(){
+        console.log('可以播放了');
+    },false)*/
+
+    //canplaythrough:视频可以播放时触发，每下载一段触发一次，会触发很多次
+    /*video.addEventListener('canplaythrough',function(){
+        console.log('可以播放了');
+    },false)*/
+
+    //ended:视频播放结束时触发
+    /*video.addEventListener('ended',function(){
+        console.log('视频播放结束');
+    },false)*/
+
+    //pause:视频是否暂停
+    /*video.addEventListener('pause',function(){
+        console.log('视频暂停了');
+    },false)*/
+
+    //play：视频开始播放触发
+    /*video.addEventListener('play',function(){
+        console.log('视频播放了');
+    },false)*/
+
+    //volumechange：音量改变时触发
+    /*video.addEventListener('volumechange',function(){
+        // video.volume:获取声音大小(值介于0-1之间)
+        console.log('音量改变了',video.volume);
+    },false)*/
+
+    //timeupdate:播放时间改变时触发
+    /*video.addEventListener('timeupdate',function(){
+        //video.duration:视频总时长
+        //video.currentTime:当前播放时间
+        console.log('播放时间改变了',video.duration,video.currentTime);
+    },false)*/
+
+    //error:视频播放出错时触发
+    video.addEventListener('error',function(){
+        console.log('视频加载失败');
+    },false)
+</script>
+</html>

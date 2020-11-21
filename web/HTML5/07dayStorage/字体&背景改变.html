@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字体&背景改变</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            text-align: center;
+        }
+
+        .section {
+            height: 97vh;
+            color: #fff;
+            font-size: 16px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <button class="jc">加粗</button>
+        <button class="bx">变细</button>
+        <input type="color" class="color">
+        <div id="ziti"></div>
+        <div class="section">
+            德玛西亚 永世长存！
+        </div>
+    </div>
+</body>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        var fs = 16;
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            var val = localStorage.getItem(key);
+            if (key == 'color') {
+                $('.section').css('background-color', val);
+                $('.color').val(val);
+            } else if (key == '速度') {
+                $('.section').css('font-size', val);
+                $('#ziti').html(val);
+            }
+        }
+        $('.color').on('input', function () {
+            localStorage.setItem('color', $(this).val());
+            $('.section').css('background-color', $(this).val());
+        })
+        $('.jc').click(function () {
+            localStorage.setItem('速度', fs + 'px');
+            $('.section').css('font-size', fs + 'px');
+            $('#ziti').html(fs + 'px');
+            fs++;
+        })
+        $('.bx').click(function () {
+            localStorage.setItem('速度', fs + 'px');
+            $('.section').css('font-size', fs + 'px');
+            $('#ziti').html(fs + 'px');
+            fs--;
+        })
+    })
+</script>
+
+</html>

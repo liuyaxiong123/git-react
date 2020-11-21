@@ -1,0 +1,30 @@
+jQuery:简介
+原生javaScript封装的类库，里面提供了大量的现成的获取元素的方法，动画方法，操作DOM方法，绑定事件方法，ajax方法等……
+
+全称：JavaScript query
+
+一.语法：
+$代表的是jQuery
+$===jQuery  它俩是一个东西
+二.获取标签 绑定事件 调用方法
+$('选择器'): 例如：$('#box')
+
+绑定事件：
+$('#box').click()
+当DOM加载完毕后触发
+$(document).reday(function(){
+
+})
+简写：
+$(function(){
+
+})
+调用方法：
+$('#box').css('color','red')
+设置单条样式，支持链式调用
+$('#box').css({
+    'width':'200px',
+    'height':'300px,
+
+})
+设置多条样式

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="outer">
+        <p>aa</p>
+        <p>bb</p>
+    </div>
+</body>
+<script src="js/zepto.min.js"></script>
+<script>
+    // 支持选择器：
+    // 包含css2和css3当中所有的选择器，底层$()选择器使用querySelectorAll，只要是他支持的选择器，zepto都支持
+    // $('p').css({
+    //     'background':'blue'
+    // });
+    // $('p:nth-child(1)').css({
+    //     'background':'red'
+    // });
+    // $('p:last-child').css({
+    //     'background':'blue'
+    // });
+    // $('p:nth-of-type(1)').css({
+    //     'background':'yellow'
+    // })
+    // $('p').eq(1).css({
+    //     'color':'red'
+    // })
+    // $('div[class]').css({
+    //     'background':'yellow'
+    // })
+     
+    /*不支持jq中自创的选择器*/
+    $('p:eq(1)').css({
+        'color':'yellow'
+    })
+    $('p:odd')
+    $('p:even')
+    $('p:first')
+    $('p:lt(2)')
+</script>
+</html>

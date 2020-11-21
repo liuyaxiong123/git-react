@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>空中的球</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        html,body{
+            height: 100%;
+            overflow: hidden;
+        }
+        .unit{
+            width: 100%;
+            height: 100%;
+            position:relative;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            /* perspective: 3000px; */
+        }
+        .unit .grid{
+            width: 60px;height: 40px;
+            background: yellowgreen;
+            position:absolute;
+            opacity: 0.5;
+            left: 50%;
+            top:50%;
+            margin-left:-30px;
+            margin-top:-20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="unit">
+        <!-- <div class="grid"></div> -->
+    </div>
+</body>
+<script>
+    $(function(){
+        //每一层需要的div的元素的数量
+        var arr=[26,24,22,20,18,16,14,12,10,8,6,4,1];
+        for(var i=0;i<arr.length;i++){
+            //设置上半球 0 1 2 3 4 5
+            set(i,arr[i]);
+            // if(i==0) continue;    
+            //设置下半球-1 -2 -3 -4 -5
+            set(-i,arr[i]);
+        }
+        //创建grid  floor:代表当前创建哪一层 amount:这一层需要创建多少个div
+        function set(floor,amount){
+            for(var j=0;j<amount;j++){
+                var r=Math.floor(Math.random()*256);
+                var g=Math.floor(Math.random()*256);
+                var b=Math.floor(Math.random()*256);
+                $('<div class="grid"></div>').css({
+                    'background':'rgb('+r+','+g+','+b+')',
+                    'transform':'rotateY('+(360/amount*j)+'deg)  rotateX('+floor*18+'deg) translateZ(300px)'
+                }).appendTo($('.unit'));
+            }
+        }
+        $(document).mousemove(function(ev){
+            $('.unit').css({
+                'transform':'rotateX('+ev.clientX+'deg) rotateY('+ev.clientY+'deg)',
+                // 'perspective':ev.clientX+'px'
+            })
+        })
+    });
+</script>
+</html>

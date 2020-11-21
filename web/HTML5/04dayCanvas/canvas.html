@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #canvas{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        默认：300*150 
+        注意：画布的宽度和高度一定要添加在属性身上 不能设置在样式表里
+    -->
+    <canvas width="800" height="600" id="canvas">
+        您的浏览器不支持画布，请更换高版本浏览器
+    </canvas>
+</body>
+<script>
+    var canvas=document.querySelector('#canvas');
+    var context=canvas.getContext('2d');//制定绘制环境
+
+    //绘制一条线：
+    context.beginPath();//开始一个路径
+    context.moveTo(10,10);//开始画图的起点位置
+    context.lineTo(110,10);//开始画线
+    context.lineCap='round';//设置线帽(butt round square)
+    context.strokeStyle='#00f';//设置绘制颜色
+    context.lineWidth=8;//设置绘制线的宽度
+    context.stroke();//开始绘制
+    context.closePath();//结束路径
+
+    //绘制一个矩形
+    // context.beginPath();
+    // context.moveTo(120,10);
+    // context.lineTo(220,10);
+    // context.lineTo(220,110);
+    // context.lineTo(120,110);
+    // context.lineTo(120,10);
+    // context.strokeStyle='#f00';
+    // context.lineWidth=4;
+    // context.stroke();
+    // context.closePath();
+    //-----------------------------
+
+    //绘制矩形的简便方式：
+    /*第一种*/
+    // context.beginPath();
+    // context.rect(10,10,100,100);//直接绘制矩形路径 rect(x,y,width,height);
+    // context.lineWidth=8;
+    // context.fillStyle='#f00';//设置填充颜色
+    // context.fill();//用来填充  默认black
+    // context.stroke();
+    // context.closePath();
+    /*第二种*/
+    // context.beginPath();
+    // context.lineWidth=8;
+    // context.strokeRect(100,100,200,200);//绘制描边矩形 strokeRect(x,y,width,height) 
+    // context.fillStyle='red';
+    // context.fillRect(0,0,100,100);//绘制填充矩形 fillRect(x,y,width,height)
+    // context.closePath();
+    //---------------------
+
+    //绘制圆:
+    // console.log(Math.PI);//圆周率，弧度值(180度)
+    // context.beginPath();
+    // context.arc(300,200,50,0,2*Math.PI,false);//绘制圆的路径 arc(圆心x坐标点，圆心y坐标点，半径，起始角度，终点角度，boolean顺时针false或逆时针true)
+    // context.strokeStyle='#f00';
+    // context.fill();
+    // context.stroke();
+    // context.closePath();
+    //顺时针半圆
+    // context.beginPath();
+    // context.arc(300,200,50,0,Math.PI,false);//绘制圆的路径 arc(圆心x坐标点，圆心y坐标点，半径，起始角度，终点角度，boolean顺时针false或逆时针true)
+    // context.strokeStyle='#f00';
+    // context.fill();
+    // context.stroke();
+    // context.closePath();
+    //逆时针半圆
+    // context.beginPath();
+    // context.arc(300,200,50,0,Math.PI,true);//绘制圆的路径 arc(圆心x坐标点，圆心y坐标点，半径，起始角度，终点角度，boolean顺时针false或逆时针true)
+    // context.strokeStyle='#f00';
+    // context.fill();
+    // context.stroke();
+    // context.closePath();
+    //90度圆 从90度开始画
+    // context.beginPath();
+    // context.arc(300,200,50,Math.PI/2,Math.PI,false);//绘制圆的路径 arc(圆心x坐标点，圆心y坐标点，半径，起始角度，终点角度，boolean顺时针false或逆时针true)
+    // context.strokeStyle='#f00';
+    // context.fill();
+    // context.stroke();
+    // context.closePath();
+
+    //--------------------------------
+    //绘制文字：
+    // context.font='italic 700 36px "楷体"';
+    // context.fillStyle='blue';
+    // context.fillText('hello canvas ',20,100,500);//绘制填充文字 fillText(绘制文字,x坐标点，y坐标点,文字最大宽度(可选))
+    // context.strokeStyle='red';
+    // context.strokeText('你好hello canvas',20,200);//绘制描边文字 strokeText(绘制文字,x坐标点，y坐标点,文字最大宽度(可选))
+
+    //绘制椭圆：
+    // context.ellipse(150,150,50,80,Math.PI/2,0,2*Math.PI,false);//绘制椭圆 ellipse(圆心x坐标，圆心y坐标，圆的x半径，圆的y半径，旋转角度，起始角度，结束角度，boolean);
+    // context.strokeStyle='#00f';
+    // context.fill();
+    // context.stroke();
+
+    //清除画布：
+    // context.clearRect(100,100,100,100);//清除画布 clearRect(起点x坐标，起点y坐标，width，height)
+</script>
+</html>

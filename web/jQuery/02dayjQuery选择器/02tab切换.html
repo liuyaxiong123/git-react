@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>tab切换</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        #box div{
+            width: 200px;height: 200px;
+            border: 1px solid #000;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="按钮1" style="background:yellow">
+        <input type="button" value="按钮2">
+        <input type="button" value="按钮3">
+        <div style="display: block">aaa</div>
+        <div>bbb</div>
+        <div>ccc</div>
+    </div>
+</body>
+<script>
+    $(function(){
+        $(':button').click(function(){
+            console.log($(this).index());
+            console.log($(':button').index(this));
+            var ind=$(this).index();
+            $(this).css('background','yellow').siblings('input').css('background','');
+            $('#box>div').css('display','none').eq(ind).css('display','block');
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>事件对象</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="box">内容</div>
+</body>
+<script>
+    //转换：
+    //将原生DOM元素转换为jq对象
+    var div=document.getElementsByTagName('div')[0];
+    $(div).css('color','red');
+    //将jq对象转化为原生dom元素
+    console.log($('#box').get(0));
+    $('#box').get(0).style.background='blue';
+    //------------------------
+    //事件对象
+    //传递数据格式:对象，number,boolean,string
+    $('#box').click('abc',function(ev){
+        console.log(ev.data);
+        // console.log(ev.target);
+        // $(ev.target).css('background','red');
+        ev.stopPropagation();//阻止事件冒泡
+    })
+    $(document).click(function(){
+        console.log('document');
+    })
+    //传递数据格式:对象，number,boolean 不能传string
+    $('#box').on('contextmenu',[1,2,3],function(ev){
+        console.log(ev.data);
+        ev.preventDefault();//阻止事件默认行为
+    })
+</script>
+</html>

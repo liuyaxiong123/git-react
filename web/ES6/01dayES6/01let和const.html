@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let和const</title>
+</head>
+<body>
+    <input type="button">
+    <input type="button">
+    <input type="button">
+</body>
+<script>
+    // {
+    //     var a=10;
+    // }
+    // console.log(a);//10
+
+    // {
+    //     let a=10;
+    // }
+    // //报错
+    // console.log(a);
+
+    // if(true){
+    //     let a=10;
+    // }
+    // //报错
+    // console.log(a);
+    //举例子：tab
+    // var btns=document.getElementsByTagName('input');
+    // for(let i=0;i<btns.length;i++){
+    //     btns[i].onclick=function(){
+    //         console.log(i);
+    //     }
+    // }
+    // console.log(i);//报错访问不到
+    //--------------------------------
+    //let 不能重复声明
+    // let path='/ect/xxx';
+    // path='aaa';
+    // console.log(path);//aaa
+
+    // let path='bbb';
+    // console.log(path);//Identifier 'path' has already been declared(path已经被定义过了)
+    //------------------
+
+
+    //总结let:具备块级作用域，不能重复声明，可以修改
+    //-----------
+    //const常量
+    // {
+    //     const PI=3.1415926;
+    // }
+    // console.log(PI);//报错
+
+    // const PI=3.1415926
+    // PI=2;//报错
+    // const PI=2;//报错
+    //总结const：
+    // 具备块级作用域，不能重复声明，不能修改
+
+    
+</script>
+</html>

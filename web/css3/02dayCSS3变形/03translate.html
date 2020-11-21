@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background: #f00;
+            margin-left:200px;
+            /*translate(x轴 y轴) 2d位移*/
+            /* transform:translate(100px,20px); */
+            /* transform:translate3d(50px,50px,200px);transform:translate3d(x轴，y轴，z轴); */
+            transform: translateX(50px) translateY(50px) translateZ(200px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+</body>
+<script>
+    console.log(box.offsetLeft);//0  注意：位移的不会被计算到offset里边
+
+</script>
+</html>

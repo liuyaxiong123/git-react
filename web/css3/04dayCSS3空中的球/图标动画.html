@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>图标</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .outer {
+            width: 900px;
+            height: 400px;
+            background: #000;
+            margin: 200px auto;
+        }
+
+        .outer div {
+            width: 300px;
+            height: 400px;
+            position: relative;
+        }
+
+        .outer .inner .img1 {
+            width: 100px;
+            height: 100px;
+            margin-left: 96px;
+            margin-top: 96px;
+            position: relative;
+            transition: all .5s linear;
+        }
+        .outer .inner .img1:hover {
+            transform: rotate(360deg) scale(2);
+        }
+        .outer .main {
+            width: 200px;
+            height: 50px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 2px solid #fff;
+            position: absolute;
+            left: 50px;
+            bottom: 20px;
+            color: yellowgreen;
+            transition: all 2s linear;
+        }
+        .inner{
+            float:left;
+        }
+        .main p img {
+            width: 30px;
+            height: 20px;
+            position: absolute;
+            left: 150px;
+            top: 13px;
+            transition: left .2s linear;
+        }
+
+        .main:hover p img {
+            left: 160px;
+        }
+
+        .main div {
+            transition: all .2s linear;
+            background: transparent;
+        }
+
+        .main div:nth-child(1) {
+            width: 199px;
+            height: 2px;
+            position: absolute;
+            left: -203px;
+            top: -1px;
+        }
+
+        .main:hover div:nth-child(1) {
+            left: -1px;
+            top: -2px;
+            background: red;
+        }
+
+        .main div:nth-child(3) {
+            width: 2px;
+            height: 50px;
+            position: absolute;
+            left: -2px;
+            top: -50px;
+        }
+
+        .main:hover div:nth-child(3) {
+            top: -2px;
+            background: red;
+        }
+
+        .main div:nth-child(2) {
+            width: 198px;
+            height: 2px;
+            position: absolute;
+            left: 200px;
+            bottom: -2px;
+        }
+
+        .main:hover div:nth-child(2) {
+            left: 0px;
+            bottom: -2px;
+            background: red;
+        }
+
+        .main div:nth-child(4) {
+            width: 2px;
+            height: 48px;
+            position: absolute;
+            right: -2px;
+            top: 50px;
+        }
+
+        .main:hover div:nth-child(4) {
+            top: 0;
+            background: red;
+        }
+        .inner .gre{
+            background: green;
+            text-align: center;
+            line-height: 30px;
+            color:#fff;
+            width: 200px;height: 30px;
+            border-radius:5%;
+            margin-left:50px;
+            opacity: 0;
+            transition:all .2s linear;
+        }
+        .inner:hover .gre{
+            opacity:1;
+            margin-top:50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <img src="img/mission.png" alt="" class="img1">
+            <div class="main">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <p><span>MISSION</span> <img src="img/allow.png" alt=""></p>
+            </div>
+            <div class="gre">lksdjflsjlklafkaldfsa</div>
+        </div>
+        <div class="inner">
+            <img src="img/play.png" alt="" class="img1">
+            <div class="main">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <p><span>MISSION</span> <img src="img/allow.png" alt=""></p>
+            </div>
+            <div class="gre">lksdjflsjlklafkaldfsa</div>
+        </div>
+        <div class="inner">
+            <img src="img/touch.png" alt="" class="img1">
+            <div class="main">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <p><span>MISSION</span> <img src="img/allow.png" alt=""></p>
+            </div>
+            <div class="gre">lksdjflsjlklafkaldfsa</div>
+        </div>
+    </div>
+</body>
+
+</html>

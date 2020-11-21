@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>jq扩展方法</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .item{display: none;}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="按钮" class="btn" style="background:yellow">
+        <input type="button" value="按钮" class="btn">
+        <input type="button" value="按钮" class="btn">
+        <div class="item" style="display: block;">aaa</div>
+        <div class="item">bbb</div>
+        <div class="item">ccc</div>
+    </div>
+    <hr>
+    <div id="box2">abc</div>
+</body>
+<script>
+    // $.prototype.sum=function(){
+    //     console.log(this);
+    //     this.css('color','red');
+    // }
+    // $('#box').sum();
+    // $('#box2').sum();
+    //-----------------------------------
+    //$.fn:代表jQuery的原型
+    // console.log($.fn===$.prototype);//true
+    // $.fn.sum=function(col){
+    //     this.css('color',col);
+    // }
+    // $('#box').sum('yellow');
+    // $('#box2').sum('skyblue');
+    //-----------------------------
+    //jq扩展方法
+    // $.fn.extend({
+    //     setColor:function(){
+    //         console.log(this);
+    //         this.css('color','red');
+    //         return this;
+    //     },
+    //     setFont:function(){
+    //         console.log(this);
+    //         this.css('fontSize','40px');
+    //         return this;
+    //     },
+    //     myCss:function(json){
+    //         console.log(json);
+    //         for(i in json){
+    //             this.get(0).style[i]=json[i];
+    //         }
+    //         return this;
+    //     },
+    //     tab:function(col){
+    //         var that=this;
+    //         this.find('.btn').on('click',function(){
+    //             $(this).css('background',col).siblings('.btn').css('background','');
+    //             that.find('.item').eq($(this).index()).show().siblings('.item').hide();
+    //         })
+    //         return this;
+    //     }
+    // });
+    // $('#box').setColor().setFont();
+    // $('#box').myCss({width:'200px',height:'200px',background:'red'});
+    // $('#box').tab('yellow');
+    //--------------------------------------------
+    // $.extend({
+    //     aaa:function(){
+    //         console.log('hehe');
+    //     }
+    // })
+    // $.fn.extend({
+    //     bbb:function(){
+    //         console.log('bbb');
+    //     }
+    // })
+    // $.aaa();
+    // $('#box2').bbb();
+    //总结:$.extend 往jQuery类添加的扩展方法，只能通多类($/jQuery)调用 
+    // $.fn.extend往类的原型身上添加的扩展方法，只能通多jq实例对象调用
+    //--------------------------
+    $.extend({
+        _isFunction:function(fn){
+            return typeof fn==='function';
+        },
+        _isArray:function(arr){
+            //检测一个东西是否存在于某个类的原型上
+          return arr instanceof Array;
+        },
+        _unipue:function(arr){
+            var result=$.grep(arr,function(item,idx){
+                return arr.indexOf(item)==idx;
+            }).sort(function(n1,n2){
+                return n1-n2;
+            });
+            return result;
+        }   
+    })
+    var arr=[34,3543,354364,22431,4,34,555,555];
+    console.log($._isFunction(3));
+    console.log($._isArray(arr));
+    console.log($._unipue(arr));
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>jquery绑定事件</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.3.min.js"></script>
+    <style>
+        #box,
+        #test {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="test"></div>
+</body>
+<script>
+    $(function () {
+        //绑定一次性事件   one(type,fn)
+        /*
+        $('#box').one('click',function(){
+            console.log('么么哒');
+        });
+        */
+       //----------------
+        //hover事件
+        /*
+        $('#box').hover(function(){//移入
+         $(this).css('width','300px');
+        },function(){//移出
+         $(this).css('width','200px');
+        })
+        */
+        //-----------------
+        //自定义事件:
+        /*
+        $('#box').click(function(){
+            //触发自定义事件:
+            $('#test').trigger('myclick');
+        })
+        //给标签添加自定义事件:myclick
+        $('#test').on('myclick',function(){
+            console.log('自定义事件');
+        })
+        */
+        //--------------------
+        //轮流执行click事件(至少有两个函数):
+        $('#box').toggle(function(){
+            console.log(1);
+        },function(){
+            console.log(2);
+        },function(){
+            console.log(3);
+        })
+    })
+</script>
+
+</html>

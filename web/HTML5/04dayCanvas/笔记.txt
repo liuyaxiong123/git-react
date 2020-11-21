@@ -1,0 +1,25 @@
+canvas:HTML5新增的绘图标签，
+
+默认大小：300*150
+注意：宽高一定要添加在标签属性身上，不能加在样式表里
+
+1.需要制定绘制环境
+var context=canvas.getContext('2d');
+2.绘图：
+ctx.beginPath():开始一个路径
+ctx.closePath():结束一个路径
+ctx.moveTo(x,y)：制定绘制的起点
+ctx.lineTo(x,y):绘制路径
+ctx.rect(x,y,width,height):绘制矩形路径
+ctx.arc(圆心x坐标，圆心y坐标，半径，开始角度，结束角度，boolean顺时针false逆时针true)：绘制圆的路径
+ctx.ellipse(圆心x坐标，圆心y坐标，圆的x半径，圆的y半径，旋转角度，起始角度，结束角度，boolean):绘制椭圆路径
+ctx.fillText(文字内容，x坐标，y坐标，最大款(可选))：填充文字
+ctx.strokeText(文字内容，x坐标，y坐标，最大款(可选))：描边文字
+ctx.font:设置文本样式(必须写两条以上)
+ctx.stroke():开始绘制描边 默认#000
+ctx.fill():填充 默认#000
+ctx.clearRect(x,y,width,height):清除画布
+ctx.strokeStyle:设置描边样式
+ctx.lineWidth:设置描边宽度
+ctx.fillStyle:设置填充样式
+ctx.lineCap:设置线帽(三个值 butt round square)

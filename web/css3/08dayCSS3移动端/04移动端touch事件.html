@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: blue;
+            position: absolute;
+            left: 50px;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    //移动端不存在鼠标事件(onmousedown onmousemove  onmouseup)并且移动端onclick会有延迟200毫秒
+    //移动端使用touch事件(touchstart touchmove touchend)
+    // document.addEventListener('touchstart',function(ev){
+    //     console.log(ev.touches[0].clientX);
+    // },false)
+    // document.addEventListener('touchmove',function(ev){
+    //     console.log(ev.touches[0].clientX);
+    // },false)
+    // document.addEventListener('touchend',function(ev){
+    //     console.log(ev);//抬起里面没有鼠标坐标点
+    // },false)
+
+    var device = /iphone|ipad|android|opear mini|iemobile|webos/i.test(window.navigator.userAgent);
+    var startEvName = device ? 'touchstart' : 'mousedown';
+    var moveEvName = device ? 'touchmove' : 'mousemove';
+    var endEvName = device ? 'touchend' : 'mouseup';
+    var x = 0;
+    var y = 0;
+    box.addEventListener(startEvName, fnStart, false);
+
+    function fnStart(ev) {
+        x = (device ? ev.touches[0].clientX : ev.clientX) - box.offsetLeft;
+        y = (device ? ev.touches[0].clientY : ev.clientY) - box.offsetTop;
+        document.addEventListener(moveEvName, fnMove, false);
+        document.addEventListener(endEvName, fnEnd, false);
+    }
+
+    function fnMove(ev) {
+        var x_p = (device ? ev.touches[0].clientX : ev.clientX) - x;
+        var y_p = (device ? ev.touches[0].clientY : ev.clientY) - y;
+        console.log(y)
+        box.style.left = x_p + 'px';
+        box.style.top = y_p + 'px';
+    }
+
+    function fnEnd() {
+        document.removeEventListener(moveEvName, fnMove, false);
+        document.removeEventListener(endEvName, fnEnd, false);
+    }
+</script>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组扩展</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+<script>
+    //1.Array.from:把伪数组转换成真的数组
+    // let li=document.getElementsByTagName('li');
+    
+    // var liArr=Array.from(li);
+    // liArr.push(5);
+    // console.log(liArr);
+    // liArr[0].style.background='red';
+    
+    //---------------------------
+
+    //2.Array.of 方法用于将一组值，转换为数组
+    //作用：为了弥补Array这个方法的不足，(行为不统一，传入参数不同，这个函数功能会不一样)
+    // let arr = new Array(4);
+    // console.log(arr);//[4]
+    // console.log(arr.length);//4
+
+    // let arr2=Array.of(4,5,6);
+    // console.log(arr2);//[4,5,6]
+
+    //----------------
+
+    //3.数组实例的copyWithin()方法，在当前数组内部，将指定位置的成员复制到其他位置（会覆盖原有成员），然后返回当前数组。也就是说，使用这个方法，会修改当前数组。
+    // copyWithin(从该位置开始替换数据,复制内容的起始位置,复制内容的结束位置)  
+
+    // let arr=[1,2,3,4,5];
+    // arr.copyWithin(0,2,4);
+    // console.log(arr);//[3, 4, 3, 4, 5]
+
+    //-------------------
+    //4.方法使用给定值，填充一个数组。数组实例的方法, 一般用于初始化数组内的值
+    // let arr=[1,2,3];
+    // arr.fill(7);
+    // console.log(arr);
+    //---------------
+
+    //5.entries keys和values
+    // let arr=[4,5,6,7,8];
+    // for(let i of arr){
+    //     console.log(i);//4,5,6,7,8
+    // }
+    // //打印所有的下标：
+    // for(let i of arr.keys()){
+    //     console.log(i);//0,1,2,3,4
+    // }
+    //打印所有的值
+    // for(let item of arr.values()){
+    //     console.log(item);
+    // }
+    //打印下标和值
+    // for(let item of arr.entries()){
+    //     console.log(item);
+    // }
+
+    //---------------
+    //6.includes 检测数组中是否包含某个值 返回bool
+    //includes(内容，起始位置)；
+    // let arr = ['apple','banana','pear','orange'];
+
+    // console.log(arr.includes('pear'));//true
+    // console.log(arr.includes('p'));//false
+
+    //以前通常使用indexof方法，检查是否包含某个值
+    // console.log(arr.indexOf('pear')!=-1);
+    //indexOf方法有两个缺点，第一不够语义化，第二它内部使用的是严格相等运算符(===)进行判断，会导致对NaN的误判
+    // console.log([NaN].indexOf(NaN));//-1
+    // console.log([NaN].includes(NaN));//true
+    //----------------------
+    //7.find 和 findIndex
+    // 数组实例的find方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。
+    let arr=['apple','banana','pear','orange'];
+   var result = arr.find(function(v,i,a){
+        // console.log(v);//找到的元素
+        // console.log(i);//下标
+        // console.log(a);//原数组
+        return v.indexOf('an')!=-1;
+    })
+    console.log(result);//banana
+
+    //findIndex 用于找出第一个符合条件的内容的下标，没有符合条件返回-1
+    var result = arr.findIndex(function(v,i,a){
+        // console.log(v);//找到的元素
+        // console.log(i);//下标
+        // console.log(a);//原数组
+        return v.indexOf('an')!=-1;
+    })
+    console.log(result);//1
+</script>
+</html>

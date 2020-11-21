@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表盘</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #main {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        ul {
+            width: 200px;
+            height: 200px;
+            border: 4px solid plum;
+            border-radius: 50%;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            margin: -104px 0 0 -104px;
+        }
+
+        ul li {
+            position: absolute;
+            left: 100px;
+            width: 1px;
+            height: 5px;
+            background: #000;
+            transform-origin: 0px 100px;
+        }
+        ul li span{
+            position: absolute;
+            top:8px;
+            left:-6px;
+        }
+        ul div:nth-child(4) {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #000;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        ul div:nth-child(1) {
+            height: 80px;
+            width: 2px;
+            position: absolute;
+            left: 100px;
+            bottom: 100px;
+            transform: translate(-50%, 0);
+            background: red;
+            transform-origin: bottom;
+        }
+
+        ul div:nth-child(2) {
+            height: 70px;
+            width: 2px;
+            position: absolute;
+            left: 100px;
+            bottom: 100px;
+            transform: translate(-50%, 0);
+            background: skyblue;
+            transform-origin: bottom;
+        }
+
+        ul div:nth-child(3) {
+            height: 60px;
+            width: 2px;
+            position: absolute;
+            left: 100px;
+            bottom: 100px;
+            transform: translate(-50%, 0);
+            background: pink;
+            transform-origin: bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script>
+    var aLi = main.getElementsByTagName('li');
+    for (var i = 0; i < aLi.length; i++) {
+        if (i % 5 == 0) {
+            aLi[i].style.height = '10px';
+            aLi[i].innerHTML='<span>'+i/5+'</span>';
+            if(i/5==0){
+                aLi[i].innerHTML='<span>12</span>';
+            }
+        }
+        aLi[i].style.transform = 'rotateZ(' + (i * 6) + 'deg)';
+    }
+    var s = 0,
+        m = 0,
+        h = 0;
+    var div = document.querySelectorAll('ul>div');
+    setInterval(function () {
+        var date=new Date();
+        var s=date.getSeconds()*6;
+        var m=date.getMinutes()*6+(s/60);
+        var h=date.getHours()%12*5*6+(m/12);  
+        div[0].style.transform = 'rotateZ(' + s + 'deg)';
+        div[1].style.transform = 'rotateZ(' + m + 'deg)';
+        div[2].style.transform = 'rotateZ(' + h + 'deg)';
+    }, 1000)
+</script>
+
+</html>

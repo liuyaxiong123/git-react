@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 声明文档格式 -->
+<!-- svg默认大小300*150 -->
+<svg width='2000' height='2000' version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+    <circle cx='300' cy='200' fill='#000' r='200' />
+    <circle cx='900' cy='200' fill='#000' r='200' />
+    <circle cx='600' cy='700' fill='#000' r='500' />
+    <ellipse cx='450' cy='600' fill='#fff' rx='200' ry='300' />
+    <ellipse cx='750' cy='600' fill='#fff' rx='200' ry='300' />
+    <ellipse cx='600' cy='900' fill='#fff' rx='350' ry='200' />
+    <ellipse cx='500' cy='600' fill='#000' rx='40' ry='60' />
+    <ellipse cx='700' cy='600' fill='#000' rx='40' ry='60' />
+    <ellipse cx='600' cy='850' fill='#000' rx='80' ry='40' />
+</svg>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <script src="js/swiper.min.js"></script>
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+
+        .parallax-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 130%;
+            height: 100%;
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper-container swiper-container-h">
+        <div class="parallax-bg" style="background-image:url(https://www.swiper.com.cn/demo/images/nature-1.jpg)"
+            data-swiper-parallax="-23%"></div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Horizontal Slide 1</div>
+            <div class="swiper-slide">
+                <div class="swiper-container swiper-container-v">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">Vertical Slide 1</div>
+                        <div class="swiper-slide">Vertical Slide 2</div>
+                        <div class="swiper-slide">Vertical Slide 3</div>
+                        <div class="swiper-slide">Vertical Slide 4</div>
+                        <div class="swiper-slide">Vertical Slide 5</div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-v"></div>
+                </div>
+            </div>
+            <div class="swiper-slide">Horizontal Slide 3</div>
+            <div class="swiper-slide">Horizontal Slide 4</div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-h"></div>
+    </div>
+
+</body>
+<script>
+    window.onload = function () {
+        var swiperH = new Swiper('.swiper-container-h', {
+            spaceBetween: 50,
+            parallax: true,
+            pagination: {
+                el: '.swiper-pagination-h',
+                clickable: true,
+            },
+        });
+        var swiperV = new Swiper('.swiper-container-v', {
+            direction: 'vertical',
+            spaceBetween: 50,
+            pagination: {
+                el: '.swiper-pagination-v',
+                clickable: true,
+            },
+        });
+    }
+</script>
+
+</html>

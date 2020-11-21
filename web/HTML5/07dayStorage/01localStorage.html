@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>localStorage</title>
+</head>
+<body>
+    <input type="button" value="设置">
+    <input type="button" value="读取">
+    <input type="button" value="获取">
+    <input type="button" value="删除">
+    <div id="box"></div>
+</body>
+<script>
+    var btns=document.querySelectorAll('input');
+    //localStorage:永久性存储，如果不删除数据会一直存在
+    if(window.localStorage){
+        // alert("支持");
+        //设置
+        btns[0].onclick=function(){
+            localStorage.setItem('name','张帅');//设置数据
+            localStorage.setItem('age',25);
+        }
+        //读取
+        btns[1].onclick=function(){
+            box.innerHTML='姓名:'+localStorage.getItem('name')+'\n,年龄：'+localStorage.getItem('age');
+        }
+        //获取
+        btns[2].onclick=function(){
+            console.log(localStorage.length);
+            console.log(localStorage.key(0));//获取某一个键名
+        }
+        //删除
+        btns[3].onclick=function(){
+            localStorage.removeItem('name');//删除一个
+            localStorage.clear();//删除所有
+        }
+    }else{
+        alert('不支持');
+    }
+</script>
+</html>

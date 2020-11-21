@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>swiper</title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <script>
+        (function (win, doc) {
+            var resetPage = function () {
+                var _doc = doc.documentElement; //html标签
+                var devieWidth = _doc.clientWidth;
+                //计算比例：设备宽/标准页面尺寸
+                var scale = devieWidth / 640;
+                if (devieWidth >= 640) {
+                    _doc.style.fontSize = '100px';
+                } else {
+                    _doc.style.fontSize = scale * 100 + 'px';
+                }
+            }
+            if (!doc.addEventListener) return;
+            doc.addEventListener('DOMContentLoaded', resetPage, false);
+            win.addEventListener('resize', resetPage, false);
+        })(window, document)
+    </script>
+</head>
+<style>
+    html,
+    body {
+        position: relative;
+        height: 100%;
+    }
+
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+    }
+
+    .outer {
+        width: 6.4rem;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    input {
+        position: fixed;
+        z-index: 99999;
+        bottom: 0;
+    }
+</style>
+
+<body>
+    <div class="outer">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">slide1</p>
+                </div>
+                <div class="swiper-slide">
+                    <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">slide2</p>
+                </div>
+                <div class="swiper-slide">
+                    <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">slide3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="button" id="prev" value="prev" style="left:30%">
+    <input type="button" id="next" value="next" style="left:50%">
+    <input type="button" id="go" value="go" style="left:70%">
+</body>
+<script src="js/swiper.min.js"></script>
+<script src="js/swiper.animate1.0.3.min.js"></script>
+<script>
+    window.onload = function () {
+        var swiper = new Swiper('.swiper-container', {
+            initialSlide: 0, //默认slide索引
+            direction: 'vertical', //设置滑动方向 vertical垂直滑动 默认水平滑动
+            speed: 1000, //滑动速度
+            keyboard: true, //开启键盘控制
+            mousewheel: true, //鼠标滚轮控制
+            // loop: true, //无限循环  无限循环的时候activeIndex不生效 用realIndex
+            grabCursor: true, //抓手
+            on: { //注册事件
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                    console.log('swiper初始化完毕 触发一次');
+                },
+                slideChange: function () {
+                    console.log('slide改变时触发', this.activeIndex, this.realIndex);
+                },
+                touchStart: function (ev) {
+                    console.log(ev);
+                },
+                slideChangeTransitionStart: function () {
+                    console.log('slide开始切换时触发', this.activeIndex, this.realIndex);
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                    console.log('slide切换结束时触发', this.activeIndex, this.realIndex);
+                }
+            }
+        });
+        //加false不会触发trasition回调函数
+        next.onclick = function () {
+            swiper.slideNext(400, false);
+        }
+        prev.onclick = function () {
+            swiper.slidePrev(300, false);
+        }
+        go.onclick = function () {
+            swiper.slideTo(1, 300, false);
+        }
+    }
+</script>
+
+</html>

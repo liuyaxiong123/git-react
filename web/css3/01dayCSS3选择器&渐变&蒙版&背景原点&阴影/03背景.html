@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>背景</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            padding:10px;
+            border:10px dotted #ccc;
+            background:url(image/01.jpg) 0 0 no-repeat;
+            /* 设置背景原点 */
+            /* background-origin: border-box; */
+            /* background-origin: content-box; */
+            /* background-origin: padding-box; */
+            /* 设置背景切割 */
+            /* background-clip:padding-box; */
+            /* background-clip:border-box; */
+            /* background-clip:content-box; */
+            /* 设置背景大小 */
+            /* background-size: 520px 520px; */
+            /* background-size: cover;等比缩放到完全覆盖容器 */
+            /* background-size: contain; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

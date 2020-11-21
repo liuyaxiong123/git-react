@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>爆炸轮播图</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .carousel {
+            width: 560px;
+            height: 400px;
+            margin: 50px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .carousel .imgList li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+        .carousel .imgList li.cur {
+            display: block;
+        }
+
+        .btns a {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            background: yellowgreen;
+        }
+
+        .btns .leftBtn {
+            left: 10px;
+        }
+
+        .btns .rightBtn {
+            right: 10px;
+        }
+
+        .btnList {
+            position: absolute;
+            bottom: -20px;
+        }
+
+        .btnList li {
+            list-style: none;
+            float: left;
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            background: yellowgreen;
+        }
+
+        .btnList li.cur {
+            background: blue;
+        }
+
+        .maoni div {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <div class="imgList">
+            <ul>
+                <li class="cur"><a href="javascript:;"><img src="img/1.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="img/2.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="img/3.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="img/4.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="img/5.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="btns">
+            <a href="javascript:;" class="leftBtn"></a>
+            <a href="javascript:;" class="rightBtn"></a>
+        </div>
+        <div class="btnList">
+            <ol>
+                <li class="cur"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+        <div class="maoni">
+            <!-- 存放爆炸的图的div块区域 -->
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        var $Lis = $('.imgList li');
+        var $imgagesLis = $('.imgList img');
+        var $btnList = $('.btnList li');
+
+        var nowIndex = 0; //当前原点所处的位置
+
+        $('.leftBtn').on('click', function () {
+            tabs(-1);
+        })
+        $('.rightBtn').on('click', function () {
+            tabs(1);
+        })
+        $btnList.on('click', function () {
+            if (nowIndex != $(this).index()) {
+                nowIndex = $(this).index();
+                tabs(0);
+            }
+        })
+
+        function tabs(num) {
+            //点击按钮以后 生成maoni内的元素 w70 h80  横向8个  纵向5个
+            for (var row = 0; row < 5; row++) {
+                for (var col = 0; col < 8; col++) {
+                    $('<div></div>').css({
+                        'left': col * 70,
+                        'top': row * 80,
+                        'width': 70,
+                        'height': 80,
+                        'background-image': 'url(' + $imgagesLis.eq(nowIndex).attr('src') + ')',
+                        'background-position': -col * 70 + 'px ' + (-row * 80) + 'px'
+                    }).appendTo($('.maoni'));
+                }
+            }
+                $('.maoni').find('div').each(function () {
+                    $(this).velocity({
+                        'rotateZ':parseInt(Math.random() * 180) +'deg',
+                        'opacity': 0,
+                        'translateZ':900
+                    },600,function(){
+                        $('.maoni').empty();
+                    })
+                })
+
+            nowIndex += num;
+            if (nowIndex >= $Lis.length) {
+                nowIndex = 0;
+            }
+            if (nowIndex < 0) {
+                nowIndex = $Lis.length - 1;
+            }
+            $Lis.eq(nowIndex).addClass('cur').siblings().removeClass('cur');
+            $btnList.eq(nowIndex).addClass('cur').siblings().removeClass('cur');
+        }
+    })
+</script>
+
+</html>

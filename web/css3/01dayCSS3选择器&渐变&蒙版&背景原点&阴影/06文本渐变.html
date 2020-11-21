@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* text-fill-color webkit内核私有的属性，不属于w3c标准，只有支持webkit内核才能用，文本填充颜色 */
+        h1{
+            -webkit-text-fill-color:red;
+            color:yellow;
+        }
+        div{
+            font-size: 60px;
+            width: 500px;
+            background:-webkit-linear-gradient(left,red,yellow,blue,purple,green);
+            -webkit-text-fill-color:transparent;
+            /* 按照文本进行切割 */
+            -webkit-background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <h1>一段文字</h1>
+    <div>
+        做文字渐变的
+    </div>
+</body>
+</html>

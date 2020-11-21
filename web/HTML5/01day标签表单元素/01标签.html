@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        header{
+            font-size: 30px;
+            text-align: center;
+        }
+        nav ul{
+            display: flex;
+            list-style: none;
+        }
+        nav ul li{
+            flex-grow:1;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid #000;
+        }
+        aside{
+            position:fixed;
+            top:50%;
+            right: 10%;
+            transform:translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header>头部</header>
+    <!-- 页面中的某一块 -->
+    <section>
+        <!-- 页面中导航 -->
+        <nav>
+            <ul>
+                <li>首页</li>
+                <li>新闻</li>
+                <li>搜索</li>
+                <li>关于我们</li>
+                <li>登录/注册</li>
+            </ul>
+        </nav>
+    </section>
+    <!-- 内容块 -->
+    <section>
+        <!-- 定义标题 -->
+        <hgroup>
+            <h2>时尚达人</h2>
+        </hgroup>
+        <!-- 定义文章或描述信息 -->
+        <article>
+            <!-- 定义文章的标记（提示） -->
+            <p>文本  <mark>重要</mark>   内容</p>
+            <!-- 定义媒介内容 -->
+            <figure>
+                <figcaption>
+                    黄浦江大桥
+                </figcaption>
+                <!-- 标记时间：T：代表日期和时间的分隔符  Z：代表UTC国际标准时间 -->
+                <time datetime="2019-11-28T03:05Z">发布时间：2019年-11-28 03:05</time>
+                <p><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3173955665,133825272&fm=26&gp=0.jpg" alt=""></p>
+            </figure>
+        </article>
+    </section>
+    <!-- 定义侧边栏 -->
+    <aside>
+        <ul>
+            <li>号店</li>
+            <li>精品</li>
+            <li>顶部</li>
+        </ul>
+    </aside>
+    <!-- 进度条 value:当前进度 max：完成的值 -->
+    进度条：<progress max="100" value="20"></progress>
+    <!-- 描述一些详细信息 -->
+    <details>
+        <summary>详情内容请打开</summary>
+        <p>本页面是一个学习的页面</p>
+    </details>
+    <!-- 搜索 -->
+    搜索：<input type="text" list="MyData">
+    <datalist id="MyData">
+        <option value="湄公河">湄公河</option>
+        <option value="沉默的羔羊">沉默的羔羊</option>
+        <option value="切尔诺贝利">切尔诺贝利</option>
+        <option value="釜山行">釜山行</option>
+        <option value="无人区">无人区</option> 
+        <option value="权利的游戏">权利的游戏</option>
+    </datalist>
+    <!-- 页面底部 -->
+    <footer>底部</footer>
+</body>
+</html>

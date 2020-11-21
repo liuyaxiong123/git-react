@@ -1,0 +1,21 @@
+jQuery扩展：
+$.extend({
+    key:fn,
+    key:fn
+    .....
+})
+
+$.fn.extend({
+    key:function(){
+        this 指向调用方法的jq实例对象
+        return this；目的可以实现链式调用
+    }
+})
+
+总结:
+$.extend 往jQuery类添加的扩展方法，只能通多类($/jQuery)调用
+$.fn.extend往类的原型身上添加的扩展方法，只能通多jq实例对象调用
+
+往类身上扩展的方法一般都是做功能类的
+
+往原型身上扩展的方法一般都是操作dom的

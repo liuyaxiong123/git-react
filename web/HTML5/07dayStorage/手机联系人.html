@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机联系人</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 50vh;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        section {
+            border: 1px solid #000;
+            margin-bottom: 30px;
+            padding: 40px;
+        }
+
+        input {
+            outline: none;
+            padding: 5px;
+        }
+
+        button {
+            background: skyblue;
+            border: 1px solid #000;
+            padding: 5px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .end {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <section>
+            姓名：<input type="text" class="name"><br><br>
+            手机：<input type="text" class="phone"><br><br>
+            <button id="btn">新建联系人</button>
+        </section>
+        <section>
+            输入手机号：<input type="text" class="search"> <button id="btn2">查找联系人</button>
+            <div class="end"></div>
+        </section>
+        <section>
+            <table border="1" cellspacing="7">
+                <tr>
+                    <td>姓名</td>
+                    <td>手机号码</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</body>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    var str = '';
+    $(function () {
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            var zhi = localStorage.getItem(key);
+            str += zhi;
+            var tr = $('<tr>');
+            tr.html('<td>' + key + '</td><td>' + zhi + '</td>');
+            $('table').append(tr);
+        }
+
+        if (window.localStorage) {
+
+            $('#btn').click(function () {
+                if ($('.name').val() != '' && $('.phone').val() != '') {
+                    if (reg.test($('.phone').val())) {
+                        localStorage.setItem($('.name').val(), $('.phone').val());
+                        str += $('.phone').val();
+                        var tr = $('<tr>');
+                        tr.html('<td>' + $('.name').val() + '</td><td>' + $('.phone').val() + '</td>');
+                        $('table').append(tr);
+                        $('.name').val('');
+                        $('.phone').val('');
+                    } else {
+                        alert('请输入正确的手机号！');
+                    }
+                }else{
+                    alert('不能为空！');
+                }
+            })
+            $('#btn2').click(function () {
+                if ($('.search').val() != '') {
+                    if (reg.test($('.search').val())) {
+                        if (str.indexOf($('.search').val()) != -1) {
+                            for (var i = 0; i < localStorage.length; i++) {
+                                var key = localStorage.key(i);
+                                var zhi = localStorage.getItem(key);
+                                if ($('.search').val() == zhi) {
+                                    $('.end').html(zhi + '机主是' + ':' + key);
+                                }
+                            }
+                        } else {
+                            alert('改号码不存在!');
+                        }
+                    } else {
+                        alert('请输入正确的手机号！');
+                    }
+                }else{
+                    alert('不能为空！');
+                }
+
+                $('.search').val('');
+            })
+        } else {
+            alert('浏览器不支持！');
+        }
+    })
+</script>
+
+</html>

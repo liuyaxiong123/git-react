@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            text-align: center;
+        }
+
+        table {
+            width: 700px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>最划算</h1>
+        <table id="goods" border='1'>
+            <thead>
+                <tr>
+                    <th>商品</th>
+                    <th>单价(元)</th>
+                    <th>描述</th>
+                    <th>库存</th>
+                    <th>好评率</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 渲染商品信息 -->
+            </tbody>
+        </table>
+        <h1>购物车</h1>
+        <table border='1' id="shop_cart">
+            <thead>
+                <tr>
+                    <th>商品</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>金额</th>
+                    <th>删除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 购物车商品列表 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="3">总计</td>
+                    <td id="total_price">0</td>
+                    <td><button id="clear">清空</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    var goodsArr = [
+        {
+            shangpin: '武装直升机z_10',
+            jiaqian: '200',
+            pingjia: '很酷',
+            kucun: '107',
+            haoping: '99%'
+        },
+        {
+            shangpin: '虎式坦克',
+            jiaqian: '200',
+            pingjia: '火力猛，装甲厚',
+            kucun: '178',
+            haoping: '100%'
+        },
+        {
+            shangpin: '单兵望远镜',
+            jiaqian: '132',
+            pingjia: '千里眼，哪里都能看',
+            kucun: '134',
+            haoping: '88%'
+        },
+        {
+            shangpin: 'T-50战斗机',
+            jiaqian: '250',
+            pingjia: '全球部署，精确打击',
+            kucun: '235',
+            haoping: '94%'
+        },
+        {
+            shangpin: '单兵火箭筒',
+            jiaqian: '150',
+            pingjia: '携带方便，火力强悍',
+            kucun: '241',
+            haoping: '96%'
+        },
+        {
+            shangpin: '战术手雷',
+            jiaqian: '100',
+            pingjia: '携带方便，爆破力强',
+            kucun: '227',
+            haoping: '96%'
+        },
+        {
+            shangpin: 'L-81突击步枪',
+            jiaqian: '100',
+            pingjia: '破环力大',
+            kucun: '148',
+            haoping: '100%'
+        },
+        {
+            shangpin: 'K-91狙击步枪',
+            jiaqian: '200',
+            pingjia: '精确度高',
+            kucun: '107',
+            haoping: '99%'
+        },
+        {
+            shangpin: '防弹头盔',
+            jiaqian: '50',
+            pingjia: '有型',
+            kucun: '107',
+            haoping: '99%'
+        },
+        {
+            shangpin: '03单兵靴',
+            jiaqian: '200',
+            pingjia: '舒适',
+            kucun: '107',
+            haoping: '100%'
+        }
+    ];
+    var goods_t = goods.tBodies[0];
+    var shop_cart_t = shop_cart.tBodies[0];
+    $(function () {
+        for (var i = 0; i < goodsArr.length; i++) {
+            var tr = $('<tr></tr>');
+            tr.attr('goods_id', i);
+            for (j in goodsArr[i]) {
+                var td = $('<td></td>');
+                td.html(goodsArr[i][j]);
+                tr.append(td);
+            }
+            var td_add = $('<td></td>');
+            td_add.html('<button>加入购物车</button>');
+            tr.append(td_add);
+            $(goods_t).append(tr);
+        }
+        $('#goods').delegate('button', 'click', function () {
+            var goods_name = $(this).parent().parent().children().eq(0).html();//商品名称
+            var goods_money =$(this).parent().parent().children().eq(1).html();//商品单价
+            var goods_id = $(this).parent().parent().attr('goods_id');//商品id
+            var flag = true;//该商品是否被加入过购物车
+            var obj = null;
+            for (var i = 0; i < $(shop_cart_t).children().length; i++) {
+                if ($(shop_cart_t).children().eq(i).attr('goods_id') == goods_id) {
+                    flag=false;
+                    obj = $(shop_cart_t).children().eq(i);
+                    // break;
+                }
+            }
+            if (flag) {
+                //创建dom加入购物车
+                var tr = $('<tr></tr>');
+                tr.attr('goods_id', goods_id);
+                tr.html('<td>' + goods_name + '</td><td>' + goods_money + '</td><td>1</td><td>' + goods_money + '</td><td><a href="javascript:;">删除</a></td>');
+                $(shop_cart_t).append(tr);
+                tr.delegate('a', 'click', function () {
+                    var t = confirm('你是否确定删除');
+                    if (t) {
+                        $(this).parent().parent().remove();
+                        totalPrice();
+                    }
+                })
+                
+            } else {
+                // 证明该商品在购物车中已经存在
+                obj.children().eq(2).html(parseInt(obj.children().eq(2).html()) + 1);
+                obj.children().eq(3).html(obj.children().eq(1).html() * obj.children().eq(2).html());
+            }
+            totalPrice();
+        })
+        // 清空购物车
+        $('#clear').click(function () {
+            $(shop_cart_t).html('');
+            $('#total_price').html(0);
+        })
+    })
+    function totalPrice(){
+        total_price.innerHTML=0;
+        for(var i=0;i<shop_cart_t.children.length;i++){
+            total_price.innerHTML=parseInt(total_price.innerHTML)+parseInt(shop_cart_t.children[i].children[3].innerHTML);
+        }
+    }
+</script>
+
+</html>

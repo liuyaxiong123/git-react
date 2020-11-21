@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择器</title>
+    <style>
+        /* 获取h1后面紧邻的同级span */
+        /* h1+span{
+            color:red;
+        } */
+        /* 获取h1后面同级所有的span */
+        /* h1~span{
+            color:yellow;
+        } */
+        /* 拥有class属性的h1 */
+        /* h1[class]{
+            color:blue;
+        } */
+        /* class属性是否等于article的h1 */
+        /* h1[class='article']{
+            background: yellowgreen;
+        } */
+        /* class属性是否以a开头 */
+        /* h1[class^='a'] {
+            font-size:20px;
+        }    */
+        /* class属性是否以cle开头 */
+        /* h1[class$='cle'] {
+            color:red;
+        } */
+        /* class属性是否包含tic */
+        /* h1[class*='tic'] {
+            background: yellowgreen;
+        } */
+
+        /* 上面那些选择器可以兼容到IE7 */
+
+        /* 匹配可用的表单元素 */
+        /* input:enabled{
+            font-size:40px;
+        } */
+        /* 匹配禁用的表单元素 */
+        /* input:disabled{
+            width: 100px;
+            height: 100px;
+        } */
+        /* 匹配选中状态的单选或复选按钮 */
+        /* input:checked{
+            width: 50px;
+            height: 50px;
+        } */
+        
+        /* 匹配p标签内第一行字符 */
+        /* p::first-line{
+            color:red;
+        } */
+        /* 匹配p标签内第一个字 */
+        /* p::first-letter{
+            color:red;
+        } */
+        /* 设置标签内文本选中的样式 (注意：只能设置color和background)*/
+        /* p::selection{
+            color:yellow;
+            background: green;
+        } */
+        /* 低版本火狐需要添加浏览器内核前缀 */
+        /* p::-moz-selection{
+            color:yellow;
+            background: green;
+        } */
+        /* 匹配一组元素的第一个 */
+        /* p:first-child{
+            background: yellow;
+        } */
+        /* 匹配一组元素中的最后一个 */
+        /* p:last-child{
+            background: blue;
+        } */
+        /* 匹配一组元素中的某一个  从1开始   odd:奇数    even：偶数*/
+        /* p:nth-child(even){
+            background: green;
+        } */
+        /* 匹配一组元素中的某一个  从后面开始找 */
+        p:nth-last-child(2){
+            background: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <p>p</p>
+    <p>pp</p>
+    <p>ppp</p>
+    <p>pppp</p>
+    <p>ppppp</p>
+</body>
+
+</html>

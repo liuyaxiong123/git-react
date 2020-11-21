@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>swiper</title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <script>
+        (function (win, doc) {
+            var resetPage = function () {
+                var _doc = doc.documentElement; //html标签
+                var devieWidth = _doc.clientWidth;
+                //计算比例：设备宽/标准页面尺寸
+                var scale = devieWidth / 640;
+                if (devieWidth >= 640) {
+                    _doc.style.fontSize = '100px';
+                } else {
+                    _doc.style.fontSize = scale * 100 + 'px';
+                }
+            }
+            if (!doc.addEventListener) return;
+            doc.addEventListener('DOMContentLoaded', resetPage, false);
+            win.addEventListener('resize', resetPage, false);
+        })(window, document)
+    </script>
+</head>
+<style>
+    html,
+    body {
+        position: relative;
+        height: 100%;
+    }
+
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+    }
+
+    .outer {
+        width: 6.4rem;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        background: #fff;
+        text-align: center;
+        /* height: calc((100% - 20px) / 2); */
+        height: 100%;
+        font-size: 20px;
+    }
+
+    .swiper-slide-active {
+        background: #ff6600;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <div class="outer">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    slide1
+                </div>
+                <div class="swiper-slide">
+                    slide2
+                </div>
+                <div class="swiper-slide">
+                    slide3
+                </div>
+                <div class="swiper-slide">
+                    slide4
+                </div>
+                <div class="swiper-slide">
+                    slide5
+                </div>
+                <div class="swiper-slide">
+                    slide6
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <!--左箭头。如果放置在swiper-container外面，需要自定义样式。-->
+            <div class="swiper-button-next"></div>
+            <!--右箭头。如果放置在swiper-container外面，需要自定义样式。-->
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </div>
+</body>
+<script src="js/swiper.min.js"></script>
+<script src="js/swiper.animate1.0.3.min.js"></script>
+<script>
+    window.onload = function () {
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3, //一个块显示几个slide
+            //centeredSlides: true, //active slide居中
+            // slidesPerGroup: 1, //同时滑动几个slide
+            // spaceBetween: 20, //slide之间的间隔
+            // slidesPerColumn: 2, //显示几行
+            // slidesPerColumnFill:'row',//多行布局方式
+            // centerInsufficientSlides:true,//slides居中
+            // watchSlidesProgress : true,
+            slideToClickedSlide:true,//点击的slide切换
+            // autoplay:{
+            //     delay:3000,
+            //     disableOnInteraction:false
+            // },
+            // effect: 'coverflow',//切换效果
+            // slidesPerView: 3,
+            // centeredSlides: true, 
+            pagination: { //分页
+                el: '.swiper-pagination' 
+            },
+            navigation: { //左右点击
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            scrollbar: { //滚动条
+                el: '.swiper-scrollbar',
+                hide: true,
+            },
+            //noSwiping:true,//开启禁止滑动  给需要禁止的slide加swiper-no-swiping类名
+            // on:{
+            //     slideChange:function(){
+            //         console.log(this.slides[2].progress);
+            //     }
+            // }
+        });
+        // swiper.params.autoplay.delay = 1000;
+    }
+</script>
+
+</html>

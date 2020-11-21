@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .outer{
+            width: 900px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            display:-webkit-flex;/*Safari*/
+            display: flex;
+            /*flex-direction: column;设置排列方向*/
+            flex-wrap:wrap;/*设置内容换行*/
+            /*flex-flow:column wrap-reverse;复合属性flex-direction 和flex-wrap复合*/
+            /* justify-content: space-evenly; */
+            /* align-items: flex-end; */
+            align-content:space-evenly;
+
+        }
+        .outer>div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            text-align: center;
+            font-size: 25px;
+        }
+        .outer div:nth-child(1){
+            order:4;
+            flex-grow:3;
+        }
+        .outer div:nth-child(2){
+            order:3;
+            flex-grow:2;
+        }
+        .outer div:nth-child(3){
+            order:2;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div><p style="margin-top:20px">1</p></div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <!-- <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div> -->
+    </div>
+</body>
+</html>

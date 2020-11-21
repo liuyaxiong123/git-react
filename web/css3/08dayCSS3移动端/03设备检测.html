@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设备检测</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //window.navigator.userAgent
+    //JS检测当前设备是 ipad 或者 iPhone 或者 pc 或者 android
+    console.log(window.navigator.userAgent);
+    /*var str=window.navigator.userAgent;
+    var isIpad=/ipad/i.test(str);//ipad 平板
+    var isIphone=/iphone/i.test(str);//iphone 苹果
+    var isAndroid=/android/i.test(str);//android 安卓
+    var isWindow=/windows|Macintosh/i.test(str);//window PC
+    if(isIpad){
+        console.log('在平板上');
+    }
+    if(isIphone){
+        console.log('在苹果手机上');
+    }
+    if(isAndroid){
+        console.log('在安卓手机上');
+    }
+    if(isWindow){
+        console.log('在电脑上');
+    }*/
+    //检测PC或者移动端
+    // 查找符合正则规定的内容 找不到返回 null
+    if(window.navigator.userAgent.match(/iphone|ipad|android/i)){
+        document.body.style.background='blue';
+    }else{
+        document.body.style.background='green';
+    }
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>Document</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>hellow</div>
+    <button id="btn">按钮</button>
+</body>
+<script>
+    var myjq=$.noConflict();//消除美元符号对jQuery的缩写
+    myjq(function(){
+        myjq('#btn').on('click',function(){
+            myjq('div').text('new Hello');
+        })
+    })
+</script>
+</html>

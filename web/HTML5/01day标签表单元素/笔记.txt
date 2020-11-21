@@ -1,0 +1,51 @@
+01）HTML5 新增标签：
+header：定义头部
+footer：定义底部
+section：定义区块
+article：定义文章(描述信息)
+figure：定义媒介信息
+figcaption：定义媒介标题
+mark：定义标记
+nav：定义导航
+aside：定义侧边栏
+progress：定义进度条
+details：定义详情（配合 summary 用）
+summary：定义详情标题
+time：定义标记时间（如果标签内没有明确的时间，把时间添加到 datatime 属性上 2019-11-28T03:30Z）
+datalist：定义数据列表（一般做模糊搜索 配合input或者input search使用 input标签需要设置list属性指向datalist标签的ID
+    比如：<input type="text" list="MyData">
+            <datalist id="MyData">
+                <option value="湄公河">湄公河</option>
+            </datalist>
+）
+
+02）HTML5新增表单元素：
+email：验证输入的内容是否为邮箱地址：（该方式验证的是@符号）
+url：验证输入内容是否为url地址：（该方式验证的是http://或https:// 后面跟内容）
+search：搜索，与text区别，search可以删除内容
+tel:手机会调取数字输入的键盘
+number:控制文本框内容只能输入关于数学数字或符号 
+        min:设置最小值
+        max：设置最大值
+        step:前进步数
+range:滑块
+        min:设置最小值
+        max：设置最大值
+        value:当前滑动的值
+color:颜色拾取控件 如果颜色改变了返回的是16进制的颜色值
+date:日期 年月日
+time:时间 上午/下午 时分
+month：时间 年月
+datetime-local:时间 年月日 上午/下午时分
+week：年周(结果根据选中年份 月份 日期 计算这一年中的第几周)
+
+
+新增的表单元素的属性：
+    maxlength:最大长度
+    minlength：最小长度
+    required：控制文本框内容不能为空.
+    autofocus:页面加载完毕 文本框自动获取焦点
+    placeholder:给文本添加占位符
+    multiple：决定内容是否允许输入多个 
+    pattern:输入正则验证文本框内容
+    form:用于submit按钮置于表单之外了，还需要提交表单，用于form指向一个表单的ID

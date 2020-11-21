@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* text-shadow:水平偏移(允许负值)  垂直偏移(允许负值)  模糊度(不能有负值) 阴影颜色值 */
+        /* 可以指定多个文本阴影 每一组中间用,隔开 */
+        .text-shadow{
+            font-size:50px;
+            margin:20px;
+            /* text-shadow:5px 5px 10px #f00,-5px -5px 10px green; */
+            text-shadow: 1px 1px 0 #f0f,-1px -1px 0 #f0f;/*描边*/
+        }
+        /* box-shadow:水平偏移(允许负值)  垂直偏移(允许负值)  模糊度(不能有负值)  阴影外延伸值(允许负值)   阴影颜色值  内阴影(inset)*/
+        /* 可以指定多个盒子阴影 每一组中间用,隔开 */
+        .box-shadow{
+            width: 200px;
+            height: 200px;
+            border:1px solid;
+            box-shadow: 5px 5px 5px 10px red inset,-5px -5px 5px green;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-shadow">text shadow</div>
+    <div class="box-shadow">box shadow</div>
+</body>
+</html>

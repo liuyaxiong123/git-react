@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 200px;
+            height: 200px;
+            background: blue;
+            color: #fff;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <p>aa</p>
+        <p>bb</p>
+    </div>
+</body>
+<script src="js/zepto.min.js"></script>
+<script src="js/zeptoTouch.js"></script>
+<script src="js/zeptoFX.js"></script>
+<script>
+    //针对移动端事件封装
+    $('.outer').on('tap',function(){
+        console.log('轻轻触碰时触发');
+    });
+    $('.outer').on('swipe',function(){
+        console.log('滑动我了');
+    });
+    $('.outer').on({
+        'swipeLeft':function(){
+            console.log('向左滑动');
+            $(this).animate({
+                'translateX':'-100px'
+            })
+        },
+        'swipeRight':function(){
+            console.log('向右滑动');
+            $(this).animate({
+                'translateX':'100px'
+            })
+        },
+        'swipeUp':function(){
+            console.log('向上滑动');
+            $(this).animate({
+                'translateY':'-100px'
+            })
+        },
+        'swipeDown':function(){
+            console.log('向下滑动');
+            $(this).animate({
+                'translateY':'100px'
+            })
+        },
+        'doubleTap':function(){
+            console.log('双击');
+        },
+        'longTap':function(ev){
+            console.log('长按');
+        }
+    })
+</script>
+
+</html>

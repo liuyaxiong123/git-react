@@ -1,0 +1,22 @@
+zepto:
+1.
+支持选择器：包含css2和css3当中所有的选择器，底层$()选择器使用querySelectorAll，只要是他支持的选择器，zepto都支持
+
+2.
+像jq中一些常用的函数都支持 例如：
+DOM操作函数：append appendTo after before clone prepend prependTo 等。。。
+获取元素的函数：eq siblings find parent等...
+操作类的函数：addClass removeClass hasClass toggleClass
+属性操作函数： attr removeAttr html text css
+获取css操作函数：height width offset position
+绑定事件操作函数： on
+$('div').click()  $('div').on('click')
+
+3.
+动画：
+如果需要使用动画，那么需要单独下载fx模块支持animate
+fx methods模块  支持show hide toggle fadeIn fadeOut fadeTo  fadeToggle
+zepto内实现动画底层是用css3中的transition实现的，比jq的动画更强大，支持transform所有的转换 位移 放大等。
+
+4.
+事件：

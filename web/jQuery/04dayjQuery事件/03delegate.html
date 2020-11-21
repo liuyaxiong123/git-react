@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>delegate</title>
+    <style>
+        li{
+            user-select: none;
+        }
+    </style>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <input type="text">
+    <input type="button" value="添加">
+    <ul>
+        <li>1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+<script>
+    $(function () {
+        $('ul').delegate('li','click',function(){
+            $(this).html(parseInt($(this).html())+1);
+        })
+        $('input[type=button]').on('click', function () {
+            var li = $('<li></li>');
+            li.html($('input[type=text]').val());
+            $('ul').append(li);
+        })
+        //事件委托原理:
+        /*
+        $('ul').delegate('.item','click',function(){
+            console.log($(this));
+            $(this).css('background','red');
+        })
+        */
+    })
+</script>
+
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta name="viewport" content="width=device-width, 
+                                     initial-scale=1.0, 
+                                     maximum-scale=1.0, 
+                                     user-scalable=no"> -->
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .row>div {
+            height: 200px;
+            border: 1px solid #000;
+            margin-bottom: 10px;
+        }
+
+        .navbar-default {
+            border: 1px solid #000;
+        }
+
+        body {
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <h1>我是标题1 h1. <small>我是副标题1 h1</small></h1>
+        <h2>我是标题2 h2. <small>我是副标题2 h2</small></h2>
+        <h3>我是标题3 h3. <small>我是副标题3 h3</small></h3>
+        <h4>我是标题4 h4. <small>我是副标题4 h4</small></h4>
+        <h5>我是标题5 h5. <small>我是副标题5 h5</small></h5>
+        <h6>我是标题6 h6. <small>我是副标题6 h6</small></h6>
+        <div class="h1">
+            我是标题1 h1. <small>我是副标题1 h1</small>
+        </div>
+
+        <h2>引导主体副本</h2>
+        <p class="lead">
+            这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。
+        </p>
+
+        <small>本行内容是在标签内</small><br>
+        <strong>本行内容是在标签内</strong><br>
+        <em>本行内容是在标签内，并呈现为斜体</em><br>
+        <p class="text-left">向左对齐文本</p>
+        <p class="text-center">居中对齐文本</p>
+        <p class="text-right">向右对齐文本</p>
+        <p class="text-muted">本行内容是减弱的</p>
+        <p class="text-primary">本行内容带有一个 primary class</p>
+        <p class="text-success">本行内容带有一个 success class</p>
+        <p class="text-info">本行内容带有一个 info class</p>
+        <p class="text-warning">本行内容带有一个 warning class</p>
+        <p class="text-danger">本行内容带有一个 danger class</p>
+
+        <abbr title="World Wide Web">WWW</abbr><br>
+        <abbr title="Real Simple Syndication" class="initialism">RSS</abbr>
+
+        <address>
+            <strong>Some Company, Inc.</strong><br>
+            007 street<br>
+            Some City, State XXXXX<br>
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+        </address>
+        <blockquote>
+            <p>
+                这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。
+            </p>
+        </blockquote>
+        <blockquote>
+            这是一个带有源标题的引用。
+            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+        </blockquote>
+        <div class="clearfix">
+            <blockquote class="pull-right">
+                这是一个向右对齐的引用。
+                <small class="text-uppercase">Someone famous in <cite title="Source Title">Source Title</cite></small>
+            </blockquote>
+        </div>
+
+        <pre>
+            &lt;article&gt;
+                &lt;h1&gt;Article Heading&lt;/h1&gt;
+            &lt;/article&gt;
+        </pre>
+
+        <kbd>Ctrl+P</kbd>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <caption>基本的表格布局</caption>
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>城市</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="active">
+                        <td class="success">Tanmay</td>
+                        <td>Bangalore</td>
+                    </tr>
+                    <tr class="info">
+                        <td>Sachin</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td class="warning">Sachin</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Sachin</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>Sachin</td>
+                        <td>Mumbai</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <input type="text" class="form-control">
+        <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">名字</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="firstname" placeholder="请输入名字">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">姓</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="lastname" placeholder="请输入姓">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">请记住我
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">登录</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- 标准的按钮 -->
+        <!-- <button type="button" class="btn btn-default">默认按钮</button> -->
+        <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+        <!-- <button type="button" class="btn btn-primary">原始按钮</button> -->
+        <!-- 表示一个成功的或积极的动作 -->
+        <!-- <button type="button" class="btn btn-success">成功按钮</button> -->
+        <!-- 信息警告消息的上下文按钮 -->
+        <!-- <button type="button" class="btn btn-info">信息按钮</button> -->
+        <!-- 表示应谨慎采取的动作 -->
+        <!-- <button type="button" class="btn btn-warning">警告按钮</button> -->
+        <!-- 表示一个危险的或潜在的负面动作 -->
+        <!-- <button type="button" class="btn btn-danger">危险按钮</button> -->
+        <!-- 并不强调是一个按钮，看起来像一个链接，但同时保持按钮的行为 -->
+        <!-- <button type="button" class="btn btn-link">链接按钮</button> -->
+
+        <!-- <p>
+            <button type="button" class="btn btn-primary btn-lg">大的原始按钮</button>
+            <button type="button" class="btn btn-default btn-lg">大的按钮</button>
+        </p>
+        <p>
+            <button type="button" class="btn btn-primary">默认大小的原始按钮</button>
+            <button type="button" class="btn btn-default">默认大小的按钮</button>
+        </p>
+        <p>
+            <button type="button" class="btn btn-primary btn-sm">小的原始按钮</button>
+            <button type="button" class="btn btn-default btn-sm">小的按钮</button>
+        </p>
+        <p>
+            <button type="button" class="btn btn-primary btn-xs">特别小的原始按钮</button>
+            <button type="button" class="btn btn-default btn-xs">特别小的按钮</button>
+        </p>
+        <p>
+            <button type="button" class="btn btn-primary btn-lg btn-block">块级的原始按钮</button>
+            <button type="button" class="btn btn-default btn-lg btn-block">块级的按钮</button>
+        </p>
+
+        <img src="https://cdn.jsdelivr.net/npm/@bootcss/www.bootcss.com@0.0.3/dist/img/expo.png" class="img-rounded">
+        <img src="https://cdn.jsdelivr.net/npm/@bootcss/www.bootcss.com@0.0.3/dist/img/expo.png" class="img-circle">
+        <img src="https://cdn.jsdelivr.net/npm/@bootcss/www.bootcss.com@0.0.3/dist/img/expo.png" class="img-thumbnail">
+
+        <p>关闭图标实例
+            <button type="button" class="close" aria-hidden="true">
+                &times;
+            </button>
+        </p>
+        <p>插入符实例
+            <span class="caret"></span>
+        </p>
+        <button type="button" class="btn btn-primary btn-xs">
+            <span class="glyphicon glyphicon-asterisk"></span>  user
+        </button>
+         -->
+        <!-- <a href="#">链接</a> -->
+        <!-- <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"></div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"></div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"></div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"></div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"></div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"></div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"></div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"></div>
+        </div> -->
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">菜鸟教程</a>
+                </div>
+                <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">dsf</a></li>
+                        <li><a href="#">dsf</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#">iOS</a></li>
+                        <li><a href="#">SVN</a></li>
+                        <li class="dropdown open">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Java <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-header">dd</a></li>
+                                <li><a href="#">jmeter</a></li>
+                                <li><a href="#">EJB</a></li>
+                                <li><a href="#">Jasper Report</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">分离的链接</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">另一个分离的链接</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</body>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多边形旋转</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #wrap {
+            width: 100px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            margin: 200px auto;
+            animation:go 5s linear infinite;
+        }
+        @keyframes go{
+            form{
+                transform:rotateX(0deg) rotateY(0deg);
+            }
+            30%{
+                transform:rotateX(-30deg) rotateY(180deg);
+            }
+            50%{
+                transform:rotateX(30deg) rotateY(360deg);
+            }
+            to{
+                transform:rotateX(0deg) rotateY(720deg);
+            }
+        }
+        #wrap div {
+            width: 100px;
+            height: 200px;
+            position: absolute;
+            font-size: 45px;
+            line-height: 200px;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        #wrap div:nth-child(1) {
+            background: red;
+            transform: translateZ(100px);
+        }
+
+        #wrap div:nth-child(2) {
+            transform: translateZ(-100px);
+            background: red;
+        }
+
+        #wrap div:nth-child(3) {
+            transform: rotateY(120deg) translateZ(-100px);
+            background: red;
+        }
+
+        #wrap div:nth-child(4) {
+            transform: rotateY(120deg) translateZ(100px);
+            background: red;
+        }
+
+        #wrap div:nth-child(5) {
+            transform: rotateY(-120deg) translateZ(100px);
+            background: red;
+        }
+
+        #wrap div:nth-child(6) {
+            transform: rotateY(-120deg) translateZ(-100px);
+            background: red;
+        }
+
+        #wrap div:nth-child(7) {
+            transform: rotateY(30deg) translateZ(-150px);
+            background: skyblue;
+        }
+
+        #wrap div:nth-child(8) {
+            transform: rotateY(30deg) translateZ(150px);
+            background: skyblue;
+        }
+
+        #wrap div:nth-child(9) {
+            transform: rotateY(-30deg) translateZ(-150px);
+            background: skyblue;
+        }
+
+        #wrap div:nth-child(10) {
+            transform: rotateY(-30deg) translateZ(150px);
+            background: skyblue;
+        }
+
+        #wrap div:nth-child(11) {
+            transform: rotateY(85deg) translateZ(-150px);
+            background: skyblue;
+        }
+
+        #wrap div:nth-child(12) {
+            transform: rotateY(85deg) translateZ(150px);
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>

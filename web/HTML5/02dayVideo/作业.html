@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        section {
+            width: 1200px;
+            height: 700px;
+            background: #000;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section video {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .mask {
+            background: rgba(52, 193, 206, 0.7);
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: translate(0, 100%);
+            transition: all .5s ease-out;
+        }
+
+        section:hover .mask {
+            transform: translate(0, 0);
+        }
+
+        section ul {
+            overflow: hidden;
+            padding: 25px;
+        }
+
+        section ul li {
+            float: left;
+            list-style: none;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        section ul li:last-child {
+            margin-right: 0;
+        }
+
+        #bf {
+            background: url(image/bf.jpg) center center no-repeat;
+            border-radius: 50%;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+        }
+
+        #kj {
+            background: url(image/快进.jpg) center center no-repeat;
+            border-radius: 50%;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            margin-right: 100px;
+        }
+
+        #kt {
+            background: url(image/快退.jpg) center center no-repeat;
+            border-radius: 50%;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+        }
+
+        #jias {
+            background: url(image/加速.jpg) center center no-repeat;
+            border-radius: 50%;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            margin-right: 200px;
+        }
+
+        #jians {
+            background: url(image/减速.jpg) center center no-repeat;
+            border-radius: 50%;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+        }
+
+        #jiay {
+            background: url(image/音量.jpg) center center no-repeat;
+            border-radius: 50%;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+        }
+
+        #yinl {
+            position: absolute;
+            transform: rotate(-90deg);
+            left: 79%;
+            top: -56%;
+            display: none;
+        }
+
+        #jdt {
+            margin-right: 200px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 25px;
+            width: 25px;
+            background: #ffffff;
+            border-radius: 50%;
+            /*外观设置为圆形*/
+            border: solid 0.125em rgba(205, 224, 230, 0.5);
+            /*设置边框*/
+            box-shadow: 0 .125em .125em #3b4547;
+            /*添加底部阴影*/
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <video src="image/video.mp4" id="video" preload></video>
+        <div class="mask">
+            <ul>
+                <li id="bf"></li>
+                <li id="jdt">
+                    <input type="range" min="0" id="range" value="0">
+                </li>
+                <li id="kt"></li>
+                <li id="kj"></li>
+                <li id="yl"></li>
+                <li id="jians"></li>
+                <li id="jias"></li>
+                <li id="jiay">
+                    <input type="range" min="0" value="0" max="100" id="yinl">
+                </li>
+            </ul>
+        </div>
+    </section>
+</body>
+<script>
+    var bp = true;
+    video.load();
+    video.addEventListener('canplay', function () {
+        yinl.value = video.volume * 100;
+        bf.onclick = function () {
+            if (video.paused) {
+                bf.style.backgroundImage = 'url(image/zt.jpg)';
+                video.play();
+            } else {
+                bf.style.backgroundImage = 'url(image/bf.jpg)';
+                video.pause();
+            }
+        }
+        range.setAttribute('max', video.duration);
+        range.oninput = function () {
+            video.currentTime = this.value;
+        }
+        kj.onclick = function () {
+            video.currentTime += 3;
+            range.value = video.currentTime;
+        }
+        kt.onclick = function () {
+            video.currentTime -= 3;
+            range.value = video.currentTime;
+        }
+        jias.onclick = function () {
+            video.playbackRate += 0.1;
+        }
+        jians.onclick = function () {
+            video.playbackRate -= 0.1;
+        }
+    }, false)
+    video.addEventListener('timeupdate', function () {
+        range.value = video.currentTime;
+    }, false)
+    video.addEventListener('ended', function () {
+        video.playbackRate = 1;
+        bf.style.backgroundImage = 'url(image/bf.jpg)';
+    }, false)
+    video.addEventListener('volumechange', function () {
+        console.log('音量改变了', video.volume);
+        yinl.value = video.volume * 100;
+    }, false)
+    yinl.oninput = function () {
+        video.volume = this.value / 100;
+        if (this.value == 0) {
+            jiay.style.backgroundImage = 'url(image/静音.jpg)';
+        } else {
+            jiay.style.backgroundImage = 'url(image/音量.jpg)';
+        }
+    }
+    jiay.onclick = function () {
+        if (bp) {
+            yinl.style.display = 'block';
+        } else {
+            yinl.style.display = 'none';
+        }
+        bp = !bp;
+    }
+</script>
+
+</html>

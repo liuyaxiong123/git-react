@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>velocity.js</title>
+</head>
+
+<body>
+    <input type="button" value="按钮" id="btn">
+    <div><img src="img/1.jpg" alt=""></div>
+</body>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script>
+    $('input').click(function () {
+        // $('img').animate({
+        //     'width':400,
+        //     'height':300,
+        //     'opacity':0.3,
+        //     'transform':'rotateX(45deg)'//不行
+        // },500,function(){
+        //     alert('动画执行完了');
+        // })
+        // $('img').css({
+        //     'transition':'transform .5s',
+        //     'transform':'rotate(45deg)'
+        // })
+        //比jQuery的animate更强大，支持css3中的transform属性
+        $('img').velocity({
+            'width': 400,
+            'height': 300,
+            'opacity': 0.3,
+            'rotateZ': '45deg', //rotateX rotateY rotateZ translateX translateZ translateY skewX skewY scaleX scaleY scaleZ
+            'translateX': '200px',
+            'transform': 'rotateX(45deg)', //不生效
+            'rotate': '45deg' //不生效
+        }, 1000, function () {
+            alert('动画执行完了');
+        })
+        $('body').velocity({
+            //属性名必须写全 只支持16进制#123写法  不支持单词和rgb()
+            'background-color':'#0f0'
+        },2000)
+    })
+    // btn.onclick = function () {
+    //     Velocity(document.querySelectorAll('img')[0],{
+    //         'width': 400,
+    //         'height': 300,
+    //         'opacity': 0.3,
+    //         'rotateZ': '45deg', //rotateX rotateY rotateZ translateX translateZ translateY skewX skewY scaleX scaleY scaleZ
+    //         'translateX': '200px',
+    //         // 'transform': 'rotateX(45deg)', //不生效
+    //         // 'rotate': '45deg' //不生效
+    //     },1000,function(){
+    //         alert(1);
+    //     })
+    // }
+</script>
+
+</html>

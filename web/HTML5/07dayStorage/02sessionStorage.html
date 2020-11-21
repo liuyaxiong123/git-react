@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sessionStorage</title>
+</head>
+<body>
+    <input type="button" value="设置">
+    <input type="button" value="读取">
+    <input type="button" value="获取">
+    <input type="button" value="删除">
+    <div id="box"></div>
+</body>
+<script>
+    var btns=document.querySelectorAll('input');
+    //sessionStorage:临时性存储，会话框关闭后数据就没了
+    if(window.sessionStorage){
+        // alert("支持");
+        //设置
+        btns[0].onclick=function(){
+            sessionStorage.setItem('name','张帅');//设置数据
+            sessionStorage.setItem('age',25);
+        }
+        //读取
+        btns[1].onclick=function(){
+            box.innerHTML='姓名:'+sessionStorage.getItem('name')+'\n,年龄：'+sessionStorage.getItem('age');
+        }
+        //获取
+        btns[2].onclick=function(){
+            console.log(sessionStorage.length);
+            console.log(sessionStorage.key(0));//获取某一个键名
+        }
+        //删除
+        btns[3].onclick=function(){
+            // sessionStorage.removeItem('name');//删除一个
+            sessionStorage.clear();//删除所有
+        }
+    }else{
+        alert('不支持');
+    }
+    //存储对象
+    var json={
+        'name':'李四',
+        'age':18,
+        'sex':'男'
+    }
+    var str=JSON.stringify(json);
+    localStorage.setItem('msg',str);
+    var res=localStorage.getItem('msg');
+
+    // console.log(JSON.parse(json));
+    console.log(eval('('+res+')'));
+    
+</script>
+</html>

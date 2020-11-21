@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <!-- 
+        mate:写这个标签是为了让我们的页面能够适应移动设备
+        viewport:视口
+        content:视口内容的设置
+                width=device-width:宽度等于当前设备的宽度
+                initial-scale=1.0:初始缩放比例
+                user-scalable=yes/no:用户是否可以手动缩放页面
+                maximun-scale=1.0:允许用户缩放的最大比例
+                minmun-scale=1.0:允许用户缩放的最小比例
+    -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>媒体查询</title>
+    <link rel="stylesheet" media="screen and (min-width:1024px)" href="style1.css">
+    <link rel="stylesheet" media="screen and (max-width:1023px) and (min-width:768px)" href="style2.css">
+    <link rel="stylesheet" media="screen and (max-width:767px)" href="style3.css">
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            font-size: 50px;
+            width: 300px;
+            height: 300px;
+        }
+        /*大于1024时 box背景为红色
+        @media screen and (min-width:1024px){
+            .box{
+                background:red;
+            }
+        }*/
+        /*在1024到768之间 box 背景色为黄色
+        @media screen and (max-width:1023px){
+            .box{
+                background: yellow;
+            }
+        }*/
+        /*小于768时 box背景色为绿色
+        @media screen and (max-width:767px){
+            .box{
+                background: green;
+            }
+        }*/
+    </style>
+</head>
+<body>
+    <div class="box">一段文本</div>
+</body>
+</html>

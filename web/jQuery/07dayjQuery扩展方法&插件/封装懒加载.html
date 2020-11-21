@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>jq懒加载</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .main {
+            width: 1000px;
+            margin: 0px auto;
+            overflow: hidden;
+        }
+
+        h2 {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        #inner {
+            width: 1040px;
+            overflow: hidden;
+        }
+
+        img {
+            width: 480px;
+            height: 300px;
+            float: left;
+            margin: 20px 40px 20px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h2>北京旅游景点</h2>
+        <div id="inner">
+            <img data-original="images/001.jpg" alt="">
+            <img data-original="images/002.jpg" alt="">
+            <img data-original="images/003.jpg" alt="">
+            <img data-original="images/004.jpg" alt="">
+            <img data-original="images/005.jpg" alt="">
+            <img data-original="images/006.jpg" alt="">
+            <img data-original="images/007.jpg" alt="">
+            <img data-original="images/008.jpg" alt="">
+            <img data-original="images/009.jpg" alt="">
+            <img data-original="images/010.jpg" alt="">
+            <img data-original="images/011.jpg" alt="">
+            <img data-original="images/012.jpg" alt="">
+            <img data-original="images/013.jpg" alt="">
+            <img data-original="images/014.jpg" alt="">
+            <img data-original="images/015.jpg" alt="">
+            <img data-original="images/016.jpg" alt="">
+            <img data-original="images/017.jpg" alt="">
+            <img data-original="images/018.jpg" alt="">
+            <img data-original="images/019.jpg" alt="">
+            <img data-original="images/020.jpg" alt="">
+            <img data-original="images/021.jpg" alt="">
+            <img data-original="images/022.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    // $(function(){
+    //     //懒加载
+    //     $('img[data-original]').lazyload({
+    //         effect:'fadeIn',//淡入
+    //         // event:'mouseover',//通过事件触发
+    //         placeholder:'images/loading.gif',//占位符
+    //         threshold:200,//设置临界点
+    //     });
+    // })
+    $.fn.extend({
+        _lazyload: function (json) {
+            var w_h = window.innerHeight;
+            var that = this;
+            $(window).scroll(function () {
+                var s_t = $(window).scrollTop()+w_h;
+                if(json.threshold){
+                    s_t+=json.threshold;
+                }
+                $.each(that, function (idx, item) {
+                    var lj = $(item).attr('data-original');
+                    var sh = $(item).offset().top;
+                    if (sh < s_t) {
+                        $(item).attr('src', lj);
+                    }else if(sh<s_t||json.placeholder){ 
+                        if(sh<s_t){
+                            $(item).attr('src',lj);
+                        }
+                    }
+                })
+            })
+        }
+    })
+    $('img[data-original]')._lazyload({
+        effect: 'fadeIn',//淡入
+        event: 'mouseover',//通过事件触发
+        placeholder: 'images/loading.gif',//占位符
+        threshold: -200,//设置临界点
+    });
+</script>
+
+</html>

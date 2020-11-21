@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 声明文档格式 -->
+<!-- svg默认大小300*150 -->
+<svg width='800' height='800' version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+    <circle cx='200' cy='270' fill='blue' r='10' />
+    <circle cx='350' cy='180' fill='blue' r='10' />
+    <circle cx='300' cy='250' fill='blue' r='10' />
+    <circle cx='250' cy='200' fill='blue' r='10' />
+    <polyline points='200,270,250,200,300,250,350,180' style='stroke:blue;stroke-width:5;fill:none'/>
+</svg>

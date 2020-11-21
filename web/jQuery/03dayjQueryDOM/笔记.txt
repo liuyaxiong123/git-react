@@ -1,0 +1,51 @@
+jQuery中的DOM操作：
+1.创建节点
+$('<div></div>') 创建节点
+div.html('内容') 设置节点的html内容
+div.text('内容') 设置节点的文本内容
+div.attr('属性名','属性值')  设置元素单个属性
+div.attr({'title':'商品','id':'div'});  设置元素多个属性
+div.css('width','200px'):设置单条样式
+div.css({'width':'200px','height':'300px'}):设置多条样式
+2.插入节点
+$('body').append(div) :向body尾部插入div节点
+div.appendTo($('body')):将div节点插入到body尾部
+
+$('body').prepend(div)：  向body头部插入div节点
+div.prependTo($('body'))：  把div节点插入到body头部
+
+$('.box:eq(0)').after(div)：  向第0个div后边添加div节点
+div.insertAfter($('.box:eq(0)'))：  将div节点添加到第0个box后面
+
+$('.box:eq(2)').before(div)：  向第2个box前添加div节点
+div.insertBefore($('.box:eq(2)'))：  将div节点添加到第2个box前面
+3.复制节点
+$('.box:eq(0)').clone(true/false):false浅复制，只会复制内容，true深复制，节点自身和内容，包括该节点身上的js脚本都会复制
+4.替换节点
+var p=$('<p>呵呵哒</p>');
+$('.box:eq(0)').replaceWith(p)：把第0个box替换成p节点
+p.replaceAll($('.box:eq(0)'))：用p节点替换第0个box
+5.删除节点
+$('.box:eq(0)').remove():删除节点
+$('.box:eq(0)').empty()：清空节点内容
+$('.box:eq(0)').html()：清空内容  同上
+6.常用的获取值的方法
+获取节点：
+$('div').children()：子节点
+$('div').parent()：父节点
+$('div').parents()：所有父节点
+$('div').offsetParent()：相对定位父节点
+$('div').find('选择器')：寻找div下所有的p标签
+$('div').next()：获取下一个节点
+$('div').prev()：获取上一个节点
+$('div').siblings('p')：获取同级的其他p节点
+$('div').eq(index):筛选某一个节点
+
+$('div').width()：宽度
+$('div').outerWidth():盒模型尺寸（clientWidth）
+$('div').innerWidth()：盒模型尺寸（offsetWidth）
+$('div').height()：高度
+$('div').offset()：获取offset属性  返回json
+$('div').position()：获取定位样式 返回json
+$('div').scrollTop()：获取滚动条向下滚动的值
+$('div').scrollLeft()：获取滚动条向右滚动的值

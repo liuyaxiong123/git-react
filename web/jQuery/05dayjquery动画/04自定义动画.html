@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>自定义动画</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        body{height: 2000px;}
+        /* input{
+             position:fixed;
+            right: 10px;
+            bottom: 20px; 
+        } */
+        #box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            border: 1px solid;
+            position:absolute;
+            left:0;
+            top:40px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="开始动画">
+    <input type="button" value="停止动画">
+    <div id="box"></div>
+</body>
+<script>
+    $(function(){
+        $('input:eq(0)').on('click',function(){
+            //可以控制带px的样式，透明度annimate({},400,fn)
+            // $('#box').animate({
+            //     width:400,
+            //     height:400,
+            //     borderWidth:10,
+            //     opacity:0.5
+            // },400,function(){
+            //     $(this).animate({
+            //         'margin-left':100
+            //     })
+            // })
+            //返回顶部
+            // $('html,body').animate({
+            //     scrollTop:0
+            // },'fast')
+            //------------------------------------
+            // $('#box').animate({left:500},500,function(){
+            //     $(this).animate({top:540},500,function(){
+            //         $(this).animate({left:0},500,function(){
+            //             $(this).animate({top:40},500);
+            //         })
+            //     })
+            // })
+            //---------------------------
+            // $('#box').animate({left:500},500).delay(1000).animate({top:540},500).delay(500).animate({left:0},500).animate({top:40},500,arguments.callee);
+            //--------------------
+            $('#box').animate({width:600},1000)
+                     .animate({height:600},1000)
+        })
+        $('input:eq(1)').on('click',function(){
+            $('#box').stop();//停止当前动画  执行其他动画
+            // $('#box').stop(true);//停止所有动画
+            // $('#box').stop(true,true);//停止所有动画并瞬间执行完当前动画
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>赌博</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 500px;
+            margin: 0 auto;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        #txt {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            letter-spacing: 3px;
+            font-size: 30px;
+            font-weight: 700;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <span id="txt"></span>
+        <canvas id="canvas" width="500" height="800"></canvas>
+    </div>
+</body>
+<script>
+    var txt = document.querySelector('#txt');
+    var canvas = document.querySelector('#canvas');
+    var outer = document.querySelector('#outer');
+    var ctx = canvas.getContext('2d');
+    var arr = ['一等奖', '二等奖', '二等奖', '三等奖', '三等奖', '三等奖', '谢谢惠顾', '谢谢惠顾', '谢谢惠顾', '谢谢惠顾', '谢谢惠顾'];
+    var device = /iphone|ipad|android|opear mini|iemobile|webos/i.test(window.navigator.userAgent);
+    var startEvName = device ? 'touchstart' : 'mousedown';
+    var moveEvName = device ? 'touchmove' : 'mousemove';
+    var endEvName = device ? 'touchend' : 'mouseup';
+
+    txt.innerHTML = arr[parseInt(Math.random() * 11)];
+
+    ctx.beginPath();
+    ctx.fillStyle = '#ccc';
+    ctx.fillRect(0, 0, 500, 800);
+    ctx.globalCompositeOperation = 'destination-out';
+
+    canvas.addEventListener(startEvName, function () {
+        canvas.addEventListener(moveEvName, fn, false);
+    }, false)
+    document.addEventListener(endEvName, function () {
+        canvas.removeEventListener(moveEvName, fn, false);  
+    }, false)
+
+    function fn(ev) {
+        var ev = ev || window.event;
+        var x = (device ? ev.touches[0].clientX : ev.clientX) - outer.offsetLeft;
+        var y = (device ? ev.touches[0].clientY : ev.clientY) - outer.offsetTop;
+        ctx.arc(x, y, 30, 0, 2 * Math.PI, false);
+        ctx.fillStyle = '#000';
+        ctx.fill();
+        ctx.closePath();
+    }
+</script>
+
+</html>

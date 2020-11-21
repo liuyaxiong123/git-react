@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>event2</title>
+</head>
+<body>
+    <input type="text" id="txt">
+    <input type="button" value="按钮" id="btn">
+    <div id="box"></div>
+</body>
+<script>
+    btn.onclick=function(){
+        localStorage.setItem('name',txt.value);
+    }
+    window.addEventListener('storage',function(ev){
+        console.log(ev);
+    },false)
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 340px;
+            height: 340px;
+            margin:10px;
+            float:left;
+            background: url(image/02.jpg) 0 0 no-repeat;
+        }
+        div:nth-child(1){
+            -webkit-mask-image:url(image/01.png);
+            -webkit-mask-repeat:no-repeat;
+            -webkit-mask-position:0 0;
+        }
+        div:nth-child(2){
+            -webkit-mask:url(image/03.png) center center no-repeat;
+        }
+        div:nth-child(3){
+            -webkit-mask:url(image/05.png) center center no-repeat;
+        }
+        div:nth-child(4){
+            -webkit-mask:-webkit-radial-gradient(rgba(255,255,255,0.1),rgba(0,0,0,0.9));
+        }
+
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

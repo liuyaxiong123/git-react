@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单元素</title>
+</head>
+
+<body>
+    <form action="#" id="form">
+        <!-- 验证输入的内容是否为邮箱地址：（该方式验证的是@符号） -->
+        <p>邮箱：<input type="email"></p>
+
+        <!-- 验证输入内容是否为url地址：（该方式验证的是http://或https:// 后面跟内容
+                required：验证内容不能为空
+            ) -->
+        <!-- <input type="url" required> -->
+
+        <!-- search:搜索，与text区别，search可以删除内容 -->
+        <!-- <input type="search"> -->
+
+        <!-- tel:手机会调取数字输入的键盘 -->
+        <!-- <input type="tel"> -->
+        
+        <!-- number:控制文本框内容只能输入关于数学数字或符号 
+            min:设置最小值
+            max：设置最大值
+            step:前进步数
+        -->
+        <!-- <input type="number" min="1" max="20" step="3"> -->
+
+        <!-- range:滑块 -->
+        <!-- <input type="range" max='100' min='0' value='20' id='range'> -->
+
+        <!-- color:颜色拾取控件 如果颜色改变了返回的是16进制的颜色值-->
+        <!-- <input type="color" id="color"> -->
+
+        <!-- date:日期 年月日 -->
+        <!-- <input type="date" id="date"> -->
+
+        <!-- time:时间 上午/下午 时分 -->
+        <!-- <input type="time"> -->
+
+        <!-- month：时间 年月 -->
+        <!-- <input type="month"> -->
+
+        <!-- datetime-local:时间 年月日 上午/下午时分 -->
+        <!-- <input type="datetime-local"> -->
+
+        <!-- week：年周(结果根据选中年份 月份 日期 计算这一年中的第几周) -->
+        <!-- <input type="week"> -->
+
+        <!-- 
+        maxlength:最大长度
+        minlength：最小长度
+        required：控制文本框内容不能为空
+        autofocus:页面加载完毕 文本框自动获取焦点
+        placeholder:给文本添加占位符
+        multiple：决定内容是否允许输入多个 
+        pattern:输入正则验证文本框内容
+        form:用于submit按钮置于表单之外了，还需要提交表单，用于form指向一个表单的ID
+        -->
+
+
+        <!-- <select name="" id="" multiple size="2">
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+        </select> -->
+        <!-- <input type="email" multiple> -->
+        <!-- <input type="text" maxlength="10" minlength="2" required autofocus> -->
+        
+
+        <input type="text" pattern="[a-z0-9_]+">
+
+    </form>
+    <input type="submit" form="form">
+</body>
+<script>
+    // range.onchange=function(){
+    //     console.log(this.value);
+    // }
+
+    // color.onchange=function(){
+    //     console.log(this.value);
+    // }
+
+    // date.onchange=function(){
+    //     console.log(this.value);
+    // }
+</script>
+</html>

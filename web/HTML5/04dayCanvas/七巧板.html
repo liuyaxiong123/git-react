@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>七巧板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas {
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+</body>
+<script>
+    var ctx = canvas.getContext('2d');
+    var arr = [{
+            t: [{
+                x: 20,
+                y: 20
+            }, {
+                x: 20,
+                y: 420
+            }, {
+                x: 220,
+                y: 220
+            }, {
+                x: 20,
+                y: 20
+            }],
+            color: 'pink'
+        },
+        {
+            t: [{
+                x: 20,
+                y: 20
+            }, {
+                x: 420,
+                y: 20
+            }, {
+                x: 220,
+                y: 220
+            }, {
+                x: 20,
+                y: 20
+            }],
+            color: 'pink'
+        },
+        {
+            t: [{
+                x: 20,
+                y: 420
+            }, {
+                x: 120,
+                y: 320
+            }, {
+                x: 220,
+                y: 420
+            }, {
+                x: 29,
+                y: 420
+            }],
+            color: 'yellow'
+        },
+        {
+            t: [{
+                x: 120,
+                y: 320
+            }, {
+                x: 220,
+                y: 220
+            }, {
+                x: 320,
+                y: 320
+            }, {
+                x: 220,
+                y: 420
+            }, {
+                x: 120,
+                y: 320
+            }],
+            color: 'blue'
+        },
+        {
+            t: [{
+                x: 220,
+                y: 220
+            }, {
+                x: 320,
+                y: 120
+            }, {
+                x: 320,
+                y: 320
+            }, {
+                x: 220,
+                y: 220
+            }],
+            color: 'skyblue'
+        },
+        {
+            t: [{
+                x: 320,
+                y: 120
+            }, {
+                x: 420,
+                y: 20
+            }, {
+                x: 420,
+                y: 220
+            }, {
+                x: 320,
+                y: 320
+            }, {
+                x: 320,
+                y: 120
+            }],
+            color: 'red'
+        },
+        {
+            t: [{
+                x: 220,
+                y: 420
+            }, {
+                x: 420,
+                y: 220
+            }, {
+                x: 420,
+                y: 420
+            }, {
+                x: 220,
+                y: 420
+            }],
+            color: 'orange'
+        },
+    ];
+    for (var i = 0; i < arr.length; i++) {
+        ctx.beginPath();
+        ctx.moveTo(arr[i].t[0].x, arr[i].t[0].y);
+        for (var y = 1; y < arr[i].t.length; y++) {
+            ctx.lineTo(arr[i].t[y].x, arr[i].t[y].y);
+            ctx.stroke();
+        }
+        ctx.fillStyle = arr[i].color;
+        ctx.fill();
+        ctx.closePath();
+    }
+</script>
+
+</html>

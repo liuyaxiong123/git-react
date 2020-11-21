@@ -1,0 +1,149 @@
+//导入文件 输出方式导入
+// @import './test.less';
+//导入文件 以不输出的方式导入
+// @import (reference) './test.less';
+
+// #app{
+//     width: @wp;
+//     .color;
+// }
+// .foo(@bg:#f5f5f5,@color:#900){
+//     background: @bg;
+//     color:@color;
+//     font-size: 16px;
+// }
+// //！important提生权重可以添加在mixin函数后，用来提升多条属性权重值
+// h1{
+//     .foo()!important;
+//     background: yellow;
+// }
+//-----------------------
+//在less中我们可以通过条件判断语句来渲染不同的样式效果
+//不是通过if实现，是通过when实现，通过使用when关键词，我们可以定义对个方法
+//在判断是否相等的时候，我们只能通过=实现，不要写两个或者三个=
+//判断多个条件可以通过and关键词配合 when使用， when and
+//判断非条件，我们可以通过not关键词实现，配合when使用 when not
+
+// .mixin(@w,@h) when(@w>400) and (@w<600){
+//     width: @w;
+//     height: @h;
+//     background: yellow;
+// }
+// .mixin(@w,@h) when (@w=200px){
+//     width: @w;
+//     height: @h;
+//     background: blue;
+// }
+// .mixin(@w,@h) when (@w<200){
+//     width: @w;
+//     height: @h;
+//     background: skyblue;
+// }
+// .mixin(@w,@h) when not (@w = 300){
+//     width: @w;
+//     height: @h;
+//     background: purple;
+// }
+// h1{
+//     .mixin(200px,300px);
+// }
+// header{
+//     .mixin(100px,150px);
+// }
+// footer{
+//     .mixin(500px,500px);
+// }
+//--------------------
+//判断@a是否是颜色值
+// .mixin(@a) when (iscolor(@a)){
+//     background: #000;
+// }
+// //是否为数字
+// .mixin(@a) when (isnumber(@a)){
+//     background: skyblue;
+// }
+// //是否为字符串
+// .mixin(@a) when (isstring(@a)){
+//     background: purple;
+// }
+// //是否为url路径
+// .mixin(@a) when (isurl(@a)){
+//     background: red;
+// }
+// //是否为px像素单位的数字
+// .mixin(@a) when (ispixel(@a)){
+//     background: green;
+// }
+// //是否为em单位的数字
+// .mixin(@a) when (isem(@a)){
+//     background: pink;
+// }
+// //是否为%百分比单位的数字
+// .mixin(@a) when (ispercentage(@a)){
+//     background: blue;
+// }
+// h1{
+//     // .mixin(123);//数字 isnumber()
+//     // .mixin('abc');//字符串  isstring()
+//     // .mixin(rgba(100,100,100,.5));//颜色值 iscolor()
+//     // .mixin(url('img/a.jpg'));//url路径 isurl()
+//     // .mixin(30px);//为px像素单位的数字 ispixel()
+//     // .mixin(2em);//为em单位的数字 isem()
+//     .mixin(50%);//为百分比单位的数字 ispercentage()
+// }
+//---------------------
+//合并属性 +(合并相同名称的属性之间用 , 号隔开) +_（合并相同名称的属性中间用空格隔开）
+// .mixin(){
+//     box-shadow+: 0 0 10px #555;
+// }
+// h1{
+//     width: 100px;
+//     height: 100px;
+//     .mixin();
+//     box-shadow+: 5px 5px 10px #f00;
+//     box-shadow+: 5px 5px 10px #fff;
+//     background+_: #f60;
+//     background+_: url('image/bg.jpg');
+//     background+_: no-repeat;
+//     background+_: center center;
+// }
+//-------------------------------
+// extract(@list,1):获取一组列表中的某一个 从1开始
+//length(@list):获取列表的长度
+// @list:Arial,"宋体","楷体","微软雅黑";
+// .mixin(@count) when (@count <= length(@list)){
+//     font-family: extract(@list,@count);
+//     .mixin(@count+1);
+// }
+// div{
+//     // font-family:extract(@list,2);
+//     // font-size: length(@list);
+//     .mixin(1);
+// }
+//-----------------------
+//数学函数
+// div{
+//     width: ceil(200.888px);//向上取整
+//     width: floor(190.44px);//向下取整
+//     width: percentage(0.5px);//将浮点数转换为百分比
+//     width: round(4.5px);//四舍五入
+//     width: sqrt(9);//平方根
+//     width: abs(-900px);//绝对值
+//     width: pow(5px,3);//取平方运算
+//     width: max(50px,60,100px);//取最大的值
+//     width: min(50,60px,100);//取最小的值
+//     width: mod(11px,8);//取余
+//     width: sin(90deg);//取正弦
+//     width: sin(1);//一弧度角的正弦
+//     width: cos(90deg);//取余弦
+//     width: cos(1);//一弧度角的余弦
+//     width: pi();//圆周率
+// }
+//---------------------
+//通过色相（hue）0-360，饱和度(saturation) 0-100% or 0-1，亮度(lightness) 0-100% or 0-1，透明度(alpha)0-1
+// div{
+//     // background: hsl(90,100%,50%);
+//     // background: hsla(90,100%,50%,0.5);
+//     background: hsvhue(hsl(90,100%,50%));
+//     background: hsvsaturation(hsl(90,100%,50%));
+// }

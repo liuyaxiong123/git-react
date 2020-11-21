@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机旋转轮播</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #wrap {
+            width: 1200px;
+            height: 700px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+
+        .outer {
+            width: 1200px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            background: url(img/bg.jpg) no-repeat;
+            background-size: cover;
+        }
+
+        .outer div {
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -150px;
+            transition: all .5s linear;
+        }
+
+        .outer div img {
+            width: 200px;
+            height: 300px;
+        }
+
+        .inner {
+            background: #ccc;
+            width: 1200px;
+            height: 100px;
+        }
+
+        .inner ul {
+            margin-left: 60px;
+        }
+
+        .inner ul li {
+            background: #000;
+            float: left;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-left: 23px;
+            margin-top: 30px;
+        }
+
+        .inner ul li.active {
+            background: url(img3/icon1.png) center center no-repeat #000;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="outer">
+            <div><img src="img3/test.jpg" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+            <div><img src="" alt=""></div>
+        </div>
+        <div class="inner">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        $.each($('.outer div img:gt(0)'), function (ind, itm) {
+            $(itm).attr('src', 'img3/' + (ind + 1) + '.jpg');
+        })
+
+        function init(obj) {
+            obj.css({
+                'left': '50%',
+                'top': '50%',
+                'margin-left': '-100px',
+                'margin-top': '-150px',
+                'transform': 'rotate(0deg)',
+                'border': '2px solid yellowgreen'
+            })
+            $.each(obj.siblings('div'), function (idx, item) {
+                var dg = Math.ceil(Math.random() * 360);
+                var x1 = parseInt(Math.random() * 300);
+                var x2 = parseInt(Math.random() * 300) + 900;
+                var y = parseInt(Math.random() * 700) - 100;
+                if (idx % 2 == 0) {
+                    $(this).css({
+                        'transform': 'rotate(' + dg + 'deg)',
+                        'left': x1 + 'px',
+                        'top': y + 'px',
+                        'border': '0'
+                    })
+                } else {
+                    $(this).css({
+                        'transform': 'rotate(' + dg + 'deg)',
+                        'left': x2 + 'px',
+                        'top': y + 'px',
+                        'border':'0'
+                    })
+                }
+            })
+        }
+        init($('.outer div:eq(0)'));
+        $('.inner ul').delegate('li', 'click', function () {  
+            var idx = $(this).index();
+            $(this).addClass('active').siblings('li').removeClass('active');
+            init($('.outer div:eq(' + idx + ')'));
+        })
+        $('.outer div').on('click',function(){
+            var index=$(this).index();
+            $('.inner ul li').eq(index).addClass('active').siblings('li').removeClass('active');
+            init($(this));
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>上拉下滑</title>
+    <script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="隐藏">
+    <input type="button" value="显示">
+    <input type="button" value="toggle">
+    <div id="box"></div>
+</body>
+<script>
+    $(function () {
+        //slideUp  slideDown   slideToggle
+        $('input:eq(0)').on('click', function () {
+            $('#box').slideUp(1000, function () {
+                console.log('滑上去');
+            });
+        })
+        $('input:eq(1)').on('click', function () {
+            $('#box').slideDown('fast', function () {
+                console.log('滑下来');
+            });
+        })
+        $('input:eq(2)').on('click', function () {
+            //来回切换
+            $('#box').slideToggle('slow', function () {
+                console.log($('#box').is(':hidden'));
+            });
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+CSS变形：
+
+transform:变形属性
+
+值：rotate(度数deg):2d旋转
+    rotate3d(x,y,z,度数deg):3d旋转
+    ratate3d(x轴：如果值为1就转我 如果值为0就不转我，y轴，z轴，度数) 
+    transform:rotateX(度数);
+    transform:rotateY(度数);
+    transform:rotateZ(度数);
+
+    translate(x,y):2d位移  允许有负值
+    translate3d(x,y,z):3d位移  允许有负值
+    translateX(值)
+    translateY(值)
+    translateZ(值)
+
+    scale(x,y):2d缩放  值：缩放比例
+    scale3d(x,y,z):3d缩放
+    scaleX(值)
+    scaleY(值)
+    scaleZ(值)
+
+
+    skew:2d变形(拉伸)
+
+    transform-origin:设置旋转的基点
+    值：left top bottom right center(默认)
+        px单位：x轴 y轴
+
+注意：如果要做3d的效果(旋转  位移  缩放)  一定要在父层添加如下属性
+
+transform-style: preserve-3d;
+perspective: 1000px;景深 视角距离，观看效果距离
+perspective-origin:center;观看视角的位置 center top left right bottom

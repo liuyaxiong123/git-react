@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 300px;
+        }
+        #box{
+            position:relative;
+            margin: 200px auto;
+            transform-style: preserve-3d;
+            animation: go 5s linear infinite;
+        }
+        @keyframes go{
+            form{
+                transform:rotateY(0deg);
+            }
+            50%{
+                transform:rotateY(180deg);
+            }
+            to{
+                transform:rotateY(360deg);
+            }
+        }
+        #box div{
+            width: 100px;
+            height: 200px;
+            position: absolute;
+            border: 5px solid red;
+            border-right: none;
+            border-bottom:none;
+            border-radius: 50px 50px 0 0;
+            transform-origin: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+<script>
+    var div=document.querySelectorAll('#box div');
+    for(var i=0;i<div.length;i++){
+        div[i].style.transform='rotateY('+(i*45)+'deg) rotateZ(-45deg)';
+    }
+</script>
+</html>

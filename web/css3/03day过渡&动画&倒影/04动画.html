@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            margin: 100px auto;
+            /* animation-name: move; */
+            /* 动画名称 */
+            /* animation-duration: 5s; */
+            /* 动画执行时间 */
+            /* animation-timing-function: ease-in; */
+            /* 动画执行方式 */
+            /* animation-delay: 1s; */
+            /* 动画延迟时间*/
+            /* animation-iteration-count: 1; */
+            /* 动画执行次数默认1  infinite(无限循环) */
+            /* animation-direction: alternate; */
+            /* 动画执行方式 默认：normal(正常播放)  alternate：轮流反向播放 */
+            /* animation-fill-mode: backwards; */
+            /* 动画播放完毕以后停留的状态 forwards(动画执行完毕后停留在结束状态) both(动画执行完毕后停留在结束状态) backwards(动画执行完毕后停留在开始状态)*/
+            animation:move 5s ease-in 2s 2 alternate both;
+        }
+
+        @keyframes move {
+            from {
+                background: yellow;
+            }
+
+            50% {
+                background: red;
+            }
+
+            to {
+                background: pink;
+            }
+        }
+
+        @-webkit-keyframes move {
+            0% {
+                background: yellow;
+            }
+
+            50% {
+                background: red;
+            }
+
+            100% {
+                background: pink;
+            }
+        }
+    </style>
+</head>
+<script>
+    window.onload = function () {
+        var flag=true;
+        btn.onclick=function(){
+            if(flag){
+                box.style.animationPlayState='paused';
+                // box.style['animation-play-state']
+                flag=false;
+            }else{
+                box.style.animationPlayState='running';
+                flag=!flag;
+            }
+        }
+    }
+</script>
+
+<body>
+    <input type="button" value="按钮" id="btn">
+    <div id="box">
+
+    </div>
+</body>
+
+</html>
