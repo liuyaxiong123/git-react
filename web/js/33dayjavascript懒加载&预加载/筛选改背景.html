@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        table{
+            width: 500px;
+            margin:0 auto;
+        }
+        thead tr{
+            text-align: center;
+        }
+        #bao{
+            width: 500px;
+            height:auto;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="bao">
+        <input type="text" id="txt" placeholder="请输入搜索内容" autocomplete="off">
+        <input type="button" value="搜索" id="btn">
+    </div>
+    <table id="tab" border="1">
+        <thead> 
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody id="by"> 
+            <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr> -->
+        </tbody>
+    </table>
+</body>
+<script>
+    var Arr=[ 
+        {bianhao:'0',xingming:'Blue',nianling:'38'},
+        {bianhao:'1',xingming:'王威',nianling:'18'},
+        {bianhao:'2',xingming:'王婉琪',nianling:'15'},
+        {bianhao:'3',xingming:'阮航',nianling:'25'},
+        {bianhao:'4',xingming:'王梁清',nianling:'16'},
+        {bianhao:'5',xingming:'江峰',nianling:'16'},
+        {bianhao:'6',xingming:'焦泽阳',nianling:'16'},
+        {bianhao:'7',xingming:'闵超',nianling:'18'},
+        {bianhao:'8',xingming:'彭维伟',nianling:'23'},
+        {bianhao:'9',xingming:'廖子浩',nianling:'19'},
+        {bianhao:'10',xingming:'杨人杰',nianling:'22'},
+        {bianhao:'11',xingming:'盛广华',nianling:'21'},
+        {bianhao:'12',xingming:'胡康',nianling:'19'},
+        {bianhao:'13',xingming:'吴佳凡',nianling:'18'},
+        {bianhao:'14',xingming:'袁继鹏',nianling:'21'},
+        {bianhao:'15',xingming:'万婷婷',nianling:'18'},
+        {bianhao:'16',xingming:'祝丽婷',nianling:'18'},
+        {bianhao:'17',xingming:'李文杰',nianling:'18'},
+    ];
+    window.onload=function(){
+       if(txt.value==''){
+           show(Arr);
+       }
+    }
+    btn.onclick=function(){
+        var trh=document.querySelectorAll('#by>tr');
+        for(var j=0;j<Arr.length;j++){
+            if(txt.value!=''){
+                var newarr=Arr.filter(function(item,index){
+                    return item.xingming.indexOf(txt.value)!=-1;
+                });
+                console.log(newarr);
+                if(Arr.indexOf(newarr[j])!=-1){
+                    var index=Arr.indexOf(newarr[j]);
+                    trh[index].style.background='yellow';
+                }
+            }
+        }
+    }
+    window.onkeydown=function(ev){
+        if(ev.keyCode==13){
+            btn.onclick();
+        }
+    }
+    txt.oninput=function(){
+        if(txt.value==''){
+            var trh=document.querySelectorAll('#by>tr');
+            for(var i=0;i<trh.length;i++){
+                trh[i].style.background='#fff';
+            }
+        }
+    }
+    function show(arr){
+        for(var i=0;i<arr.length;i++){
+            var trs=document.createElement('tr');
+            trs.innerHTML='<td>'+arr[i].bianhao+'</td>'+'<td>'+arr[i].xingming+'</td>'+'<td>'+arr[i].nianling+'</td>';
+            by.appendChild(trs);
+        }
+    }
+</script>
+</html>

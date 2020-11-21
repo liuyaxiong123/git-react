@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹幕</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            width: 500px;height: 500px;
+            margin:0 auto;
+            border:1px solid;
+            position:relative;
+            overflow: hidden;
+        }
+        span{
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="txt">
+    <input type="button" id="btn" value="发送">
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    btn.onclick=function(){
+        var sps=document.createElement('span');
+        var r=Math.floor(Math.random()*256);
+        var g=Math.floor(Math.random()*256);
+        var b=Math.floor(Math.random()*256);
+        sps.style.color='rgb('+r+','+g+','+b+')';
+        sps.style.top=Math.floor(Math.random()*(500-20))+'px';
+        sps.style.left=Math.floor(Math.random()*10+490)+'px';
+        sps.style.width=txt.value.length*16+'px';
+        sps.innerHTML=txt.value;
+        txt.value='';
+        box.appendChild(sps);
+        sps.timer=setInterval(function(){
+            if(sps.offsetLeft<-sps.offsetWidth){
+                clearInterval(sps.timer);
+                box.removeChild(sps);
+            }
+            sps.style.left=sps.offsetLeft-1+'px';
+        },20);
+    }
+</script>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        html{
+            height: 100%;
+        }
+        body{
+            background: url('image/bg.jpg');
+            background-size: cover;/*撑满整个快*/
+            height: 100%;
+            overflow: hidden;
+        }
+        #fenshu,#time{
+            font-size:45px;
+            color:#fff;
+        }
+        .balloon{
+            width: 81px;height: 119px;
+            background: url('image/ballon.png') no-repeat;
+            cursor: pointer;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="fenshu">0</h1>
+    <div id="time">80</div>
+</body>
+<script>
+        var _fenshu=0;//存储分数
+        function Balloon(){//构造函数
+            this.fenshu=document.getElementById('fenshu');
+            this.top=0;//设置气球的top
+            this.left=parseInt(Math.random()*(window.innerWidth-81));//设置气球的left
+            this.score=parseInt(Math.random()*12)+1;//设置生成气球时，该气球的分数
+            //初始化气球
+            this.init();
+            this.fly();
+        }
+        Balloon.prototype.init=function(){
+            var _this=this;
+            this.dom=document.createElement('div');
+            this.dom.className='balloon';
+            this.dom.style.top=this.top+'px';
+            this.dom.style.left=this.left+'px';
+            var x=-(this.score-1)%4*96;//设置气球x轴定位的位置
+            var y=-parseInt((this.score-1)/4)*120;//设置气球y轴定位的位置
+            this.dom.style.backgroundPosition= x+'px '+y+'px';
+            document.body.appendChild(this.dom);
+            this.dom.onclick=function(){
+                _this.bomb();
+                if(_this.score>0&&_this.score<9){
+                    _fenshu+=_this.score;
+                }
+                if(_this.score==9){
+                    _fenshu*=2;
+                }
+                if(_this.score==10){
+                    _fenshu/=2;
+                }
+                if(_this.score==11){
+                    _fenshu=0;
+                }
+                if(_this.score==12){
+                    clearInterval(timer);
+                    alert('你的分数是：'+_fenshu);
+                }
+                _this.fenshu.innerHTML=_fenshu;
+            }
+        }
+        Balloon.prototype.fly=function(){
+            var _this=this;
+            this.timer=setInterval(function(){
+                _this.top+=_this.score*2;//运动气球的速度
+                if(_this.top>window.innerHeight){
+                    _this.bomb();//删除气球
+                }
+                _this.dom.style.top=_this.top+'px';
+            },20)
+        }
+        //删除气球
+        Balloon.prototype.bomb=function(){
+            clearInterval(this.timer);
+            document.body.removeChild(this.dom);
+        }
+        var frameCount=0;
+        var time=80;//游戏时间
+        var timeObj=document.getElementById('time');
+        var timer=null;
+        timer=setInterval(function(){
+            frameCount++;
+            if(frameCount%2==0){
+                time--;
+                timeObj.innerHTML=time;
+            }
+            if(_fenshu>=60){
+                clearInterval(timer);
+                alert('闯关成功');
+                var flag=confirm('2 关通关');
+                if(flag){
+                    window.location.href='02.html';
+                }
+            }
+            if(time==0&&_fenshu<60){
+                clearInterval(timer);
+                alert('闯关失败');
+            }
+            new Balloon();
+        },500)
+    </script>
+</html>

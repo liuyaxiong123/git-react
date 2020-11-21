@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        #kk{
+            width: 500px;height: 300px;
+            word-wrap:break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="" id="dd">
+        <input type="text" id="inp">
+        <div class="" id="kk"></div>
+    </div>
+</body>
+<script>
+    var inp=document.getElementById('inp');
+    var kk=document.getElementById('kk');
+    var arr=[];
+    inp.onblur=function(){
+        vt=this.value;
+        var t1=parseInt(vt);
+        if(vt==''){
+            alert('请输入内容');
+            return;
+        }else{
+            if(isNaN(t1)){
+                alert('请输入数字');
+                return;
+            }
+        }
+        for(i=0;i<t1;i++){
+            if(i%7!=0){
+                arr.push(i);
+                console.log(arr);
+                kk.innerText='安全数字：'+arr;
+            }
+        }      
+    }
+</script>
+</html>

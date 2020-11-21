@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>继承</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function A(num){
+        this.abc=num;
+    }
+    A.prototype.showN=function(){
+        console.log(this.abc);
+    }
+    var obj=new A(12);
+
+    //继承属性:
+    function B(){
+        //继承属性:
+        //A.call(this,18);
+        A.apply(this,[8]);
+    }
+    //继承方法:
+    for(i in A.prototype){
+        B.prototype[i]=A.prototype[i];
+    }
+    B.prototype.sayHello=function(){
+        alert('nihao');
+    }
+    var obj2=new B();
+    console.log(obj2);
+    obj2.sayHello();
+    obj.sayHello();
+
+</script>
+</html>

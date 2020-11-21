@@ -1,0 +1,21 @@
+DOM:document object model
+dom事实上就是文档规定我们如何操作HTML
+
+DOM节点：什么是节点？
+标签，元素，节点代表一个东西 都是标签
+
+获取节点：
+
+元素.childNodes:获取元素子节点（包含文本节点）
+元素.nodeType:获取节点类型（文本节点 3，元素节点：1）
+元素.children:获取元素子节点（不包含文本节点）
+元素.parentNode:获取元素父节点
+
+操作节点：
+document.createElement('节点名称'):创建元素节点
+document.createTextNode('文本节点内容'):创建文本节点
+父层.appendChild(节点)：向尾部追加
+父层.insertBefore(要插入的节点，往谁的前面插入)：向前面追加
+父层.removeChild(要删除的节点)：删除节点
+节点.cloneNode(true):复制节点 添加参数true代表深复制
+父层.replaceChild(要替换的节点，被替换的节点)：替换节点

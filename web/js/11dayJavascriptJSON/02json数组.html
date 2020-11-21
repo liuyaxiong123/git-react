@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>json数组</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //json数组：
+    var arr=[
+        {name:'张三',age:30,sex:'男'},
+        {name:'李四',age:25,sex:'男'},
+        {name:'王阿五',age:28,sex:'男'},
+        {name:'小花',age:18,sex:'女'},
+        {name:'张耀荣',age:8,sex:'女'}
+    ];
+    //过滤出所有年龄大于25的人
+    var newArr=arr.filter(function(item,index){
+        console.log(item);
+       return item.age>25;
+    });
+    console.log(newArr);
+    //过滤所有男性
+    var arr2=arr.filter(function(item,index){
+        return item.sex=='男';
+    });
+    //过滤张耀荣
+    console.log(arr2);
+    var arr3=arr.filter(function(item,index){
+        return item.name=='张耀荣';
+    });
+    console.log(arr3);
+    //过滤名字不是王五的剩下所有人
+    var arr4=arr.filter(function(item,index){
+        return item.name!='王五';
+    })
+    console.log(arr4);
+    //--------------------
+    //将数组按照年龄从小到大排序
+    arr.sort(function(n1,n2){
+        return n1.age-n2.age;
+    });
+    console.log(arr);
+
+</script>
+</html>

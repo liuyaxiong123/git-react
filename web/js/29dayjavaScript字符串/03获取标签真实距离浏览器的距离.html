@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取标签真实距离浏览器的距离</title>
+    <style>
+        *{margin:0;padding:0;}
+        #outer{
+            width: 500px;height: 500px;border:1px solid;margin:50px auto;
+            position:relative;
+        }
+        #inner{
+            width: 300px;height: 300px;
+            background:blue;
+            margin:0 auto;
+            position: absolute;
+            left:100px;
+            top:100px;
+        }
+        #p{
+            width: 100px;height: 100px;background:yellow;
+            position:absolute;
+            top:50px;
+            left:50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+            <p id="p"></p>
+        </div>
+    </div>
+</body>
+<script>
+    //console.log(p.offsetLeft,p.offsetLeft);
+    var l=0;
+    l+=p.offsetLeft;//50
+    l+=p.offsetParent.offsetLeft;
+    l+=p.offsetParent.offsetParent.offsetLeft;
+    //真实距离浏览器的左边距
+    var t=0;
+    t+=p.offsetLeft;
+    t+=p.offsetParent.offsetTop;
+    t+=p.offsetParent.offsetParent.offsetTop;
+    //真实距离浏览器的上边距
+    // console.log(l,t);
+    // console.log(p.offsetParent.offsetParent.offsetParent.offsetTop);
+    var l=offsetLT(p).left;
+    var t=offsetLT(p).top;
+    console.log(l,t);
+    function offsetLT(obj){
+        var l=0,t=0;
+        while(obj){  
+            l+=obj.offsetLeft;
+            t+=obj.offsetTop;
+            obj=obj.offsetParent;
+        }
+        return {left:l,top:t};
+    }
+</script>
+</html>

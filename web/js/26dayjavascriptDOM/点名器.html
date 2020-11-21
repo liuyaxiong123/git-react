@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点名器</title>
+</head>
+<body>
+    <input type="button" id="btn" value="开始">
+    <div id="box"></div>
+</body>
+<script>
+    var arr=['宋广义','张松年','白鑫','原晨曦','侯婷婷','王林欢','宋敏强','祁群强','岱世杰','杨泽航','刘俊斌','张磊',
+        '蔺志龙','徐晶玉','武洋洋','刘晨伟','沈成宇','赵宗保','张垚','贾祥祥','李阳','王雄雄','吕岩华','景一泽',
+        '秦钰茹','刘旭超','崔惠龙','韩越','叶卓读','张耀荣','周晓丽','韩慧涛','秦迎瑞','刘亚雄','陈康','王晓丽',
+        '龚颖慧','刘宇青','吴甜欣','梁梦华','于晶晶','杨柏冰','杨宏斌','郭洋帆','柴豪辉','王盛','张芯芯','蔡佳龙'
+        ,'余晋洋','温倩倩','郭全龙','侯晨晨','赵昱睿','王智浩'];
+    var b=true,timer=null;
+    btn.onclick=function(){
+        if(b==true){
+                timer=setInterval(function(){
+                box.innerHTML=arr[Math.ceil(Math.random()*(arr.length-1))];
+            },10)
+            btn.value='暂停';
+            b=false;
+        }else if(b==false){
+            clearInterval(timer);
+            btn.value='开始';
+            b=true;
+        }
+    }
+    window.onkeydown=function(ev){
+        var ev=ev||window.event;
+        if(ev.keyCode==13&&b==true){
+            timer=setInterval(function(){
+                box.innerHTML=arr[Math.ceil(Math.random()*(arr.length-1))];
+            },10)
+            btn.value='暂停';
+            b=false;
+        }else if(ev.keyCode==13&&b==false){
+            clearInterval(timer);
+            btn.value='开始';
+            b=true;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,59 @@
+*{margin:0;padding:0;}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+#outer{
+    width: 500px;
+    height: 400px;
+    background:pink;
+    margin:50px auto;
+    position: relative;
+    overflow: hidden;
+    border:2px solid red;
+}
+#inner1{
+    width: 1500px;
+    height: 400px;
+    position: absolute;
+    top:0;
+    left:0;
+}
+#inner1 ul li,#inner1 ul li img{
+    width: 500px;height: 400px;
+}
+#inner1 ul li{
+    float:left;
+}
+#inner2 li{
+    float:left;
+    width: 30px;height: 30px;
+    background:pink;
+    margin-right:10px;
+    border-radius:50%;
+}
+#inner2{
+    position: absolute;
+    bottom:5px;
+    left:200px;
+}
+/* 拥有active这个class类的li标签 */
+#inner2 li.active{
+    background:yellow;
+}
+#left{
+    position: absolute;
+    left: 5px;
+    top:50%;
+    font-size:30px;
+    font-weight: 700;
+}
+#right{
+    position: absolute;
+    right:5px;
+    top:50%;
+    font-size:30px;
+    font-weight: 700;
+}

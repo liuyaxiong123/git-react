@@ -1,0 +1,214 @@
+
+ img, input, button{
+    border:none;
+}
+ img {
+vertical-align:middle;
+}
+ body{
+     overflow-x:hidden;
+}
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+.none{
+    display:none;
+}
+.w{
+    width:1200px;
+    margin:0 auto;
+}
+.top{
+    width:100%;height:100px;
+    margin-top:20px;
+}
+.logo{
+    width:1000px;height:80px;
+    margin:0 auto;
+}
+.inner_box{
+    width:100%;height:580px;
+    background:#87270c;
+}
+.imgs{
+    width:1519px;height:580px;
+    background:url(../img/登录界面.jpg)no-repeat 0px 0px;
+    margin:0 auto;
+    background-position: top center;
+    position:relative;
+}
+.main_box{
+    width:500px;height:580px;
+    position:absolute;
+    right:120px;top:0px;
+}
+.dl_box{
+    width:380px;height:460px;
+    margin-top:50px;
+    background:#fff;
+    position:relative;
+}
+.dl_box p{
+    width:100%;height:60px;
+}
+.register{
+    cursor:pointer;height:26px;
+    line-height:26px;
+    margin-top:20px;
+    font-size:18px;
+}
+.vip{
+    color:#cc5252;
+}
+.yard{
+    color:grey;
+}
+.sg{
+    width:1px;height:22px;
+    background:#ddd;
+    margin:20px 20px 0px;
+}
+#input_box{
+    width:380px;height:395px;
+    background:#fff;
+}
+#saoma_box{
+    width:380px;height:395px;
+    background:#fff;
+    display:none;
+}
+.box_input{
+    width:300px;height:209px;
+    margin:0 auto;
+}
+.box_input .p1{
+    width:300px;height:41px;
+    border:1px solid #ddd;
+    margin-top:35px;
+    position:relative;
+}
+.box_input .p2{
+    width:300px;height:41px;
+    margin-top:20px;
+}
+#zhangh{
+    width:280px;height:40px;
+    margin-left:10px;
+    line-height:40px;
+}
+#hi1{
+    width:310px;height:16px;
+    position:absolute;
+    bottom:-19px;
+    left:0px;
+    background:url(../img/ico小图/icon.png)no-repeat 0px 1px;line-height:16px;
+    font-size:10px;
+    color:#d00000;
+    padding-left:20px;
+    display:none;
+    font-weight:700;
+}
+#hi2{
+    width:310px;height:16px;
+    position:absolute;bottom:-19px;
+    left:0px;background:url(../img/ico小图/icon.png)no-repeat 0px 1px;line-height:16px;
+    font-size:10px;
+    color:#d00000;
+    padding-left:20px;
+    display:none;
+    font-weight:700;
+}
+#yz{
+    width:100px;height:40px;
+    margin-left:10px;
+    line-height:40px;
+}
+.yz_box{
+    width:200px;height:40px;
+    border:1px solid #ddd;
+    margin-top:20px;
+    position:relative;
+}
+.btn{
+    width:92px;height:40px;
+    background:#b1b1b1;
+    color:#fff;
+    text-align:center;
+    line-height:40px;
+    cursor:pointer;
+    margin-left:6px;
+margin-top:20px;
+}
+#btn_b{
+    width:100%;height:40px;
+    text-align:center;
+    line-height:40px;
+    color:#fff;
+    background:#cc5252;
+    margin-top:90px;
+    clear:both;
+    font-size:15px;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+#zc{
+    font-size:12px;
+    margin-top:5px;
+    color:#999;
+}
+.login_method{
+    width:180px;height:30px;
+    position:absolute;
+    bottom:0px;right:0px;
+    font-size:14px;
+    color:#999;
+}
+.saoma{
+    width:340px;height:185px;
+    margin:0 auto;
+    position:relative;
+    margin-top:40px;}
+#ma_ico{
+    width:183px;height:183px;
+    position:absolute;
+    top:0px;left:80px;
+    z-index:1;
+    transition: left 1s;
+}
+#ma_ico img{
+    width:183px;
+    height:183px;
+}
+.introduce{
+    width:340px;height:42px;
+    margin:0 auto;
+    text-align:center;
+    font-size:13px;
+}
+.wb{
+    color:#cc5252;
+}
+.xiaz_btn{
+    width:160px;height:40px;
+    text-align:center;
+    line-height:40px;
+    font-size:13px;
+    cursor:pointer;
+    margin:20px 0px 0px 115px;
+    border:1px solid #999;
+    background:#fff;
+    border-radius:25px;
+}
+.foont{
+    width:640px;
+    margin:0 auto;
+    padding:50px 0px;
+}
+.foont div{
+    text-align:center;
+    font-size:13px;
+    color:#999;
+}

@@ -1,0 +1,48 @@
+面向对象：
+1.用对象人(面向过程)
+2.写对象人(面向对象)
+
+对象：
+1什么是对象？
+Array
+Date
+RegExp
+Number
+String
+Function
+Object
+一个dom元素
+等...
+如何检测一个东西是不是对象？可以通过添加属性或者方法来测试，只有对象能添加属性和方法。
+
+总结：1.对象是由属性和方法构成（delete 关键词可以删除对象的属性）
+    2.只要new出来的都是对象
+    3.不同的对象不相等
+类似var _str='abc',_num=10,不是对象
+字面上能看到值的东西我们称之为字面量
+
+包装类：类似 Number()   String()     Boolena()     Object()
+
+2.this指针:
+1.函数function 也存在length长度，长度为型参的个数，
+  函数内部arguments获取的是实参的值，如果在函数体内部获取函数自身，可以通过arguments，callee来获取。
+
+  总结：函数中存在上下文this指针，该指针指向谁取决于函数如何调用！
+        而不是函数如何定义，面向对象中this是很重要的一个东西,
+        可以通过call apply bind方法改变函数的this指向 ，他们三个区别：
+        call和apply方法是改变函数this指针后函数会直接执行，
+        区别第二个参数不一样，
+        bind方法是返回this改变以后的函数，不会立即执行.
+
+     1.Function call(修改this指向，参数1，参数2。。。)
+     2.Function apply(修改this指向，数组)
+     3.Function bind(修改this指向，参数1，参数2...)
+
+3.类的操作：
+new Array():Array是类 arr是通过new Array()初始化的实例对象
+var date=new Date():Date 是类 date是通过new Date()初始化的实例对象
+
+JS中所有的东西都不是绝对的.
+window是绝对的，不可以改。
+
+每一个类身上都存在一个prototype属性，它内存放的是这个对象所有的方法

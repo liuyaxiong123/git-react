@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>悬浮框</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            width: 200px;height: 200px;
+            background: pink;
+            text-align: center;
+            line-height: 200px;
+            font-size: 30px;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+<body style="height:2000px">
+    <div id="box">悬浮框</div>
+</body>
+<script>
+    var box=document.getElementById('box');
+    var timer=null;
+    window.onscroll=function(){
+        var t=document.documentElement.scrollTop||document.body.scrollTop;//滚动条滚走的值
+        var w_h=document.documentElement.clientHeight/2;//浏览器高度的一半
+        var b_h=box.offsetHeight/2;//盒子高度的一半
+        var iTarget=parseInt(w_h-b_h+t);//box应该运动的top目标值；
+        console.log(iTarget);
+        startMove(iTarget);
+    }
+    function startMove(target){//运动函数
+        clearInterval(timer);
+        timer=setInterval(function(){
+            var speed=(target-box.offsetTop)/20;
+            speed=speed>0?Math.ceil(speed):Math.floor(speed);
+            if(box.offsetTop==target){
+                clearInterval(timer);
+            }else{
+                box.style.top=box.offsetTop+speed+'px';
+            }
+        },20);
+    }
+</script>
+</html>

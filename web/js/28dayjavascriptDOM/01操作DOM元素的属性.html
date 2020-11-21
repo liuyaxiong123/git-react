@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>操作DOM元素的属性</title>
+</head>
+<body>
+    <input type="text" id="txt" value="123">
+    <input type="button" id="btn" value="按钮">
+</body>
+<script>
+    var btn=document.querySelector('#btn');
+    var txt=document.querySelector('#txt');
+    btn.onclick=function(){
+        //txt.value='abc';
+        //txt['value']='abc';
+        //txt.setAttribute('value','abc');
+        //txt.setAttribute('a',10);//设置
+        //txt.a=10;
+        //console.log(txt.getAttribute('a'));//获取
+        txt.setAttribute('class','aaa');
+        console.log(txt.getAttribute('class'));
+        txt.setAttribute('style','width:200px;height:100px;')
+        console.log(txt.getAttribute('style'));
+    }
+</script>
+</html>

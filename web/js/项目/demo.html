@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .box{
+            width:400px;
+            height:400px;
+            background: red;
+           
+        }
+        @keyframes scales{
+            0%{
+                transform:scale(1);
+            }
+            100%{
+                transform:scale(0.7)
+            }
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value='aaa' id='btn'>
+    <div class="box" id='box'></div>
+</body>
+<script>
+    btn.onclick = function (){
+        box.style.animation = 'scales 5s linear';
+        box.style.animationFillMode = 'both';
+    }
+</script>
+</html>

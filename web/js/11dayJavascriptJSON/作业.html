@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+</head>
+<body>
+    <h1>获取个人信息</h1>
+    <input type="button" value="赵丽颖">
+    <input type="button" value="蔡依林">
+    <input type="button" value="加拿大电鳗"><br>
+    <div id="box">
+        <span>头像：</span>
+        <img src="img/1.jpg" alt=""><br>
+        <span>姓名：赵丽颖</span><br>
+        <span>年龄：29</span><br>
+        <span>性别：女</span>
+    </div>
+</body>
+<script>    
+    var json = [
+        {
+        	"tit":"<img src='img/1.jpg' alt=''>",
+        	"name":"赵丽颖",
+        	"age":29,
+        	"sex":"女"
+        },
+        {
+        	"tit":"<img src='img/2.jpg' alt=''>",
+        	"name":"蔡依林",
+        	"age":36,
+        	"sex":"女"
+        },
+        {
+        	"tit":"<img src='img/3.jpg' alt=''>",
+        	"name":"吴亦凡",
+        	"age":26,
+        	"sex":"男"
+        }
+    ];
+    var input=document.getElementsByTagName('input');
+    var box=document.getElementById('box');
+    for(var i=0;i<input.length;i++){
+        input[i].index=i;
+        input[i].onclick=function(){
+                box.innerHTML='<span>头像:</span>'+json[this.index].tit+'<br><span>姓名:</span>'+json[this.index].name+'<br><span>年龄：</span>'+json[this.index].age+'<br><span>性别：</span>'+json[this.index].sex;
+        }
+    }
+</script>
+</html>

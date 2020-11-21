@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+</head>
+<body>
+    <input type="button" value='变色' id='ii'>
+</body>
+<script>
+    var ii=document.getElementById('ii');
+    var body=document.getElementsByTagName('body');
+    console.log(ii,body[0]);
+    var t=1;
+    ii.onclick=function(){
+        if(t==1){
+            body[0].style.backgroundColor='red';
+            t=2;
+        }else{
+            body[0].style.backgroundColor='blue';
+            t=1;
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+    <style>
+        #box{
+            width: 200px;height: 200px;
+            border:1px solid;
+        }
+    </style>
+    <script>
+            //onload
+            //代表整个浏览器窗口内容（包含文档声明，网页标题，body内所有的标签，外部css文件，图片，视频等）加载完毕执行内部的代码
+            window.onload=function(){
+                var box=document.getElementById('box');
+                var txt=document.getElementById('txt');
+                box.onclick=function(){
+                alert('abc');
+                }
+                //onmouseover:鼠标移动到某个元素上触发
+                box.onmouseover=function(){
+                    console.log('移动上来');
+                }
+                //onmouseout:鼠标移除某个元素上触发
+                box.onmouseout=function(){
+                    console.log('移动出去了');
+                }
+                //onmousedown:鼠标摁下触发
+                box.onmousedown=function(){
+                    console.log('鼠标摁下');
+                }
+                //onmouseup：鼠标抬起时触发
+                box.onmouseup=function(){
+                    console.log('鼠标抬起');
+                }
+                //ondblclick:双击是触发
+                box.ondbclick=function(){
+                    console.log('双击');
+                }
+                //onmousemove:鼠标在某个元素身上移动时频繁触发
+                box.onmousemove=function(){
+                    console.log('动了');
+                }
+                //onfocus:元素获取焦点时触发
+                txt.onfocus=function(){
+                    console.log('获取焦点');
+                }
+                //onblur:元素失去焦点时触发
+                txt.onblur=function(){
+                    console.log('失去焦点');
+                }
+                //onchange:当内容改变时触发
+                txt.onchange=function(){
+                    console.log('内容变了');
+                }
+                sel.onchange=function(){
+                    console.log(this.value);
+                }
+            }
+        </script>
+</head>
+<body>
+    <div id="box">aaa</div>
+    <input type="text" id="txt">
+    <select name="" id="sel">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+    </select>
+</body>
+
+</html>

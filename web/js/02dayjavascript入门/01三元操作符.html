@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三元操作符</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //var a='5',b=5;
+    //console.log(a>b);//true隐士类型转换
+    //console.log(a==b);//true 隐士类型转换（偷偷把值的类型转换成一样的在进行比较）.
+    //console.log(a===b);//false (比较懒，在进行比较的时候不会进行任何其他操作，只要有一样不同就是假的)
+    //console.log(a!=b);//false
+    //console.log(a!==b);//true 
+    //console.log(a>=b);//true  
+    //------------------------------
+    //三元操作符： 
+    //判断条件？真的执行：假的执行
+    //var a=10,b=20;
+    //console.log(a<b?'真的':'假的');
+    //什么是真的，什么是假的
+     var num=0;
+     var result=num?'kdsjfk':'假的';
+     console.log(result);
+    //总结：
+    //真的：非0数字 true 非空字符串 非空对象
+    //假的：数字零  false  空字符串 undefined null
+    //-----------------------------------------------------
+    //逻辑操作符：与：&&  或：|| 非：!
+    //var a=10,b=5,c=20;
+    // console.log(a>b&&b<c);//true
+    // console.log(a<b&&b<c);//false
+    // console.log(a>b&&b>c);//false
+    // console.log(a<b&&b>c);//false
+
+    // console.log(a>b||b<c);//true
+    // console.log(a<b||b<c);//true
+    // console.log(a>b||b>c);//true
+    // console.log(a<b||b>c);//false
+    //console.log((a>b)&&(c=10));//10
+    //console.log((a<b)&&(c=10));//false
+    //console.log((a=0)&&(b<a));//0
+    //console.log((a=10)||(b<a));//10
+    //console.log((a=0)||(a>b));//false
+    //console.log((a=0)||(b<c));//true
+
+    // console.log(!true);//false
+    // console.log(!false);//true
+    // console.log(!5);//false
+    // console.log(!0);//true
+    // console.log(!null);//true
+    //console.log(!undefined);//true
+
+    //----------------------------------------
+    //递增 递减：
+    //var a=10;
+    //a++;//等价于a=a+1;
+    //++a;//等价于a=a+1;
+    //a--;//等价于a=a-1;
+    //--a;//等价于a=a-1;
+    //var k=a++ + 5;//k:15 a:11
+    //var k=++a + 5;//k:16 a:11
+    // var k=a-- + 5;//k:15 a:9
+    // var k=--a + 5//k:14 a:9
+    // console.log(k,a);
+
+    //var res=5*((10+5)*(6/6))+20*9;
+    //! +-*/%   > <.     && ||.    ?:  =
+    //console.log(res)
+    // var year=1996;
+    // var liii=(year%4==0&&year%100!=0)||year%400==0;
+    // console.log(liii?'闰年':'平年');
+    // var year=2001;
+    // if((year%4==0&&year%100!=0)||year%400==0){
+    //     console.log('闰年');
+    // }else{
+    //     console.log('平年');
+    // }
+    // var dsfs;
+    // var ddd=dsfs?异步:同步;
+    // console.log(ddd);
+    // var m;
+    // console.log(5>4&&m);
+    var a=0?'d':'c';
+    console.log(a);
+    
+</script>   
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>打砖块</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 940px;
+            height: 500px;
+            border:1px solid #000;
+            margin:50px auto;
+            position:relative;
+        }
+        #ball{
+            width: 27px;height: 27px;
+            background: url(images/ball.png);
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        #racket{
+            position:absolute;
+            width: 179px;
+            height: 37px;
+            background: url(images/racket.png);
+            top:450px;
+            left:10px;
+        }
+        .block{
+            width:94px;
+            height:36px;
+            background:url(images/block.png);
+            position:absolute;
+            left:0;top:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">
+        <div id="ball"></div>
+        <div id="racket"></div>
+    </div>
+</body>
+<script>
+    var box=document.getElementById('box');
+    var oBall=document.getElementById('ball');
+    var racket=document.getElementById('racket');
+    // Ball  Block   Racket    Map 
+    //地图
+    function Map(){
+        //映射地图的块的位置
+        this.map=[
+            [ 2, 1, , ,3 ,3 , 4, ,4 ,4 ],
+            [ , 4,3 ,3 , , 4, ,2 , , ],
+            [ , , 1,2 , ,1 , ,1 , , ],
+            [ , , ,2 , ,3 , ,2 , , ],
+            [ , , 3, ,4 , 2, , 1, , ],
+            [ , 1, 3, 2, 3, , , , , ],
+            [ , , , , , , , , , ],
+            [ , , , , , , , , , ],
+        ];
+        //用于承载所有的块
+        this.blockArr=[];
+        this.creteBlock();
+    }
+    Map.prototype.creteBlock=function(){
+        for(var row=0;row<this.map.length;row++){
+            for(var col=0;col<10;col++){
+                if(this.map[row][col]||this.map[row][col]==0){
+                    this.blockArr.push(new Block(94*col,36*row,this.map[row][col]));
+                }   
+            }
+        }
+    }
+    Map.prototype.checkAllBlock=function(){
+        for(var i=0;i<this.blockArr.length;i++){
+            //如果块对应的dom存在，检测块的碰撞
+            if(this.blockArr[i].alive){
+                var result=this.blockArr[i].check();
+            }
+            if(result){//如果有碰到块的，就不需要再判断剩下的了，循环结束，等待下一次调用
+                break;
+            }
+        }
+    }
+    //声明块 构造函数
+    function Block(left,top,color){
+        this.left=left;
+        this.top=top;
+        this.color=color;
+        this.width=94;
+        this.height=36;
+        //锁 检测当前这个块是否存在
+        this.alive=true;
+        //初始化生成块
+        this.init();
+    }
+    Block.prototype.init=function(){
+        this.dom=document.createElement('div');
+        this.dom.className='block';
+        this.dom.style.left=this.left+'px';
+        this.dom.style.top=this.top+'px';
+        box.appendChild(this.dom);
+        this.dom.style.backgroundPosition=-this.color*94+'px';
+    }
+    Block.prototype.check=function(){
+        //检测球碰到自己没有
+        if(b.top>=this.top-b.d&&b.top<this.top&&b.left>=this.left-b.d&&b.left<=this.left+this.width+b.d){
+            //碰到顶边
+            b.deltaY=-b.deltaY;
+            this.hide();
+            return true;
+        }else if(b.top<=this.top+this.height&&b.top>this.top&&b.left>=this.left-b.d&&b.left<=this.left+this.width+b.d){
+            //碰到底边
+            b.deltaY=-b.deltaY;
+            this.hide();
+            return true;
+        }else if(b.left>=this.left-b.d&&b.left<this.left&&b.top>=this.top&&b.top<=this.top+this.height-b.d){
+            //碰到左边
+            b.deltaX=-deltaX;
+            this.hide();
+            return true;
+        }else if(b.left<=this.left+this.width&&b.left>this.left&&b.top>=this.top&&b.top<=this.top+this.height-b.d){
+            //碰到右边
+            b.deltaX=-b.deltaX;
+            this.hide();
+            return true;
+        }
+    }
+    Block.prototype.hide=function(){
+        this.alive=false;
+        box.removeChild(this.dom);
+    }
+    //生成挡板
+    function Racket(left){
+        this.left=left;
+        this.top=450;
+        this.width=179;
+        this.height=37;
+        this.dom=racket;
+        this.render();
+        //绑定移动事件
+        this.bindEvent();
+    }
+    Racket.prototype.render=function(){
+        this.dom.style.left=this.left+'px';
+        this.dom.style.top=this.top+'px';
+    }
+    Racket.prototype.bindEvent=function(){
+        var _this=this;
+        box.onmousemove=function(ev){
+            var ev=ev||window.event;
+            
+            _this.left=ev.clientX-box.offsetLeft;
+            if(_this.left>box.clientWidth-_this.width){
+                _this.left=box.clientWidth-_this.width;
+            }
+            _this.render();
+        }
+    }
+    //检测挡板是否碰到球
+    Racket.prototype.check=function(){
+        if(b.top>=this.top-b.d&&b.top<this.top&&b.left>=this.left-b.d&&b.left<=this.left+this.width+b.d){
+            //碰到顶部
+            b.deltaY=-b.deltaY;
+        }else if(b.left>=this.left-b.d&&b.left<this.left&&b.top>this.top&&b.top<this.top+this.height){
+            //碰到左边
+            b.deltaX=-b.deltaX;
+        }else if(b.left<=this.left+this.width&&b.left>this.left&&b.top>this.top&&b.top<this.top+this.height){
+            //碰到右边aAz
+            b.deltaX=-b.deltaX;
+        }
+    }
+    //生成球运动：
+    function Ball(){
+        this.left=400;
+        this.top=400;
+        //存储球的大小
+        this.d=27;
+        this.dom=oBall;
+        //球运动的x和y的速度
+        this.deltaX=5;
+        this.deltaY=-5;
+        this.render();
+        this.move();
+    }
+    Ball.prototype.render=function(){
+        this.dom.style.left=this.left+'px';
+        this.dom.style.top=this.top+'px';
+    }
+    Ball.prototype.move=function(){
+        var _this=this;
+        this.timer=setInterval(function(){
+            _this.left+=_this.deltaX;
+            _this.top+=_this.deltaY;
+            if(_this.left<=0||_this.left>=box.clientWidth-_this.d){
+                _this.deltaX=-_this.deltaX;
+            }
+            if(_this.top<=0){
+                _this.deltaY=-_this.deltaY;
+            }
+            if(_this.top>=box.clientHeight-_this.d){ 
+                alert('Game over');
+                clearInterval(_this.timer);
+            }
+            if(box.children.length==2){
+                clearInterval(_this.timer);
+                var b=confirm('游戏通关,进入下一关');
+                if(b){
+                    window.location.href='index3.html';
+                }
+            }
+            _this.render();
+            //检测球是否碰到挡板
+            r.check();
+            //检测所有的块的碰撞关系
+            map.checkAllBlock();
+        },20)
+    }
+    var map=new Map();
+    var r=new Racket(300);
+    var b=new Ball();
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回调函数</title>
+</head>
+<body>
+    <div id="box">abc</div>
+</body>
+<script>
+    var box=document.getElementById('box');
+    var arr=[1,2,3];
+    var j={a:5,b:6};
+    function show(a,b,obj,arr,json,fn){
+        console.log(a+b);
+        console.log(obj);
+        console.log(arr);
+        console.log(json);
+        console.log(fn);
+        fn();
+    }
+    //回调函数：把一个函数作为另一个函数的参数传递进去，在show函数内容都执行完毕以后调用回调。
+    // show(5,6,box,arr,j,function(){
+    //     console.log('呵呵哒');
+    // });
+    show(5,6,box,arr,j,abc);
+    function abc(){
+        console.log('呵呵哒');
+    }
+</script>
+</html>

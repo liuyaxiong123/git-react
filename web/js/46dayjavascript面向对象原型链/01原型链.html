@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // function People(name,age){//构造函数
+    //     this.name=name;
+    //     this.age=age;
+    // }
+    // People.prototype.haha=function(){
+    //     console.log(this.name+'哈哈哈');
+    // }
+    // var xiaoming=new People('小明',18);
+    // var xiaoqiang=new People('小强',19);
+    // console.log(People.prototype);
+    // console.log(xiaoming.__proto__);
+    // console.log(xiaoqiang.__proto__);
+    // console.log(People.prototype===xiaoming.__proto__);//true
+    //----------------------------------------------------
+    // function CreatePeople(name,age){
+    //     this.name=name;
+    //     this.age=age;
+    // }
+    // CreatePeople.prototype.haha=function(){
+    //     console.log(this.name+'哈哈哈');
+    // }
+    // var xiaoming=new CreatePeople('小明',18);
+    // console.log(xiaoming.a);
+    //xiaoming.__proto__指向CreatePeople.prototype  两者想等
+    //xiaoming.__proto__.__proto__指向Object.prototype
+    // 打印小明的a时，先找他自身的a,然后找构造函数中的a，在找原型身上的a，最后找Object身上的a
+    //--------------------------------
+    // var arr=new Array(1,2,3);
+    // arr.push(4);
+    // console.log(arr.__proto__===Array.prototype);//true
+    // var date=new Date();
+    // console.log(date.__proto__===Date.prototype);//true
+    // var reg=new RegExp();
+    // console.log(reg.__proto__===RegExp.prototype);//true
+    //----------------------------------------
+    //  function People(name,age){//构造函数
+    //     this.name=name;
+    //     this.age=age;
+    // }
+    // Object.prototype.fn=function(){
+    //     alert(40);
+    // }
+    // var xiaoming=new People('小明',18);
+    // xiaoming.fn();
+    // //--------------------
+    // var arr=new Array(1,2,3);
+    // console.log(arr.__proto__.__proto__===Object.prototype);
+    // console.log(Array.prototype.__proto__===Object.prototype);
+    // // arr.fn();
+    // var obj={};
+    // obj.fn();
+    // console.log(obj.__proto__===Object.prototype);
+    // console.log(obj);
+    //-------------------------------------
+     function CreatePeople(name,age){//构造函数
+        this.name=name;
+        this.age=age;
+        // this.a=20
+    }
+    CreatePeople.prototype.a=30;
+    CreatePeople.prototype.haha=function(){
+        console.log(this.name+'哈哈哈');
+    }
+    var xiaohong=new CreatePeople('小红',18);
+    // xiaohong.a=20;
+    // console.log(CreatePeople.prototype.constructor===CreatePeople); 
+    //检测xiaohong是否在CreatePeople的原型链上
+    console.log(xiaohong instanceof CreatePeople);//true
+    console.log(xiaohong instanceof Object);//true
+    console.log(xiaohong instanceof Array);//false
+</script>
+</html>

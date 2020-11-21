@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文档碎片</title>
+</head>
+<body>
+    <ul id="ul">
+
+    </ul>
+</body>
+<script>
+    var oFrag=document.createDocumentFragment();//创建文档碎片
+    for(var i=0;i<10000;i++){
+        var li=document.createElement('li');
+        oFrag.appendChild(li);
+    }
+    ul.appendChild(oFrag);
+    console.log(ul);
+</script>
+</html>

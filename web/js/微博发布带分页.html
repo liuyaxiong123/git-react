@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #wrap{
+            margin:50px auto;
+            width: 500px;
+            border:2px solid slateblue;
+            position: relative;
+        }
+        h3{
+            font-size: 24px;
+            font-weight: 400;
+            padding:20px 0;
+            border-bottom:1px solid skyblue;
+        }
+        #con{
+            padding-left: 40px;
+        }
+        #con ul{
+            border-bottom: 1px solid green;
+            padding: 5px 0;
+        }
+        #con li{
+            padding:5px 0;
+        }
+        #list_nav{
+            position: absolute;
+            right: 0;
+            bottom: -70px;
+            border-radius: 5px;
+            border:1px solid #ccc;
+            border-left:none;
+            overflow: hidden;
+        }
+        #list_nav li{
+            float:left;
+            width: 40px;
+            height: 40px;
+            border-left:1px solid #ccc;
+            line-height:40px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .cur{
+            background: blue;
+            color: #fff;
+        }
+        #btn{
+        	width:90px;height:50px;
+        }
+    </style>
+</head>
+<body>
+	<div id="wrap">
+		用户名: <br> <input type="text" id='user'> <br>
+        内容: <br> <textarea style='width:99%;resize:none' name="" id="txt" cols="30" rows="10" maxlength='200'></textarea>
+        <span id='limit'>您还可以输入</span>
+        <br>
+        <input type="button" value='发布' id='btn'>
+        <hr>
+        <h3>留言信息</h3>
+        <div id="con">
+            <!-- <ul>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+            </ul>
+            <ul>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+            </ul>
+            <ul>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+            </ul> -->
+        </div>
+        <ul id="list_nav">
+            <!-- <li class="cur">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li> -->
+        </ul>
+    </div>
+</body>
+<script>
+	//留言信息:
+	var list = [
+		{
+			'name':'张三',
+			'content':'今天天气不错',
+			'time':1540262946659
+		},
+		{
+			'name':'李四',
+			'content':'o(*￣︶￣*)o',
+			'time':1540262912277
+		},
+		{
+			'name':'王五',
+			'content':'(* ￣3)(ε￣ *)',
+			'time':1540262912277
+		},
+		{
+			'name':'小红',
+			'content':'^_^沙发上东风风神',
+			'time':1540262912277
+		},
+		{
+			'name':'小强',
+			'content':'今天天气不错',
+			'time':1540262912277
+		},
+		{
+			'name':'销量',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'小张',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'小李',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'小四',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'胡晓芳',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'花花',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'李四',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'草草',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		}
+	];
+	var n = 1; //默认1页
+	init(list,1);
+	//渲染某一页数据
+	function init(arr,page){
+		var pageCount = Math.ceil(arr.length/3);//求页数
+		con.innerHTML = '';
+		list_nav.innerHTML = '';
+		//渲染3条留言信息
+		for( var i = (page-1)*3; i < (page-1)*3+3 && i < arr.length; i++ ){
+			var ul = document.createElement('ul');
+			for( j in arr[i] ){
+				var li = document.createElement('li');
+				if( j == 'time' ){
+					//设置日期格式
+					var time = setDate(arr[i][j])
+					li.innerHTML = time;
+				}else{
+					li.innerHTML = arr[i][j];	
+				}
+				ul.appendChild(li);
+			}
+			con.appendChild(ul);
+		}
+		//渲染分页
+		for( var z = 0; z < pageCount; z++ ){
+			var pageLi = document.createElement('li');
+			pageLi.innerHTML = z+1;
+			if( z==page-1 ){
+				pageLi.className = 'cur';
+			}
+			list_nav.appendChild(pageLi);
+		}
+	}
+	//点击分页
+	list_nav.onclick = function (ev){
+		var ev = ev || window.event;
+		var target = ev.target||ev.srcElement;
+		if( target.nodeName.toLowerCase() == 'li' ){
+			init(list,Number(target.innerHTML));
+			n = Number(target.innerHTML);
+		}
+	}
+	//监听内容输入长度
+	txt.oninput = function (){
+		var len = txt.value.length;
+		if( 200-len>0 ){
+			limit.style.color = '#000';
+		}else{
+			limit.style.color = '#f00';
+		}
+		limit.innerHTML = '您还可以输入'+(200-len)+'个字';
+	}
+	//发布留言
+	btn.onclick = function (){
+		var _txt = txt.value;
+		var _user = user.value;
+		if( _user.value == ''||_txt.value == '' ){
+			alert('内容不能为空,请输入用户名或内容');
+		}else{
+			//向留言数据中追加一条留言
+			var json = {};
+			json.name = _user;
+			json.content = _txt;
+			json.time = new Date().getTime();
+			list.unshift(json);
+			init(list,n);
+			txt.value = '';
+			user.value = '';
+			limit.innerHTML = '您还可以输入200个字';
+		}
+	}
+	//处理日期
+	function setDate(time){
+		var date = new Date(time);
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		var _date = date.getDate();
+		var hour = date.getHours();
+		var minutes = date.getMinutes();
+		return year+'年'+add0(month)+'月'+add0(_date)+'日'+' '+add0(hour)+':'+add0(minutes);
+	}
+	function add0(num){
+		return num>9?''+num:'0'+num;
+	}
+
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机变色</title>
+    <style>
+        *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    window.onload=function(){
+        var divs=document.createElement('div');
+        var w=window.innerWidth||document.documentElement.clientWidth;
+        var h=window.innerHeigth||document.documentElement.clientHeight;
+        var r=Math.floor(Math.random()*256);
+        var g=Math.floor(Math.random()*256);
+        var b=Math.floor(Math.random()*256);
+        divs.style.width=(w/10)+'px';
+        divs.style.height=(h/10)+'px';
+        divs.style.background='rgb('+r+','+g+','+b+')';
+        divs.style.float='left';
+        document.body.appendChild(divs); 
+    }
+    for(var i=0;i<99;i++){
+        window.onload();
+    }
+    window.onresize=function(){
+        document.body.innerHTML='';
+        for(var i=0;i<100;i++){
+            window.onload();
+        }
+    }
+</script>
+</html>

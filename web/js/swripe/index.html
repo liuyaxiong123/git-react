@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .lb {
+            position: relative;
+        }
+        
+        .lb_list {
+            width: 880px;
+            height: 332px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .boom {
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform-style: preserve-3d;
+        }
+        
+        @keyframes itemAction {
+            0% {
+                transform: scale(1.3);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .lb_bottom {
+            width: 880px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, .8);
+            z-index: 999999;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .lb_bottom {
+            display: flex;
+        }
+        
+        .lb_bottom>li {
+            flex: 1;
+            cursor: pointer;
+            border-right: 1px solid #ccc;
+        }
+        
+        .lb_bottom>li:nth-child() {
+            border-right: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lb">
+        <div class="lb_list">
+        </div>
+        <ul class="lb_bottom"></ul>
+    </div>
+</body>
+
+<script src="index.js"></script>
+
+</html>

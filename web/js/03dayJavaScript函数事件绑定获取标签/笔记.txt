@@ -1,0 +1,55 @@
+1)函数:
+作用用于封装
+    //1).命名函数(函数提升)
+	show(); //执行函数
+	function show(){
+		//执行内容....
+		document.write('削苹果');	
+	}
+	//2).函数表达式
+	//show2();//报错
+	var show2 = function (){
+		document.write('切香蕉');
+	};
+	show2();
+	//3).匿名函数
+	(function (){
+		document.write('吃桃');
+	})();
+2)获取标签:
+	通过id获取元素.只能获取一个.
+	var box = document.getElementById('box');
+	console.log(box);
+
+	通过标签名获取元素,获取的是一组元素
+	var div = document.getElementsByTagName('div');
+	console.log(div[0],div[1],div[2],div);
+
+	div[0] :获取一组元素中的某一个元素 [0]代表角标 0代表第一个 角标从0开始计算.
+
+	分解:
+	document . get  Element  By  Id  ('box')
+
+	文档  的  获取    元素     通过  id   Id名box
+
+	document . get Elements By Tag Name (‘div’)
+
+	文档  的  获取   元素们    通过  标签 名  标签名
+
+
+
+3)事件绑定:
+
+语法:
+box.onclick = function (){
+	执行内容....
+}
+
+4)设置标签的style样式:
+
+box.style.display = 'block';
+
+如果遇到css中带-的样式比如 font-size 需要使用驼峰写法 :
+
+box.style.fontSize = '30px';
+

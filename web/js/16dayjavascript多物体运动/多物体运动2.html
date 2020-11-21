@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多物体运动</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		div{
+			width: 100px;
+			height: 50px;
+			background: red;
+			margin-bottom: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div style="border:2px solid"></div>
+	<div></div>
+</body>
+<script>
+		var divs = document.getElementsByTagName('div');
+
+		divs[0].onmouseover = function(){
+		startMove(this,100,'height');
+	}
+		divs[0].onmouseout = function(){
+		startMove(this,50,'height');
+	}
+	divs[1].onmouseover = function(){
+		startMove(this,400,'width');
+	}
+	divs[1].onmouseout = function(){
+		startMove(this,100,'width');
+	}
+	
+    var time=null;
+    //运动函数 解决问题：只能运动一个样式  运动函数：可以运动任何带ps的样式                            
+	function startMove(obj,iTarget,cur){
+		clearInterval(obj.time);
+		obj.time = setInterval(function(){
+			var  speed = (iTarget-parseInt(getStyle(obj,cur)))/10;
+			speed = speed>0?Math.ceil(speed):Math.floor(speed);
+			if(parseInt(getStyle(obj,cur)) == iTarget){
+				clearInterval(obj.time);
+			}else{
+				obj.style[cur] = parseInt(getStyle(obj,cur)) + speed + 'px';
+			}
+		},30)
+	}
+	function getStyle(obj,cur){
+		if(obj.currentStyle){
+			return obj.currentStyle[cur];
+		}else{
+			return getComputedStyle(obj)[cur];
+		}
+	}
+	</script>
+</html>

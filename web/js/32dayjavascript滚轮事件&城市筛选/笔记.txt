@@ -1,0 +1,39 @@
+DOM文档加载的步骤为:
+
+解析HTML结构。
+加载外部脚本和样式表文件。
+解析并执行脚本代码。
+DOM树构建完成。//DOMContentLoaded
+加载图片等外部文件。
+页面加载完毕。//load
+
+绑定addEventListener事件需要用事件监听
+document.addEventListener('DOMContentLoaded',function(){
+    console.log('DOM加载完了');
+},false);
+
+滚轮事件： 
+onmousewheel:鼠标滚轮滚动时触发,其它浏览器支持
+DOMMouseScroll:获取浏览器支持滚轮事件
+兼容方式：
+window.navigator.userAgent:获取用户代理的浏览器相关信息
+    var str=window.navigator.userAgent.toLowerCase();
+    if(str.indexOf('firefox')!=-1){
+        document.addEventListener('DOMMouseScroll',function(ev){
+            var ev=ev||window.event;
+            if(ev.detail<0){
+                console.log('向上滚动');
+            }else{
+                console.log('向下滚动');
+            }
+        },false);
+    }else{
+        document.onmousewheel=function(ev){
+            var ev=ev||window.event;
+            if(ev.wheelDelta>0){
+                console.log('向上滚动');
+            }else{
+                console.log('向下滚动');
+            }
+        }
+    }

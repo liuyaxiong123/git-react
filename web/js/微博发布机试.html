@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微博发布</title>
+    <style>
+        *{margin:0;padding:0;}
+        li{list-style: none;}
+        #outer{
+            width: 600px;height: 800px;
+            border:1px solid red;
+            margin:0 auto;
+            position:relative;
+        }
+        #outer p{
+            margin-bottom:10px;
+        }
+        #inner{
+            width: 598px;height: 300px;
+            border:1px solid black;
+        }
+        #p3{
+            height: 20px;
+        }
+        .wrap{
+            width: 600px;
+            height: 327px;
+        }
+        .wrap ul li{
+            margin-left:20px;
+            border-bottom:1px solid green;
+            width: 580px;
+            height: 108px;
+            position: relative;
+        }
+        .an{
+            position: absolute;
+            bottom:-50px;
+            right:0;
+        }
+        .an p{
+            float:left;
+            width: 30px;height: 30px;
+            line-height: 30px;
+            color:#000;
+            text-align: center;
+            background:#fff;
+            border:1px solid #000;
+        }
+        .an p:hover{
+            color:#fff;
+            background: blue;
+            border:none;
+        }
+        .wrap ul li:nth-child(1){
+            display: block;
+        }
+        .wrap ul li:nth-child(2){
+            display: block;
+        }
+        .wrap ul li:nth-child(3){
+            display: block;
+        }
+        .wrap ul li{
+            display: none;
+        }
+        ul li>span{
+            font-size:30px;
+            font-weight: 700;
+            color:red;
+            position:absolute;
+            right:10px;
+            top:10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <p id="p1">用户名：</p>
+        <input type="text" id="user">
+        <p id="p2">内容：</p>
+        <textarea cols="30" rows="10" id="inner" maxlength="200"></textarea>
+        <p id="p3">您可以输入<span id="spn">200</span>个字</p>
+        <input type="button" value="发布" id="btn">
+        <h2>留言信息</h2>
+        <!-- <div class="wrap">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div> -->
+        <!-- <div class="an">
+            <p></p>
+        </div> -->
+    </div>
+</body>
+<script>
+    var list = [
+		{
+			'name':'张三',
+			'content':'今天天气不错',
+			'time':1540262946659
+		},
+		{
+			'name':'李四',
+			'content':'o(*￣︶￣*)o',
+			'time':1540262912277
+		},
+		{
+			'name':'王五',
+			'content':'(* ￣3)(ε￣ *)',
+			'time':1540262912277
+		},
+		{
+			'name':'小红',
+			'content':'^_^沙发上东风风神',
+			'time':1540262912277
+		},
+		{
+			'name':'小强',
+			'content':'今天天气不错',
+			'time':1540262912277
+		},
+		{
+			'name':'销量',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'小张',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'小李',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'小四',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'胡晓芳',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'花花',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'李四',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		},
+		{
+			'name':'草草',
+			'content':'O(∩_∩)O哈哈~',
+			'time':1540262912277
+		}
+    ];
+        //点击发布
+    btn.onclick=function(){
+        list.length+=1;
+        var date=new Date;
+        var timex =date.getTime();
+        console.log(timex);
+        var lid=document.createElement('li');
+        lid.innerHTML='<p>'+user.value+'</p><p>'+inner.value+'</p><p>'+timer(timex)+'</p><span>×</span>';
+        var ul=document.querySelectorAll('.wrap>ul')[0];
+        ul.insertBefore(lid,ul.children[0]);
+        user.value='';
+        inner.value='';
+        spn.innerHTML='200';
+    }
+    //渲染
+    var wrap=document.createElement('div');
+    var ul=document.createElement('ul');
+    wrap.appendChild(ul);
+    wrap.className='wrap';
+    outer.appendChild(wrap);  
+    for(var i=0;i<list.length;i++){
+        var lis=document.createElement('li');
+        var ul=document.querySelectorAll('.wrap>ul')[0];
+        ul.appendChild(lis);
+        lis.innerHTML='<p>'+list[i].name+'</p><p>'+list[i].content+'</p><p>'+timer(list[i].time)+'</p><span>×</span>';
+    }
+    //创建按钮
+    var an=document.createElement('div');
+    an.className='an';
+    outer.appendChild(an);
+    var sy=Math.ceil(list.length/3);
+    for(var z=0;z<sy;z++){
+        var p=document.createElement('p');
+        var an=document.querySelectorAll('.an')[0];
+        p.innerHTML=z+1;
+        an.appendChild(p);
+    }
+    //获取时间
+    function timer(time){
+        var date = new Date(time);
+        var year = date.getFullYear() + '-';
+        var month = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        var day = date.getDate() + ' ';
+        var hours = date.getHours() + ':';
+        var m = date.getMinutes() ;
+        var timer=year+month+day+hours+m;
+        return timer;
+    }
+    //监听inner
+    inner.oninput=function(){
+        spn.innerHTML=200-this.value.length;
+        if(spn.innerHTML==0){
+            inner.style.color='red';
+        }else{
+            inner.style.color='#000';
+        }
+    }
+    //tab选项
+    var p=document.querySelectorAll('.an>p');
+    var lis=document.querySelectorAll('li');
+    for(var n=0;n<p.length;n++){
+        p[n].index=n;
+        p[n].onclick=function(){
+            for(var g=0;g<lis.length;g++){
+                lis[g].style.display='none';
+            }
+            lis[this.index*3].style.display='block';
+            lis[this.index*3+1].style.display='block';
+            lis[this.index*3+2].style.display='block';
+        }
+    }
+    //点击删除节点
+    var spans=document.querySelectorAll('li>span');
+    console.log(spans);
+    var ul=document.querySelectorAll('.wrap>ul')[0];
+    for(var l=0;l<spans.length;l++){
+        spans[l].index=l;
+        spans[l].onclick=function(){
+          var uu=confirm('是否确认删除');
+            if(uu==true){
+                ul.removeChild(lis[this.index]);
+                window.onload();
+            }
+        }
+    }
+</script>
+</html>

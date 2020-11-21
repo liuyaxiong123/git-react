@@ -1,0 +1,13 @@
+事件对象Event:
+系列相关属性：
+ev.type:获取触发事件名称
+ev.currentTarget:获取是谁触发的该事件
+ev.target:获取触发事件的目标元素
+ev.altKey：监听事件触发时alt件是否被摁下（返回boolean）
+ev.shiftKey：监听事件触发时shift键是否被摁下（返回boolean）
+ev.ctrlKey：监听事件触发时Ctrl键是否被摁下（返回boolean）
+ev.keyCode:获取建码（回车：13  左键：37  上键：38  右键：39   下键：40）
+
+键盘事件：
+onkeydown:键盘被摁下时触发
+onkeyup:键盘被抬起时触发

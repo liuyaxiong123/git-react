@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取非行间样式</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            width: 200px;height: 200px;
+            background:red;
+            border:1px solid;
+            font-size:30px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="获取" id="get">
+    <div id="box">内容</div>
+</body>
+<script>    
+    get.onclick=function(){
+        //获取标签非行间样式：
+        //console.log(getComputedStyle(box)['fontSize']);
+        //获取标签非行间样式支持IE6-8：
+        //console.log(box.currentStyle['width']);
+        // if(box.currentStyle){
+        //     console.log(box.currentStyle['width']);
+        // }else{
+        //     console.log(getComputedStyle(box)['width']);
+        // }
+    }
+    //-------------------
+    //封装获取非行间样式的方法
+    getStyle(box,'height','500px');
+    console.log(getStyle);
+    function getStyle(obj,cur,value){
+        console.log(arguments);
+        if(arguments.length==3){
+            //设置样式
+            obj.style[cur]=value;
+        }else{
+            //获取样式
+            if(obj.currentStyle){
+                return obj.currentStyle[cur];
+            }else{
+                return getComputedStyle(obj)[cur];
+            }
+        }
+    }
+</script>
+</html>

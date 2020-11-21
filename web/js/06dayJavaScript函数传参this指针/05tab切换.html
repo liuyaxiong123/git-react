@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tab切换</title>
+    <style>
+        img{
+            width: 500px;height: 300px;
+        }
+        span{
+            float:left;width: 30px;height: 30px;
+            border:3px solid #ccc;
+            border-radius:50%;
+            cursor:pointer;
+            margin:10px;
+        }
+        span.active{
+            background:yellow;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/1.jpg" alt="">
+    <span class="active"></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</body>
+<script>
+    var img=document.getElementsByTagName('img')[0];
+    var spans=document.getElementsByTagName('span');
+    for(var i = 0;i<spans.length;i++){
+        //console.log(i);
+        //console.log(spans[i]);
+        spans[i].a=i;
+        //console.log(spans[i].a,spans[i]);
+        spans[i].onclick=function(){
+            //console.log(this.a);//当前选中的span角标
+            //先清空所有样式
+            for(var j =0;j<spans.length;j++){
+                spans[j].className='';
+            }
+            //给当前选中的span添加active类
+            spans[this.a].className='active';
+            img.src='img/'+(this.a+1)+'.jpg';
+        }
+    }
+</script>
+</html>

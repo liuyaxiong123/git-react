@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数参数</title>
+</head>
+<body>
+
+</body>
+<script>
+    var sum=0;
+    function show(a,b){//型参
+        console.log(a+b);
+        console.log(arguments);//所有实参的集合
+        console.log(arguments[1]);//获取其中某一个参数
+        console.log(arguments.length);//获取所有实参的长度
+        for(var i=0;i<arguments.length;i++){
+            console.log(i);
+            console.log(arguments[i]);
+            sum=sum+arguments[i];
+        }
+        console.log(sum);
+    }
+    show(5,6,7,8,9,2);//实参
+</script>
+</html>

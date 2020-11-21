@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打地鼠</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        span{
+            display: block;
+        }
+        h1,p,span{
+            text-align: center;
+            margin-bottom:20px;
+        }
+        #outer{
+            width: 600px;
+            height: 600px;
+            margin:0 auto;
+            background-color: pink;
+            cursor:url(image/picture-cursor-left.cur),auto;
+        }
+        #outer .inner{
+            float:left;
+            width: 200px;
+            height: 200px;
+            border-radius:50%;
+            background-color: #f6f6f6;
+            position:relative;
+            overflow: hidden;
+        }
+        #outer .inner .pic{
+            background:url(image/ds.jpg);
+            background-size:cover;
+            width: 200px;
+            height: 200px;
+            position:absolute;
+            top:200px;
+            left:0px;
+            font-size:30px;
+            text-align: center;
+            color:pink;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <h1>打地鼠</h1>
+    <p id="jifen">积分：0</p>
+    <span id="jihui">剩余：5次机会</span>
+    <div id="outer">
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+    </div>
+</body>
+<script>
+    var inner=document.querySelectorAll('.inner');
+    var jifen=document.querySelector('#jifen');
+    var jihui=document.querySelector('#jihui');
+    var fenshu=0;
+    var jh=5;
+    var timer=null;
+    function ds(){
+        this.pic=document.createElement('div');
+        this.mathx=parseInt(Math.random()*9);
+        this.top=200;
+        this.timer=null;
+        this.timer2=null; 
+        this.suo=true;  
+        this.init();
+    }
+    ds.prototype.init=function(){
+        var that=this;
+        this.pic.className='pic';
+        inner[this.mathx].appendChild(this.pic);
+        if(this.suo==true){ 
+           this.pic.onclick=function(){
+                that.cli();
+                that.suo=false;
+            } 
+        }
+        if(jh<=0){
+            clearInterval(timer);
+            alert('游戏结束');
+        }
+        if(fenshu>=10){
+            clearInterval(timer);
+            var flag=confirm('1关通关');
+            if(flag){
+                window.location.href='地鼠2.html';
+            }
+        }
+        this.timer=setInterval(function(){
+            that.top-=2;
+            if(that.top<=0){
+                clearInterval(that.timer);
+                that.move();
+            }
+            that.pic.style.top=that.top+'px';
+        },2)
+    }
+    ds.prototype.cli=function(){
+        this.pic.style['pointer-events']='none';
+        this.pic.innerHTML='太棒了';
+        fenshu++;
+        jifen.innerHTML='积分：'+fenshu;
+    }
+    ds.prototype.move=function(){
+        var that=this;
+        this.timer2=setInterval(function(){
+            that.top+=2;
+            if(that.top>=200){
+                if(that.suo==true){
+                    jh--;
+                    jihui.innerHTML='剩余'+jh+'次机会';
+                }
+                clearInterval(that.timer2);
+                that.pic.remove();
+            }
+            that.pic.style.top=that.top+'px';
+        },2)
+    }
+    timer=setInterval(function(){
+        new ds();
+    },1000)
+</script>
+</html>

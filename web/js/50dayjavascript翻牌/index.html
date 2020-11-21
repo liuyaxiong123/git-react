@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>翻牌</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+            background: #00bff3;
+        }
+        .wrap{
+            width: 340px;height: 340px;
+            margin:100px auto;
+        }
+        .card{
+            width: 73px;height: 73px;
+            cursor:pointer;
+            display:inline-block;
+            box-shadow: 5px 5px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border-radius: 10px;
+            margin-left:10px;
+            margin-top:10px;
+        }
+        .card_img{
+            border-radius: 10px;
+            position:absolute;
+            height: 73px;
+            width: 73px;
+        }
+        .card_backImg{
+            position:relative;
+            z-index: 1;
+            margin-top:0px;
+            margin-left:0px;
+            /* opacity: 1;
+            filter:alpha(opacity=100); */
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- <div class="card">
+            <img src="images/modle0.jpg" alt="" class="card_img">
+            <img src="images/back1.jpg" alt="" class="card_backImg">
+        </div> -->
+    </div>
+</body>
+<script>
+    window.onload=function(){
+        new Card('.wrap');
+    }
+    function Card(cls){
+        this.dom=document.querySelectorAll(cls)[0];
+        this.arr=[0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7];
+        //初始化
+        this.init();
+        this.bindEvent();
+    }
+    Card.prototype.init=function(){
+        for(var i=0;i<100;i++){
+            var random=Math.floor(Math.random()*8);
+            if(this.arr.length==0){
+                break;
+            }
+            for(var j=0;j<8;j++){
+                if(random==this.arr[j]){
+                    this.card=document.createElement('div');
+                    this.card.className='card';
+                    this.card.setAttribute('n',random);
+                    this.card_img=document.createElement('img');
+                    this.card_img.className='card_img';
+                    this.card_img.src='images/modle'+random+'.jpg';
+                    this.card_backImg=document.createElement('img');
+                    this.card_backImg.className='card_backImg';
+                    this.card_backImg.src='images/back1.jpg';
+                    this.card.appendChild(this.card_img);
+                    this.card.appendChild(this.card_backImg);
+                    this.dom.appendChild(this.card);
+                    this.arr.splice(j,1);
+                }
+            }
+            this.cards=this.dom.children;
+        }
+    }
+    Card.prototype.bindEvent=function(){
+        this.checkArr=[];//检测是否点了俩并且检测这俩是否相同
+        var _this=this;
+        for(var i=0;i<this.cards.length;i++){
+            (function(j){
+                _this.cards[j].onclick=function(){
+                    _this.startMove(this.children[1],{marginLeft:-73,marginTop:-73,opacity:0});
+                    var n=this.getAttribute('n');
+                    _this.checkArr.push({
+                        n:n,
+                        idx:j
+                    })
+                    console.log(_this.checkArr);
+                    _this.check();
+                }
+            })(i)
+        }
+    }
+    Card.prototype.check=function(){
+        var _this=this;
+        console.log(_this.checkArr);
+        if(_this.checkArr.length==2){
+            if(_this.checkArr[0].n==_this.checkArr[1].n){
+                _this.checkArr=[];
+            }else{
+                setTimeout(function(){
+                    for(var x=0;x<_this.checkArr.length;x++){
+                        _this.startMove(_this.cards[_this.checkArr[x].idx].children[1],{marginLeft:0,marginTop:0,opacity:100});
+                    }
+                    _this.checkArr=[];
+                },500)
+            }
+        }
+    }
+    Card.prototype.startMove=function (obj,json,fn){
+        clearInterval(obj.time);
+        var _this=this;
+        obj.time=setInterval(function(){
+            var stop=true;//假设没有不到终点的值了
+            for(i in json){
+                if(i=='opacity'){
+                    //获取透明度样式的写法
+                    var style=Math.round(parseFloat(_this.getStyle(obj,i))*100);
+                    }else{
+                        //获取带px样式的写法
+                        var style=parseInt(_this.getStyle(obj,i));
+                    }
+                    var speed=(json[i]-style)/10;
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(style!=json[i]){
+                        stop=false;//意思就是说如果运动的样式其中有没到目标点的,把stop变成false
+                    }
+                    if(i=='opacity'){
+                        //运动透明度
+                        obj.style.opacity=(style+speed)/100;
+                        obj.style.filter='alpha(opacity='+(style+speed)+')';
+                    }else{
+                        //运动其他样式
+                        obj.style[i]=style+speed+'px';
+                    }
+            }
+            if(stop){
+                //判断如果stop还是true的情况下，说明没有不到终点的值了
+                clearInterval(obj.time);
+                if(fn) fn();
+            }
+        },10)
+    }
+    Card.prototype.getStyle=function(obj,cur){
+        if(obj.currentStyle){
+            return obj.currentStyle[cur];
+        }else{
+            return getComputedStyle(obj)[cur];
+        }
+    }
+</script>
+</html>

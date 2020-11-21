@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过滤</title>
+</head>
+<body>
+    <textarea name="" id="txt1" cols="30" rows="10">
+            正则：
+            也称规则表达式，主要用于验证字符串（也比如验证邮箱，手机号等。。。）
+            你个小饼干
+            
+            i:ignore缩写  忽略大小写
+            g:global缩写  全局匹配，找到全部
+            你个小兔兔
+            
+            \b:转义字符，匹配任意数字（0-9）
+            
+            +：量词，代表个数 '若干个'
+    </textarea>
+    <input type="button" value="过滤" id="btn">
+    <textarea name="" id="txt2" cols="30" rows="10"></textarea>
+</body>
+<script>
+    //replace():替换字符串中的内容，一般配合正则来用。
+    // var str='abc aaa erw';
+    // var reg=/a/g;
+    // console.log(str.replace(reg,'0'));
+
+    btn.onclick=function(){
+        var reg=/小饼干|小兔兔/g;
+        txt2.value=txt1.value.replace(reg,'***');
+    }
+    
+</script>
+</html>

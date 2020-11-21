@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>return</title>
+</head>
+<body>
+	<div id="box">aaa</div>
+	<div id="active">
+		<p class='item'>ccc</p>
+	</div>
+	<p class='item'>ccc</p>
+
+</body>
+<script>
+	//return关键词: 1).给函数返回值 2).结束函数执行
+	/*
+	function show(){
+		alert('abc');
+		return '呵呵';
+		// alert('bcd'); 不执行
+	}
+	var fn = show();
+	//console.log(fn);
+	*/
+	//----
+	//封装通过id获取标签方法。通过class获取标签的方法
+	//通过id名获取元素封装:
+	function getId(id){
+		return document.getElementById(id);
+	}
+	var box = getId('box');
+	var active = getId('active');
+	
+	//console.log(box,active);
+
+	//通过class类名获取元素封装:
+	function getClass(oParent,cls){
+		return oParent.getElementsByClassName(cls);
+	}
+	var item = getClass(active,'item');
+	//console.log(item);
+
+	//通过标签名获取元素封装:
+	function getTagName(oParent,tagName){
+		return oParent.getElementsByTagName(tagName);
+	}
+	var p = getTagName(active,'p');
+
+	console.log(p);
+
+
+
+
+
+
+
+
+</script>
+</html>

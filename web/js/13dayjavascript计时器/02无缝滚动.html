@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝滚动</title>
+    <style>
+        *{margin:0;padding:0;}
+        #outer{
+            width: 800px;height: 200px;
+            border:2px solid pink;
+            margin:50px auto;
+            position:relative;
+            overflow: hidden;
+        }
+        #inner{
+            width: 800px;height: 200px;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        #inner p{
+            float:left;
+            width: 200px;
+            height: 200px;
+        }
+        #inner p img{
+            width: 200px;height: 200px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+            <p><img src="img/0.jpg" alt=""></p>
+            <p><img src="img/1.jpg" alt=""></p>
+            <p><img src="img/2.jpg" alt=""></p>
+            <p><img src="img/3.jpg" alt=""></p>
+        </div>
+    </div>
+</body>
+<script>
+    var outer=document.getElementById('outer');
+    var inner=document.getElementById('inner');
+    var aP=inner.getElementsByTagName('p');
+    //设置inner的内容；
+    inner.innerHTML=inner.innerHTML+inner.innerHTML;
+    inner.style.width=inner.offsetWidth*2+'px';
+    var timer1=null,timer2=null;
+    startMove();
+    function startMove(){
+        timer1=setInterval(function(){
+            if(inner.offsetLeft%aP[0].offsetWidth==0){
+                clearInterval(timer1);
+                timer2=setTimeout(function(){
+                    startMove();
+                },500)
+            }
+            if(inner.offsetLeft<=-inner.offsetWidth/2){
+                inner.style.left=0;
+            }
+            inner.style.left=inner.offsetLeft-2+'px'; 
+        },1);
+    }
+    outer.onmouseover=function(){
+        clearInterval(timer1);
+        clearTimeout(timer2);
+    }
+    outer.onmouseout=function(){
+        startMove();
+    }
+</script>
+</html>

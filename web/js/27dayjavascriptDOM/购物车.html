@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            text-align: center;
+        }
+
+        table {
+            width: 700px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>最划算</h1>
+        <table id="goods" border='1'>
+            <thead>
+                <tr>
+                    <th>商品</th>
+                    <th>单价(元)</th>
+                    <th>描述</th>
+                    <th>库存</th>
+                    <th>好评率</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 渲染商品信息 -->
+            </tbody>
+        </table>
+        <h1>购物车</h1>
+        <table border='1' id="shop_cart">
+            <thead>
+                <tr>
+                    <th>商品</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>金额</th>
+                    <th>删除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 购物车商品列表 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="3">总计</td>
+                    <td id="total_price">0</td>
+                    <td><button id="clear">清空</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    var goodsArr = [{
+            shangpin: '武装直升机z_10',
+            jiaqian: '200',
+            pingjia: '很酷',
+            kucun: '107',
+            haoping: '99%'
+        },
+        {
+            shangpin: '虎式坦克',
+            jiaqian: '200',
+            pingjia: '火力猛，装甲厚',
+            kucun: '178',
+            haoping: '100%'
+        },
+        {
+            shangpin: '单兵望远镜',
+            jiaqian: '132',
+            pingjia: '千里眼，哪里都能看',
+            kucun: '134',
+            haoping: '88%'
+        },
+        {
+            shangpin: 'T-50战斗机',
+            jiaqian: '250',
+            pingjia: '全球部署，精确打击',
+            kucun: '235',
+            haoping: '94%'
+        },
+        {
+            shangpin: '单兵火箭筒',
+            jiaqian: '150',
+            pingjia: '携带方便，火力强悍',
+            kucun: '241',
+            haoping: '96%'
+        },
+        {
+            shangpin: '战术手雷',
+            jiaqian: '100',
+            pingjia: '携带方便，爆破力强',
+            kucun: '227',
+            haoping: '96%'
+        },
+        {
+            shangpin: 'L-81突击步枪',
+            jiaqian: '100',
+            pingjia: '破环力大',
+            kucun: '148',
+            haoping: '100%'
+        },
+        {
+            shangpin: 'K-91狙击步枪',
+            jiaqian: '200',
+            pingjia: '精确度高',
+            kucun: '107',
+            haoping: '99%'
+        },
+        {
+            shangpin: '防弹头盔',
+            jiaqian: '50',
+            pingjia: '有型',
+            kucun: '107',
+            haoping: '99%'
+        },
+        {
+            shangpin: '03单兵靴',
+            jiaqian: '200',
+            pingjia: '舒适',
+            kucun: '107',
+            haoping: '100%'
+        }
+    ];
+    //tBodies 集合返回表格 <tbody> 元素的集合。
+    function shop() {
+        this.arr = goodsArr; //数据
+        this.goods_t = goods.tBodies[0]; //第一个table下的tbody
+        this.shop_cart_t = shop_cart.tBodies[0]; //第二个table下的tbody
+        this.total_price = document.querySelector('#total_price'); //获取总价标签
+        this.clear = document.querySelector('#clear'); //获取清空按钮
+        this.init(); //页面刷新自动执行
+        this.shop_cart_add = this.goods_t.querySelectorAll('button'); //tbody下的加入购物车
+        this.add(); //点击添加购物车后的事情
+    }
+    shop.prototype.init = function () { //渲染第一个tbody页面
+        for (var i = 0; i < this.arr.length; i++) {
+            var tr = document.createElement('tr'); //创建一个tr
+            tr.setAttribute('goods_id', i); //设置自定义属性
+            for (j in this.arr[i]) {
+                var td = document.createElement('td'); //创建td
+                td.innerHTML = this.arr[i][j];
+                tr.appendChild(td);
+            }
+            var td_add = document.createElement('td');
+            td_add.innerHTML = '<button>加入购物车</button>';
+            tr.appendChild(td_add);
+            this.goods_t.appendChild(tr);
+        }
+    }
+    shop.prototype.totalPrice = function () { // 计算总价
+        this.total_price.innerHTML = 0;
+        for (var i = 0; i < this.shop_cart_t.children.length; i++) {
+            this.total_price.innerHTML = parseInt(this.total_price.innerHTML) + parseInt(this.shop_cart_t.children[
+                    i].children[3]
+                .innerHTML);
+        }
+    }
+    shop.prototype.add = function () { //点击事件
+        var that = this;
+        for (var i = 0; i < this.shop_cart_add.length; i++) { //给添加购物车绑定事件
+            this.shop_cart_add[i].onclick = function () {
+                var goods_name = this.parentNode.parentNode.children[0].innerHTML; //商品名称
+                var goods_money = this.parentNode.parentNode.children[1].innerHTML; //商品单价
+                var goods_id = this.parentNode.parentNode.getAttribute('goods_id'); //商品id
+                var flag = true; //该商品是否被加入过购物车
+                var obj = null;
+                for (var i = 0; i < that.shop_cart_t.children.length; i++) {
+                    if (that.shop_cart_t.children[i].getAttribute('goods_id') == goods_id) {
+                        flag = false;
+                        obj = that.shop_cart_t.children[i];
+                        break;
+                    }
+                }
+                if (flag) {
+                    //创建dom加入购物车
+                    var tr = document.createElement('tr'); //创建tr
+                    tr.setAttribute('goods_id', goods_id); //设置自定义属性
+                    tr.innerHTML = '<td>' + goods_name + '</td><td>' + goods_money + '</td><td>1</td><td>' +
+                        goods_money + '</td><td><a href="javascript:;">删除</a></td>';
+                    that.shop_cart_t.appendChild(tr);
+                    // 给删除按钮绑定事件
+                    tr.children[4].children[0].onclick = function () {
+                        var t = confirm('你是否确定删除');
+                        if (t) {
+                            that.shop_cart_t.removeChild(this.parentNode.parentNode);
+                            that.totalPrice();
+                        }
+                    }
+                } else {
+                    // 证明该商品在购物车中已经存在
+                    obj.children[2].innerHTML = parseInt(obj.children[2].innerHTML) + 1;
+                    obj.children[3].innerHTML = obj.children[1].innerHTML * obj.children[2].innerHTML;
+                }
+                that.totalPrice();
+            }
+            this.clear.onclick = function () {
+                that.shop_cart_t.innerHTML = '';
+                that.total_price.innerHTML = 0;
+            }
+        }
+
+    }
+    new shop();
+</script>
+
+</html>

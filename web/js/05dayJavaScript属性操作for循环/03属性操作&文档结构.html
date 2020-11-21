@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性操作&文档结构</title>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <br>
+    <input type="checkbox" checked>
+    <a href="#">链接</a>
+    <br>
+    <input type="text" value="aaa">
+    <br>
+    <img src="img/4.jpg" alt="美女" title="美女">
+    <br>
+    <div id="box" class="hezi" style="color: red;width:200px;height:200px;background:blue;">盒子</div>
+</body>
+<script>
+    var btn=document.getElementById('btn');
+    var a=document.getElementsByTagName('a')[0];
+    var txt=document.getElementsByTagName('input')[1];
+    var img=document.getElementsByTagName('img')[0];
+    var div=document.getElementsByTagName('div')[0];
+    btn.onclick=function(){
+        //获取属性
+        //console.log(a.href);
+        //设置属性值
+        //a.href='https://www.jd.com';
+        //console.log(txt.type);
+        //txt.type='checkbox';
+        //txt.value='hahaha';
+        // console.log(img.src);
+        // img.src='img/5.jpg';
+        // img.title='鱼香肉丝';
+        // img.alt='alt';
+        // console.log(div.id);
+        // div.id='article';
+        //--------------------------
+        //获取class
+        // console.log(div.className);
+        // //设置class  
+        // div.className='aaa';
+        //--------------
+        //console.log(div.style.color);
+        //div.style='font-size:30px;font-weight:bold;color:blue';
+        //div.style.fontSize='30px';
+        //在js中代表'的'的意思  凡是用.的地方都可以用方括号代替
+        // div['style']['fontSize']='30px';
+        // div['id']='bbb';
+        // img['src']='img/5.jpg';
+        //---------------------
+        console.log(txt.checked);
+        txt.checked=true;
+    }
+    //文档结构：
+    // console.log(window);
+    // console.log(document);
+    // console.log(document.documentElement);
+    // console.log(document.body);
+    // document.body.style.background='blue';
+    //属性操作:
+
+</script>
+</html>

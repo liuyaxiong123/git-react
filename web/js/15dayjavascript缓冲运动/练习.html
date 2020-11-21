@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            width: 1280px;height: 176px;
+            background:green;
+            position:absolute;
+            top:80px;
+            left:0;
+        }
+        #cha{
+            font-size:80px; 
+            position:absolute;
+            right:20px;
+            top:20px;
+        }
+        #an{
+            width: 100px;height: 100px;
+            background:red;
+            position:absolute;
+            left:-100px;
+            top:120px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span id="cha">×</span> 
+    </div>
+    <p id="an"></p>
+</body>
+<script>
+    var box=document.getElementById('box');
+    var cha=document.getElementById('cha');
+    var an=document.getElementById('an');
+    var timer=null;
+    cha.onclick=function(){
+        startMove(-1280,box,function (){
+            startMove(0,an);
+        });
+    }
+    an.onclick=function(){
+        startMove(-100,an,function(){
+            startMove(0,box);
+        });
+    }
+    function startMove(target,obj,fn){
+        clearInterval(timer);
+        timer=setInterval(function(){
+            var speed=(target-obj.offsetLeft)/10;
+            speed=speed>0?Math.ceil(speed):Math.floor(speed);
+            if(obj.offsetLeft==target){
+                clearInterval(timer);
+                if(fn){
+                    fn();
+                }  
+            }else{
+                obj.style.left=obj.offsetLeft+speed+'px';
+            }
+        },20);
+    }
+</script>
+</html>

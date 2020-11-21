@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>截取字符串中的数字</title>
+</head>
+<body>
+    
+</body>
+<script>
+     var str='12 f5ff 87 er3343 -== a.123';
+    // //把字符串中所有的数字组合取出来 [12,5,87,3343,123]
+    // var tmp='';//存储字符串中的数字组合
+    // var arr=[];//用来存储数字组合
+    // for(var i=0;i<str.length;i++){
+    //     if(str.charAt(i)>='0'&&str.charAt(i)<='9'){
+    //         tmp+=str.charAt(i);
+    //     }else{
+    //         if(tmp){
+    //             arr.push(tmp);
+    //             tmp='';
+    //         }
+    //     }
+    // }
+    // if(tmp){
+    //     arr.push(tmp);
+    //     tmp='';
+    // }
+    // console.log(arr);
+    console.log(str.match(/\d+/g));
+</script>
+</html>

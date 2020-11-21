@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象倒计时</title>
+</head>
+<body>
+    <div id="box">
+        <input type="text" id="ipt"><br>
+        <input type="button" value="开始" id="start_">
+        <input type="button" value="暂停" id="stop_">
+    </div>
+</body>
+<script>
+    window.onload=function(){
+        new show('box');
+    }
+    function show(id){
+        this.box=document.getElementById(id);
+        this.ipt=this.box.querySelector('#ipt');
+        this.start=this.box.querySelector('#start_');
+        this.stop=this.box.querySelector('#stop_')
+        this.fn1();
+        this.fn2();
+    }
+    //开始键绑定
+    show.prototype.fn1=function(){
+        var that=this;
+        this.start.onclick=function(){
+            that.timer=setInterval(function(){
+                if(this.ipt.value>0){
+                    this.ipt.value--;
+                }else{
+                    clearInterval(this.timer);
+                }
+            }.bind(that),1000)
+        };
+    }
+    //暂停键绑定
+    show.prototype.fn2=function(){
+       var  _this=this;
+        this.stop.onclick=function(){
+            clearInterval(_this.timer);
+        };
+    }
+
+
+</script>
+</html>

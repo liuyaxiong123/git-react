@@ -1,0 +1,13 @@
+日期对象：
+语法：
+var date=new Date()
+用于处理日期和时间
+date.getHours():获取当前小时数
+date.getMinutes():获取当前的分钟数
+date.getSeconds():获取当前秒数
+date.getMilliseconds():获取当前毫秒数
+date.getFullYear():获取当前年份
+date.getMonth()+1:获取当前月份（月份从0开始 所以要加一）
+date.getDate():获取当前日期（今天几号）
+date.getDay():获取星期几：注意：星期日返回数值是0
+date.getTime():获取时间戳（返回1970年1月1日到此刻的总毫秒数时间戳）

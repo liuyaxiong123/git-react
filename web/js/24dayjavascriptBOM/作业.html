@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        #outer{
+            width: 1000px;height: 600px;
+            border:1px solid;
+            margin:0 auto;
+            position:relative;
+        }
+        #_red{
+            width: 30px;height: 30px;
+            background: red;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        #_blue{
+            width: 30px;height: 30px;
+            background: blue;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="_red"></div>
+        <div id="_blue"></div>      
+    </div>
+</body>
+<script>
+    document.onkeydown=function(ev){
+        var ev=ev||window.event;
+        if(ev.keyCode==37&&_red.offsetLeft>0){
+            _red.style.left=_red.offsetLeft-5+'px';
+        }
+        if(ev.keyCode==38&&_red.offsetTop>0){
+            _red.style.top=_red.offsetTop-5+'px';
+        }
+        if(ev.keyCode==39&&_red.offsetLeft<outer.clientWidth-_red.offsetWidth){
+            _red.style.left=_red.offsetLeft+5+'px';
+        }
+        if(ev.keyCode==40&&_red.offsetTop<outer.clientHeight-_red.offsetHeight){
+            _red.style.top=_red.offsetTop+5+'px';
+        }
+    }
+        _blue.style.left=parsetInt(Math.random()*970)+'px';
+        _blue.style.top=parsetInt(Math.random()*570)+'px';
+     
+</script>
+</html>

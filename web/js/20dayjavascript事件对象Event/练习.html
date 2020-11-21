@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            border:1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        sjfjsidf jsdjf sidjfoisj ijsdifji dsdjfoi jdsijf oidsjf disjf oidsjfi jdsoijf oidsj fisjfoi jsfioj dsifj osijfoisj ofjdsj oisjijgfjldkjgksjflk sjfk sjdflk sjkl jfskj lfdskjf klsjfksdjkfjksl jfklsjd lkfjsj kfljsf jsl jfs jfkls jlksjf lksjlksjf lkdsjlkdsjf klsj fkldsj fklsjd kflsjf kldjsfkljdksljfksjl kgjdksljfkldsjf klsjfklsj flksjkfj skljflkj dsjfdksjf lk
+    </div>
+</body>
+<script>
+    document.oncontextmenu=function(ev){
+        var ev=ev||window.event;
+        if(ev.preventDefault){
+            //阻止事件默认行为 兼容高版本浏览器：
+            ev.preventDefault();
+        }else{
+            //IE6-8
+            ev.returnValue=false;
+        }
+        alert('别动');
+    }
+    document.onkeydown=function(ev){
+        var ev=ev||window.event;
+        if(ev.preventDefault){
+            //阻止事件默认行为 兼容高版本浏览器：
+            ev.preventDefault();
+        }else{
+            //IE6-8
+            ev.returnValue=false;
+        }
+        if(ev.ctrlKey&&ev.keyCode==67){
+            alert('你以为这样就可以么');
+        } 
+    }
+</script>
+</html>

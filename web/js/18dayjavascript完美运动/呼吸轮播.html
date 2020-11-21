@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>呼吸</title>
+    <style>
+        *{margin:0;padding:0;}
+        a{
+            text-decoration: none;
+        }
+        #outer{
+            width: 500px;height: 400px;
+            background:red;
+            margin:40px auto;
+            position:relative;
+        }
+        ul li{
+            position:absolute;
+            left:0;
+            top:0;
+            list-style: none;
+            opacity:0;
+            filter:alpha(opacity=0);
+        }
+        img{
+            width: 500px;height: 400px;
+        }
+        ol li{
+            list-style: none;
+            width: 30px;height: 30px;
+            background:#fff;
+            float: left;
+            border-radius:50%;
+            margin:10px;
+        }
+        ol{
+            position: absolute;
+            bottom:10px;
+            left:100px;
+        }
+        ol li.active{
+            background:yellow;
+        }
+        #left{
+            position: absolute;
+            left: 0px;
+            top:50%;
+            font-size:30px;
+            font-weight: 700;
+        }
+        #right{
+            position: absolute;
+            right:0px;
+            top:50%;
+            font-size:30px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner1">
+            <ul>
+                <li style="opacity: 1;filter:alpha(opacity=1);"><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+                <li><img src="img/5.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div id="inner2">
+            <ol>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+        <a href="javascript:;" id="left">&lt;</a>
+        <a href="javascript:;" id="right">&gt;</a>
+    </div>
+</body>
+<script src="js/轮播.js"></script>
+<script>
+    var outer=document.getElementById('outer');
+    var inner1=document.getElementById('inner1');
+    var li_op=inner1.getElementsByTagName('li');
+    var lis=inner2.getElementsByTagName('li');
+    var left=document.getElementById('left');
+    var right=document.getElementById('right');
+    var now=0;
+    //第一步给所有圆点绑定
+    for(var i=0;i<lis.length;i++){
+        lis[i].index=i;
+        lis[i].onclick=function(){
+            for(var j=0;j<lis.length;j++){
+                lis[j].className='';
+                startMove(li_op[j],{opacity:0});
+            }
+            this.className='active';
+            startMove(li_op[this.index],{opacity:100});
+            now=this.index;
+        }
+    }
+    //第二步给左右按钮绑定
+    left.onclick=function(){
+        now--;
+        if(now<0){
+            now=lis.length-1;
+        }
+        for(var j=0;j<lis.length;j++){
+            lis[j].className='';
+            startMove(li_op[j],{opacity:0});
+        }
+        lis[now].className='active';
+            startMove(li_op[now],{opacity:100});
+    }
+    right.onclick=function(){
+        now++;
+        if(now>=lis.length){
+            now=0;
+        }
+        for(var j=0;j<lis.length;j++){
+            lis[j].className='';
+            startMove(li_op[j],{opacity:0});
+        }
+        lis[now].className='active';
+        startMove(li_op[now],{opacity:100});
+    }
+    //第三部自动轮播
+    timer=setInterval(right.onclick,1000);
+    outer.onmouseover=function(){
+        clearInterval(timer);
+    }
+    outer.onmouseout=function(){
+        timer=setInterval(right.onclick,1000);
+    }
+</script>
+</html>

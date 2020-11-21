@@ -1,0 +1,16 @@
+1)while:
+	语法:
+	var i = 0;  //声明变量
+	while( i < 3 ){ //判断条件
+		//执行内容..		
+		console.log(i);
+		i++;  //执行变量
+	}
+2)do while:
+	语法:
+	var i = 0; //声明变量
+	do{
+		console.log(i); //执行内容
+		i++; //执行变量
+	}while( i < 3 ); //判断条件
+作业:通过while和do while实现99乘法表

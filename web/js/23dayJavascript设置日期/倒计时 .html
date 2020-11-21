@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    var box=document.getElementById('box');
+    var timer=null;
+    function setTime(){
+        var date1=new Date();//此刻时间
+        var time1=date1.getTime();
+        var date2=new Date('2019/10/1');
+        var time2 =date2.getTime();
+        var SY=time2-time1;
+        var day=Math.floor(SY/(24*60*60*1000));
+        SY=SY%(24*60*60*1000);//求不到一天的毫秒
+        var hour=Math.floor(SY/(60*60*1000));
+        SY=SY%(60*60*1000);//求不到一小时的毫秒
+        var minutes=Math.floor(SY/(60*1000));
+        SY=SY%(60*1000);//不到一分钟的毫秒
+        var seconds=Math.floor(SY/1000);
+        SY=SY%1000;
+        var milli=SY%1000;
+        if(day<=0&&hour<=0&&minutes<=0&&seconds<=0&&milli<=0){
+            box.innerHTML='0天0时0分0秒';
+            clearInterval(timer);
+        }else{
+            box.innerHTML='距离国庆还有:'+day+'天'+hour+'小时'+minutes+'分'+seconds+'秒'+milli+'毫秒';
+        }
+    }
+    timer=setInterval(setTime,1);
+</script>
+</html>

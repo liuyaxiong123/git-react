@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="赵丽颖">
+    <input type="button" value="蔡依林">
+    <input type="button" value="吴亦凡">
+    <P>头像：<span></span></P>
+    <P>姓名：<span></span></P>
+    <P>年龄：<span></span></P>
+    <P>性别：<span></span></P>
+</body>
+<script>
+
+    var json = [
+        {
+        	"tit":"<img src='img/1.jpg' alt=''>",
+        	"name":"赵丽颖",
+        	"age":29,
+        	"sex":"女"
+        },
+        {
+        	"tit":"<img src='img/2.jpg' alt=''>",
+        	"name":"蔡依林",
+        	"age":36,
+        	"sex":"女"
+        },
+        {
+        	"tit":"<img src='img/3.jpg' alt=''>",
+        	"name":"吴亦凡",
+        	"age":26,
+        	"sex":"男"
+        }
+    ];
+    var btns=document.getElementsByTagName('input');
+    var spans=document.getElementsByTagName('span');
+    var arr=['tit','name','age','sex'];
+    for(var i=0;i<btns.length;i++){
+        btns[i].index=i;
+        btns[i].onclick=function(){
+            // spans[0].innerHTML=json[this.index].tit;
+            // spans[1].innerHTML=json[this.index].name;
+            // spans[2].innerHTML=json[this.index].age;
+            // spans[3].innerHTML=json[this.index].sex;
+            for(var j=0;j<4;j++){
+                spans[j].innerHTML=json[this.index][arr[j]];
+            }
+        }
+    }
+</script>
+</html>

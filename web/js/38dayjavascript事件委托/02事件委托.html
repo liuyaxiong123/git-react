@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+<script>
+    var lis=ul.querySelectorAll('li');
+    ul.onmouseover=function(ev){
+        var ev=ev||window.enent;
+        //获取触发事件的目标元素
+        //console.log(ev.target);//高版本浏览器
+        //console.log(ev.srcElement);//IE6-8
+        var target=ev.target||ev.srcElement;
+        if(target.nodeName.toLowerCase()=='li'){
+            target.style.background='red';
+        }
+
+    }
+    ul.onmouseout=function(ev){
+        var ev=ev||window.event;
+        var target=ev.target||ev.srcElement;
+        if(target.nodeName.toLowerCase()=='li'){
+            target.style.background='';
+        }
+    }
+    //-----------------------------------
+    // for(var i=0;i<lis.length;i++){
+    //     lis[i].onmouseover=function(){
+    //         this.style.background='red';
+    //     }
+    //     lis[i].onmouseout=function(){
+    //         this.style.background='';
+    //     }
+    // }
+</script>
+</html>

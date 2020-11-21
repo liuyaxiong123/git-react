@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this</title>
+</head>
+<body>
+    <div id="box">你好</div>
+</body>
+<script>
+    box.onclick=function(){
+        setInterval(function(){
+            console.log(this);
+        }.bind(this),1000)
+    }
+    // var json={
+    //     name:'小明',
+    //     age:12,
+    //     sayHello:function(){
+    //         console.log(this.name);
+    //     }
+    // }
+    // json.sayHello();//小明
+    //当一个函数作为对象方法被调用的时候，函数里面的this指向这个对象，但是我们不能认为sayHello里面的this永远指向json
+    //-----------------------
+    // var json={
+    //     name:'小明',
+    //     age:12,
+    //     sayHello:function(){
+    //         console.log(this.name);
+    //     }
+    // }
+    // var name='小红';
+    // var fn=json.sayHello;
+    // fn();
+    //函数内部的上下文this指针，这个指向谁取决于函数怎么调用！而不是函数如何定义。因为json.seyHello赋值给了全局变量，此时的sayHello内的this指向的是window.
+    //----------------------
+    // var a=200;
+    // function fn(){
+    //     var a=100;
+    //     console.log(this.a);
+    // }
+    // //fn();
+    // box.a='abc';
+    // box.onclick=fn;
+    // //因为函数内部this指向box元素对象
+    // //------------------------------
+    // var a=88;
+    // function fn(){
+    //     console.log(this.a);
+    // }
+    // var obj={
+    //     'a':10,
+    //     'b':20,
+    //     'c':fn
+    // }
+    // obj.c();//10
+    //因为fn函数赋给了obj，此时fn内部的this指向obj
+    //----------------------
+    // var a=88;
+    // function fn(){
+    //     console.log(this.a);
+    // }
+    // var obj={
+    //     'a':10,
+    //     'b':20,
+    //     'c':fn
+    // }
+    // var fun=obj.c;
+    // fun();//88
+    //----------------
+    // var a=10;
+    // box.a=20;
+    // box.onclick=function(){
+    //     function fun(){
+    //         console.log(this.a);
+    //     }
+    //     fun();
+    // }
+    // var length=10;
+    // function fn(){
+    //     console.log(this.length);
+    // }
+    // var arr=[fn,'东风','五条'];
+    // arr[0]();//3  因为this指向arr
+    //----------------------
+    // var a=5;
+    // function fn(){
+    //     console.log(this.a);
+    // }
+    // var obj={
+    //     'a':1,
+    //     'b':2,
+    //     'c':[
+    //         {
+    //             'a':3,
+    //             'b':4,
+    //             'c':fn
+    //         }
+    //     ]
+    // }
+    // obj['c'][0]['c']();//3
+    //-----------------
+    // 函数有length属性 获取型参集合
+    // arguments.callee可以在函数体内获取函数自身.
+    // function fn(a,b,c,d){
+    //     // console.log(arguments.length);//5
+    //     console.log(arguments.callee.length);//4
+    // }
+    // fn(5,6,7,8,9);
+    // console.log(fn.length);//4
+    //-----------------------
+    // function fn(m,n,o,p,q,r){
+    //     // this指向arguments对象
+    //     // console.log(this.length);//arguments.length
+    //     console.log(this.callee.length);//2
+    // }
+    // function fn2(a,b){
+    //     arguments[0](9,10,11,12);
+    // }
+    // fn2(fn,5,6,7,8);
+    //-------------------
+    //this指针可以改变
+    // 1.Function call(修改this指向，参数1，参数2。。。)
+    // 2.Function apply(修改this指向，数组)
+    // 3.Function bind(修改this指向，参数1，参数2...)
+    // function show(a,b){
+    //     console.log(a+b);
+    //     console.log(this);
+    // }
+    // // show.call(box,5,6);
+    // // show.apply(box,[5,6]);
+    // var fn=show.bind(box,5,6);
+    // console.log(fn);
+    // fn();
+
+    // var arr=[23,564,4353,223,11];
+    // console.log(Math.max.apply(null,arr));
+</script>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>瀑布流</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        #main{
+            margin:0 auto;
+            position:relative;
+        }
+        .box{
+            padding:15px 0 0 15px;
+            float:left;
+        }
+        .pic{
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:5px;
+            box-shadow: 0 0 5px #ccc;
+        }
+        .pic img{
+            width: 160px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/0.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/1.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/2.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/3.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/4.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/5.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/6.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/7.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/8.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/9.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/10.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/11.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/12.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/13.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/14.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/15.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/16.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/17.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/18.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="imgs/19.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var dateInt={"date":[{"src":"0.jpg"},{"src":"1.jpg"},{"src":"2.jpg"},{"src":"3.jpg"},{"src":"4.jpg"},{"src":"5.jpg"},{"src":"6.jpg"},{"src":"7.jpg"},{"src":"8.jpg"},{"src":"9.jpg"},{"src":"10.jpg"},{"src":"11.jpg"},{"src":"12.jpg"},{"src":"13.jpg"},{"src":"14.jpg"},{"src":"15.jpg"},{"src":"16.jpg"},{"src":"17.jpg"},{"src":"18.jpg"},{"src":"19.jpg"}]};
+    window.onload=function(){
+        show('main','box');
+        window.onscroll=function(){
+            if(show3){
+                var oParent=document.getElementById('main');
+                //将数据块渲染到底部
+                for(var i=0;i<dateInt.date.length;i++){
+                    var boxd=document.createElement('div');
+                    boxd.className='box';
+                    oParent.appendChild(boxd);
+                    var pics=document.createElement('div');
+                    pics.className='pic';
+                    console.log(pics);
+                    boxd.appendChild(pics);
+                    var Oimg=document.createElement('img');
+                    Oimg.src='imgs/'+dateInt.date[i].src;
+                    console.log(Oimg.src);
+                    pics.appendChild(Oimg);
+                }
+                show('main','box');
+            }
+        }
+    }
+    function show(parent,obj){
+        //将mian下的所有box元素取出来
+        var boxs=document.getElementsByClassName(obj);
+        //计算整个页面的列数（页面宽/盒子宽）
+        var boxw=boxs[0].offsetWidth;
+        var cols=Math.floor(document.documentElement.clientWidth/boxw);
+        //设置main的宽
+        var oParent=document.getElementById(parent);
+        oParent.style.width=boxw*cols+'px';
+        var harr=[];//存放每一列高度的数组
+        for(var i=0;i<boxs.length;i++){
+            if(i<cols){
+                harr.push(boxs[i].offsetHeight);
+            }else{
+                var minh=Math.min.apply(null,harr);
+                var index=show2(harr,minh);
+                boxs[i].style.position='absolute';
+                boxs[i].style.top=minh+'px';
+                boxs[i].style.left=boxw*index+'px';
+                harr[index]+=boxs[i].offsetHeight;
+            }
+        }
+    }
+    //求数组中最小数的角标
+    function show2(arr,val){
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]==val){
+                return i;
+            }
+        }
+    }
+    //是否具备加载的条件
+    function show3(){
+        var oParent=document.getElementById('main');
+        var boxs=document.getElementsByClassName('box');
+        var lastboxh=boxs[boxs.length-1].offsetTop+Math.floor(boxs[boxs.length-1].offsetHeight/2);
+        var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+        var height=document.documentElement.clientHeight||document.body.clientHeight;
+        return (lastboxh<scrollTop+height)?true:false;
+    }
+</script>
+</html>

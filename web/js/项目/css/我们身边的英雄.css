@@ -1,0 +1,571 @@
+body{
+	background:rgb(0,0,0);
+	overflow-x:hidden;
+}
+.top{
+    width: 1903px;
+    height: 665px;
+    margin:0 auto;
+    background:url(https://overwatch.nosdn.127.net/1/assets/img/pages/community/heroes-among-us/header-desktop.jpg) no-repeat;
+	position: relative;
+}
+.top_top{
+	width: 100%;
+	height: 40px;
+	background-color: rgba(0,0,0,.7);
+	position: absolute;
+	top: 0;
+}
+.top_center{
+	width: 1545px;
+	height: 40px;
+	margin:0 auto;
+}
+.top_center .a{
+	height: 40px;
+    width: 61.82px;
+    background-image: url(../images/1_fsbnet_icon-sprite.png);
+    background-repeat: no-repeat;
+    background-position: -18px -75px;
+    display: inline-block;
+    float: left;
+}
+.item{
+	width: 407px;
+	height: 40px;
+	float: left;
+	position: relative;
+}
+.item li{
+	float: left;
+	margin-top: 6px;
+}
+.item li a{
+	text-decoration: none;
+	font-size: 15px;
+	color: rgba(255,255,255,.7);
+	margin-left: 30px;
+}
+.item li a i{
+	width: 14px;
+    height: 7px;
+    background-image: url(../images/1_fsbnet_icon-sprite.png);
+    background-position: -147px -131px;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.item li:first-child:hover a i{
+	background-position: -147px -145px;
+}
+.item li:nth-child(4):hover a i{
+	background-position: -147px -145px;
+}
+.la{
+	width: 99.9%;
+	height: 250px;
+	position: absolute;
+	top: 39px;
+	background: radial-gradient(ellipse farthest-side at center top,#283244 0,rgba(21,26,35,.95) 100%);
+    border: 1px solid rgba(255,255,255,.15);
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2);
+    display: none;
+    text-align: center;
+    z-index: 2000;
+}
+#la ul{
+	width: 1520px;
+	height: 210px;
+	margin:0 auto;
+}
+#la li{
+	float: left;
+	margin-left: -5px;
+	margin-top: 33px;
+}
+#la li img{
+	width: 216px;
+	height: 180px;
+}
+#la ul a{
+	width: 151px;
+	height: 180px;
+	overflow: hidden;
+	box-shadow: 0 8px 17px rgba(0,0,0,.1);
+    margin: 0 20px 15px 0;
+    display: inline-block;
+    transition: border-color .2s;
+    border: 1px solid rgba(255,255,255,.15);
+}
+#la ul li a:hover{
+	border:1px solid rgba(255,255,255,.50);
+}
+#la1 ul{
+	width: 1264px;
+	height: 275px;
+	margin:0 auto;
+}
+#la1 ul li{
+	height: 275px;
+	float: left;
+	text-align:center;
+}
+#la1 ul li img{
+	width: 192px;
+	height: 192px;
+}
+#la1 ul li a:first-child{
+	float: left;
+}
+#la1 ul li a p{
+	font-size: 14px;
+	color: rgba(255,255,255,.7);
+}
+#left{
+	width: 0;
+    opacity: 0;
+    overflow: hidden;
+    display: block;
+    float: left;
+    position: relative;
+    max-width: 100px;
+    background-color: rgba(21,26,35,1);
+    border-left: 1px solid rgba(0,0,0,.2);
+    border-right: 1px solid rgba(0,0,0,.2);
+    transition: all .4s ease;
+    height: 222px;
+}
+#left img{
+	width: 99px !important;
+	height: 81px !important;
+	margin-top: -5px;
+}
+.center_right{
+	float: right;
+}
+.center_right a{
+	color:#fff;
+	font-size: 15px;
+	margin-right: 28px;
+    color: rgba(255,255,255,.7);
+    line-height: 35px;
+    text-decoration: none;
+}
+.fix{
+	width: 1600px;
+	height: 50px;
+	background-color: #f2f1ed;
+	z-index: 1000;
+	position: fixed;
+	top: 80px;
+	left: 160px;
+	transition:all 0.2s ease;
+}
+.fix_left a{
+	width: 53px;
+    height: 48px;
+    border: 1px solid #4b535d;
+    display: inline-block;
+    background-image: url(../images/10.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 53px 96px;
+}
+.fix_center li{
+	float: left;
+	width: 96px;
+	height: 50px;
+	border-right: 1px solid #e5e3dc;
+	text-align: center;
+    transition: background-color .2s;
+}
+.fix_center li a{
+	text-decoration: none;
+	font-size: 16px;
+	color:#4b535d;
+	line-height: 47px;
+}
+.fix_center li a i{
+	display: inline-block;
+	background-image: url(../images/10.png);
+    width: 14px;
+    height: 8px;
+    background-position: 0 0;
+    margin: 4px 0 0 8px;
+    transform: rotate(0);
+    transition: transform ease .3s;
+}
+.fix_center li:hover{
+	background-color: #353c42;
+    transition: none;
+}
+.fix_center li:hover a{
+    color: #ff9c00;
+}
+.fix_center li:hover i{
+	background-position: 0 -8px;
+	transform: rotate(180deg);
+}
+.xia{
+	width: 165px;
+	height: 0;
+	background: #353c42;
+	position: absolute;
+	left: 55px;
+	top: 50px;
+	overflow: hidden;
+	transition: 1s;
+}
+.xia a{
+	display: inline-block;
+	width: 133px;
+	height: 53px;
+	border-bottom: 1px solid #4b535d;
+	color:#fff !important;
+	font-size: 14px !important;
+	line-height: 56px !important;
+	padding: 0 13px;
+	text-align: left;
+	overflow: hidden;	
+}
+.xia a:last-child{
+	border:none;
+}
+.fix_center .li:hover .xia{
+	height: 105px;
+	opacity: 1;
+}
+.xia1{
+	position: absolute;
+	left: 249px;
+	top: 50px;
+}
+.fix_center .li1:hover .xia{
+	height: 341px;
+	opacity: 1;
+}
+.xia2{
+	position: absolute;
+	left: 443px;
+	top: 50px;
+}
+.xia3{
+	position: absolute;
+	left: 637px;
+	top: 50px;
+}
+.fix_center .li2:hover .xia{
+	height: 290px;
+	opacity: 1;
+}
+.xia4{
+	position: absolute;
+	left: 734px;
+	top: 50px;
+}
+.fix_center .li3:hover .xia{
+	height: 170px;
+	opacity: 1;
+}
+.a1{
+	display: inline-block;
+	float: right;
+	background: #f7931e;
+	color:#fff;
+	font-size: 17px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 45px;
+	width: 113px;
+	height: 50px;
+}
+#btn{
+	width: 40px;
+    height: 30px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255,255,255,.25);
+    color: #000;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 12px;
+	z-index: 501;
+	display: none;
+    cursor: pointer;
+}
+.cent1{
+    width: 1903px;height: 261px;
+    background: url(https://overwatch.nosdn.127.net/1/assets/img/pages/community/heroes-among-us/overwatch-logo-dark.png) no-repeat;
+	background-position: 10% 30%;
+	position: relative;
+	background-color: #33466c;
+	margin:0 auto;
+}
+.cent1 h1{
+    font-weight: 400;
+	color:#fff;
+	font-size:76px;
+	font-style: italic;
+	position: absolute;
+	left:97px;
+	top:82px;
+}
+.cent1 p{
+	width: 898px;height: 75px;
+	font-size: 16px;
+	color:#fff;
+	position: absolute;
+	right:252px;
+	top:104px;
+}
+.cent2{
+	padding:80px 0;
+	background:#f1f1f1;
+}
+.cent2 h2{
+	color: #33466c;
+	font-size:58px;
+	font-style:italic;
+	width: 1540px;
+	height: 76px;
+	margin:0 auto;
+	margin-bottom:18px;
+}
+.cent2 .row{
+	width: 1540px;
+	height: 404px;
+	margin:0 auto;
+}
+.row ul li{
+	width: 501px;
+	height: 379px;
+	float:left;
+	position: relative;
+	margin:0 6px;
+}
+.row .media{
+	width: 501px;
+	height: 282px;
+	position: relative;
+	transition:all 0.2s ease;
+	transform: scale(1);
+}
+.media i{
+	background-size: 100% auto;
+	background-image: url(http://overwatch.nos.netease.com/1/assets/img/icons/youtube-btn-ylw.png);
+	width: 70px;height: 70px;
+	position: absolute;
+	left:213px;
+	top:113px;
+}
+.row .yi{
+	background-image: url(https://overwatch.nosdn.127.net/a/images/2019/1/15/fcaf1cc113d51993a2d0c642605243ec.jpg);
+    width: 100%;
+    background-size: 512px 282px;
+}
+.row ul li h3{
+	color: #33466c;
+	font-size:16px;
+	margin:18px 0 0;
+}
+.row ul li p{
+	font-size: 16px;
+	margin:8px 0 0;
+}
+.row .er{
+	background-image: url(http://overwatch.nos.netease.com/a/images/2018/9/27/3862226b187f0e3e5142ae4be05f6c6f.jpg);
+    width: 100%;
+    background-size: 512px 282px;
+}
+.row .san{
+	background-image: url(http://overwatch.nos.netease.com/a/images/2018/9/27/7a4d2d025c64eed2710cecd606a5e352.jpg);
+    width: 100%;
+    background-size: 512px 282px;
+}
+.media:hover{
+	transform: scale(1.1);
+}
+.media:hover i{
+	filter: brightness(150%);
+}
+.vdo{
+	width: 1507px;
+	height: 900px;
+	background:#000;
+	position:fixed;
+	z-index: 9999;
+	left:190px;
+	top:52px;
+	display: none;
+}
+.vdo .title{
+	position: relative;
+	height: 142px;
+}
+.vdo .title h3{
+	height: 56px;
+	text-align: center;
+	color:#333333;
+	font-size: 40px;
+}
+.vdo .title #gubi{
+	position: absolute;
+	top:0;
+	right:0;
+	color:blue;
+	font-size: 90px;
+	cursor: pointer;
+}
+.content{
+	height: 753px;
+	position: relative;
+}
+.content video{
+	position: absolute;
+	left:120px;
+
+}
+#let{
+	position: absolute;
+	width:64px;height: 69px;
+	left:0;
+	top:40%;
+	background:url(http://overwatch.nos.netease.com/1/images/heroes/detail/arrow-left.2HQ0H.png);
+}
+#rit{
+	position: absolute;
+	width:64px;height: 69px;
+	right:0;
+	top:40%;
+	background:url(http://overwatch.nos.netease.com/1/images/heroes/detail/arrow-right.1hVyK.png);
+}
+.cent3{
+	height: 192px;
+	background:#fff;
+}
+.cent3_c{
+	width: 1540px;height: 192px;
+	margin:0 auto;
+}
+.blg{
+	float:left;
+	padding:30px;
+	width: 709px;
+	height: 132px;
+	border-right:1px solid #e5e3dc;
+}
+.cent3_c .blg:last-child{
+	border:none;
+}
+.blg img{
+	width: 264px;height: 132px;
+	float:left;
+	transform: scale(1);
+	transition:transform 0.2s;
+}
+.blg .blg_r{
+	float:left;
+	width: 420px;height: 104px;
+	margin-left:20px;
+}
+.blg_r h3{
+	margin-bottom:20px;
+	color:#33466c;
+}
+.blg img:hover{
+	transform:scale(1.1);
+}
+.cent4{
+	width: 1887px;height: 494px;
+	margin:0 auto;
+}
+.cent4 img{
+	width: 1887px;height: 494px;
+}
+.footer{
+	width: 100%;
+	height: 358px;
+    background: #202020;
+}
+.footer_center{
+	width: 1000px;
+	height: 358px;
+	margin:0 auto;
+}
+.p1 a{
+	display: inline-block;
+	width: 90px;
+	height: 24px;
+	font-size: 12px;
+	color:#fff;
+	text-decoration: none;
+	margin-top: 35px;
+}
+.p1 a i{
+	background-image: url(../images/1_images_common_sprite-24-blue.png);
+	background-position: -96px 0;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    float: left;
+    margin-top: -5px;
+}
+.aprt{
+	padding-top: 50px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+	padding-bottom: 20px;
+    text-align: left;
+    width: 1000px;
+    height: 155px;
+}
+.aprt .aprt_a{
+	display: inline-block;
+	width: 140px;
+    height: 80px;
+    background: url(../images/1_images_layout_blizzard.png) no-repeat;
+	float: left;
+}
+.aprt .aprt_a1{
+	background: url(../images/3_suspense_logo_ne.png) no-repeat;
+    width: 125px;
+    height: 38px;
+    display: inline-block;
+    margin-top: 33px;
+}
+.arpt_right{
+	float: right;
+	width: 650px;
+	height: 156px;
+	text-align: left;
+	font-size: 12px;
+	color:rgba(255,255,255,.5);
+}
+.arpt_right p a{
+	color:#ccc;
+	font-size: 12px;
+	text-decoration: none;
+}
+.arpt_right p:nth-child(2){
+	margin-top: 15px;
+}
+.arpt_right p:nth-child(3){
+	line-height: 26px;
+}
+.arpt_right p:nth-child(5){
+	line-height: 26px;
+}
+.arpt_right p:nth-child(6){
+	margin-top: 5px;
+}
+.arpt_right p:nth-child(6) img{
+	width: 27px;
+	height: 26px;
+	float: left;
+}
+.nt{
+	width: 1000px;
+	text-align: center;
+	font-size: 12px;
+	color:rgba(255,255,255,.5);
+}

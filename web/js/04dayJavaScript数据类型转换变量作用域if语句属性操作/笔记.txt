@@ -1,0 +1,28 @@
+01).获取元素补充：
+标签名获取：
+document.getElementsByTagName('标签名')
+ID名获取：
+document.getElementById('ID名称');
+class名获取（兼容IE9以上高版本浏览器）：var box=document.getElementsByClassName('class类名');
+
+name属性名获取(一般用于表单元素）：var user=document.getElementsByName('name属性值');
+
+02).属性操作：
+     value
+03).数据类型转换：
+        将字符串转换为数字：
+        parseInt（）:转换为整型数字，开头不能是英文
+        parseFloat（）：转换为浮点型数字，开头不能是英文
+        Number()：转换为浮点型数字，不能包含英文
+        eval()：转换为字符内部的数学表达式
+04).if语句：
+语法：
+if(判断条件){
+    //真的执行。。。
+}else{
+    //假的执行。。。
+}
+05).变量的作用域：
+ 变量执行环境（称作用域）：
+ 变量具备函数作用域  1）全局变量 
+                    2）局部变量

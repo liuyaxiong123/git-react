@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过滤html标签</title>
+</head>
+<body>
+    <textarea name="" id="txt1" cols="30" rows="10">
+            <div class="para" label-module="para">在1951 年,一位名叫Stephen Kleene的数学科学家，他在Warren McCulloch和Walter Pitts早期工作的基础之上，发表了一篇题目是《神经网事件的表示法》的论文，利用称之为正则集合的数学符号来描述此模型，引入了正则表达式的概念。正则表达式被作为用来描述其称之为“正则集的代数”的一种表达式，因而采用了“正则表达式”这个术语。</div>
+            <div class="para" label-module="para">之后一段时间，人们发现可以将这一工作成果应用于其他方面。Ken Thompson就把这一成果应用于计算<a target=_blank href="/item/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95">搜索算法</a>的一些早期研究，Ken Thompson是 Unix的主要发明人，也就是大名鼎鼎的Unix之父。Unix之父将此<a target=_blank href="/item/%E7%AC%A6%E5%8F%B7%E7%B3%BB%E7%BB%9F">符号系统</a>引入编辑器QED，然后是Unix上的编辑器ed，并最终引入grep。Jeffrey Friedl 在其著作《Mastering Regular Expressions (2nd edition)》（中文版译作：精通正则表达式，已出到第三版）中对此作了进一步阐述讲解，如果你希望更多了解正则表达式理论和历史，推荐你看看这本书。</div>
+            <div class="para" label-module="para">自此以后，正则表达式被广泛地应用到各种UNIX或类似于UNIX的工具中，如大家熟知的<a target=_blank href="/item/Perl">Perl</a>。Perl的正则表达式源自于Henry Spencer编写的regex，之后已演化成了pcre（Perl兼容正则表达式Perl Compatible Regular Expressions），pcre是一个由Philip Hazel开发的、为很多现代工具所使用的库。正则表达式的第一个实用应用程序即为Unix中的 qed 编辑器。</div>            
+    </textarea>
+    <input type="button" value="转换" id="btn">
+    <textarea name="" id="txt2" cols="30" rows="10"></textarea>
+</body>
+<script>
+    btn.onclick=function(){
+        //html标签规则 <>
+        //. :在正则中代表匹配任意字符
+        //var reg=/<.+>/g;
+        var reg=/<[^<>]+>/g;
+        txt2.value=txt1.value.replace(reg,'');
+    }
+</script>
+</html>

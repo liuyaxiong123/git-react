@@ -1,0 +1,36 @@
+事件对象Event：
+作用是用来获取所有触发的事件相关的信息，
+在事件触发时会执行一个函数，
+事件对象通过执行函数的参数传递进来
+
+在IE6-8浏览器中事件对象作为window下的属性存在。
+（注意：事件对象一定是在一个事件触发时存在）
+
+兼容写法：
+box.onclick=function(ev){ 
+    var ev = ev || window.event;
+}
+
+事件对象系列相关属性：
+ev.button:用于获取点击的按钮值（左键：0 右键：2）
+
+ev.pageX:
+ev.pageY:
+鼠标在页面上的位置，从页面的左上角开始，即以页面为参考点
+
+ev.clientX:
+ev.clientY:
+以浏览器窗口为参考点
+
+ev.screenX:
+ev.screenY:
+以显示屏的左上角为参考点
+
+ev.offsetX:
+ev.offsetY:
+以触发该事件的DOM元素为参考点(确切的说是到边框内边距的距离)
+
+事件对象系列相关方法：
+ev.preventDefault() ：用于阻止事件默认行为（高版本浏览器）
+
+ev.returnValue=false ：用于阻止事件默认行为（IE6-8）

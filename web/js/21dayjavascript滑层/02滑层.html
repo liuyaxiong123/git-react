@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        li{
+            list-style: none;
+        }
+        i{
+            font-style: normal;
+        }
+        #wrap{
+            width: 1024px;
+            margin: 0 auto;
+        }
+        #wrap .layer{
+            width: 100%;
+            height: 600px;
+            border:1px solid;
+        }
+        #nav_bar{
+            position: absolute;
+            right: 10px;
+            top:500px;
+            width: 80px;
+            height: 360px;
+        }
+        #nav_bar li{
+            width: 78px;
+            height: 58px;
+            border:1px solid;
+            text-align: center;
+            cursor:pointer;
+            /* 过度属性  为了让样式改变时有过度的感觉 */
+            transition: all .3s linear;
+        }
+        #nav_bar li i{
+            display: block;
+            margin-top:5px;
+        }
+        #nav_bar .bar_active{
+            background: orange;
+            color:#fff;
+            font-weight: 700;
+        }
+        #nav_bar li:hover{
+            background: orange;
+            color:#fff;
+            font-weight: 700;
+        }
+        #nav_bar .returnT{
+            display:block;
+            width: 78px;
+            height: 58px;
+            border:1px solid;
+            text-align: center;
+            cursor:pointer;
+        }
+        #nav_bai .returnT i{
+            display: block;
+            margin-top:10px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div style='height:800px'></div>
+    <div id="wrap">
+        <div class="layer">爱逛好活</div>
+        <div class="layer">好店直播</div>
+        <div class="layer">品质特色</div>
+        <div class="layer">实惠热卖</div>
+        <div class="layer">猜你喜欢</div>
+    </div>
+    <!-- 侧边栏 -->
+    <div id="nav_bar">
+        <div class="nav">
+            <ul>
+                <li class="bar_active"><i>爱逛<br>好活</i></li>
+                <li><i>好店<br>直播</i></li>
+                <li><i>品质<br>特色</i></li>
+                <li><i>实惠<br>热卖</i></li>
+                <li><i>猜你<br>喜欢</i></li>
+            </ul>
+            <span class="returnT"><i>top</i></span>
+        </div>
+    </div>
+    <div style='height:800px'></div>
+</body>
+<script>
+    var layer=document.getElementsByClassName('layer');
+    var nav_bar_li=nav_bar.getElementsByTagName('li');
+    var returnT=nav_bar.getElementsByClassName('returnT')[0];
+    var timer=null;
+    window.onscroll=function(){
+        var t=parseInt(document.documentElement.scrollTop||document.body.scrollTop);
+        if(t>400){
+        returnT.style.display='block';
+        nav_bar.style='position:fixed;top:55px;'
+        }
+        if(t<400){
+            returnT.style.display='none';
+            nav_bar.style='position:absolute;top:500px;'
+        }
+        // 监听滚轮是否滚到某个区块位置上
+        for(var i=0;i<nav_bar_li.length;i++){
+            var offsetT=layer[i].offsetTop;
+            console.log(offsetT);
+            if(t>=offsetT){
+                for(var j=0;j<nav_bar_li.length;j++){
+                    nav_bar_li[j].className='';
+                }
+                nav_bar_li[i].className='bar_active';
+            }
+        }
+    }
+    //点击导航按钮内容区块滑动
+    for(var i=0;i<nav_bar_li.length;i++){
+        nav_bar_li[i].index=i;
+        nav_bar_li[i].onclick=function(){
+            for(var j=0;j<nav_bar_li.length;j++){
+                nav_bar_li[j].className='';
+            }
+            this.className='bar_active';
+            move(layer[this.index].offsetTop)
+        }
+    }
+
+    returnT.onclick=function(){
+        move(0);
+    }
+    function move(iTarget){
+        clearInterval(timer);
+        timer=setInterval(function(){
+            //求速度
+            var t=document.documentElement.scrollTop||document.body.scrollTop;
+            speed=(iTarget-t)/5;
+            speed=speed>0?Math.ceil(speed):Math.floor(speed);
+            //运动滚轮
+            if(t==iTarget){
+                clearInterval(timer);
+            }else{
+                document.documentElement.scrollTop=t+speed;
+                document.body.scrollTop=t+speed;
+            }
+        },10)
+    }
+
+</script>
+</html>

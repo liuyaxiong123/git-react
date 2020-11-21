@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>new</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //比较完整的面向对象语法：往构造函数身上加属性，往原型身上加方法
+    // function show(){
+    //     console.log(this);
+    //     this.a=10;
+    // }
+    // //show();//window
+    // var obj=new show();//new 关键词：用来初始化对象的；this指针指向的就是new出来的这个对象
+    // console.log(obj.a);
+    function CreatePerson(name,qq){//构造函数
+        this.name=name;
+        this.qq=qq;
+    }
+    CreatePerson.prototype.showName=function(){
+        alert('我的名字：'+this.name);
+    }
+    CreatePerson.prototype.showQQ=function(){
+        alert('我的qq号是：'+this.QQ);
+    }
+    var obj1=new CreatePerson('Ada','232423');
+    obj1.showName();
+    var obj2=new CreatePerson('张三','2432432');
+    obj2.showName();
+    console.log(obj1.showName==obj2.showName);//true
+</script>
+</html>

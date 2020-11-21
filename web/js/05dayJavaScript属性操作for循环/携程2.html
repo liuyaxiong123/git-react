@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>携程轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #dk {
+            width: 1920px;
+            height: 340px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        #d div {
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgb(218, 23, 23);
+            border-radius: 10px;
+            float: left;
+            margin-left: 10px;
+        }
+
+        #d {
+            position: absolute;
+            bottom: 10px;
+            right: 300px;
+        }
+
+        #d div {
+            background: #fff;
+        }
+
+        #d #d1 {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dk">
+        <img src="img/1.jpg" alt="" id="tp">
+        <div id="d">
+            <div id="d1"></div>
+            <div id='d2'></div>
+            <div id="d3"></div>
+            <div id="d4"></div>
+            <div id="d5"></div>
+            <div id="d6"></div>
+            <div id="d7"></div>
+            <div id="d8"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var dk = document.getElementById('dk');
+    var d = document.getElementById('d');
+    var tp = document.getElementById('tp');
+    var divs = d.getElementsByTagName('div');
+    console.log(divs);
+    for (var i = 0; i < divs.length; i++) {
+        divs[i].index = i;
+        divs[i].onclick = function () {
+            for (var j = 0; j < divs.length; j++) {
+                divs[j].style.background = '#fff';
+            }
+            this.style.background = 'blue';
+            tp.src = 'img/' + (this.index + 1) + '.jpg'; //img/  .jpg
+        }
+    }
+</script>
+
+</html>

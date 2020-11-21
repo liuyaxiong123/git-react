@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>运动透明度</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            width: 400px;height: 400px;
+            background:red;opacity: 0.5;
+            filter:alpha(opacity=50);
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    var timer=null,alpha=50;
+    box.onmouseover=function(){
+        startMove(100,1);
+    }
+    box.onmouseout=function(){
+        startMove(50,-1);
+    }
+    function startMove(target,sped){
+        clearInterval(timer);
+        timer=setInterval(function(){
+            if(alpha==target){
+                clearInterval(timer);
+            }else{
+                alpha=alpha+sped;
+                box.style.opacity=alpha/100;
+                box.style.filter='alpha(opacity='+alpha+')';
+            }
+        },10);
+    }
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    第一个页面
+    <input type="button" value="跳转03history2.html" id="btn">
+    <input type="button" value="前进2页" id="g">
+</body>
+<script>
+    btn.onclick=function(){
+        window.location.href='03history2.html';
+    }
+    g.onclick=function(){
+        window.history.go(2);
+    }
+</script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>json字符串</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var str='{"name":"rose","age":"19","sex":"女"}';
+    //将json字符串转换成json对象
+    //var json=eval('('+str+')');
+    //将json字符串转换成json对象
+    var json=JSON.parse(str);
+    console.log(str,json);
+</script>
+</html>

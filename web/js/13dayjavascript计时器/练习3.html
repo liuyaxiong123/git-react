@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="imgs/DM001.jpg" alt="" id="tp">
+</body>
+<script>
+    var t=0;
+    timer=setInterval(function(){
+        t++;
+        if(t>=14){
+            t=1;
+        }
+        tp.src='imgs/'+'DM00'+t+'.jpg';
+    },100);
+</script>
+</html>

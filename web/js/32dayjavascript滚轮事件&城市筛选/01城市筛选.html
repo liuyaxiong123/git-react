@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>城市筛选</title>
+    <style>
+        *{margin:0;padding:0;}
+        a{
+            text-decoration: none;
+            color:#333;
+            margin:0 10px;
+        }
+        #wrap>div{
+            margin:20px 0;
+            overflow: hidden;
+        }
+        #wrap h3{
+            width: 30px;height: 30px;border-radius:50%;
+            background: green;
+            color:#fff;
+            text-align:center;
+            line-height:30px;
+            float:left;
+        }
+        #wrap .city-area{
+            float:left;
+            margin-left:10px;
+            margin-top:10px;
+            width:90%;
+        }
+        #wrap .city-area span{
+            margin:0 8px;
+        }
+    </style>
+</head>
+<body>
+    <h2>按照拼音首字母选择：</h2>
+    <div id="letter">
+        <!-- 放字母 -->
+        <!-- <a href="#A">A</a>
+        <a href="#B">B</a> -->
+    </div>
+    <div id="wrap">
+        <!-- <div>
+            <h3 id="A">A</h3>
+            <div class="city-area">
+                <span>安东</span>
+                <span>安阳</span>
+                <span>安徽</span>
+            </div>
+        </div> -->
+    </div>
+</body>
+<script src="citys.js"></script>
+<script>
+    //页面刷新渲染DOM
+    (function(){
+        // 获取所有城市的首字母添加到letters里
+        var letters=[];
+        for(var i=0;i<citys.length;i++){
+            letters.push(citys[i].pinyin.substring(0,1));
+        }
+        // 将letters去重并排序
+        letters.sort();
+        var temp=[letters[0]];
+        for( var j=0;j<letters.length;j++){
+            if(letters[j]!==temp[temp.length-1]){
+                temp.push(letters[j]);
+            }
+        }
+        //渲染DOM
+        for(var x=0;x<temp.length;x++){
+            //渲染a标签
+            var a=document.createElement('a');
+            a.innerHTML=temp[x];
+            a.href='#'+temp[x];
+            letter.appendChild(a);
+
+            //渲染城市列表
+            var div=document.createElement('div');
+            //城市标题首字母
+            var h3=document.createElement('h3');
+            h3.innerHTML=temp[x];
+            h3.id=temp[x];
+            div.appendChild(h3);
+            // 城市内容
+            var city_area=document.createElement('div');
+            city_area.className='city-area';
+            var citys_x=citys.filter(function(item,index){
+                return item.pinyin.indexOf(temp[x])!=-1;
+            });
+            for(var z=0;z<citys_x.length;z++){
+                var span=document.createElement('span');
+                span.innerHTML=citys_x[z].name;
+                city_area.appendChild(span);
+            }
+            div.appendChild(city_area);
+            wrap.appendChild(div);
+        }
+    })()
+</script>
+</html>

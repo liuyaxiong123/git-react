@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        *{margin:0;padding:0;}
+        #dk{
+            width: 600px;height: 600px;
+            border:1px solid;
+            margin:0 auto;
+            position: relative;
+        }
+        ul li{
+            background: #fff;
+            list-style: none;
+            width: 198px;
+            height: 100px;
+            border:1px solid;
+            float:left;
+            line-height: 100px;
+            text-align: center;
+        }
+        #dk div{
+            width: 599px;height: 498px;
+            border:1px solid;
+            position:absolute;
+            left: 0;
+            bottom:0;
+            text-align: center;
+        }
+        #d1{
+            background: red;
+        }
+        #d2{
+            background:chartreuse;
+        }
+        #d3{
+            background:pink;
+        }
+        #l1{
+            background:gray;
+        }
+        #d2,#d3{  
+            display: none;
+        }
+        #dk div{
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="dk">
+        <ul id="uu">
+            <li id="l1">标题1</li>
+            <li id="l2">标题2</li>
+            <li id="l3">标题3</li>
+        </ul>
+        <div id="d1">内容1</div>
+        <div id="d2">内容2</div>
+        <div id="d3">内容3</div>
+    </div>
+</body>
+<script>
+    var dk=document.getElementById('dk');
+    console.log(dk);
+    l1.onclick=function(){
+        l1.style.fontSize='30px';
+        l2.style.fontSize='14px';
+        l3.style.fontSize='14px';
+        l1.style.backgroundColor='gray';
+        l2.style.backgroundColor='#fff';
+        l3.style.backgroundColor='#fff';
+        d1.style.display='block';
+        d2.style.display='none';
+        d3.style.display='none';
+    }
+    l2.onclick=function(){
+        l1.style.fontSize='14px';
+        l2.style.fontSize='30px';
+        l3.style.fontSize='14px';
+        l2.style.backgroundColor='gray';
+        l1.style.backgroundColor='#fff';
+        l3.style.backgroundColor='#fff';
+        d1.style.display='none';
+        d2.style.display='block';
+        d3.style.display='none';
+    }
+    l3.onclick=function(){
+        l1.style.fontSize='14px';
+        l2.style.fontSize='14px';
+        l3.style.fontSize='30px';
+        l3.style.backgroundColor='gray';
+        l1.style.backgroundColor='#fff';
+        l2.style.backgroundColor='#fff';
+        d1.style.display='none';
+        d3.style.display='block';
+        d2.style.display='none';
+    }
+</script>
+</html>

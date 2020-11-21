@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        ul li{
+            background:#000;
+            width: 1200px;height: 45px;
+            list-style: none;
+            color:#fff;
+            line-height: 45px;
+        }
+        .bl{
+            background:blue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="bl"></li>
+        <li></li>
+        <li class="bl"></li>
+        <li></li>
+        <li class="bl"></li>
+        <li></li>
+        <li class="bl"></li>
+        <li></li>
+        <li class="bl"></li>
+        <li></li>
+        <li class="bl"></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    function fn3(z,y){
+        if(z==1||z==3||z==5||z==7||z==8||z==10||z==12){
+            return 31;
+        }else if(z==4||z==6||z==9||z==11){
+            return 30;
+        }else if(z==2){
+            if((y%4==0&&y%100!=0)||y%400==0){
+                return 29; 
+            }else{
+                return 28;
+            }
+        }
+    }
+    function fn2(n){
+        return n<10?'00'+n:n>9&&n<100?'0'+n:n;
+    }
+    function fn(n){
+        return n>9?n:'0'+n;
+    }
+    var lis=document.getElementsByTagName('li');
+    setInterval(function(){
+        var arr=['日','一','二','三','四','五','六'];
+        var date=new Date(); 
+        var arrs=[
+            date,
+            fn(date.getHours())+'时',
+            fn(date.getMinutes())+'分',
+            fn(date.getSeconds())+'秒',
+            fn(date.getFullYear())+'年',
+            fn(date.getMonth()+1)+'月',
+            fn(date.getDate())+'日',
+            date.getDay()+'天',
+            '星期'+arr[date.getDay()],
+            '该月份有'+fn3(fn(date.getMonth()+1),fn(date.getFullYear()))+'天',
+            fn2(date.getMilliseconds())+'毫秒',
+            '从1970年到今天的毫秒数：'+date.getTime()
+        ];
+        for(var i=0;i<lis.length;i++){
+            lis[i].innerHTML=arrs[i];
+        }
+    },1);
+</script>
+</html>

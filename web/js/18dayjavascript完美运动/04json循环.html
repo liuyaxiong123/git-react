@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var json_obj={width:400,height:400,opacity:100};
+    function startMove(json){
+        console.log(json);
+        for(i in json){
+            console.log(i);//键名
+            console.log(json[i]);//键值
+        }
+    }
+    startMove(json_obj);
+</script>
+</html>

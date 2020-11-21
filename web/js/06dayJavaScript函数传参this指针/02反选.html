@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>反选</title>
+</head>
+<body>
+    <div id="btns">
+        <input type="button" value="全选">
+        <input type="button" value="反选">
+        <input type="button" value="不选">
+    </div>
+    <div id="box">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+    </div>
+</body>
+<script>
+    var btns=document.getElementById('btns');
+    var btn_inps=btns.getElementsByTagName('input');
+    var box=document.getElementById('box');
+    var box_inps=box.getElementsByTagName('input');
+    //全选
+    btn_inps[0].onclick=function(){
+        show(true);
+    }
+    //反选
+    btn_inps[1].onclick=function(){
+        for(var i=0;i<box_inps.length;i++){
+            if(box_inps[i].checked){
+                box_inps[i].checked=false;
+            }else{
+                box_inps[i].checked=true; 
+            }
+        }
+    }
+    //不选
+    btn_inps[2].onclick=function(){
+        show(false);
+    }
+    function show(bool){
+        for(var i=0;i<box_inps.length;i++){
+            box_inps[i].checked=bool;
+        }
+    }
+</script>
+</html>

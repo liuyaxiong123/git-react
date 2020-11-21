@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>省级联动</title>
+</head>
+<body>
+    <select name="" id="province"></select>
+    <select name="" id="city"></select>
+    <select name="" id="area"></select>
+</body>
+<script src="linkage.js"></script>
+<script>
+    var province=document.querySelector('#province');
+    var city=document.querySelector('#city');
+    var area=document.querySelector('#area');
+    // 页面初始化渲染DOM
+    (function (){
+        for(i in citys){
+            var option=document.createElement('option');
+            option.innerHTML=i;
+            option.value=i;
+            province.appendChild(option);
+        }
+        for( j in citys['北京']){
+            var option=document.createElement('option');
+            option.innerHTML=j;
+            option.value=j;
+            city.appendChild(option);
+        }
+        for( z in citys['北京']['北京']){
+            var option=document.createElement('option');
+            option.innerHTML=citys['北京']['北京'][z];
+            option.value=citys['北京']['北京'][z];
+            area.appendChild(option);
+        }
+    })();
+    province.onchange=function(){
+        city.innerHTML='';
+        area.innerHTML='';
+        console.log(province.value);
+        for(j in citys[province.value]){
+            var option=document.createElement('option');
+            option.innerHTML=j;
+            option.value=j;
+            city.appendChild(option);
+        }
+        for( z in citys[province.value][city.value]){
+            var option=document.createElement('option');
+            option.innerHTML=citys[province.value][city.value][z];
+            option.value=citys[province.value][city.value][z];
+            area.appendChild(option);
+        }
+    }
+    city.onchange=function(){
+        area.innerHTML='';
+        for(z in citys[province.value][city.value]){
+            var option=document.createElement('option');
+            option.innerHTML=citys[province.value][city.value][z];
+            option.value=citys[province.value][city.value][z];
+            area.appendChild(option);
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>99乘法表</title>
+</head>
+<body>
+    
+</body>
+<script>
+    document.write('<table border="1" style="margin:0 auto">');
+    document.write('<caption>99乘法表</caption>');
+    for(var i=1;i<10;i++){
+        console.log(i);
+        document.write('<tr>');
+        for(var j=1;j<=i;j++){
+            document.write('<td>'+j+'*'+i+'='+(i*j)+'</td>');//i*j=(i*j)
+        }
+        document.write('</tr>');
+    }
+    document.write('</table>');
+</script>
+</html>

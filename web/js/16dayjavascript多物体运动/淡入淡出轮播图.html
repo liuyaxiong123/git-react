@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/淡入淡出.css">
+</head>
+<body>
+    <div id="outer">
+        <img src="img/1.png" alt="" style="z-index:100;">
+        <img src="img/2.png" alt="" style="z-index:50;">
+        <img src="img/3.png" alt="" style="z-index:0;">
+        <div id="inner" style="z-index:200;">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <a href="javascript:;" id="left" style="z-index:200;">&lt;</a>
+        <a href="javascript:;" id="right" style="z-index:200">&gt;</a>
+    </div>
+</body>
+<script src='js/淡入淡出.js'></script>
+<script>
+    var outer=document.getElementById('outer');
+    var lis=inner.getElementsByTagName('li');
+    var left=document.getElementById('left');
+    var right=document.getElementById('right');
+    var imgs=outer.getElementsByTagName('img');
+    var now=0;
+    console.log(outer,lis,imgs);
+    for(var i=0;i<lis.length;i++){
+        lis[i].index=i;
+        lis[i].onclick=function(){
+            for(var j=0;j<lis.length;j++){
+                lis[j].className='';
+                startMove(imgs[j],0,'opacity');
+            }
+            this.className='active';
+            startMove(imgs[this.index],100,'opacity');
+            now=this.index;
+        }
+    }
+    right.onclick=function(){
+        now++;
+        if(now>=lis.length){
+            now=0;
+        }
+        for(var j=0;j<lis.length;j++){
+            lis[j].className='';
+            startMove(imgs[j],0,'opacity');
+        }
+        lis[now].className='active';
+        startMove(imgs[now],100,'opacity');
+    }
+    left.onclick=function(){
+        now--;
+        if(now<0){
+            now=2;
+        }
+        for(var j=0;j<lis.length;j++){
+            lis[j].className='';
+            startMove(imgs[j],0,'opacity');
+        }
+        lis[now].className='active';
+        startMove(imgs[now],100,'opacity');
+    }
+    timer=setInterval(right.onclick,2000);
+    outer.onmouseover=function(){
+        clearInterval(timer);
+    }
+    outer.onmouseout=function(){
+        timer=setInterval(right.onclick,2000);
+    }
+</script>
+</html>

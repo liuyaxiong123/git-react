@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //正则声明：
+    var reg=new RegExp('国');//js对象写法
+    var str='abdef国家';
+    console.log(str.search(reg));
+    //----------------------
+
+    // var reg=/国/;//perl风格，perl是一门古老的语言，是这个语言第一次提出正则的概念。
+    // var str='abdef国家';
+    // console.log(str.search(reg));
+    //------------------------
+
+    //i:ignore缩写 忽略大小写
+    // var reg=/a/i;
+    // var str='Abcdef';
+    // console.log(str.search(reg));
+
+    // var reg=new RegExp('a','i');
+    // var str='Abcdef';   
+    // console.log(str.search(reg));
+    //---------------------------------
+    //\d：转义字符  代表匹配任意数字    g：global缩写  书面上管他叫全局匹配，说白话找到全部  +：在正则中代表量词，说白话代表个数 ''
+    //match():把跟正则表达式匹配的内容给提出来。
+    // var str='12 f5ff 87 er3343 -== a.123';
+    // var reg=/\d+/g;
+    // console.log(str.match(reg));
+
+    //类似js中 \n 换行
+    //console.log("\"内容\"","内容\n换行");
+    
+    
+</script>
+</html>

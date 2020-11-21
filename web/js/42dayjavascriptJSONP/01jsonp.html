@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsonp</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        li{
+            list-style: none;
+            border:1px solid pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <ul id="ul">
+
+    </ul>
+</body>
+<script>
+    ipt.oninput=function(){
+        Script=document.createElement('script');
+        Script.src='https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1450,21082,29074,29522,29518,29721,29567,29221,22158&wd='+this.value+'&req=2&csor=1&cb=fn';
+        document.body.appendChild(Script);
+        document.body.removeChild(Script);
+    }
+    ipt.onkeydown=function(ev){
+        var ev=ev||window.event;
+        if(ev.keyCode==13){
+            window.open('https://www.baidu.com/s?ie=utf-8&mod=11&isbd=1&isid=937067A7DAB17428&ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd='+this.value+'&rsv_pq=97ff501300231d70&rsv_t=3beaw9xUIvP4mXH5rQtM4HVj%2FNEZBFbnKLYV9KaB3ym1Y8zZe%2FRwX0EtFXM&rqlang=cn&rsv_enter=1&rsv_dl=ib&rsv_sug3=2&rsv_sug1=1&rsv_sug7=100&rsv_sid=1450_21082_29074_29522_29518_29721_29567_29221_22158&_ss=1&clist=&hsug=&csor=2&pstg=5&_cr1=27861')
+        }
+    }
+    function fn(data){
+        console.log(data.g);
+        ul.innerHTML='';
+        if(data.g){
+            for(var i=0;i<data.g.length;i++){
+                var li=document.createElement('li');
+                li.innerHTML=data.g[i].q;
+                ul.appendChild(li);
+            }
+        }
+    }
+    // https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1450,21082,29074,29522,29518,29721,29567,29221,22158&wd=n&req=2&csor=1&cb=jQuery1102005899141452690482_1567663909699&_=1567663909702
+</script>
+</html>

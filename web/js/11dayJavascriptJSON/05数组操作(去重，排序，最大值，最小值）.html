@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr=[55,66,3,1,128,666,2,999];
+    //取最大值
+    // var max=arr.sort(function(n1,n2){
+    //     return n2-n1;
+    // })[0];
+    // console.log(max[0]);
+    //----------
+    //取最小值
+    // var min=arr.sort(function(n1,n2){
+    //     return n1-n2;
+    // })[0];
+    // console.log(min);
+    //------------
+    //var arr=[55,66,3,55,1,128,1,'a','a','b'];
+    // //数组冒泡排序： 
+    // //原理：比较相邻的两个值，将小的值放前面，大的值放后面。
+    for(var i=0;i<arr.length-1;i++){
+        console.log(arr[i]);
+        var cur=arr[i];//当前这一项
+        for(var j=i+1;j<arr.length;j++){
+            var next=arr[j];//下一项；
+            console.log(next);
+            //比较如果当前这一项比下一项大，把他两调换位置；
+            console.log(cur,next);
+            if(cur>next){
+                arr[i]=next;
+                arr[j]=cur;
+            }
+        }
+    }
+    console.log(arr);
+    //----------------
+    //数组去重：
+    // var arr=[55,66,3,55,1,128,1,'a','a','b'];
+    // arr.sort();
+    // console.log(arr);
+    // var temp=[arr[0]];//存储去重以后的结果
+    // for(var i=0;i<arr.length;i++){
+    //     //判断：数组中的那一项是否不等于temp中的最后一项的值
+    //     if(arr[i]!==temp[temp.length-1]){
+    //         temp.push(arr[i]);
+    //     }
+    // }
+    // console.log(temp);
+    // arr.sort();
+    // var temp=[arr[0]];
+    // for(var i=0;i<arr.length;i++){
+    //     if(arr[i]!==temp[temp.length-1]){
+    //         temp.push(arr[i]);
+    //     }
+    // }
+    // console.log(temp);
+    // for(var i=0;i<arr.length-1;i++){
+    //     var gh=arr[i];
+    //     for(var j=i+1;j<arr.length;j++){
+    //         var dh=arr[j];
+    //         if(gh>dh){
+    //             arr[i]=dh;
+    //             arr[j]=gh;
+    //         }
+    //     }
+        
+    // }
+    // console.log(arr);
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖影</title>
+    <style>
+        div{
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        div img{
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/1.jpg" alt=""></div>
+    <div><img src="img/1.jpg" alt=""></div>
+</body>
+<script>
+    var divs=document.getElementsByTagName('div');
+    document.onmousemove=function(ev){
+        var ev = ev || window.event;
+        console.log(ev.clientX,ev.clientY);
+        var i=0;
+        var time=setInterval(function(){
+            if(i<10){
+                divs[i].style.left=ev.clientX+'px';
+                divs[i].style.top=ev.clientY+'px';
+                i++;
+            }else{
+                clearInterval(time);
+            }
+        },100)
+    }
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    账号：<input type="text" id="txt">
+    <span id="s">请输入6-12个数字/字母(不能含有空格)</span><br>
+    密码：<input type="password" id="pwd">
+    <span id="s1">请输入6-12个数字/字母(不能含有空格)</span><br>
+    确认：<input type="password" id="pwd1">
+    <span id="s2">确认两次密码一样</span><br>
+    邮箱：<input type="text" id="txt2">
+    <span id="s3">请输入格式正确的邮箱密码(不能含有空格)</span><br>
+    <input type="button" value="提交" id="btn">
+</body>
+<script>
+    txt.onblur=function(){
+        var reg1 = /^\w{6,12}$/g;
+        if(reg1.test(txt.value)){
+            s.innerHTML='√';
+            s.style.color='yellow';
+        }else{
+            s.innerHTML='请输入6-12个数字/字母(不能含有空格)';
+            s.style.color='red';
+        }
+    }
+    pwd.onblur=function(){
+        var reg2=/^[0-9a-z]{6,12}$/g;
+        if(reg2.test(pwd.value)){
+            s1.innerHTML='√';
+            s1.style.color='yellow';
+        }else{
+            s1.innerHTML='请输入6-12个数字/字母(不能含有空格)';
+            s1.style.color='red';
+        }
+    }
+    pwd1.onblur=function(){
+        if(pwd1.value!=pwd.value){
+            s2.innerHTML='两次密码不一致';
+            s2.style.color='red';
+        }else{
+            s2.style.color='yellow'; 
+            s2.innerHTML='√';
+        }
+    }
+    txt2.onblur=function(){
+        var reg3=/^\w+@[0-9a-z]+\.[a-z]{2,3}$/g;
+        if(reg3.test(txt2.value)){
+            s3.style.color='yellow';
+        }else{
+            s3.style.color='red';
+        }
+    }
+</script>
+</html>

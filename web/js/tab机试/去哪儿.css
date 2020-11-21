@@ -1,0 +1,269 @@
+.dk{
+    width: 722px;height: 320px;
+    border:6px solid #00afc7;
+}
+.a1,.a2,.a3,.a4,.a5,.a6,.a7,.a8{
+    width: 638px;height: 320px; 
+    float:left;
+}
+.dku{
+    float:left;
+}
+.dku li{
+    width: 72px;height: 39px;
+    text-align: center;
+    line-height: 39px;
+    background:#00afc7;
+    border-bottom:1px solid;
+    color:#fff;
+}
+.dku .dkub{
+    color:#00afc7;
+    background:#fff;
+}
+.dku li:hover{
+    color:#00afc7;
+    background:#fff;
+}
+.j{
+    width: 604px;height: 253px;
+    margin:20px 30px;
+    margin-bottom:0px;
+    position: relative;
+  
+}
+.j img{
+    position: absolute;
+    bottom:0;
+    left:0;
+}
+.j .ji{
+    width: 240px;height: 37px;
+    border:1px solid #999999;
+    float:left;
+    margin:16px 30px 5px 30px;;
+    line-height:37px;
+    position: relative;
+}
+.j .ji i{
+    position: absolute;
+    right:3px;
+    top:1px;
+}
+.j .jih{
+    color:#999999;
+}
+.j p{
+    display: inline-block;
+    margin-left:50px;
+}
+.jj1{
+    width: 133px;height: 41px;
+    background:#FF752B;
+    color:#fff;
+    border:0;
+    font-size:20px; 
+    display: inline-block;
+    margin-left:170px;   
+}
+.jn1{
+    width: 108px;height: 37px;
+    border:1px solid #999999;
+    display: inline-block;
+    line-height: 37px;
+    word-spacing: 15px;
+    margin-left:20px;
+}
+.e{
+    width: 604px;height: 40px;
+    text-align: center;
+    line-height: 40px;
+    word-spacing: 80px;
+    border-bottom:1px solid #00afc7;
+    margin-left:15px;
+}
+.e .f{
+    font-weight: bold;
+}
+
+.g:hover,.h:hover{
+    text-decoration: underline;
+}
+.j{
+    width: 604px;height: 253px;
+    margin:20px 30px;
+    margin-bottom:0px;
+    position: relative;
+  
+}
+.j img{
+    position: absolute;
+    bottom:0;
+    left:0;
+}
+.j .ji{
+    width: 240px;height: 37px;
+    border:1px solid #999999;
+    float:left;
+    margin:16px 30px 5px 30px;;
+    line-height:37px;
+    position: relative;
+}
+.j .ji i{
+    position: absolute;
+    right:3px;
+    top:1px;
+}
+.j .jih{
+    color:#999999;
+}
+.j p{
+    display: inline-block;
+    margin-left:50px;
+}
+.a2 .jj1{
+    margin-left:20px;  
+}
+.a2 .xy{
+    margin-top:30px;
+}
+.a3 .jj1{
+    margin-left:450px;
+}
+.a4 .j .jj1{
+    margin-left:80px;
+}
+.a4 .liang{
+    margin-top:30px;
+}
+.a4  p span{
+    display: inline-block;
+    margin-left:20px;
+}
+.a5 .jj1{
+    margin-left:20px;
+    margin-top:15px;
+}
+.a5 .hh{
+    width: 500px;height: 40px;
+    margin-top:10px;
+    word-spacing: 5px;
+}
+.a5 .hh span{
+    color:gray;
+}
+.a6 .jj1{
+    margin-left:20px;
+    margin-top:15px;
+}
+.a6 .ss{
+    word-spacing: 10px;
+    border-bottom:1px solid;
+    border-top:1px solid;
+    width: 500px;height: 45px;
+    line-height:45px;
+}
+.a7 .jj1{
+    margin-left:80px;
+    margin-top:15px;
+}
+.a8 .kk{
+    width: 120px;height: 37px;
+    display: inline-block;
+    line-height:37px;
+    word-spacing:10px;
+    margin-left:20px;
+}
+#dk .ff{
+    display: none;
+}
+.j2{
+    width: 604px;height: 253px;
+    margin:20px 30px;
+    margin-bottom:0px;
+    position: relative;
+  
+}
+.j2 img{
+    position: absolute;
+    bottom:0;
+    left:0;
+}
+.j2 .ji{
+    width: 240px;height: 37px;
+    border:1px solid #999999;
+    float:left;
+    margin:16px 30px 5px 30px;;
+    line-height:37px;
+    position: relative;
+}
+.j2 .ji i{
+    position: absolute;
+    right:3px;
+    top:1px;
+}
+.j2 .jih{
+    color:#999999;
+}
+.j2 p{
+    display: inline-block;
+    margin-left:50px;
+}
+.a1 .j2 .kk{
+    display: inline-block;
+    width: 108px;height: 37px;
+    line-height:37px;
+    word-spacing:10px;
+}
+.j2{
+    width: 604px;height: 253px;
+    margin:20px 30px;
+    margin-bottom:0px;
+    position: relative;
+  
+}
+.j2 img{
+    position: absolute;
+    bottom:0;
+    left:0;
+}
+.j3 .ji{
+    width: 240px;height: 37px;
+    border:1px solid #999999;
+    float:left;
+    margin:16px 30px 5px 30px;;
+    line-height:37px;
+    position: relative;
+}
+.j3 .ji i{
+    position: absolute;
+    right:3px;
+    top:1px;
+}
+.j3 .jih{
+    color:#999999;
+}
+.j3 p{
+    display: inline-block;
+    margin-left:50px;
+}
+.j4 .ji{
+    width: 240px;height: 37px;
+    border:1px solid #999999;
+    float:left;
+    margin:16px 30px 5px 30px;;
+    line-height:37px;
+    position: relative;
+}
+.j4 .ji i{
+    position: absolute;
+    right:3px;
+    top:1px;
+}
+.j4 .jih{
+    color:#999999;
+}
+.j4 p{
+    display: inline-block;
+    margin-left:50px;
+}

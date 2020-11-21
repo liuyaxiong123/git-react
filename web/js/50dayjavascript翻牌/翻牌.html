@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>翻牌</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        li{
+            list-style-type: none;
+            float:left;width: 73px;
+            height: 73px;
+            margin-right:20px;
+            margin-bottom:20px;
+            border:1px solid pink;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        li img{
+            transition: transform .5s ease;
+        }
+        /* li:hover img{
+            transform: translate(-73px,-73px);
+        } */
+        #row{
+            margin:30px auto;
+            width: 352px;
+            height:352px;
+        }
+        #row li:nth-child(4n){
+            margin-right:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="row">
+        <ul>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+            <li><img src="images/back1.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+<script>
+    function Snk(){
+        this.dom=document.querySelectorAll('li');
+        this.img=document.querySelectorAll('img');
+        this.length=this.dom.length;
+        this.init();
+        console.log(this.dom,this.img,this.length);
+    }
+    Snk.prototype.init=function(){
+        var that=this;
+        for(var i=0;i<this.length;i++){
+            (function(j){
+                that.dom[j].onclick=function(){
+                    that.img[j].style.transform='translate(-73px,-73px)';
+                }
+            })(i)
+        }
+    }
+    new Snk();
+</script>
+</html>

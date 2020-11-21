@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #btn{
+            position: absolute;
+            right:0;
+            top:2000px;
+            display: none;
+            position: fixed;
+            right:0px;
+            top:500px;
+        }
+    </style>
+</head>
+<body style='height: 3000px;'>
+    <input type="button" value="返回顶部" id='btn'>
+</body>
+<script>
+    console.log(document.documentElement.clientWidth);
+    var btn=document.getElementById('btn');
+    var time=null;
+     window.onscroll=function(){
+         var t=document.documentElement.scrollTop||document.body.scrollTop;
+         if(t>=1000){
+             btn.style.display='block';
+         }else{
+             btn.style.display='none';
+         }
+     }
+     btn.onclick=function(){
+         startMove(0);
+     }
+    var timer=null;
+    function startMove(iTarget){
+        clearInterval(timer);
+        timer=setInterval(function(){
+            //求速度
+            var t=document.documentElement.scrollTop||document.body.scrollTop;
+            var speed=(iTarget-t)/20;
+            speed=speed>0?Math.ceil(speed):Math.floor(speed);
+            //运动滚轮
+            if(t==iTarget){
+                clearInterval(timer);
+            }else{
+                document.documentElement.scrollTop=t+speed;
+                document.body.scrollTop=t+speed;
+            }
+        },5);
+    }
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多物体运动</title>
+    <style>
+        *{margin:0;padding:0;}
+        div{
+            width: 100px;height: 50px;
+            background:red;
+            margin-bottom:30px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    var aDiv=document.getElementsByTagName('div');
+    var time=null;
+    //运动函数：控制任意标签的宽度进行运动，问题：多个物体同时运动时会存在计时器冲突的问题，当我startMove的时候要先关掉上一个计时器，问题整个程序里就一个定时器，第一个div正在运动的时候，要把鼠标快速移动到第二个div上，第一个div的定时就关掉了，所以第一个div还没有运动回原来的位置定时器就被关掉了
+    //解决问题：多个物体同时运动时，单个定时存在问题，给每一个元素都添加一个定时器，所以这个时候div开始运动时，就互不干扰了，第一个div移动上去或者移动出去时只用第一个div的计时器
+
+
+    //运动函数：任意标签可以同时运动宽度
+    // 问题：该函数只能控制宽度，不能控制其他样式运动
+    function startMove(obj,iTarget){
+        clearInterval(obj.time);
+        obj.time=setInterval(function(){
+            var speed=(iTarget-obj.offsetWidth)/10;
+            speed=speed>0?Math.ceil(speed):Math.floor(speed);
+            if(obj.offsetWidth==iTarget){
+                clearInterval(obj.time);
+            }else{
+                obj.style.width=obj.offsetWidth+speed+'px';
+            }
+        },30)
+    }
+    for(var i=0;i<aDiv.length;i++){
+        aDiv[i].time=null;
+        aDiv[i].onmouseover=function(){
+            startMove(this,400);
+        }
+        aDiv[i].onmouseout=function(){
+            startMove(this,100);
+        }
+    }
+</script>
+</html>

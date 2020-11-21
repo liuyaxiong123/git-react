@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>透明轮播</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;}
+        li{list-style: none;}
+        #carousel{
+            /* width: 500px;height: 400px; */
+            background: pink;
+            margin:50px auto;
+            position:relative;
+            border:3px solid blue;
+        }
+        /* #carousel .inner ul li{
+            width: 500px;
+            height: 100%;
+        } */
+        #carousel .inner ul li img{
+            width: 100%;
+            height: 100%;
+        }
+        #carousel .inner ul li{
+            position:absolute;
+            top:0;left:0;
+            opacity:0;
+            filter:alpha(opacity=0);
+        }
+        #carousel .inner ul li:first-child{
+            opacity: 1;
+            filter:alpha(opacity=1);
+        }
+        #carousel .circles{
+            position:absolute;
+            bottom:5px;
+            left:150px;
+        }
+        #carousel .circles li{
+            float:left;
+            width: 20px;height: 20px;
+            background:green;
+            margin-right: 10px;
+            border-radius:50%;
+            cursor:pointer;
+        }
+        #carousel .circles li.active{
+            background:yellow;
+        }
+        #carousel .l_btn{
+            position:absolute;
+            left:5px;
+            top:50%;
+            font-size:40px;
+            font-weight:bold;
+        }
+        #carousel .r_btn{
+            position:absolute;
+            right:5px;
+            top:50%;
+            font-size:40px;
+            font-weight:bold;
+        }
+    </style>    
+</head>
+<body>
+    <div id="carousel">
+        <!-- <div class="inner">
+            <ul>
+                <li><img src="image/1.jpg" alt=""></li>
+                <li><img src="image/2.jpg" alt=""></li>
+                <li><img src="image/3.jpg" alt=""></li>
+                <li><img src="image/4.jpg" alt=""></li>
+                <li><img src="image/5.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="circles">
+            <ol>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+        <a href="" class="l_btn">&lt;</a>
+        <a href="" class="r_btn">&gt;</a> -->
+    </div>
+</body>
+<script>
+    window.onload=function(){
+        new Carousel({
+            width:'500',
+            height:'400',
+            ev:'onclick',//小圆点事件
+            images:['image/1.jpg','image/2.jpg','image/3.jpg','image/4.jpg','image/5.jpg'],//轮播图数量
+            autoPlay:true,//控制自动轮播
+            interval:1000,//控制自动轮播的时间
+            id:'carousel',
+        });
+    }
+    function Carousel(JSON){
+        this.$dom=document.getElementById(JSON.id);
+        /*初始化所有属性 宽度 高度 运动时间 绑定事件 图片*/
+        this.width=JSON.width;
+        this.height=JSON.height;
+        this.images=JSON.images;
+        this.event=JSON.ev;
+        this.interval=JSON.interval;
+        this.pictureLength=JSON.images.length;
+        this.now=0;
+        this.timer=null;//控制自动轮播
+        //初始化DOM结构
+        this.init();
+        
+        //绑定事件
+        this.bindEvent();
+
+        //自动轮播
+        if(JSON.autoPlay){
+            this.autoPlay();
+        }
+        
+    }
+    Carousel.prototype.init=function(){
+        this.$dom.style.width=this.width+'px';
+        this.$dom.style.height=this.height+'px';
+
+        //创建inner ul 和 li
+        this.$BigDiv=document.createElement('div');
+        this.$BigDiv.className='inner';
+        this.$ul=document.createElement('ul');
+
+        //创建circles ol 和 li
+        this.$smallDiv=document.createElement('div');
+        this.$smallDiv.className='circles';
+        this.$ol=document.createElement('ol');
+
+        // 创建li
+        for(var i=0;i<this.pictureLength;i++){
+            var li=document.createElement('li');
+            li.style.width=this.width+'px';
+            li.style.height=this.height+'px';
+            var img=document.createElement('img');
+            img.src=this.images[i];
+            li.appendChild(img);
+            this.$ul.appendChild(li);
+
+            var ol_li=document.createElement('li');
+            this.$ol.appendChild(ol_li);
+        }
+        this.$ol.children[0].className='active';
+        this.$BigDiv.appendChild(this.$ul);
+        this.$dom.appendChild(this.$BigDiv);
+        this.$smallDiv.appendChild(this.$ol);
+        this.$dom.appendChild(this.$smallDiv);
+
+        this.$l_btn=document.createElement('a');
+        this.$l_btn.href='javascript:;';
+        this.$l_btn.className='l_btn';
+        this.$l_btn.innerHTML='&lt;';
+        this.$r_btn=document.createElement('a');
+        this.$r_btn.href='javascript:;';
+        this.$r_btn.className='r_btn';
+        this.$r_btn.innerHTML='&gt;';
+        this.$dom.appendChild(this.$l_btn);
+        this.$dom.appendChild(this.$r_btn);
+    }
+    Carousel.prototype.bindEvent=function(){
+        var lis=this.$ol.children;
+        var liz=this.$ul.children;
+        console.log(liz);
+        var _this=this;
+        for(var i=0;i<lis.length;i++){
+            (function(j){
+                lis[j][_this.event]=function(){
+                    for(var x=0;x<lis.length;x++){
+                        lis[x].className='';
+                        _this.startMove(liz[x],{opacity:0});
+                    }
+                    this.className='active';
+                    _this.startMove(liz[j],{opacity:100});
+                    _this.now=j;
+                }
+            })(i)
+        }
+        //右按钮点击
+        this.$r_btn.onclick=function(){
+            _this.now++;
+            if(_this.now>=lis.length){
+                _this.now=0;
+            }
+            for(var x=0;x<lis.length;x++){
+                lis[x].className='';
+                _this.startMove(liz[x],{opacity:0});
+            }
+            lis[_this.now].className='active';
+            _this.startMove(liz[_this.now],{opacity:100});
+        }
+        // 左按钮点击事件
+        this.$l_btn.onclick=function(){
+            _this.now--;
+            if(_this.now<0){
+                _this.now=lis.length-1;
+            }
+            for(var x=0;x<lis.length;x++){
+                lis[x].className='';
+                _this.startMove(liz[x],{opacity:0});
+            }
+            lis[_this.now].className='active';
+            _this.startMove(liz[_this.now],{opacity:100});     
+        }
+    }
+    Carousel.prototype.autoPlay=function(){
+        this.timer=setInterval(this.$r_btn.onclick,this.interval);
+        this.enterEvent();
+    }
+    Carousel.prototype.enterEvent=function(){
+        var _this=this;
+        this.$dom.onmouseenter=function(){
+            clearInterval(_this.timer);
+        }
+        this.$dom.onmouseleave=function(){
+            _this.timer=setInterval(_this.$r_btn.onclick,_this.interval);
+        }
+    }
+    Carousel.prototype.startMove=function (obj,json,fn){
+        clearInterval(obj.time);
+        var _this=this;
+        obj.time=setInterval(function(){
+            var stop=true;//假设没有不到终点的值了
+            for(i in json){
+                if(i=='opacity'){
+                    //获取透明度样式的写法
+                    var style=Math.round(parseFloat(_this.getStyle(obj,i))*100);
+                    }else{
+                        //获取带px样式的写法
+                        var style=parseInt(_this.getStyle(obj,i));
+                    }
+                    var speed=(json[i]-style)/10;
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(style!=json[i]){
+                        stop=false;//意思就是说如果运动的样式其中有没到目标点的,把stop变成false
+                    }
+                    if(i=='opacity'){
+                        //运动透明度
+                        obj.style.opacity=(style+speed)/100;
+                        obj.style.filter='alpha(opacity='+(style+speed)+')';
+                    }else{
+                        //运动其他样式
+                        obj.style[i]=style+speed+'px';
+                    }
+            }
+            if(stop){
+                //判断如果stop还是true的情况下，说明没有不到终点的值了
+                clearInterval(obj.time);
+                if(fn) fn();
+            }
+        },10)
+    }
+    Carousel.prototype.getStyle=function(obj,cur){
+        if(obj.currentStyle){
+            return obj.currentStyle[cur];
+        }else{
+            return getComputedStyle(obj)[cur];
+        }
+    }    
+</script>
+</html>

@@ -1,0 +1,22 @@
+01)文档结构：
+window(整个浏览器窗口)-->document(整个文档)-->html(标签)-->body;
+02）属性操作：
+html中的属性怎么写 js中的属性就怎么写
+比如：
+img.src   input.type
+语法：
+元素.属性名=值
+比较特殊的两个属性：
+class:
+设置方式
+元素.className=值
+style：
+设置方式（设置的是行间样式）
+元素.style.fontSize=值
+在js中代表'的'的意思  凡是用.的地方都可以用方括号代替
+    例如：div['style']['fontSize']='30px';
+03）for循环：
+ 语法：
+ for(声明变量，判断，执行变量){
+     执行内容....
+ }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滑动轮播图</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="outer">
+        <div id="inner1">
+            <ul id="ul">
+                <li><img src="img/1.png"></li>
+                <li><img src="img/2.png"></li>
+                <li><img src="img/3.png"></li>
+            </ul>
+        </div>
+        <div id="inner2">
+            <ol>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+        <a href="javascript:;" id="left">&lt;</a>
+        <a href="javascript:;" id="right">&gt;</a>
+    </div>
+</body>
+<script src="js/script.js"></script>
+<script>
+    var outer=document.getElementById('outer');
+    var inner1=document.getElementById('inner1');
+    var lis=inner2.getElementsByTagName('li');
+    var left=document.getElementById('left');
+    var right=document.getElementById('right');
+    var now=0;
+    // 第一步：点击小圆点运动inner1
+    for(var i=0;i<lis.length;i++){
+        lis[i].index=i;
+        lis[i].onclick=function(){
+            for(var j=0;j<lis.length;j++){
+                lis[j].className='';
+            }
+            this.className='active';
+            startMove(inner1,-this.index*500 ,'left');
+            now=this.index;
+        }
+    }
+    // 第二步：左右按钮点击滑动inner1
+    left.onclick=function(){
+        now--;
+        for(var j=0;j<lis.length;j++){
+            lis[j].className='';
+        }
+        if(now<0){
+            now=lis.length-1;
+        }
+        lis[now].className='active';
+        startMove(inner1,-now*500,'left');
+    }
+    right.onclick=function(){
+        now++;
+        for(var j=0;j<lis.length;j++){
+            lis[j].className='';
+        }
+        if(now>=lis.length){
+            now=0;
+        }
+        lis[now].className='active';
+        startMove(inner1,-now*500,'left');
+    }
+    // 第三部：自动轮播
+    timer=setInterval(right.onclick,2000);
+    outer.onmouseover=function(){
+        clearInterval(timer);
+    }
+    outer.onmouseout=function(){
+        timer=setInterval(right.onclick,2000);
+    }
+</script>
+</html>

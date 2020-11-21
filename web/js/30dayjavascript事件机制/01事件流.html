@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件流</title>
+    <style>
+        div{
+            padding:100px;
+        }
+    </style>
+</head>
+<body onclick='alert("body")'>
+    <div style="background:gray;" onclick='alert(this.style.background)'>
+        <div style="background:blue;" onclick='alert(this.style.background)'>
+            <div style="background:red;" onclick='alert(this.style.background)'></div>
+        </div>
+    </div>
+</body>
+<script>
+    //事件流：事件执行的一种机制，（事件冒泡和事件捕获）
+    document.onclick=function(){
+        alert('document');
+    }
+</script>
+</html>

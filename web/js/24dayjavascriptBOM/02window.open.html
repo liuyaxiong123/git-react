@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>window.open</title>
+</head>
+<body>
+    <input type="button" value="打开新窗口" id="btn">
+</body>
+<script>
+    btn.onclick=function(){
+        //打开新窗口
+        newWin=window.open('https://www.baidu.com/','_blank','width=200,height=200');
+        newWin.moveTo(200,200);
+        newWin.resizeTo(500,500);
+
+        //window.open('03b.html');
+    }
+</script>
+</html>

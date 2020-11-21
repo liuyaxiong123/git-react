@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜</title>
+    <style>
+        *{margin:0;padding:0;}
+        #outer{
+            width: 200px;height: 300px;
+            cursor:move;
+            margin:20px;
+            position:relative;
+        }
+        #outer img{
+            width: 200px;height: 300px;
+        }
+        #mask{
+            width: 100px;height: 150px;
+            background:#000;
+            opacity:0.5;
+            filter:alpha(opacity=50);
+            position:absolute;
+            left:0;
+            top:0;
+            display: none;
+        }
+        #big{
+            width: 300px;height: 400px;
+            position:absolute;
+            right:-300px;
+            top:0;
+            overflow:hidden;
+            display: none;
+        }
+        #big img{
+            width: 500px;height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <img src="img/1.jpg" alt="">
+        <div id="mask"></div>
+        <div id="big">
+            <img src="img/1.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    var outer=document.getElementById('outer');
+    var mask=document.getElementById('mask');
+    var big=document.getElementById('big');
+    var big_img=big.getElementsByTagName('img')[0];
+    outer.onmousemove=function(ev){
+        var ev=ev||window.event;
+        mask.style.display='block';
+        big.style.display='block';
+        var maxL=outer.clientWidth-mask.offsetWidth;
+        var maxT=outer.clientHeight-mask.offsetHeight;
+        var l=ev.clientX-outer.offsetLeft-mask.offsetWidth/2;
+        var t=ev.clientY-outer.offsetTop-mask.offsetHeight/2;
+        if(l<=0){
+            l=0;
+        }
+        if(t<=0){
+           t=0;
+        }
+        if(l>=maxL){
+            l=maxL;
+        }
+        if(t>=maxT){
+            t=maxT;
+        }
+        var scale=(big_img.offsetWidth-big.offsetWidth)/(outer.offsetWidth-mask.offsetWidth);
+        var scale_h=(big_img.offsetHeight-big.offsetHeight)/(outer.offsetHeight-mask.offsetHeight);
+        mask.style.left=l+'px';
+        mask.style.top=t+'px';
+        big.scrollLeft=l*scale;
+        big.scrollTop=t*scale_h;
+    }
+    outer.onmouseout=function(){
+        mask.style.display='none';
+        big.style.display='none';
+    }
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{cursor: pointer;}
+        
+    </style>
+</head>
+<body>
+    <input type="text" id="txt1">
+    <span>+</span>
+    <input type="text" id='txt2'>
+    <span id="res">=</span>
+    <input type="text" id="txt3">
+</body>
+<script>
+    var txt1=document.getElementById('txt1');
+    var txt2=document.getElementById('txt2');
+    var txt3=document.getElementById('txt3');
+    var res=document.getElementById('res');
+    res.onclick=function(){
+        var txt1_val=txt1.value;
+        var txt2_val=txt2.value;
+        if(txt1_val==''||txt2_val==''){
+            alert('内容不能为空');
+        }else{
+            var t1=parseFloat(txt1_val);
+            var t2=parseFloat(txt2_val);
+            if(isNaN(t1)||isNaN(t2)){
+                alert('请输入数字');
+            }else{
+                txt3.value=t1+t2;
+                txt1.value='';
+                txt2.value='';
+            }
+        }
+    }
+</script>
+</html>

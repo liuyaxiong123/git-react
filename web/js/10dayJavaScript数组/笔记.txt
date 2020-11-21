@@ -1,0 +1,26 @@
+数组的操作方法：
+01).数组排序
+sort（function(n1,n2){
+    return n1-n2;//升序
+    return n2-n1;//降序
+})
+02）类型转换
+arr.join('拼接的字符')将数组转换为字符串
+比如arr.join():把数组的每一项按照 ，进行拼接
+比如arr.join('='):把数组的每一项按照=进行拼接
+03）类型转换
+str.split('切割的字符')将字符切割成数组
+04）数组循环
+arr.forEach(function(item,index){
+    item:数组中的每一项
+    index：对应数组的每一项角标
+})
+05）数组过滤
+该方法接收返回值，如果返回值为true，当前那一项留下，反之 返回false，当前那一项过滤掉
+arr.filter(function(item,index){
+    item:数组中的每一项
+    index：对应数组的每一项角标
+    return 值
+})
+
+

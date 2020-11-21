@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 800px;
+            height: 600px;
+            border: 2px solid pink;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        #inner {
+            width: 50px;
+            height: 50px;
+            background: purple;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner"></div>
+    </div>
+</body>
+<script>
+    var outer = document.getElementById('outer');
+    var inner = document.getElementById('inner');
+    var maxX = outer.clientWidth - inner.offsetWidth; //x轴最大临界值
+    var maxY = outer.clientHeight - inner.offsetHeight;
+    var posX = 0; //控制inner运动的x轴的位置
+    var posY = 0;
+    var spedY = 1;
+    var spedX = 1; //控制x轴运动的速度
+    time = setInterval(function () {
+        if (posX >= maxX) {
+            spedX = -1;
+        }
+        if (posX <= 0) {
+            spedX = 1;
+        }
+        posX += spedX;
+        inner.style.left = posX + 'px';
+        if (posY >= maxY) {
+            spedY = -1;
+        }
+        if (posY <= 0) {
+            spedY = 1;
+        }
+        posY += spedY;
+        inner.style.top = posY + 'px';
+    }, 1);
+</script>
+
+</html>

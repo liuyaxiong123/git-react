@@ -1,0 +1,21 @@
+DOM：
+获取节点：
+元素.offsetParent:
+获取元素的相对定位的父节点
+元素.firstChild:IE6-8获取第一个元素节点
+元素.firstElementChild:高版本浏览器获取第一个元素节点
+元素.lastChild:IE6-8获取最后一个元素节点
+元素.lastElementChild:高版本浏览器获取最后一个元素节点
+元素.nextSibling:IE6-8获取元素下一个节点
+元素.nextElementSibling：高版本浏览器获取元素下一个节点
+元素.previousSibling:IE6-8获取元素上一个节点
+元素.previousElementSibling:高版本浏览器获取元素上一个节点
+通过ID获取节点(兼容到IE8)
+document.querySelector('ID选择器')
+通过选择器获取元素节点(兼容到IE8)
+document.querySelectorAll('css选择器')
+
+元素.nodeName:返回节点名称（名称大写   document返回#document）
+
+文档碎片：作用提高程序运行性能
+document.createDocumentFragment()

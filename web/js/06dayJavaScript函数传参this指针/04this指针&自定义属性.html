@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this指针&自定义属性</title>
+</head>
+<body>
+    <div id="box">abc</div>
+    <h1 id="tit">title</h1>
+</body>
+<script> 
+    var box=document.getElementById('box');
+    box.a=10;
+    console.log(box.id);//内置属性
+    console.log(box.a);//10
+    //this:函数内部存在一个叫做this的指针，它指向当前函数所有者
+    box.onclick=function(){
+        console.log(this);//box元素
+    }
+    tit.onclick=function(){
+        console.log(this);//h1标签
+    }
+    function show(){
+        console.log(this);//window
+    }
+    show();
+</script>
+</html>

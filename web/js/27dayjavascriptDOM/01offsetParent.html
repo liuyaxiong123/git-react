@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>offsetParent</title>
+    <style>
+        *{margin:0;padding:0;}
+        #outer{
+            width: 500px;height: 500px;border:1px solid;
+            margin:0 auto;
+        }
+        #inner{
+            width: 200px;height: 200px;
+            background:yellow;
+            margin:0 auto;
+            position:relative;
+        }
+        #p{
+            width: 100px;height: 100px;
+            background:blue;
+            position:absolute;
+            top:50px;
+            left:50px;        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+            <p id="p"></p>
+        </div>
+    </div>
+</body>
+<script>
+    //offsetParent:获取元素的父节点，获取相对定位的父节点
+    console.log(p.offsetParent);
+</script>
+</html>

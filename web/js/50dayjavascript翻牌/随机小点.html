@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>随机小点</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+            background:#000;
+            position:relative;
+            overflow: hidden;
+        }
+        .dd{
+            border-radius: 50%;
+            background:pink;
+            position:absolute;
+            box-shadow: 2px 2px 5px #fff;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    function dd(){
+        this.wh=parseInt(Math.random()*20)+1;
+        this.top=0;
+        this.left=parseInt(Math.random()*(window.innerWidth-this.wh));
+        this.speed=parseInt(Math.random()*5)+1;
+        this.timer=null;
+        this.init();
+        this.move();
+    }
+    dd.prototype.init=function(){
+        this.dom=document.createElement('div');
+        this.dom.className='dd';
+        this.dom.style.width=this.wh+'px';
+        this.dom.style.height=this.wh+'px';
+        this.dom.style.top=this.top+'px';
+        this.dom.style.left=this.left+'px';
+        document.body.appendChild(this.dom);
+    }
+    dd.prototype.move=function(){
+        var that=this;
+        this.timer=setInterval(function(){
+            that.top+=that.speed;
+            if(that.top>=window.innerHeight){
+                that.dom.remove();
+                clearInterval(that.timer);
+            }
+            that.dom.style.top=that.top+'px';
+        },10)
+    }   
+    var timer=setInterval(function(){
+        new dd();
+    },50)
+</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;}
+        div{
+            width: 100px;height: 100px;
+            background: red;
+            margin:10px;
+            opacity: 0.3;
+            filter:alpha(opacity=30);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    var aDiv=document.getElementsByTagName('div');
+    console.log(aDiv);
+    for(var i=0;i<aDiv.length;i++){
+        aDiv[i].onmouseover=function(){
+            startMove(this,100,'opacity');
+        }
+        aDiv[i].onmouseout=function(){
+            startMove(this,30,'opacity');
+        }
+    }
+    function startMove(obj,iTarget,cur){
+        clearInterval(obj.time);
+        obj.time=setInterval(function(){
+            var style=parseFloat(getStyle(obj,cur))*100;//元素当前的透明度值
+            var speed=(iTarget-style)/10;
+            speed=speed>0?Math.ceil(speed):Math.floor(speed);
+            if(style==iTarget){
+                clearInterval(obj.time);
+            }else{
+                obj.style.opacity=(style+speed)/100;
+                obj.style.filter='alpha(opacity='+(style+speed)+')';
+            }
+        },10);
+    }
+    function getStyle(obj,cur){
+        if(obj.currentStyle){
+            return obj.currentStyle[cur];
+        }else{
+            return getComputedStyle(obj)[cur];
+        }
+}
+</script>
+</html>

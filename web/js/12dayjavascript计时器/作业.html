@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style> 
+        #djs{
+            width: 200px;height: 100px;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入秒数" id="ms">
+    <input type="button" value="确定" id="qd">
+    <div id="djs"></div>
+</body>
+<script>
+    var ms=document.getElementById('ms');
+    var qd=document.getElementById('qd');
+    var djs=document.getElementById('djs');
+    var timer=null;
+    console.log(ms,qd,djs);
+    qd.onclick=function(){
+        qd.disabled=true;
+        t=parseInt(ms.value);
+        if(isNaN(t)){
+            alert('请输入数字');
+        }
+        timer=setInterval(show,1000);
+    }
+    function show(){
+        t-- ;
+        djs.innerHTML='开始倒计时：'+t+'秒';
+        qd.value='已发送：'+t;
+        if(t==0){
+            clearInterval(timer);
+            ms.value='';
+            qd.value='确定';
+            djs.innerHTML='';
+        }
+    }
+</script>
+</html>

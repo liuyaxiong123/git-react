@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>复制节点和替换节点</title>
+</head>
+<body>
+    <input type="button" value="复制" id="clone">
+    <input type="button" value="替换" id="replace">
+    <ul id="ul">
+        <li>a</li>
+        <li>b <span>abc</span></li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+</body>
+<script>
+    clone.onclick=function(){
+        var aLi=ul.children[1].cloneNode(true);//深复制
+        console.log(aLi);
+        document.body.appendChild(aLi);
+    }
+    replace.onclick=function(){
+        var h1=document.createElement('h1');
+        h1.innerHTML='标题';
+        ul.replaceChild(h1,ul.children[2]);
+    }
+</script>
+</html>

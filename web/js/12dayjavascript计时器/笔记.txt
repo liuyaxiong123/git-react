@@ -1,0 +1,45 @@
+01).client属性
+clientWidth:获取元素的宽度（包含width，包含padding）
+clientHeight：获取元素的高度（包含height，包含padding）
+02）.offset属性
+offsetWidth：获取元素的宽度（包含width，包含padding，包含border）
+offsetHeight：获取元素的高度（包含height，包含padding，包含border）
+offsetLeft：获取元素距离相对定位父层的左边距（如果没有相对父层，那么获取的是距离浏览器的左边距）
+offsetTop：获取元素距离相对定位父层的上边距（如果没有相对父层，那么获取的是距离浏览器的上边距）
+03）.scroll属性
+scrollLeft：获取元素的滚轮向右滚走的值
+scrollTop：获取元素的滚轮向下滚走的值
+获取浏览器滚轮的距离兼容写法：
+ var t=document.documentElement.scrollTop ||  document.body.scrollTop;
+ var l=document.documentElement.scrollLeft ||  document.body.scrollLeft;
+ 设置浏览器滚轮的距离：
+ document.documentElement.scrollTop=500;//兼容谷歌  火狐   IE
+ document.body.scrollTop=500;//兼容苹果浏览器
+
+04）.计时器：
+    1.周期性函数
+      开始计时器：setInterval（函数，时间戳）1000代表一秒 
+      清除计时器：clearInterval（变量）;
+    2.一次性执行函数
+    开启计时器：setTimeout（函数，时间戳）
+    清除计时器：clearTimeout(变量)
+05).获取非行间样式：
+1.兼容高版本浏览器
+getComputedStyle(对象)[css样式]
+2.兼容IE6-8
+obj.currentStyle[css样式]：
+封装获取非行间样式的方法：
+  function getStyle(obj,cur,value){
+      console.log(arguments);
+      if(arguments.length==3){
+          //设置样式
+          obj.style[cur]=value;
+      }else{
+          //获取样式
+          if(obj.currentStyle){
+              return obj.currentStyle[cur];
+          }else{
+              return getComputedStyle(obj)[cur];
+          }
+      }
+  }

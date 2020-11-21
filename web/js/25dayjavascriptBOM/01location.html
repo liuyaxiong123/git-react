@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>location</title>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+</body>
+<script>
+    btn.onclick=function(){
+        //返回访问的URL信息：
+        console.log(window.location);
+        //window.location.reload();//重新加载本页
+        //window.location.assign('https://www.baidu.com');//加载新文档
+        //window.location.href='https://www.baidu.com';//改变本页的href
+        window.location.replace('https://www.baidu.com');//替换本页的路径
+    }
+</script>
+</html>

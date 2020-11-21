@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建和插入节点</title>
+</head>
+<body>
+    <input type="text" id="txt">
+    <input type="button" value="发布" id="btn">
+    <ul id="ul">    
+
+    </ul>
+</body>
+<script>
+    btn.onclick=function(){
+        var aLi=document.createElement('li');
+        aLi.innerHTML=txt.value+'<span style="cursor:pointer;margin-left:20px;">×</span>';
+        if(ul.children.length>0){
+            ul.insertBefore(aLi,ul.children[0]);
+        }else{
+            ul.appendChild(aLi);
+        }
+        var spans=ul.getElementsByTagName('span');
+        for(var i=0;i<spans.length;i++){
+            spans[i].onclick=function(){
+                //this.parentNode.style.display='none';
+                ul.removeChild(this.parentNode);
+            }
+        }
+    }
+    //--------------------
+    var spn='sfdsfds';
+    btn.onclick=function(){
+        var text=document.createTextNode('文本节点');//文本节点
+        console.log(text);//文本节点
+        document.body.appendChild(text);
+    }
+    //----------------------
+    // btn.onclick=function(){
+    //     var aLi=document.createElement('li');//创建元素节点
+    //     aLi.innerHTML='<span>内容</span>';
+    //     aLi.style.color='red';
+    //     aLi.className='abc';
+    //     var r=Math.floor(Math.random()*256);
+    //     var g=Math.floor(Math.random()*256);
+    //     var b=Math.floor(Math.random()*256);
+    //     aLi.style.color='rgb('+r+','+g+','+b+')';
+    //     ul.appendChild(aLi);
+    // }
+</script>
+</html>

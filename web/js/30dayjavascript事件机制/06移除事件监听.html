@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移除事件监听</title>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <input type="button" value="移除" id="remove">
+</body>
+<script>
+    addEvent(btn,'mouseover',a);
+    function a(){
+        console.log('abc');
+    }
+    addEvent(btn,'click',b);
+    function b(){
+        console.log('内容');
+    }
+    //点击remove移除按钮的点击事件
+    // addEvent(remove,'click',function(){
+    //     if(btn.removeEventListener){
+    //         //高版本浏览器移除事件
+    //         btn.removeEventListener('click',b,false);
+    //     }else{
+    //         //IE6-8移除事件监听
+    //         btn.detachEvent('onclick',b);
+    //     }
+    // })
+    //事件监听封装:
+    function addEvent(obj,ev,fn){
+        if(obj.addEventListener){
+            obj.addEventListener(ev,fn,false);
+        }else{
+            obj.attachEvent('on'+ev,fn);
+        }
+    }
+    //事件移除封装
+    function removeEvent(obj,ev,fn){
+        if(obj.removeEventListener){
+            obj.removeEventListener(ev,fn,false);
+        }else{
+            obj.detachEvent('on'+ev,fn);
+        }
+    }
+    addEvent(remove,'click',function(){
+        removeEvent(btn,'click',b);
+    });
+</script>
+</html>

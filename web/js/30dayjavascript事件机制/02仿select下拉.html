@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仿select下拉</title>
+    <style>
+        #box{
+            width: 400px;height: 300px;background:blue;display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <div id="box"></div>
+</body>
+<script>
+    btn.onclick=function(ev){
+        var ev=ev||window.event;
+        if(ev.stopPropagation){
+            ev.stopPropagation();//阻止事件传播（高版本浏览器）
+        }else{
+            ev.cancelBubble=true;//IE6-8;
+        }
+        box.style.display='block';
+        //alert('按钮被点击了');
+    }
+    document.onclick=function(){
+        box.style.display='none';
+        //alert('document被点击了');
+    }
+</script>
+</html>

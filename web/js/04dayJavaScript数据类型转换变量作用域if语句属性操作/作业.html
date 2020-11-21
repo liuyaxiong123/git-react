@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #sp{
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="txt1">
+    <select name="" id="xl">
+        <option value="1">+</option>
+        <option value="2">-</option>
+        <option value="3">*</option>
+        <option value="4">/</option>
+    </select>
+    <input type="text" id="txt2">
+    <span id="sp">=</span>
+    <input type="text" id="txt3">
+</body>
+<script>
+    var txt1=document.getElementById('txt1');
+    var txt2=document.getElementById('txt2');
+    var txt3=document.getElementById('txt3');
+    var xl=document.getElementById('xl');
+    var sp=document.getElementById('sp');
+    
+    sp.onclick=function(){
+         var td=txt1.value;
+         var tf=txt2.value;
+        if(td==''||tf==''){
+            alert('内容不能为空');
+        }else{
+            var t1=parseFloat(td);
+            var t2=parseFloat(tf);
+            if(isNaN(t1)||isNaN(t2)){
+                alert('请输入数字');
+            }else if(xl.value=='1'){
+                txt3.value=t1+t2;
+                txt1.value='';
+                txt2.value='';
+            }else if(xl.value=='2'){
+                txt3.value=t1-t2;
+                txt1.value='';
+                txt2.value='';
+            }else if(xl.value=='3'){
+                txt3.value=t1*t2;
+                txt1.value='';
+                txt2.value='';
+            }else if(xl.value=='4'){
+                txt3.value=t1/t2;
+                txt1.value='';
+                txt2.value='';
+            }
+        }
+    }
+    
+</script>
+</html>

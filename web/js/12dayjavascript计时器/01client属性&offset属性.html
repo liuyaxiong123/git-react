@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>client属性&offset属性</title>
+    <style>
+        #outer{
+            width: 200px;height: 200px;
+            background: blue;
+            padding:10px;
+            border:5px solid;
+            margin:10px;
+            position:relative;
+        }
+        #inner{
+            width: 50px;height: 50px;
+            background:red;
+            margin:50px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <div id="outer">
+        健身房开始角度看
+        <p class="" id="inner"></p>
+    </div>
+</body>
+<script>        
+    var btn=document.getElementById('btn');
+    var outer=document.getElementById('outer');
+    btn.onclick=function(){
+        //获取元素的宽度(包含内容，包含padding)
+        // console.log(outer.clientWidth);
+        // console.log(outer.clientHeight);
+        // //获取元素的宽度（包含内容，包含padding,包含border）
+        // console.log(outer.offsetWidth);
+        // console.log(outer.offsetHeight);
+        // //获取元素距离浏览器的左边距
+        // console.log(outer.offsetLeft);
+        // console.log(outer.offsetTop);
+        //如果元素父层有相对属性那么offset获取的就是距离父层的左边距和上边距。
+        console.log(inner.offsetLeft);
+        console.log(inner.offsetTop);
+    }
+</script>
+</html>

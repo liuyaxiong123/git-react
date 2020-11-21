@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        *{margin:0;padding:0;}
+        #outer{
+            position:absolute;
+            left:-300px;
+            width: 325px;height: 200px;
+        }
+        #outer p{
+            width: 300px;height: 200px;
+            border:1px solid;
+            float:left;
+            background:url(img/10.jpg) center center;
+        }
+        #outer div{
+            width: 20px;height: 80px;
+            float:left;
+            border:1px solid;
+            margin-top:50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <p></p>
+        <div>分享到</div>
+    </div>
+</body>
+<script>
+    var timer=null;
+    var outer=document.getElementById('outer');
+    outer.onmouseover=function(){
+        startMove(0,5);
+    }
+    outer.onmouseout=function(){
+        startMove(-300,-5);
+    }
+    function startMove(target,sped){
+        clearInterval(timer);
+        timer=setInterval(function(){
+            if(outer.offsetLeft==target){
+                clearInterval(timer);
+            }else{
+                outer.style.left=outer.offsetLeft+sped+'px';
+            }
+        },5);
+    }
+</script>
+</html>

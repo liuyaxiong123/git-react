@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>算数</title>
+</head>
+<body>
+    
+</body>
+<script>    
+    for(var i=0;i<1000;i++){
+        var t1=parseInt(i/100);
+        var t2=parseInt((i-(t1*100))/10);
+        var t3=i-t1*100-t2*10;
+        if(t1*t1*t1+t2*t2*t2+t3*t3*t3==i){
+            console.log(i);
+        }
+    } 
+</script>
+</html>

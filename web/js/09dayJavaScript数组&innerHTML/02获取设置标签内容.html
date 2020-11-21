@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取设置标签内容</title>
+</head>
+<body>
+    <input type="button" class="" id="btn" value="获取">
+    <div class="" id="box">
+        <span>内容</span>
+    </div>
+</body>
+<script>    
+    var box=document.getElementById('box');
+    var btn=document.getElementById('btn');
+    //innerHTML   innerText    outerHTML
+    btn.onclick=function(){
+        //获取标签的HTML内容
+        //console.log(box.innerHTML);
+        //设置标签HTML内容
+        //box.innerHTML='<h1>呵呵哒</h1>';
+        //获取标签的文本内容
+        //console.log(box.innerText);
+        //设置标签的文本内容
+        //box.innerText='<h1>呵呵哒</h1>';
+        
+        //获取标签的HTML内容（包含自身）
+        //console.log(box.outerHTML);
+        //设置标签的HTML内容(包含自身)
+        box.outerHTML='<h1>呵呵哒</h1>';
+    }
+</script>
+</html>

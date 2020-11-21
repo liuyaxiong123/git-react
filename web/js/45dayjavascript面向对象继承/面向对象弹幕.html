@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象弹幕</title>
+    <style>
+        body{
+            background:#000;
+            overflow: hidden;
+        }
+        div{
+            width: 25px;height: 25px;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    //1.构造函数
+    function dm(){
+        var _this=this;
+        this.fn();
+        this.timer=setInterval(function(){
+            this.fn();
+        }.bind(_this),500)
+    }
+    dm.prototype.fn=function(){
+        var w=document.documentElement.clientWidth;
+        var h=document.documentElement.clientHeight;
+        var aDiv=document.createElement('div');
+        var r=Math.floor(Math.random()*256);
+        var g=Math.floor(Math.random()*256);
+        var b=Math.floor(Math.random()*256);
+        aDiv.style.background='rgb('+r+','+g+','+b+')';
+        aDiv.style.top=Math.floor(Math.random()*(h-25))+'px';
+        aDiv.style.left=Math.floor(Math.random()*100+(w-100))+'px';
+        document.body.appendChild(aDiv);
+        aDiv.timer=setInterval(function(){
+            if(aDiv.offsetLeft<0){
+                clearInterval(aDiv.timer);
+                document.body.removeChild(aDiv);
+            }
+            aDiv.style.left=aDiv.offsetLeft-1+'px';
+        },1)
+    }
+    new dm();
+</script>
+</html>

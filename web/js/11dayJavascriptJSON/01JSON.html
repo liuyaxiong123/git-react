@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON</title>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <div id="box"></div>
+</body>
+<script>
+    //var arr=['apple','banana','orange'];
+    //json对象：
+    // var json={'name':'Ada','age':18,'sex':'女'};
+    // //console.log(typeof arr,typeof json);//object object
+    // console.log(json['age'],json.age);//获取JSON中的内容
+    //--------------
+    // var json={
+    //     'name':'jack',
+    //     fun:function(){
+    //         console.log(this.name);
+    //     }
+    // };
+    // json.fun();//jack
+    // var get=json.fun;
+    // var get=function(){
+    //     console.log(this.name);
+    //     this指向window
+    // }
+    // var get=json.fun;
+    // get();//''
+    //-----------
+    var json={
+        'width':'200px',
+        'height':'300px',
+        'background':'blue',
+        'border':'5px solid'
+    };
+    for(i in json){
+        //console.log(i);对应的键名
+        //console.log(json[i]);//对应的键值
+    }
+    btn.onclick=function(){
+        // box.style.width=json.width;
+        // box.style.height=json.height;
+        // box.style.background=json.background;
+        // box.style.border=json.border;
+        for(i in json){
+        box.style[i]=json[i];       
+        }
+    }
+</script>
+</html>

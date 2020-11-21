@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prototype</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr1=new Array(12,23,55);
+    var arr2=new Array(3434,4,656);
+    //arr1.sum=function(){//一次给一个对象添加方法  类似行间样式}
+    Array.prototype.sum=function(){//类似class一次给一堆对象添加方法
+        var result=0;
+        for(var i=0;i<this.length;i++){
+            result+=this[i];
+        }
+        return result;
+    }
+    console.log(arr1.sum());
+    console.log(arr2.sum());
+    console.log(arr1.sum==arr2.sum);//true
+</script>
+</html>

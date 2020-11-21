@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述信息"> 
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none
+        }
+
+        #outer {
+            width: 600px;
+            height: 900px;
+            margin: 50px auto;
+            background: url(img/bg.jpg) center center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #head ul li {
+            background: url(img/love.jpg);
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            float: left;
+        }
+
+        #inner ul {
+            position: absolute;
+            bottom: 0;
+            z-index: 100;
+        }
+
+        #inner ul li {
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+
+        #inner ul li:nth-child(1) {
+            background-color: yellow;
+        }
+
+        #inner ul li:nth-child(2) {
+            background-color: pink;
+        }
+
+        #inner ul li:nth-child(3) {
+            background-color: red;
+        }
+
+        .biu {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 50%;
+            top: 700px;
+            margin-left: -25px;
+            border-radius: 50%;
+        }
+
+        .lk {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="head">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div id="inner">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    var shw = ['yellow', 'pink', 'red'];
+    var arr = [];//子弹
+    var arr1 = [];//块
+    function A() {
+        this.uls = document.querySelector('#head ul');
+        this.lis = document.querySelectorAll('#inner li');
+        this.outer = document.querySelector('#outer');
+        this.ul = document.querySelector('#inner ul');
+        this.event();
+        this.cli();
+    }
+    A.prototype.event = function () {
+        for (var i = 0; i < this.lis.length; i++) {
+            this.lis[i].setAttribute('gh', shw[i]);
+        }
+    }
+    A.prototype.cli = function () {
+        var that = this;
+        this.ul.onclick = function (ev) {
+            var ev = ev || window.enent;
+            var target = ev.target || ev.srcElement;
+            if (target.nodeName.toLowerCase() == 'li') {
+                var clo = target.getAttribute('gh');
+                arr.push(new B(clo, that.outer));
+            }
+        }
+    }
+    A.prototype.yanz = function (x, y) {
+        var that=this;
+        y.forEach(function (obj, nt) {
+            if (x.t < obj.t + obj.h) {
+                if (x.ys == obj.nm) {
+                    obj.shcu();
+                    x.shcu();
+                }else{
+                    that.uls.lastElementChild.remove();
+                    obj.shcu(); 
+                    x.shcu();
+                    if(that.uls.lastElementChild==false){
+                        alert('游戏结束');
+                    }
+                }
+            }
+        })
+    }
+    var a = new A();
+    //子弹
+    function B(ys, obj) {
+        this.class = 'biu';
+        this.t = 700;
+        this.ys = ys;
+        this.obj = obj;
+        this.clear();
+    }
+    B.prototype.clear = function () {
+        this.dom = document.createElement('div');
+        this.dom.className = this.class;
+        this.dom.style.background = this.ys;
+        this.obj.appendChild(this.dom);
+        this.move(this.dom);
+    }
+    B.prototype.move = function (obz) {
+        var that = this;
+        obz.timer = setInterval(function () {
+            that.t -= 5;
+            obz.style.top = that.t + 'px';
+            a.yanz(that, arr1);
+        }, 10)
+    }
+    B.prototype.shcu = function () {
+        clearInterval(this.dom.timer);
+        this.dom.remove();
+    }
+    //降落块
+    function C() {
+        this.w = 100;
+        this.h = 100;
+        this.t = 0;
+        this.arr1 = [];
+        this.nm=null;
+        this.outer = document.querySelector('#outer');
+        this.init();
+    }
+    C.prototype.init = function () {
+        var math = parseInt(Math.random() * 3);
+        this.div = document.createElement('div');
+        this.div.style.width = this.w + 'px';
+        this.div.style.height = this.h + 'px';
+        this.div.className = 'lk';
+        this.div.style.background = shw[math];
+        this.div.setAttribute('gh', shw[math]);
+        this.nm=shw[math];
+        this.outer.appendChild(this.div);
+        this.move(this.div);
+    }
+    C.prototype.move = function (obj) {
+        var that = this;
+        obj.timer = setInterval(function () {
+            that.t++;
+            obj.style.top = that.t + 'px';
+        }, 1)
+    }
+    C.prototype.shcu = function () {
+        clearInterval(this.div.timer);
+        this.div.remove();
+    }
+    setInterval(function () {
+        arr1.push(new C());
+    }, 1000)
+</script>
+
+</html>

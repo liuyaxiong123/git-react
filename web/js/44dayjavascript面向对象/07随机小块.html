@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机小块</title>
+    <style>
+        *{margin: 0;padding: 0;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>    
+    window.onload=function(){
+        new sjxk('box');
+    }
+    window.onresize=window.onload;
+    function sjxk(id){
+        this.div=document.getElementById(id);
+        this.oFrag=document.createDocumentFragment();
+        this.w=document.documentElement.clientWidth;
+        this.h=document.documentElement.clientHeight;
+        this.fn1();
+    }
+    sjxk.prototype.fn1=function(){
+        this.div.innerHTML='';
+        for(var i=0;i<100;i++){
+            this.divs=document.createElement('div');
+            this.r=Math.floor(Math.random()*256);
+            this.g=Math.floor(Math.random()*256);
+            this.b=Math.floor(Math.random()*256);
+            this.divs.style.width=parseInt(this.w/10)+'px';
+            this.divs.style.height=parseInt(this.h/10)+'px';
+            this.divs.style.background='rgb('+this.r+','+this.g+','+this.b+')';
+            this.divs.style.float='left';
+            this.divs.style.boxShadow='1px 1px 5px yellow';
+            this.oFrag.appendChild(this.divs);
+        }
+        this.div.appendChild(this.oFrag);
+    }
+</script>
+</html>

@@ -1,0 +1,19 @@
+01).参数：在调用函数时，函数执行的内容有不一样的情况下用参数传递
+    function show(a,b,v){  型参
+        console.log(a,b,c)
+    }
+    show(1,2,3);实参
+02）.this指针：函数内部存在this指针，它指向当前函数所有者。
+如果函数没有所指者，指向window。
+03）.事件：
+onblur		元素失去焦点
+onfocus		元素获得焦点
+onchange	用户改变域的内容
+onclick		鼠标点击某个对象
+ondblclick	鼠标双击某个对象
+onload		某个页面或图像被完成加载
+onmousedown	某个鼠标按键被按下
+onmousemove	鼠标被移动
+onmouseup	某个鼠标按键被松开
+onmouseover	鼠标被移到某元素之上
+onmouseout	鼠标从某元素移开

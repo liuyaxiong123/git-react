@@ -1,0 +1,382 @@
+
+#wrap{
+    background:#f9f9f9;
+}
+img{
+    vertical-align: middle;
+}
+.outer{
+    background:#000;
+}
+/* 小黑栏 */
+.ou_jt{
+    width: 1128px;height: 28px;
+    margin:0 auto;
+    color:#fff;
+    font-size:12px;
+    line-height: 28px;
+}
+.ou_jt span .ou_jt a{
+    display: inline-block;
+    word-spacing: 10px;
+}
+.ou_jt img{
+    width: 12px;height: 12px;
+}
+.ou_jt a{
+    float:right;
+    word-spacing: 10px;
+}
+/* 隐藏块 */
+.ou_yc{
+    width: 1106px;height: 0px;
+    margin:0 auto;
+    overflow: hidden;
+}
+.ou_yc li{
+    float:left;
+    margin-left:40px;
+    line-height: 30px;
+    word-spacing: 10px;
+    margin-top:20px;
+}
+.ou_yc li:hover{
+    word-spacing: 20px;
+    transition: all .3s ease-in;
+}
+.ou_yc a{
+    color:#f66f6a;
+    font-weight: 700;
+}
+.ou_yc p{
+    width: 216px;height: 45px;
+}
+/* 隐藏块2 */
+.ou_yc2{
+    width: 1106px;height: 0px;
+    margin:0 auto;
+    overflow: hidden;
+}
+.ou_yc2 li{
+    width: 221px;
+    float:left;
+    margin-top:20px;
+}
+/* 下拉 */
+.container{
+    width: 1128px;height: 74px;
+    margin:0 auto;
+}
+.container li.bc{
+    width: 200px;height: 74px;
+    border-right:1px solid #ccc;
+    position: relative;
+}
+.container li{
+    float:left;
+    line-height: 74px;
+    margin-right:50px;
+    font-size:18px;
+    position: relative;
+}
+.container li img{
+    width: 24px;height: 24px;
+}
+.container li span:hover{
+    color:#f66f6a;
+}
+.container li .pro{
+    width: 100%;
+    height: 405px;
+    background:#f5f5f5;
+    position: fixed;
+    left:0;
+    top:50px;
+    display: none;
+}
+.container li .pro .bao{
+    width: 1128px;
+    margin:0 auto;
+}
+.container li .pro .bao img{
+    width: 1128px;height: 404px;
+}
+.pro2{
+    width: 1128px;
+    height: 472px;
+    background:#f5f5f5;
+    position: fixed;
+    left:100px;
+    top:50px;
+    display: none;
+}
+.pro2  li{
+    float:left;
+    height:60px;
+}
+.pro2  li:hover{
+    border-bottom:3px solid #f66f6a;
+}
+.pro2 ul{
+    width: 500px;height: 64px;
+    margin:0 auto;
+}
+.pro2  li.active1{
+    border-bottom:3px solid #f66f6a;
+}
+.row2{
+    width: 1128px;height: 408px;
+    margin:0 auto;
+}
+.pro2 .row2 img{
+    width: 1128px;height: 408px;
+} 
+.pp{
+    opacity:0;
+    filter:alpha(opacity=0);
+    z-index: 999;;
+}
+/* 大轮播 */
+#outer{
+    width: 1364px;
+    height: 557px;
+    margin:0px auto;
+    margin-bottom:40px;
+    overflow: hidden;
+    position:relative;
+}
+#inner1{
+    position:absolute;
+    left:0;
+    top:0;
+    width: 4092px;
+    height: 557px;
+}
+ul li{
+    float:left;
+}
+img{
+    width: 1364px;height: 557px;
+}
+ol li{
+    width: 15px;height: 15px;
+    background:#fff;
+    float: left;
+    border-radius:50%;
+    margin:10px;
+    border:1px solid #000;
+}
+ol{
+    position: absolute;
+    bottom:90px;
+    right:150px;
+}
+ol .active{
+    background:#000;
+}
+#left{
+    position: absolute;
+    left: 100px;
+    top:50%;
+    font-size:44px;
+    color:#f66f6a;
+    display: none;
+}
+#right{
+    position: absolute;
+    right:200px;
+    top:50%;
+    font-size:44px;
+    color:#f66f6a;
+    display: none;
+}
+.bucket{
+    width: 1130px;height: 143px;
+    margin:0 auto;
+    background:#fff;
+    border-radius:5px;
+    padding:20px 0;
+    margin-top:-130px;
+}
+.bucket li{
+    width: 376px;height: 143px;
+    position: relative;
+    background:#fff;
+    padding-top:20px;
+    border-radius:5px;
+}
+.bucket .r_x{
+    border-right:1px solid #ccc;
+}
+.bucket h3{
+    position: absolute;
+    left:100px;
+    top:10px;
+}
+.bucket p{
+    width: 180px;
+    font-size:18px;
+    position: absolute;
+    left:100px;
+    top:50px;
+}
+.bucket li .jt{
+    display: none;
+}
+.bucket li:hover .jt{
+    display:inline-block;
+}
+.bucket li:hover h3{
+    color:#f66f6a;
+}
+.baozhu{
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+/* 未来影像  */
+.callout{
+    width: 1247px;height: 640px;
+    margin:0 auto;
+    margin-top:150px;
+    position: relative;
+}
+.img1{
+    position: absolute;
+    left:-8px;
+}
+.img2{
+    position: absolute;
+    left:365px;
+    top:65px;
+}
+.img3{
+    position: absolute;
+    left:750px;
+    top:0px;
+}
+#jtr{
+    position: absolute;
+    left:270px;
+    top:252px;
+    color:#fff;
+    font-size:30px;
+}
+#rs:hover #jtr{
+    left:290px;
+    transition: all .3s ease-in;
+}
+#rs:hover .img2{
+    top:35px;
+    transition: all .3s ease-in;
+}
+#r_r #djj{
+    font-size:30px;
+    color:#000;
+    position: absolute;
+    left:917px;
+    top:565px;
+}
+#r_r{
+    position: relative;
+    width: 452px;
+    height: 640px;
+}
+#r_r:hover #djj{
+    transition: all .3s ease-in;
+    left:950px;
+}
+.gjww{
+    width: 1366px;height: 625px;
+    margin:0 auto;
+    margin-top:150px;
+    position: relative;
+}
+.gjww img{
+    width: 1366px;height: 625px;
+}
+.gjww i{
+    color:#000;
+    font-size:30px;
+    position: absolute;
+    left:750px;
+    top:421px;
+}
+.gjww:hover i{
+    transition: all .3s ease-in;
+    left:780px;
+}
+/* 展会活动 */
+.zh{
+    width: 1128px;height: 505px;
+    margin:0 auto;
+    margin-top:100px;
+    background:#fff;
+}
+.zh h2{
+    float:left;
+}
+.zh span{
+   display: inline-block;
+   margin-left:1000px;
+    
+}
+.zh span:hover{
+    transition: all .3s ease-in;
+    word-spacing: 20px;
+}
+.zh #gd{
+    font-size:40px;
+    color:#000;
+    font-weight: 700;
+    position: absolute;
+    left:210px;
+    top:274px;
+}
+.zh:hover #gd{
+    left:230px;
+    transition: all .3s ease-in;
+}
+.cggs{
+    width: 1128px;height: 574px;
+    margin:0 auto;
+    margin-top:30px;
+    position: relative;
+}
+.am_li{
+    width: 1128px;height: 478px;
+    margin-top:30px;
+    position: relative;
+}
+.cggs .am_li li{
+    height: 437px;
+    width: 310px;
+    position: relative;
+}
+.cggs #ck{
+    display: inline-block;
+    margin-left:1000px;
+}
+#ls{
+    width: 230px;height: 128px;
+    background:#dde6ed;
+    padding:150px 40px 60px;
+    position: absolute;
+    left:0;
+    top:60px;
+}
+.am_li img{
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 999;;
+}
+#gdx{
+    position: absolute;
+    left:43px;
+    bottom:110px;
+}
+.am_li:hover img{
+    left:-30px;
+    transition: all .3s ease-in;
+}

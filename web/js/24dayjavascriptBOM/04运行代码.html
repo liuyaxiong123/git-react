@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>运行代码</title>
+</head>
+<body>
+    <textarea name="" id="txt" cols="30" rows="10"></textarea>
+    <input type="button" value="点击运行" id="run">
+</body>
+<script>
+    run.onclick=function(){
+        res=window.open('about:blank');
+        res.document.write(txt.value);
+    }
+</script>
+</html>

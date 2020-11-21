@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>setTimeout</title>
+</head>
+<body>
+    <input type="button" value="开启计时器" id="start">
+    <input type="button" value="停止" id="_stop">
+</body>
+<script>
+    var timer=null;//存储计时器
+    //开启计时器
+    start.onclick=function(){
+        //延迟多久执行一次函数
+        timer=setTimeout(show,3000);
+    }
+    function show(){
+        console.log('abc');
+    }
+    _stop.onclick=function(){
+        clearTimeout(timer);
+    }
+
+</script>
+</html>

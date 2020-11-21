@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取元素</title>
+</head>
+<body>
+    <p class="box">aaa</p>
+    <form action="">
+        <input type="text" name='user'><br>
+        <input type="password" name='pwd'><br>
+        <input type="submit">
+    </form>
+</body>
+<script>
+    //通过class类获取元素：
+    var box=document.getElementsByClassName('box');
+    //通过name属性获取元素：
+    var user=document.getElementsByName('user');
+    // console.log(box,box[0]);
+    // box[0].onclick=function(){
+    //     box[0].style.color='red';
+    // }
+</script>
+</html>

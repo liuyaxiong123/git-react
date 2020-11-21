@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        div{
+            width: 150px;
+            height: 150px;
+            cursor: move;
+            position: absolute;
+            top:0;
+        }
+        #div1{
+            background:red;
+            left:0;
+        }
+        #div2{
+            background:blue;
+            left:500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+<script>
+    window.onload=function (){
+        new Drag('div1');
+        // new Drag('div2');
+        new LimiDrag('div2');
+    }
+    //1.构造函数
+    function Drag(id){
+        this.drag=document.getElementById(id);
+        this.bindEvent();
+    }
+    Drag.prototype.bindEvent=function (){
+        var _this=this;
+        this.drag.onmousedown = function (ev){
+            var ev=ev||window.event;
+            if(ev.preventDefault){
+                ev.preventDefault();
+            }else{
+                ev.returnValue=false;
+            }
+            _this.disX=ev.clientX-this.offsetLeft;
+            _this.disY=ev.clientY-this.offsetTop;
+            document.onmousemove=function (){
+                _this.fnMove();
+            }
+        }
+        document.onmouseup=function (){
+            document.onmousemove=null;
+        }
+    }
+    Drag.prototype.fnMove=function (ev){
+        var ev=ev||window.event;
+        var l=ev.clientX-this.disX;
+        var t=ev.clientY-this.disY;
+        this.drag.style.left=l+'px';
+        this.drag.style.top=t+'px';
+    }
+    
+    
+    function LimiDrag(id){
+        //继承属性
+        Drag.call(this,id);
+        this.maxX=window.innerWidth-this.drag.offsetWidth;
+        this.maxY=window.innerHeight-this.drag.offsetHeight;
+    }
+    for(i in Drag.prototype){
+        LimiDrag.prototype[i]=Drag.prototype[i];
+    }
+    LimiDrag.prototype.fnMove=function (ev){
+        var ev=ev||window.event;
+        var l=ev.clientX-this.disX;
+        var t=ev.clientY-this.disY;
+        if(l<=0){
+            l=0;
+        }
+        if(l>=this.maxX){
+            l=this.maxX;
+        }
+        if(t<=0){
+            t=0;
+        }
+        if(t>=this.maxY){
+            t=this.maxY;
+        }
+        this.drag.style.left=l+'px';
+        this.drag.style.top=t+'px';
+    }
+</script>
+</html>

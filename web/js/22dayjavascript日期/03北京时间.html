@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>北京时间</title>
+    <style>
+        #box{
+            color:red;
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        
+    </div>
+</body>
+<script>
+    setInterval(function(){
+        var date=new Date();
+        var a=date.getFullYear();
+        var b=date.getMonth()+1;
+        var c=date.getDate();
+        var d=date.getHours();
+        var e=date.getMinutes();
+        var f=date.getSeconds();
+        var g=date.getMilliseconds();
+        var h=date.getDay();
+        var arr=['日','一','二','三','四','五','六'];
+        box.innerHTML='北京时间：'+fn(a)+'年'+fn(b)+'月'+fn(c)+'日'+fn(d)+'时'+fn(e)+'分'+fn(f)+'秒'+fn2(g)+'毫秒'+'星期'+arr[h];
+    },1);
+    function fn2(n){
+        // if(n<100&&n>9){
+        //     return '0'+n;
+        // }else if(n<10){
+        //     return '00'+n;
+        // }else{
+        //     return n;
+        // }
+        return n<10?'00'+n:n>9&&n<100?'0'+n:n;
+    }
+    function fn(n){
+        return n>9?n:'0'+n;
+    }
+</script>
+</html>

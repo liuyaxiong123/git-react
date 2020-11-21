@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>变量作用域</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 变量执行环境（称作用域）：
+    // 变量具备函数作用域  1）全局变量 
+    // 2）局部变量
+
+
+    //1).局部可以访问全局变量
+    // var num = 10;//全局变量
+    // function show(){
+    //     console.log(num);
+    // }
+    // show();
+    //----------------------
+    //2).外部不可以访问内部变量
+    // function show(){
+    //     var num =10;//局部变量
+    // }
+    // show();
+    //console.log(num);//num is not defind
+    //-------------------------------------
+    //如果在函数内部声明变量不加var  那么就可以在函数执行后访问该变量
+    
+    // function show(){
+    //     num=10;
+    // }
+    // show();
+    // console.log(num);
+    //------------------------------
+    //全局num和局部 通过var声明的num互不影响
+    // var num=10;
+    // function show(){
+    //     var num=20;
+    //     console.log(num);//20
+    // }
+    // show();
+    // console.log(num);//10
+    //---------------------------------
+    //show函数里的num相当于在操作全局num变量
+    // var num=10;
+    // function show(){
+    //     num=20;
+    //     console.log(num);//20
+    // }
+    // show();
+    // console.log(num);//20
+    //--------------------------
+    //函数内部只要存在num 那么久不会到外边找
+    // var num=10;
+    // function show(){
+    //     console.log(num);//undefined
+    //     var num =20;
+    //     console.log(num);//20
+    // }
+    // show();
+    //----------------------
+    // var num =10;
+    // function outer(){
+    //     var num =20;
+    //     function inner(){
+    //         console.log(num);//undefined
+    //         var num=30;
+    //         console.log(num);//30
+    //     }
+    //     inner();
+    //     console.log(num);//20
+    // }
+    // outer();
+    // console.log(num);//10
+    //--------------------------
+    //全局变量始终存在程序内存中。
+    // var num =10;
+    // function show(){
+    //     num++;//等价于num=num+1
+    // }
+    // show();
+    // console.log(num);
+    // show();
+    // console.log(num);
+    //---------------------
+    //函数特点：具备垃圾回收机制，内存释放，当函数执行完毕以后函数内部的内容会被释放掉，当重新调用函数时，所有内容重新执行。
+    function show(){
+        var num=10;
+        num++;
+        console.log(num);
+    }
+    show();//11
+    show();//11
+    show();//11
+</script>
+</html>

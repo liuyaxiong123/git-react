@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tab切换</title>
+    <style>
+        *{margin:0;padding:0;}
+        .dk{
+            width: 590px;height: 470px;
+            position:relative;
+            margin:0 auto;
+        }
+        img{
+            width: 590px;height: 470px;
+            display: none;
+        }
+        p span{
+            width: 30px;height: 30px;
+            border-radius:30px;
+            background:pink;
+            display: inline-block;
+        }
+        p{
+            position:absolute;
+            left:200px;
+            bottom:0px;
+        }
+        .bb{
+            background:#fff;
+        }
+        h1{
+            color:green;
+            background:#000;
+            width: 30px;height: 30px;
+            text-align: center;
+            line-height:20px;
+            cursor: pointer;
+        }
+        h1:hover{
+            background:#fff;
+        }
+        .zuo{
+            position:absolute;
+            left:0px;
+            top:200px;
+        }
+        .you{
+            position:absolute;
+            right:0px;
+            top:200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dk">
+        <img src="img/0.jpg" alt="" style="display: block;">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <p>
+            <span class="bb"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </p>
+        <h1 class="zuo">&lt;</h1>
+        <h1 class="you">&gt;</h1>
+    </div>
+</body>
+<script>
+    var imgs=document.getElementsByTagName('img');
+    var spans=document.getElementsByTagName('span');
+    var zuo=document.getElementsByClassName('zuo')[0];
+    var you=document.getElementsByClassName('you')[0];
+    var t=0;
+    for(var i=0;i<spans.length;i++){ 
+        spans[i].index=i;
+        spans[i].onmouseover=function(){
+            for(var j=0;j<spans.length;j++){
+                spans[j].className='';
+                imgs[j].style.display='none';
+            }
+            this.className='bb';
+            imgs[this.index].style.display='block';
+            t=this.index;
+        } 
+    }
+    zuo.onclick=function(){
+        t--;
+        if(t<0){
+            t=3;
+        }
+        for(var j=0;j<spans.length;j++){
+            spans[j].className='';
+            imgs[j].style.display='none';
+        }
+        spans[t].className='bb';
+        imgs[t].style.display='block';
+    }
+    you.onclick=function(){
+        t++;
+        if(t>3){
+            t=0;
+        }
+        for(var j=0;j<spans.length;j++){
+            spans[j].className='';
+            imgs[j].style.display='none';
+        }
+        spans[t].className='bb';
+        imgs[t].style.display='block';
+    }
+</script>
+</html>

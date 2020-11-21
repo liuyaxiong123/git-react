@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件监听兼容</title>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+</body>
+<script>
+    var btn=document.getElementById('btn');
+    addEvent(btn,'click',function(){
+        alert('a');
+    });
+    addEvent(btn,'click',b);
+    function b(){
+        alert('b');
+    }
+    //事件监听封装：
+    function addEvent(obj,ev,fn){
+        if(obj.addEventListener){
+            obj.addEventListener(ev,fn,false);
+        }else{
+            obj.attachEvent('on'+ev,fn);
+        }
+    }
+    // if(btn.addEventListener){
+    //     //高版本浏览器事件监听
+    //     btn.addEventListener('click',function(){
+    //         alert('a');
+    //     },false)
+    // }else{
+    //     //IE6-8浏览器事件监听
+    //     btn.attachEvent('onclick',function(){
+    //         alert('a');
+    //     });
+    // }
+</script>
+</html>

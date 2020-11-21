@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <style>
+        *{margin:0;padding:0;}
+        a{
+            text-decoration: none;
+        }
+        #outer{
+            width: 500px;
+            height: 400px;
+            margin:40px auto;
+            overflow: hidden;
+            position:relative;
+        }
+        #inner1{
+            position:absolute;
+            left:0;
+            top:0;
+            width: 2500px;
+            height: 400px;
+            list-style: none; 
+        }
+        ul li{
+            float:left;
+        }
+        img{
+            width: 500px;height: 400px;
+        }
+        ol li{
+            list-style: none;
+            width: 30px;height: 30px;
+            background:#fff;
+            float: left;
+            border-radius:50%;
+            margin:10px;
+        }
+        ol{
+            position: absolute;
+            bottom:10px;
+            left:100px;
+        }
+        ol .active{
+            background:yellow;
+        }
+        #left{
+            position: absolute;
+            left: 0px;
+            top:50%;
+            font-size:30px;
+            font-weight: 700;
+        }
+        #right{
+            position: absolute;
+            right:0px;
+            top:50%;
+            font-size:30px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner1">
+           <ul>
+               <li><img src="img/1.jpg" alt=""></li>
+               <li><img src="img/2.jpg" alt=""></li>
+               <li><img src="img/3.jpg" alt=""></li>
+               <li><img src="img/4.jpg" alt=""></li>
+               <li><img src="img/5.jpg" alt=""></li>
+           </ul>
+        </div>
+        <div id="inner2">
+            <ol>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+        <a href="javascript:;" id="left">&lt;</a>
+        <a href="javascript:;" id="right">&gt;</a>
+    </div>
+</body>
+<script src="轮播.js"></script>
+<script>
+    var outer=document.getElementById('outer');
+    var inner1=document.getElementById('inner1');
+    var lis=inner2.getElementsByTagName('li');
+    var l_btn=document.getElementById('left');
+    var r_btn=document.getElementById('right');
+    var ul=inner1.children[0];
+    var now=0;//当前所处的圆点位置
+    //先复制（ul内第一个和最后一个节点）
+    var one_n=ul.children[0].cloneNode(true);
+    var last_n=ul.children[ul.children.length-1].cloneNode(true);
+    // 插入节点
+    ul.appendChild(one_n);
+    ul.insertBefore(last_n,ul.children[0]);
+    inner1.style.width=ul.children.length*500+'px';
+    inner1.style.left=-ul.children[0].offsetWidth+'px';
+    //第一步：点击小圆点运动inner1
+    for(var i=0;i<lis.length;i++){
+        lis[i].index=i;
+        lis[i].onclick=function(){
+            for(var j=0;j<lis.length;j++){
+                lis[j].className='';
+            }
+            this.className='active';
+            startMove(inner1,{left:-(this.index+1)*500});
+            now=this.index;
+        }
+    }
+    //第二步：左右按钮点击滑动inner1
+    r_btn.onclick=function(){
+        if(now<5){
+            now++;
+            for(var j=0;j<lis.length;j++){
+                lis[j].className='';
+            }
+            lis[now>=lis.length?0:now].className='active';
+            startMove(inner1,{left:-(now+1)*500},function(){
+                if(now>=lis.length){
+                    now=0;
+                    inner1.style.left=-ul.children[0].offsetWidth+'px';
+                }
+            })
+        } 
+    }
+    l_btn.onclick=function(){
+        if(now>=0){
+            now--;
+            for(var j=0;j<lis.length;j++){
+                lis[j].className='';
+            }
+            lis[now<0?lis.length-1:now].className='active';
+            startMove(inner1,{left:-(now+1)*500},function(){
+                if(now<0){
+                    now=lis.length;
+                    inner1.style.left=-lis.length*500+'px';
+                }
+            })
+        } 
+    }
+    //第三部：自动轮播
+    timerx=setInterval(r_btn.onclick,1000);
+    outer.onmouseover=function(){
+        clearInterval(timerx);
+    }
+    outer.onmouseout=function(){
+        timerx=setInterval(r_btn.onclick,1000);
+    }
+</script>
+</html>

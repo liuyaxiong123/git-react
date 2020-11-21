@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取表单元素的值</title>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <input type="text" value="abc" id="txt">
+    <select name="" id="sel">
+        <option value="">1</option>
+        <option value="">2</option>
+    </select>
+</body>
+<script>
+    var btn=document.getElementById('btn');
+    var txt=document.getElementById('txt');
+    var sel=document.getElementById('sel');
+    btn.onclick=function(){
+        // 获取表单元素的value值
+        // console.log(txt.value);
+        // 设置表单元素的value值
+        // txt.value='妈卖批';
+        //获取select下拉框的value值
+        console.log(sel.value);
+    }
+</script>
+</html>

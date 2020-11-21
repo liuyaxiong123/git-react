@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        img{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+        }
+       
+    </style>
+</head>
+<body id='body'>
+   
+</body>
+<script>
+        function setDiv(){
+            var ev=ev||window.event;
+            var divs=document.createElement('img');
+            var r=parseInt(Math.random()*255);
+            var g=parseInt(Math.random()*255);
+            var b=parseInt(Math.random()*255);
+            divs.src='timg.gif';
+            divs.style.background='rgb('+r+','+g+','+b+')';
+            divs.style.top=ev.clientY+'px';
+            divs.style.left=ev.clientX+'px';
+            divs.style.opacity=1;
+             var t=divs.style.opacity;
+            body.appendChild(divs);
+            divs.time=setInterval(function(){
+                if(t<=0){
+                    clearInterval(divs.time);
+                    body.removeChild(divs);
+                }
+                divs.style.top=divs.offsetTop-3+'px';
+                divs.style.opacity=t-=0.05;
+            },50)
+        }
+        document.onclick=function(){
+            setDiv();
+        }
+   
+       
+</script>
+</html>

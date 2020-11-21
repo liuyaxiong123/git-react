@@ -1,0 +1,27 @@
+事件流：
+当给子元素和父元素定义了相同的事件，比如都定义了onclick事件，点击子元素时，父元素的onclick事件也会被触发。js里称这种事件连续发生的机制为事件冒泡或者事件捕获。
+事件执行的一种机制（事件冒泡和事件捕获）
+
+事件流没有好处，在我们做效果的时候有时候会带来不便，阻止事件流：
+阻止事件冒泡兼容写法：
+if(ev.stopPropagation){
+    ev.stopPropagation();//阻止事件传播（高版本浏览器）
+}else{
+    ev.cancelBubble=true;//IE6-8;
+}
+//事件监听封装：
+function addEvent(obj,ev,fn){
+    if(obj.addEventListener){
+        obj.addEventListener(ev,fn,false);
+    }else{
+        obj.attachEvent('on'+ev,fn);
+    }
+}
+ //事件移除封装
+function removeEvent(obj,ev,fn){
+    if(obj.removeEventListener){
+        obj.removeEventListener(ev,fn,false);
+    }else{
+        obj.detachEvent('on'+ev,fn);
+    }
+}

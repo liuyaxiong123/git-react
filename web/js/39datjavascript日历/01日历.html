@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日历</title>
+    <style>
+        *{margin:0;padding:0;}
+        .dates{
+            width: 200px;height: 40px;
+            font-size:20px;
+            cursor:pointer;
+        }
+        #main{
+            display: none;
+        }
+        #main_table{
+            width: 300px;
+            border:3px solid blue;
+            border-collapse:collapse;
+        }
+        #main_table caption *{
+            float:left;
+            padding:5px 5px;
+            cursor:pointer;
+        }
+        #main_table caption{
+            border-bottom:5px solid orange;
+        }
+        #main_table caption span{
+            cursor:pointer;
+            user-select: none;/*禁止选中文本*/
+        }
+        #main_table td{
+            color:#000;
+            text-align:center;
+            cursor:pointer;
+        }
+        #main_table td:hover{
+            color:#00f;
+        }
+        #main_table .nowDay{
+            background:orange;
+            color:#fff;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <input type="text" class='dates' placeholder='请选择时间'>
+        <div id="main">
+            <table id="main_table" border="1">
+                <caption>
+                    <span id="previous">&lt;</span>
+                    <h5 id="now_month"></h5>
+                    <span id="next">&gt;</span>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>日</th>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                        <th>六</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    var date_txt=document.querySelectorAll('.dates')[0];
+    var main=document.querySelector('#main');
+    var now_month=document.querySelector('#now_month');
+    var previous=document.querySe
+    date_txt.onclick=function(ev){lector('#previous');
+    var next=document.querySelector('#next');
+    var tds=main_table.tBodies[0].getElementsByTagName('td');
+    var now=0;//存储最后一天的日期
+
+    //获取当前月份日期
+    var date=new Date();
+    
+    var _year=date.getFullYear();
+    var _month=date.getMonth()+1;
+    var _date=date.getDate();
+
+    //点击文本框显示日历的组件
+        this.value='';
+        var ev=ev||window.event;
+        if(ev.stopPropagation){
+            ev.stopPropagation();
+        }else{
+            ev.cancelBubble=true;
+        }
+        main.style.display='block';
+        createDate(_year,_month);
+    }
+    document.onclick=function(){
+        main.style.display='none';
+    }
+    //点击td设置文本框的日期
+    main_table.onclick=function(ev){
+        var ev=ev||window.event;
+        var target=ev.target||ev.srcElement;
+        if(target.nodeName.toLowerCase()=='td'){
+            if(target.getAttribute('prev')){
+                if(_month-1<1){
+                    date_txt.value=(_year-1)+'年12月'+target.innerHTML+'日';
+                }else{
+                    date_txt.value=_year+'年'+(_month-1)+'月'+target.innerHTML+'日';
+                }
+            }else if(target.getAttribute('next')){
+                if(_month+1>12){
+                    date_txt.value=(_year+1)+'年1月'+target.innerHTML+'日';
+                }else{
+                    date_txt.value=_year+'年'+(_month+1)+'月'+target.innerHTML+'日';
+                }
+            }else{
+                date_txt.value=now_month.innerHTML+target.innerHTML+'日';
+            }
+        }
+    } 
+    //渲染td内容
+    function createDate(year,month){
+        now_month.innerHTML=year+'年'+month+'月';//设置日历标题日期 
+        now=new Date(year,month,0);//设置时间为本月的最后一天
+        console.log(now);
+        dayCount=now.getDate();//获取这个月有几天
+        now.setDate(1);//设置日期为一号
+        week=now.getDay();//获取本月一号为星期几
+
+        now_previous=new Date(year,month-1,0);//设置上一个月的最后一天
+        dayCount_previous=now_previous.getDate();//上一个月一共有多少天
+        //清空样式
+        for(var j=0;j<tds.length;j++){
+            tds[j].innerHTML='';
+            tds[j].style.background='';
+            tds[j].removeAttribute('prev');
+            tds[j].removeAttribute('next');
+        }
+        for(var j=0;j<tds.length;j++){
+            tds[j].innerHTML='';
+            tds[j].style.background='';
+        }
+        //补前边
+        for(var z=week-1;z>=0;z--){
+            tds[z].setAttribute('prev',dayCount_previous);
+            tds[z].innerHTML=dayCount_previous;
+            dayCount_previous-=1;
+            tds[z].style.background='#ccc';
+        }
+        //补后边
+        var now_next=0;
+
+        for(var x=dayCount+week;x<tds.length;x++){
+            tds[x].innerHTML=++now_next;
+            tds[x].setAttribute('next',now_next);
+            tds[x].style.background='#ccc';
+        }
+        for(var i=0;i<dayCount;i++){
+            tds[i+week].innerHTML=i+1;
+        }
+
+        //标记当前的日期
+        markToday();
+    }
+    function markToday(){
+        if(now.getFullYear()==date.getFullYear()&&now.getMonth()==date.getMonth()){
+            tds[_date+week-1].className='nowDay';
+        }else{
+            for(var j=0;j<tds.length;j++){
+                tds[j].className='';
+            }
+        }
+    }
+    //下一个月
+    next.onclick=function(ev){
+        var ev=ev||window.event;
+        if(ev.stopPropagation){
+            ev.stopPropagation();
+        }else{
+            ev.cancelBubble=true;
+        }
+        _month++;
+        if(_month>12){
+            _month=1;
+            _year+=1;
+        }
+        createDate(_year,_month);
+    }
+    //上一个月
+    previous.onclick=function(ev){
+        var ev=ev||window.event;
+        if(ev.stopPropagation){
+            ev.stopPropagation();
+        }else{
+            ev.cancelBubble=true;
+        }
+        _month--;
+        if(_month<1){
+            _month=12;
+            _year-=1;
+        }
+        createDate(_year,_month);
+    }
+</script>
+</html>

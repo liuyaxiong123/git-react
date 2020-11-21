@@ -1,0 +1,15 @@
+DOM:
+操作DOM元素的属性：
+元素.setAttribute(属性名称，值)：设置元素属性
+元素.getAttribute(属性名称)：获取元素属性
+
+字符串方法：
+str.length:获取字符串长度
+str[1] 或者 str.charAt(1):获取字符串中的某一项
+str.split('切割字符')：将字符串切割成数组
+str.search('内容'):检索某些内容在字符串中是否存在，存在返回该内容首次出现的位置，没有返回-1
+str.indexOf('内容',起始位置)：检索某些内容在字符串中是否存在，存在返回该内容首次出现的位置，没有返回-1
+str.toLowerCase():将字符串转换为小写
+str.toUpperCase():将字符串转换为大写
+str.substring(起始位置，结束位置):字符串截取（不包含结束字符）
+str.substr(起始位置，截取长度):字符串截取

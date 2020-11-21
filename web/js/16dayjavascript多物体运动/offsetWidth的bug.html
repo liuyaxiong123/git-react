@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;height: 200px;
+            border:1px solid;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    setInterval(function(){
+        var t=parseInt(getStyle(box,'width'));
+        box.style.width=t-2+'px';
+    },50);
+    function getStyle(obj,cur){
+        if(obj.currentStyle){
+            return obj.currentStyle[cur];
+        }else{
+            return getComputedStyle(obj)[cur];
+        }
+    }
+</script>
+</html>

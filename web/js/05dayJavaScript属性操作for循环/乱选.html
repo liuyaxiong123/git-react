@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>乱选</title>
+</head>
+<body>
+    <input type="button" value="全选" id="b1">
+    <input type="button" value="反选" id="b2">
+    <input type="button" value="不选" id="b3"><br>
+    <input type="checkbox" >
+    <input type="checkbox" >
+    <input type="checkbox" >
+    <input type="checkbox" >
+    <input type="checkbox" >
+    <input type="checkbox" >
+    <input type="checkbox" >
+    <input type="checkbox" >
+    <input type="checkbox" >
+    <input type="checkbox" >
+</body>
+<script>
+    var b1=document.getElementById('b1');
+    var b2=document.getElementById('b2');
+    var b3=document.getElementById('b3');
+    var input=document.getElementsByTagName('input');
+    b1.onclick=function(){
+        for(i=0;i<input.length;i++){
+        input[i].checked=true;
+        }
+    }
+    b2.onclick=function(){
+        for(i=0;i<input.length;i++){
+            if(input[i].checked==true){
+                input[i].checked=false;
+            }else{
+                input[i].checked=true;
+            }    
+        }
+    }
+    b3.onclick=function(){
+        for(i=0;i<input.length;i++){
+            if(input[i].checked==true){
+                input[i].checked=false;
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tab切换</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #outer{
+            width: 600px;height: 500px;
+            border:1px solid;
+            margin:0 auto;
+        }
+        #outer input{
+            width: 196px;height: 100px;
+
+        }
+        #outer input.active{
+            background:blue;
+        }
+        #outer div{
+            width: 600px;height: 400px;
+            font-size:40px;
+            text-align:center;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <input type="button" value="内容1" class="active">
+        <input type="button" value="内容2">
+        <input type="button" value="内容3">
+        <div style="display:block;">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+    </div>
+</body>
+<script>
+    var outer=document.getElementById('outer');
+    var inps=outer.getElementsByTagName('input');
+    var divs=outer.getElementsByTagName('div');
+    console.log(inps,divs);
+    for(var i=0;i<inps.length;i++){
+        inps[i].index=i;
+        inps[i].onclick=function(){
+            console.log(this);
+            //先清空样式
+            for(j=0;j<inps.length;j++){
+                divs[j].style.display='none';
+                inps[j].className='';
+            }
+            //再给当前选中的按钮添加
+            divs[this.index].style.display='block';
+            this.className='active';
+        }
+    }
+</script>
+</html>

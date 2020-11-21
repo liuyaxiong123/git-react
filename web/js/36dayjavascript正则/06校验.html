@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>校验</title>
+</head>
+<body>
+    <input type="text" id="txt">
+    <div id="box"></div>
+</body>
+<script>
+    //()：括号跟js语法一样  提高权重 分组的意思
+    txt.onblur=function(){
+        //var reg=/^(0\d{2,3}-)?[1-9]\d{6,7}$/g;//固话验证
+        //var reg=/^\w+@[0-9a-z]+\.[a-z]{2,3}$/g;//邮箱验证
+        var reg=/^1\d{10}$/g;
+        console.log(reg.test(txt.value));
+
+    }
+</script>
+</html>

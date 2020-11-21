@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>九九神功</title>
+</head>
+<body>
+    
+</body>
+<script>
+    document.write('<table border="1" style="margin:0 auto">');
+    document.write('<caption>九九神功</caption>');
+    var i=0;
+    while(i<9){
+        document.write('<tr>');
+        i++;
+        var j=1;
+        while(j<=i){
+            document.write('<td>'+j+'*'+i+'='+(i*j)+'</td>');
+            j++;
+        }
+        document.write('</tr>');
+    }
+    document.write('</table>');
+</script>
+</html>

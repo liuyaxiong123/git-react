@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机色块</title>
+    <style>
+        *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+    <div id="div">
+
+    </div>
+</body>
+<script>
+    function res(){
+        var oFrag=document.createDocumentFragment();
+        var w=document.documentElement.clientWidth;
+        var h=document.documentElement.clientHeight;
+        div.innerHTML='';
+        //循环创建100个div块
+        for(var i=0;i<100;i++){
+            var divs=document.createElement('div');
+            var r=Math.floor(Math.random()*256);
+            var g=Math.floor(Math.random()*256);
+            var b=Math.floor(Math.random()*256);
+            divs.style.width=parseInt(w/10)+'px';
+            divs.style.height=parseInt(h/10)+'px';
+            divs.style.background='rgb('+r+','+g+','+b+')';
+            divs.style.float='left';
+            divs.style.boxShadow='1px 1px 5px yellow';
+            oFrag.appendChild(divs);
+        }
+        div.appendChild(oFrag);
+    }
+    window.onresize = window.onload = res;
+</script>
+</html>

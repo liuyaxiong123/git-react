@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹窗&favicon</title>
+    <!-- 设置网页的icon图标 -->
+    <link rel="shortcut icon" href="https://www.baidu.com/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <h1>icon图标在网址栏中显示的大小是16*16，IE需要放在服务器上才有</h1>
+</body>
+<script>
+    //弹窗
+    //1).
+    //全写：
+    //window.alert('abc');
+    //简写：
+    //alert('abc');
+    //-------------------
+    //02).
+    //全写：（confirm和alert区别confirm有返回值boolean）
+    //var res=window.confirm('你是否确认删除');
+    //简写：
+    // var res=confirm('你是否确认删除');
+    // console.log(res);
+    //--------------------------------------
+    //03).
+    //全写：(prompt有返回值 值为输入的文本内容)
+    //var res=window.prompt('title');
+    //简写：
+    var res=prompt('title','abc');
+    console.log(res);
+
+    // var num=parseFloat('5.5');
+    // console.log(num);
+</script> 
+</html>

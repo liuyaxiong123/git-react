@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    第二个页面
+    <input type="button" value="跳转04history3.html" id="btn">
+    <input type="button" value="返回" id="r">
+    <input type="button" value="前进" id="g">
+</body>
+<script>
+    btn.onclick=function(){
+        window.location.href='04history3.html';
+    }
+    r.onclick=function(){
+        //返回上一页
+        window.history.back();
+    }
+    g.onclick=function(){
+        //前进一页
+        window.history.forward();
+    }
+</script>
+</html>

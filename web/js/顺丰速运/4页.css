@@ -1,0 +1,387 @@
+.sy{
+    width: 1280px;height: 70px;
+    margin:0 auto;
+    position: relative;
+}
+.sy i{
+    font-size:44px;
+    display:inline-block;
+    margin-top:12px;
+}
+.sy ul{
+    width: 630px;height: 70px;
+    float:right;
+    text-align: center;
+    margin-right:570px;
+}
+.sy ul li{
+    float:left;
+    margin-top:26px;
+    margin-right:24px;
+    padding-bottom:24px;
+}
+.sy ul li:hover{
+    border-bottom:2px solid red;
+}
+.sy ul li a:hover{
+    color:red;
+}
+#jj{
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    line-height: 2px;
+}
+#jj i{
+    font-size:20px;
+    vertical-align: middle;
+    margin-bottom:15px;
+}
+#jj a:hover{
+    color:red;
+}
+#wx{
+    color:red;
+    margin-left:20px;
+}
+.lbt{
+    width: 1280px;height: 340px;
+    margin:0 auto;
+    position: relative;
+}
+.lbt img{
+    width: 1280px;height: 340px;
+}
+.syxl{
+    width: 377px;height: 300px;
+    background:#fff;
+    position: absolute;
+    left:130px;
+    top:0px;
+    display:none;
+}
+.syxl ul{
+    float:left;
+    margin-top:40px;
+    margin-left:20px;
+}
+.syxl li a:hover,.xl2 span:hover,.xl3 span:hover,.xl4 li a:hover,.xl5 li:hover,.xl6 li:hover{
+    color:red;
+}
+.syxl b{
+    position: absolute;
+    left:10px;
+    top:10px;
+    width: 150px;
+}
+.jc{
+    font-size:15px;
+    font-weight:700;
+}
+.xl2{
+    width:160px;
+    height: 75px;
+    font-size:15px;
+    position: absolute;
+    top:0px;
+    left:183px;
+    background:#fff;
+    display: none;
+}
+.xl3 div{
+    width: 153px;height: 120px;
+    font-size:15px;
+    line-height:28px;
+    text-align:center;
+    position: absolute;
+    top:0px;
+    left:241px;
+    background:#fff;
+}
+.xl3{
+    display:none;
+}
+.xl4 ul li{
+    float:left;
+    margin-left:20px;
+    margin-top:10px;
+    font-size:15px;
+    text-align: center;
+    width: 98px;height: 110px;
+}
+.xl4 ul{
+    width: 280px;height: 128px;
+    background:#fff;
+    position: absolute;
+    left:327px;
+    top:0px;
+}
+.xl4{
+    display: none;
+}
+.xl4 ul .rightb{
+    border-right:1px solid gray;
+}
+.xl5 ul{
+    width: 169px;height: 215px;
+    text-align: center;
+    background:#fff;
+    position: absolute;
+    top:0px;
+    left:425px;
+}
+.xl5 ul li{
+    margin-top:20px;
+    
+}
+.xl5{
+    display:none;
+}
+.xl6 ul{
+    width: 200px;height: 200px;
+    text-align: center;
+}
+.xl6 ul li{
+    margin-top:11px;
+}
+.xl6{
+    position:absolute;
+    left:525px;
+    top:0px;
+    background:#fff;
+    display:none;
+}
+.footer{
+    background:#000;
+}
+.lll{
+    width: 1280px;height: 235px;
+    margin:0 auto;
+}
+.lll ul{
+    float: left;
+    width: 148px;height: 233px;
+    margin-top:20px;
+    color:#b1b1b1;
+    margin-bottom:20px;
+}
+.lll ul li{
+    margin-bottom:10px;
+}
+.lll .xx{
+    width: 100px;height: 200px;
+    border-right:1px solid #333333;
+    margin-right:10px;
+}
+.lll .jz{
+    text-align:center;
+}
+.lll .bc{
+    font-weight:700;
+    color:#fff;
+}
+.lll ul li:hover{
+    color:#fff;
+    cursor: pointer;
+}
+.tttp{
+    width: 1280px;height: 74px;
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+    margin:40px auto;
+}
+.tttp .tptpt{
+    width: 1280px;height: 43px;
+    background:url(img/12.png);
+    margin-top:20px;
+}
+.dx{
+    width: 1280px;height: 60px;
+    padding:20px 0 50px;
+    color:#b1b1b1;
+    word-spacing:3px;
+    margin:0 auto;
+}
+.dx a{
+    color:#b1b1b1;
+}
+.yyy{
+    float:right;
+    margin-right:15px;
+}
+.yyy img{
+    vertical-align: top;
+}
+.rrr{
+    margin:38px 0 0 1060px;
+
+}
+.dx a:hover{
+    color:#fff;
+}
+.ys{
+    width: 1280px;height: 90px;
+    background:#F1F1F1;
+    margin:0 auto;
+    position: relative;
+}
+#pp{
+    width: 256px;height: 304px;
+}
+#ll li{
+    width: 256px;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    z-index:999;
+}
+#pp span{
+    display:inline-block;
+    width: 256px;
+    text-align: center;
+    margin:33px 0;
+    font-size:18px;
+}
+#pp span:hover{
+    color:red;
+    text-decoration: underline;
+}
+#pp{
+    position: absolute;
+    left:500px;
+    top:0;
+}
+#ll{
+    display:none;
+    background:#fff;
+}
+#ll li:hover{
+    background:red;
+    color:#fff;
+}
+.uul {
+    margin:0 auto;
+}
+.uul img{
+    width: 392px;height: 203px;
+}
+.uul ul li{
+    width: 392px;height: 539px;
+    background:#f1f1f1;
+    float:left;
+}
+.uul ul{
+    width: 1280px;
+    height: 584px;
+    margin:0 auto;
+}
+.uul span{
+    display: block;
+    width: 392px;height: 25px;
+    text-align: center;
+    font-size:18px;
+    font-weight:700;
+    padding:78px 0 0;
+    margin:0 0 20px;
+}
+.uul p{
+    width: 352px;
+    margin:0 auto;
+    padding:20px;
+}
+.uul a{
+    display:block;
+    width: 233px;height: 44px;
+    border:1px solid;
+    text-align:center;
+    line-height:44px;
+    margin-top:20px;
+    margin:0 auto;
+}
+.uul .clear{
+    clear: both;
+}
+.uul ul li i{
+    position: absolute;
+    width: 102px;height: 102px;
+    background:#fff;
+    color:red;
+    border-radius:102px;
+    text-align:center;
+    line-height:51px;
+    font-size:16px;
+    margin-left:143px;
+    margin-top:-308px;
+}
+.uul ul li:hover i,.uul ul li:hover a{
+    background:red;
+    color:#fff;
+}
+.footer{
+    background:#000;
+}
+.lll{
+    width: 1280px;height: 235px;
+    margin:0 auto;
+}
+.lll ul{
+    float: left;
+    width: 148px;height: 233px;
+    margin-top:20px;
+    color:#b1b1b1;
+    margin-bottom:20px;
+}
+.lll ul li{
+    margin-bottom:10px;
+}
+.lll .xx{
+    width: 100px;height: 200px;
+    border-right:1px solid #333333;
+    margin-right:10px;
+}
+.lll .jz{
+    text-align:center;
+}
+.lll .bc{
+    font-weight:700;
+    color:#fff;
+}
+.lll ul li:hover{
+    color:#fff;
+    cursor: pointer;
+}
+.tttp{
+    width: 1280px;height: 74px;
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+    margin:40px auto;
+}
+.tttp .tptpt{
+    width: 1280px;height: 43px;
+    background:url(img/12.png);
+    margin-top:20px;
+}
+.dx{
+    width: 1280px;height: 60px;
+    padding:20px 0 50px;
+    color:#b1b1b1;
+    word-spacing:3px;
+    margin:0 auto;
+}
+.dx a{
+    color:#b1b1b1;
+}
+.yyy{
+    float:right;
+    margin-right:15px;
+}
+.yyy img{
+    vertical-align: top;
+}
+.rrr{
+    margin:38px 0 0 1060px;
+
+}
+.dx a:hover{
+    color:#fff;
+}

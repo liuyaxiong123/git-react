@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>让div动起来</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            width: 50px;height: 200px;
+            background: red;
+            position:absolute;
+            top:80px;
+            left:0px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="往右" id="btn_r">
+    <input type="button" value="往左" id="btn_l">
+    <div id="box"></div>
+</body>
+<script>
+    var timer=null;
+    btn_r.onclick=function(){
+        startMove(400,5);
+    }
+    btn_l.onclick=function(){
+        startMove(0,-5);
+    }
+    //target运动目标点 sped：速度
+    function startMove(target,sped){//运动框架
+        clearInterval(timer);
+        timer=setInterval(function(){
+            if(box.offsetLeft==target){
+                clearInterval(timer);
+            }else{
+                box.style.left=box.offsetLeft+sped+'px';
+            }
+        },50);
+    }
+</script>
+</html>

@@ -1,0 +1,23 @@
+JOSN:存储数据的
+
+语法：
+{
+    key：value，
+    key：value...
+}
+
+键值对
+key：value
+键名：键值
+
+循环json通过：
+for(i in json){
+    i:对应json中的每一个键名
+    json[i]：对应json中的每一个值
+}
+json字符串：
+例如：var str='{"name":"rose","age":"19","sex":"女"}';
+将json字符串转换成json对象可以通过：
+eval（）：注意eval('('+str+')');要添加（）进行包裹
+JSON.parse():注意
+该方法对语法要求比较严格，键名和值都必须用双引号包裹

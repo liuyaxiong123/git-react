@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取节点</title>
+</head>
+<body>
+    <div class="box">
+        <p>a</p>
+        <p>b</p>
+        <div class="box2">
+            <p>c</p>
+            <p>d</p>
+        </div>
+    </div>
+    <div id="outer">outer</div>
+    <h1 id="tit"></h1>
+</body>
+<script>
+    //通过ID获取标签：
+    var outer=document.querySelector('#outer');
+    var box2=document.querySelectorAll('.box2');
+    var divs=document.querySelectorAll('div');
+    var ps=document.querySelectorAll('.box>p');
+    //console.log(ps);
+    //节点名称：
+    console.log(outer.nodeName);//DIV
+    console.log(ps[0].nodeName);//P
+    console.log(tit.nodeName);//H1
+    console.log(document.nodeName);//#document
+    console.log(document.body.nodeName);//BODY
+</script>
+</html>

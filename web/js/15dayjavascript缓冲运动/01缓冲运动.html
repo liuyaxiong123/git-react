@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            width: 50px;height: 200px;background: red;
+            position:absolute;
+            left:0px;
+            top:80px;
+        }
+        .line{
+            width: 500px;height: 500px;
+            border-right:1px solid;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <input type="text" id="txt">
+    <div class="line"></div>
+    <div id="box"></div>
+</body>
+<script>
+    var btn=document.getElementById('btn');
+    var box=document.getElementById('box');
+    var timer=null;
+    btn.onclick=function(){
+        // clearInterval(timer);
+        // timer=setInterval(function(){
+        //     var speed=(500-box.offsetLeft)/20;
+        //     //speed=Math.ceil(speed);
+        //     //speed=Math.floor(speed);
+        //     //涉及到缓冲运动,我们要操作的永远是速度,如果速度是正值,肯定是往前动,速度可能求出是0.5类似的值,我们需要让元素1个像素1个像素往前挪动,所以需要Math.ceil()将速度向上取整为1,如果速度是负值,肯定是往回退,速度可能求出-0.95类似的值，我们需要让元素-1个像素-1个像素的往回挪，最终到达终点，所以需要Math.floor()将速度向下取整为-1，
+        //     //所以涉及到缓冲运动，一定要做取整
+        //     speed=speed>0?Math.ceil(speed):Math.floor(speed);
+        //     if(box.offsetLeft==500){
+        //         clearInterval(timer);
+        //     }else{
+        //         box.style.left=box.offsetLeft+speed+'px';
+        //         txt.value=box.offsetLeft; 
+        //     }
+        // },20);
+        startMove(500);
+    }
+    function startMove(target){//运动函数
+        clearInterval(timer);
+        timer=setInterval(function(){
+            var speed=(target-box.offsetLeft)/20;
+            speed=speed>0?Math.ceil(speed):Math.floor(speed);
+            if(box.offsetLeft==target){
+                clearInterval(timer);
+            }else{
+                box.style.left=box.offsetLeft+speed+'px'; 
+            }
+        },20);
+    }
+</script>
+</html>

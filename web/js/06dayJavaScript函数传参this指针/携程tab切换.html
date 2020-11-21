@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>携程Tab切换</title>
+    <style>
+        *{margin:0;padding:0;}
+        ul{
+            width: 1200px;height: 40px;
+            margin:0 auto;
+        }
+        li{
+            float:left;
+            color:blue;
+            list-style:none;
+            margin-left:40px;
+            margin-top:20px;
+            cursor:pointer;
+        }
+        #sel{
+            border:0;
+            color:blue;
+            font-size:15px;
+            position:absolute;
+            right:290px;
+            top:20px;
+
+        }
+        #dk div{
+            width: 1200px;height: 400px;
+            position:absolute;
+            left:0;
+            bottom:0;
+        }
+        #dk div span:hover{
+            border:1px solid #f9f9f9;
+        }
+        #dk{
+            border:1px solid;
+            width: 1200px;height: 440px;
+            position:relative;
+            margin:0 auto;
+        }
+        span{
+            width: 280px;
+            display: inline-block;
+            position: relative;
+            margin-left:14px;
+            margin-top:30px;
+            
+        }
+        b{
+            position:absolute;
+            right:0;
+            bottom:0;
+        }
+        span img{
+            width: 300px;height: 200px;
+        }
+        .box2,.box3,.box4,.box5,.box6,.box7{
+            display: none;
+        }
+        .li{
+            background:blue;
+            color: #fff;
+            border-radius:10px;
+        }
+        img:hover{
+            width: 110%;
+            height: 110%;
+        }
+        li:hover{
+            background:blue;
+            color:#fff;
+            border-radius:10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="dk">
+        <ul>
+            <li class="li">小型轿车</li>
+            <li>中型轿车</li>
+            <li>大型轿车</li>
+            <li>高档轿车</li>
+            <li>中型SUV</li>
+            <li>标准SUV</li>
+            <li>全尺寸SUV</li>
+        </ul>
+        <select name="" id="sel">
+            <option value="更多" id="gd">更多</option>
+            <option value="箱式旅行车">箱式旅行车</option>
+            <option value="酷炫车型">酷炫车型</option>
+        </select>
+        <div class="box1">
+            <span>
+                <img src="img/1.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">10</i> 起</b>
+            </span>
+            <span>
+                <img src="img/2.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">10</i> 起</b>
+            </span>
+            <span>
+                <img src="img/3.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">10</i> 起</b>
+            </span>
+            <span>
+                <img src="img/4.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">10</i> 起</b>
+            </span>
+        </div>
+        <div class="box2">
+                <span>
+                    <img src="img/5.png" alt="">
+                    <p>美国 洛杉矶</p>
+                    <p>自驾梦幻一号公路</p>
+                    <b>￥<i style="color:red;font-size:30px;">20</i> 起</b>
+                </span>
+                <span>
+                    <img src="img/6.png" alt="">
+                    <p>美国 洛杉矶</p>
+                    <p>自驾梦幻一号公路</p>
+                    <b>￥<i style="color:red;font-size:30px;">20</i> 起</b>
+                </span>
+                <span>
+                    <img src="img/7.png" alt="">
+                    <p>美国 洛杉矶</p>
+                    <p>自驾梦幻一号公路</p>
+                    <b>￥<i style="color:red;font-size:30px;">20</i> 起</b>
+                </span>
+                <span>
+                    <img src="img/8.png" alt="">
+                    <p>美国 洛杉矶</p>
+                    <p>自驾梦幻一号公路</p>
+                    <b>￥<i style="color:red;font-size:30px;">20</i> 起</b>
+                </span>
+        </div>
+        <div class="box3">
+                <span>
+                    <img src="img/9.png" alt="">
+                    <p>美国 洛杉矶</p>
+                    <p>自驾梦幻一号公路</p>
+                    <b>￥<i style="color:red;font-size:30px;">30</i> 起</b>
+                </span>
+                <span>
+                    <img src="img/10.png" alt="">
+                    <p>美国 洛杉矶</p>
+                    <p>自驾梦幻一号公路</p>
+                    <b>￥<i style="color:red;font-size:30px;">30</i> 起</b>
+                </span>
+                <span>
+                    <img src="img/11.png" alt="">
+                    <p>美国 洛杉矶</p>
+                    <p>自驾梦幻一号公路</p>
+                    <b>￥<i style="color:red;font-size:30px;">30</i> 起</b>
+                </span>
+                <span>
+                    <img src="img/4.png" alt="">
+                    <p>美国 洛杉矶</p>
+                    <p>自驾梦幻一号公路</p>
+                    <b>￥<i style="color:red;font-size:30px;">30</i> 起</b>
+                </span>
+        </div>
+        <div class="box4">
+            <span>
+                <img src="img/13.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">40</i> 起</b>
+            </span>
+            <span>
+                <img src="img/14.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">40</i> 起</b>
+            </span>
+            <span>
+                <img src="img/15.jpg" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">40</i> 起</b>
+            </span>
+            <span>
+                <img src="img/16.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">40</i> 起</b>
+            </span>
+        </div>
+        <div class="box5">
+            <span>
+                <img src="img/17.jpg" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">50</i> 起</b>
+            </span>
+            <span>
+                <img src="img/18.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">50</i> 起</b>
+            </span>
+            <span>
+                <img src="img/19.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">50</i> 起</b>
+            </span>
+            <span>
+                <img src="img/20.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">50</i> 起</b>
+            </span>
+        </div>
+        <div class="box6">
+            <span>
+                <img src="img/21.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">60</i> 起</b>
+            </span>
+            <span>
+                <img src="img/22.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">60</i> 起</b>
+            </span>
+            <span>
+                <img src="img/23.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">60</i> 起</b>
+            </span>
+            <span>
+                <img src="img/24.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">60</i> 起</b>
+            </span>
+        </div>
+        <div class="box7">
+            <span>
+                <img src="img/25.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">70</i> 起</b>
+            </span>
+            <span>
+                <img src="img/26.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">70</i> 起</b>
+            </span>
+            <span>
+                <img src="img/27.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">70</i> 起</b>
+            </span>
+            <span>
+                <img src="img/28.png" alt="">
+                <p>美国 洛杉矶</p>
+                <p>自驾梦幻一号公路</p>
+                <b>￥<i style="color:red;font-size:30px;">70</i> 起</b>
+            </span>
+        </div>
+    </div>
+</body>
+<script>    
+    var dk=document.getElementById('dk');
+    var divs=dk.getElementsByTagName('div');
+    var lis=dk.getElementsByTagName('li');
+    var now = 0;
+    for(var i=0;i<lis.length;i++){
+        lis[i].a=i;
+        lis[i].onclick=function(){
+            divs[now].style.display = 'none';
+            lis[now].className = '';
+            this.className='li';
+            divs[this.a].style.display='block';
+            now = this.a;
+        }
+    }  
+</script>
+</html>

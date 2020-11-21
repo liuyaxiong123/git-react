@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;height: 50px;
+            border:1px solid;
+            text-align: center;
+            line-height: 50px;
+            display: inline-block;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+    <div>赤</div>
+    <div>橙</div>
+    <div>黄</div>
+    <div>绿</div>
+    <div>青</div>
+    <div>蓝</div>
+    <div>紫</div>
+</body>
+<script>
+    var arr=['red','orange','yellow','green','cyan','blue','purple'];
+    var divs=document.getElementsByTagName('div');
+    var t=0;
+    time=setInterval(function(){
+        for(var j=0;j<divs.length;j++){
+            divs[j].style.background='';
+        }
+        divs[t].style.background=arr[t];
+        t++;
+        if(t>=arr.length){
+            t=0;
+        }
+    },100);
+</script>
+</html>

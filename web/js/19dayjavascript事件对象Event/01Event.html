@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event</title>
+    <style>
+        #box{
+            width: 300px;height: 300px;
+            border:10px solid;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    //事件对象：作用是用来获取所有触发的事件相关的信息
+    box.onclick=function(ev){
+        //高版本浏览器事件对象通过函数参数传递，IE6-8事件对象作为window下的一个属性存在
+        var ev = ev || window.event;
+        //button属性：获取点击了左键还是右键  左键：0
+        console.log(ev.button);
+    }
+    //右键点击触发：
+    box.oncontextmenu=function(ev){
+        var ev=ev||window.event;
+        if(ev.preventDefault){
+            //阻止事件默认行为 兼容高版本浏览器：
+            ev.preventDefault();
+        }else{
+            //IE6-8
+            ev.returnValue=false;
+        }
+
+        //右键：2
+        console.log(ev.button);
+    }
+</script>
+</html>

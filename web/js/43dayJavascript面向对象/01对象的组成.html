@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象的构成</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //对象的组成:属性和方法
+    var arr=new Array(1,2);
+    arr.a=5;//属性------->值
+    arr.sum=function(){//方法---->函数
+        console.log(this.a);
+    }
+    console.log(arr.a);
+    arr.sum();
+
+    var date=new Date();
+    date.a=6;
+    date.sum=function(){
+        console.log(date.a);
+    }
+    // console.log(date.a);
+    // date.sum();
+
+    var num=new Number(5);
+    num.a=7;
+    num.sum=function(){
+        console.log(this.a);
+    }
+    // console.log(num.a);
+    // num.sum();
+
+    var str=new String('abc');
+    str.a=8;
+    str.sum=function(){
+        console.log(this.a);
+    }
+    console.log(str.a);
+    str.sum();
+    
+    var fn=new Function('a','b','c','alert(a+b+c)');
+    // console.log(fn);
+    // fn(5,6,7);
+    fn.a=9;
+    fn.sum=function(){
+        console.log(this.a);
+    }
+    // console.log(fn.a);
+    // fn.sum();
+    
+
+    var body=document.querySelectorAll('body')[0];
+    body.a=10;
+    body.sum=function(){
+        // console.log(this.a);
+    }
+    // console.log(body.a);
+    // body.sum();
+    // console.log(typeof body);
+
+    var obj=new Object();
+    // console.log(obj,{});
+    obj.a=11;
+    obj.sum=function(){
+        // console.log(this.a);
+    }
+    // console.log(obj.a);
+    obj.sum();
+
+    var _num=10;//字面量
+    _num.a=12;
+    _num.sum=function(){
+        // console.log(1);
+    }
+    // console.log(_num.a);
+    // _num.sum();
+
+    var str='abc';
+    str.a=13;
+    // console.log(str.a);
+
+    var a=5;//全局变量  作为window下的属性存在
+    function sum(){//全局函数 作为window下的方法存在
+        // console.log(this.a);
+    }
+    // console.log(window.a);
+    // window.sum();
+
+    // window.setInterval(function(){
+    //     console.log(this);
+    //     },100)
+
+    var _arr=new Array(1,2,3);
+    _arr,a=10;
+    delete _arr[0];
+    delete _arr.a;
+    // console.log(_arr);
+
+    var _json={'name':'Ada','age':18}
+    delete _json.name;
+    // console.log(_json);
+
+    var num1=1;
+    var num2=1;
+    console.log(num1==num2);//true
+    var obj1=[1];
+    var obj2=[1];
+    console.log(obj1==obj2); //false  存储空间不同
+    //-------------------------------------------
+
+    var  r1=Number('123');
+    console.log(r1);
+    var r2=String(12);
+    console.log(r2);
+    var r3=Boolean('abc');//new Boolean
+    console.log(r3);
+
+    var r4=Object(true);
+    console.log(r4);
+</script>
+</html>

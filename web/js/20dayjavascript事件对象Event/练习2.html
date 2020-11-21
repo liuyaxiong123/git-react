@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上上下下左左右右baba</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            width: 200px;height: 200px;
+            background:url(img/1.jpg) center center no-repeat;
+            position:absolute;
+            left:0;
+            top:0;
+            border-radius:50%;
+            text-align: center;
+            line-height: 200px;
+            font-size:30px;
+            font-weight:700;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>张奶奶</p>
+    </div>
+</body>
+<script>
+    document.onkeydown=function(ev){
+        var ev=ev||window.event;
+        if(ev.keyCode==37){
+            box.style.left=box.offsetLeft-10+'px';
+            if(box.offsetLeft<=0){
+                box.style.left=0;
+                alert('张奶奶左脸毁容');
+            }
+        }
+        if(ev.keyCode==38){
+            box.style.top=box.offsetTop-10+'px';
+            if(box.offsetTop<=0){
+                box.style.top=0;
+                alert('张奶奶头顶天');
+            }
+        }
+        if(ev.keyCode==39){
+            box.style.left=box.offsetLeft+10+'px';
+            if(box.offsetLeft>=300){
+                box.style.left=300+'px';
+                alert('张奶奶右脸毁容');
+            }
+        }
+        if(ev.keyCode==40){
+            box.style.top=box.offsetTop+10+'px';
+            if(box.offsetTop>=300){
+                box.style.left=300+'px';
+                alert('张奶奶脸踏地');
+            }
+        }
+    }
+</script>
+</html>

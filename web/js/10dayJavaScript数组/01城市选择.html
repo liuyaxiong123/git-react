@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>城市选择</title>
+</head>
+<body>
+    <select name="" id="city">
+        <option value="-1">-请选择城市-</option>
+        <option value="0">北京</option>
+        <option value="1">上海</option>
+        <option value="2">山西</option>
+    </select>
+    <select name="" id="village">
+        <option value="">-请选择城市-</option>
+    </select>
+</body>
+<script>
+    var city=document.getElementById('city');
+    var village=document.getElementById('village');
+    //第一种方法：
+    //当内容改变时会触发：
+    // city.onchange=function(){
+    //     //console.log(this.value);
+    //     switch(this.value){
+    //         case '-1':
+    //             village.innerHTML='<option value="">-请选择城市-</option>';
+    //         break;
+    //         case '0':
+    //             village.innerHTML='<option value="">房山</option><option value="">海淀</option><option value="">朝阳</option>';
+    //         break;
+    //         case '1':
+    //             village.innerHTML='<option value="">浦东</option><option value="">浦西</option><option value="">浦南</option>';
+    //         break;
+    //         case '2':
+    //             village.innerHTML='<option value="">晋城</option><option value="">临汾</option><option value="">府底</option>';
+    //         break;
+
+    //         break;
+    //         default:
+    //     }
+    // }
+    var arr=[['海淀 ','朝阳','房山'],['浦东','浦西','浦南'],['大同','晋城','太原']];
+    city.onchange=function(){
+        var val=this.value;
+        village.innerHTML='';
+        if(val=='-1'){
+            village.innerHTML='<option value="">-请选择城市-</option>';
+        }else{
+            for(var i=0;i<arr[val].length;i++){
+                village.innerHTML=village.innerHTML+'<option value="">'+arr[val][i]+'</option>';
+            }
+        }
+    }
+</script>
+</html>

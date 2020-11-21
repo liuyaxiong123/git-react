@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子节点</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>111</li>
+        <li><span>222</span></li>
+        <li>333</li>
+    </ul>
+</body>
+<script>
+    //元素.childNodes:获取元素的子节点（包含文本节点）
+    //元素.nodeType：获取节点类型 文本节点：3  元素节点：1
+    //console.log(ul.childNodes);
+    // for(var i=0;i<ul.childNodes.length;i++){
+    //     //console.log(ul.childNodes[i].nodeType);
+    //     if(ul.childNodes[i].nodeType==1){
+    //         ul.childNodes[i].style.background='red';
+    //     }
+    // }
+    //------------------
+    //元素.children:获取元素的子节点（只有元素节点)
+    //console.log(ul.children);
+    for(var i=0;i<ul.children.length;i++){
+        ul.children[i].style.background='red';
+    }
+</script>
+</html>

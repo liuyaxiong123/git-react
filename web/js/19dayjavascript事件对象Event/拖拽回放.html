@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽回放</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            width: 100px;height: 100px;background:blue;
+            position:absolute;
+            top:30px;left:0;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="回放" id="btn">
+    <div id="box"></div>
+</body>
+<script>
+    var arrx=[],arry=[];
+    var btn=document.querySelector('#btn');
+    var box=document.querySelector('#box');
+    box.onmousedown = function(ev){
+		var ev = ev || window.event;
+		var x = ev.clientX - box.offsetLeft;
+		var y = ev.clientY - box.offsetTop;
+		document.onmousemove = function(ev){
+			var ev = ev || window.event;
+			var moveX = ev.clientX - x;
+            var moveY = ev.clientY - y;
+            arrx.unshift(moveX);
+            arry.unshift(moveY);
+            // console.log(arrx,arry);
+            // console.log(moveX,moveY);
+			box.style.left = moveX + 'px';
+            box.style.top = moveY + 'px';
+            
+		}
+	}
+    document.onmouseup = function(){
+        document.onmousemove = null;
+    }
+    btn.onclick=function(){
+        var now=0;
+        timer=setInterval(function(){
+            now++;
+            if(now>arrx.length){
+                clearInterval(timer);
+                arrx=[];
+                arry=[];
+            }
+            box.style.left=arrx[now]+'px';
+            box.style.top=arry[now]+'px';
+        },5)
+    }
+</script>
+</html>

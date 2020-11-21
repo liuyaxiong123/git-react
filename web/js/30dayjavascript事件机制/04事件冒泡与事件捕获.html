@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件冒泡与事件捕获</title>
+    <style>
+        div{
+            padding:100px;
+        }
+    </style>
+</head>
+<body>
+    <div style="background:gray;" id="div1">
+        <div style="background:blue;" id="div2">
+            <div style="background:red;" id="div3"></div>
+        </div>
+    </div>
+</body>
+<script>
+    //事件捕获阶段执行：
+    // div1.addEventListener('click',function(){
+    //     alert(this.style.background);
+    // },true);
+    // div2.addEventListener('click',function(){
+    //     alert(this.style.background);
+    // },true);
+    // div3.addEventListener('click',function(){
+    //     alert(this.style.background);
+    // },true);
+    //事件冒泡阶段执行
+    div1.addEventListener('click',function(){
+        alert(this.style.background);
+    },false);
+    div2.addEventListener('click',function(){
+        alert(this.style.background);
+    },false);
+    div3.addEventListener('click',function(){
+        alert(this.style.background);
+    },false);
+</script>
+</html>

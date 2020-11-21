@@ -1,0 +1,52 @@
+9<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //new Object():基本没有功能
+    function createPerson(name,qq){//构造函数
+        //原料
+        var obj=new Object();
+        //加工
+        obj.name=name;
+        obj.qq=qq;
+        obj.showName=function(){
+            alert('我的名字叫：'+this.name);
+        }
+        obj.showQQ=function(){
+            alert('我的QQ是:'+this.qq);
+        }
+        return obj;
+    }
+    var obj1=createPerson('Ada','23423423');
+    obj1.showName();
+    obj1.showQQ();
+    var obj2=createPerson('张三','3243242');
+    obj2.showName();
+    obj2.showQQ();
+    console.log(obj1.showQQ==obj2.showQQ);//false
+    //存在的问题：1.没有new 2.函数重复
+    
+
+    //----------------------------
+    // var obj=new Object();
+    // obj.name='Ada';
+    // obj.qq='234324321';
+    // obj.showName=function(){
+    //     alert('我的名字叫：'+this.name);
+    // }
+    // obj.showQQ=function(){
+    //     alert('我的qq号是：'+this.qq);
+    // }
+    // obj.showName();
+    // obj.showQQ();
+    //---------------------
+
+</script>
+</html>

@@ -1,0 +1,23 @@
+BOM:
+浏览器对象模型BOM（browser object model)
+使JavaScript有能力与浏览器'对话'。
+
+所有全局变量都是window下的属性
+所有的全局函数都是window下的方法
+
+1.三种弹窗
+alert(内容):提示
+confirm(内容)：有返回值  值为boolean  确定为true   取消为false
+prompt(标题，内容)：有返回值 值为输入的内容   取消为null
+2.获取浏览器尺寸
+var w=window.innerWidth||document.documentElement.clientWidth;
+var h=window.innerHeight||doucment.documentElement.clientHeight;
+3.其他方法：
+window.open() - 打开新窗口
+window.close() - 关闭当前窗口 （只能关闭通过window.open打开的窗口）
+window.moveTo() - 移动当前窗口
+window.resizeTo() - 调整当前窗口的尺寸
+4.window相关的事件：
+window.onload:浏览器内容加载完毕触发
+window.onscroll:浏览器滚轮滚动时触发
+window.onresize:浏览器窗口大小改变时触发

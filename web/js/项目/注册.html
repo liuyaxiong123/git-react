@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/注册.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="shortcut icon" href="https://blz.nosdn.127.net/1/tm/hearthstone/gameguide/saviors-of-uldum/logo@2x.png" type="image/x-icon">
+</head>
+<body>
+    <div class="logo">
+        <div class="lg_t"></div>
+    </div>
+    <div class="fm">
+        <div class="zck">
+            <h1>创建账号</h1>
+            <button>网易</button>
+            <div class="sacil">
+                <span>或</span>
+            </div>
+            <p>创建暴雪游戏通行证，开启您的冒险旅程。</p>
+            <div id="r_d">
+                <span>出错了！请注意：</span><br>
+                <span>&nbsp;&nbsp; 表格不能为空。</span>
+            </div>
+        </div>
+        <form action="#" method="get">
+            <input type="text" placeholder="身份证号码" id="txt1" name="sfz" class="nb">
+            <div id="txt1_b" class="swb">
+                <span>请输入正确的身份证号码</span>
+            </div>
+            <input type="text" id="txt2" placeholder="姓名" name="user" class="nb">
+            <input type="text" id="txt3" placeholder="电子邮箱" name="ime" class="nb">
+            <div id="txt3_b" style="color:red">×邮箱地址无效</div>
+            <input type="password" placeholder="密码" id="txt4" name="pwd" class="nb">
+            <div id="txt4_b" class="swb">
+                <span>使用8-16个字符。</span><br><br>
+                <span>使用至少一个数字字符和一个字母字符。</span><br><br>
+                <span>请勿使用任何特殊字符。</span><br><br>
+                <span>请勿使用与您账号相似的密码。</span>
+            </div>
+            <input type="text" id="txt5" placeholder="手机号码" name="sjh" class="nb">
+            <div id="sjwx" style="color:red;display:none">手机号码无效！</div>
+            <div id="txt5_b" class="swb">
+                <span>您可以同过该手机号码修改密码，解除密保等操作</span>
+            </div>
+            <input type="text" id="txt6" placeholder="验证码" name="yzm" class="nb">
+            <button id="yzm">获取验证码</button>
+            <div class="swb" id="txt6_b">
+                <span>同过您填写的手机号获取验证码。</span>
+            </div>
+            <input type="checkbox" id="txt7">
+            <label for="txt7">我已阅读并接受</label>
+            <input type="button" id="tj" value="免费注册暴雪游戏通行证">
+            <div id="txz">已经有同行证了？</div>
+        </form>
+    </div>
+    <div class="footer">
+        <img src="img/footer.png" alt="">
+    </div>  
+</body>
+<script src="js/注册.js"></script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Date</title>
+    <style>
+        #box{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    //js中Date对象用于处理日期和时间
+    // var date=new Date();
+    // //console.log(date);//Fri Jul 19 2019 08:14:35 GMT+0800(中国标准时间)  中国时区东八区
+    // console.log(date.getHours());//获取当前小时数
+    // console.log(date.getMinutes());//获取当前的分钟数
+    // console.log(date.getSeconds());//获取当前秒数
+    // setInterval(function(){
+    //     var date=new Date();
+    //     var t=date.getHours();
+    //     var x=date.getMinutes();
+    //     var b=date.getSeconds();
+    //     box.innerHTML=fn(t)+':'+fn(x)+':'+fn(b);
+    // },1000);
+    // //console.log(fn(8));
+    // function fn(n){
+    //     return n>9?n:'0'+n;
+    // }
+    //-----------------
+    var date=new Date();
+    console.log(date.getMilliseconds());//获取当前毫秒数
+    console.log(date.getFullYear());//获取当前年份
+    console.log(date.getMonth()+1);//获取当前月份（月份从0开始 所以要加一）
+    console.log(date.getDate());//获取当前日期（今天几号）
+    console.log(date.getDay());//获取星期几：注意：星期日返回数值是0
+    console.log(date.getTime());//获取时间戳（返回1970年1月一日到此刻的毫秒数）
+</script>
+</html>

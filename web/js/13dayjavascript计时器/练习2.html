@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习2</title>
+</head>
+<body>
+    <img src="imgs/1.png" alt="" id="tp">
+    <input type="button" id="btn" value="张奶奶">
+    <input type="button" value="黑熊" id="btn2">
+</body>
+<script>
+    var t=0,b=1,timer=null;
+    function show(){
+        timer=setInterval(function(){
+            t++;
+            if(t>8){
+                t=1;
+            }
+            tp.src='imgs/'+t+'.png';
+        },100);
+    }
+    show();
+    btn.onclick=function(){
+        if(b==1){
+            clearInterval(timer);
+            b=2;
+        }else if(b==2){
+            show();
+            b=1;
+        }
+    }
+    btn2.onclick=function(){
+        if(b==1){
+            clearInterval(timer);
+            b=2;
+        }else if(b==2){
+            show();
+            b=1;
+        }
+    }
+</script>
+</html>

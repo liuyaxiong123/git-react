@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取节点</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+        <li>e</li>
+    </ul>
+</body>
+<script>
+    var f=getNode(ul.children[2],'next');
+    f.style.background='red';
+    function getNode(obj,str){
+        switch(str){
+            case 'first':
+                if(obj.firstElementChild){
+                    return obj.firstElementChild;
+                }else{
+                    return obj.firstChild;
+                }
+            break;
+            case 'last':
+                if(obj.lastElementChild){
+                    return obj.lastElementChild;
+                }else{
+                    return obj.lastChild;
+                }
+            break;
+            case 'next':
+                if(obj.nextElementSibling){
+                    return obj.nextElementSibling;
+                }else{
+                    return obj.nextSibling;
+                }
+            break;
+            case 'previou':
+                if(obj.previousElementSibling){
+                    return obj.previousElementSibling;
+                }else{
+                    return obj.previousSibling;
+                }
+            break;
+        }
+    }
+        
+    
+    //----------------------------------------------
+    //console.log(ul.firstChild);
+    //支持IE6-8浏览器获取的第一个元素子节点
+    //console.log(ul.firstElementChild);
+    //支持高版本浏览器获取的第一个元素子节点
+    //第一个子节点
+    // if(ul.firstElementChild){
+    //     ul.firstElementChild.style.background='red';
+    // }else{
+    //     ul.firstChild.style.background='red';
+    // }
+    // //最后一个子节点
+    // if(ul.lastElementChild){
+    //     ul.lastElementChild.style.background='red';
+    // }else{
+    //     ul.lastChild.style.background='red';
+    // }
+    // //下一个节点：nextElementSibling    nextSibling
+    // if(ul.children[2].nextElementSibling){
+    //     ul.children[2].nextElementSibling.style.background='red';
+    // }else{
+    //     ul.children[2].nextSibling.style.background='red';
+    // }
+    // //上一个节点：previousElementSibling     previousSibling
+    // if(ul.children[2].previousElementSibling){
+    //     ul.children[2].previousElementSibling.style.background='red';
+    // }else{
+    //     ul.children[2].previousSibling.style.background='red';
+    // }
+    
+</script>
+</html>

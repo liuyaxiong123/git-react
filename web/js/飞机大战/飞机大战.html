@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #box{
+            width:320px;
+            position: relative;
+            height: 568px;
+            border:1px solid;
+            margin:100px auto;
+            background: url(image/start_bg.png);
+            overflow: hidden;
+            cursor: none;
+        }
+        .bg{
+            position: absolute;
+            width: 100%;
+            height: 200%;
+            background: url(image/background.png);
+            top:-100%;
+        }
+        #plane{
+            width: 66px;
+            height: 80px;
+            position: absolute;
+            background: url(image/plane.gif);
+            left:50%;
+            bottom:20px;
+            z-index: 9;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        #wrap>div{
+            position: absolute;
+        }
+        .big_enemy{
+            width: 110px;
+            height: 164px;
+            background: url(./image/big_enemy.png);
+        }
+        .middle_enemy{
+            width: 46px;
+            height: 60px;
+            background: url(./image/middle_enemy.png);
+        }
+        .small_enemy{
+            width: 34px;
+            height: 24px;
+            background: url(./image/small_enemy.png);
+        }
+        .biu{
+            width: 6px;
+            height: 14px;
+            background: url(./image/bullet.png);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="bg"></div>
+        <div id="plane"></div>
+        <div id="wrap">
+            <!-- <div class="big_enemy"></div> -->
+            <!-- <div class="middle_enemy"></div> -->
+            <!-- <div class="small_enemy"></div> -->
+            <!-- <div class="biu"></div> -->
+        </div>
+    </div>
+</body>
+<script>
+    function Game(){
+        this.box=document.querySelector('#box')
+        this.plane=document.querySelector('#plane')
+        this.bg=document.querySelector('.bg');
+        this.timer=null;
+    }
+    //让背景图动起来
+    Game.prototype.bgMove=function (){
+        var t=this.bg.offsetTop;
+        this.timer=setInterval(function(){
+            if(t>=0){
+                t=-this.box.offsetHeight;
+            }
+            t++;
+            this.bg.style.top=t+'px';
+        }.bind(this),20)
+    }
+    // 让飞机动起来
+    Game.prototype.bindEvent=function(){
+        var that=this;
+        this.box.onmousemove=function(ev){
+            ev=ev||window.event;
+            var maxX=that.box.offsetWidth-that.plane.offsetWidth;
+            var maxY=that.box.offsetHeight-that.plane.offsetHeight;
+            var moveX=ev.pageX-that.box.offsetLeft-that.plane.offsetWidth/2;
+            var moveY=ev.pageY-that.box.offsetTop-that.plane.offsetHeight/2;
+            if(moveX<=0) moveX=0;
+            if(moveY<=0) moveY=0;
+            if(moveX>maxX) moveX=maxX;
+            if(moveY>=maxY) moveY=maxY;
+            that.plane.style.left=moveX+'px';
+            that.plane.style.top=moveY+'px';
+        }
+    }
+    var game=new Game();
+    game.bgMove();
+    game.bindEvent();
+    // 创建子弹
+    function Biu(){
+        this.wrap=document.querySelector('#wrap');
+        this.plane=document.querySelector('#plane');
+        this.timer=null;
+        this.num=0;
+        // 定义一个数组存放子弹
+        this.pos=[];
+    }
+    Biu.prototype.create=function(){
+        this.dom=document.createElement('div');
+        this.dom.className='biu';
+        // 定义子弹的位置  
+        this.dom.style.left=this.plane.offsetLeft+this.plane.offsetWidth/2+'px';
+        this.dom.style.top=this.plane.offsetTop+'px';
+        this.wrap.appendChild(this.dom);
+        // 存放子弹
+        this.pos.push(this.dom);
+    }
+    // 移动子弹
+    Biu.prototype.move=function(){
+        var that=this;
+        this.timer=setInterval(function(){
+            that.num++;
+            // 每隔一段时间创建子弹
+            if(that.num%10==0){
+                that.create();
+            }
+            that.pos.forEach(function(item,index){
+                item.style.top=item.offsetTop-5+'px';
+                // 删除超出去的子弹
+                if(item.offsetTop<0){
+                    that.wrap.removeChild(item);
+                    that.pos.splice(index,1)
+                }
+            })
+            // for(var i=0;i<that.pos.length;i++){
+            //     that.pos[i].style.top=that.pos[i].offsetTop-5+'px';
+            // }
+            
+        },30)
+    }
+    // 创建敌方小飞机
+    function Enemy(){
+        this.wrap=document.getElementById('wrap');
+        this.timer=null;
+        this.num=0;
+        this.pos=[];
+    }
+    Enemy.prototype.create=function(type){
+        this.dom=document.createElement('div');
+        this.dom.className=type+'_enemy';
+        this.wrap.appendChild(this.dom);
+        // 敌方飞机初始left值
+        var x=Math.floor(Math.random()*(this.wrap.offsetWidth - this.dom.offsetWidth));
+        var y=-this.dom.offsetHeight;
+        this.dom.style.left=x+'px';
+        this.dom.style.top=y+'px';
+
+        // 每个敌方飞机的速度
+        if(type=='big'){
+            this.dom.speed= 1;
+        }else if(type=='middle'){
+            this.dom.speed= 3;
+        }else if(type=='small'){
+            this.dom.speed= 5;
+        }
+        this.pos.push({
+            type:type,
+            dom:this.dom,
+            speed:this.dom.speed,
+            die:false,
+            time:null,
+        })
+    }
+
+    Enemy.prototype.move=function(type){
+        var that=this;
+        this.timer=setInterval(function(){
+            that.num++;
+            if(that.num%300===0){
+                that.create('big');
+            }else if(that.num%100===0){
+                that.create('middle');
+            }else if(that.num%20===0){
+                that.create('small');
+            }
+            //敌方飞机的移动
+            that.pos.forEach(function(item,index){
+                if(item.dom.offsetTop>that.wrap.offsetHeight){
+                    that.wrap.removeChild(item.dom);
+                    that.pos.splice(index,1);
+                }
+                if(item.die){
+                    item.dom.style.background = 'url(image/' + item.type + '_boom.gif' + ')';
+                    if(that.num==item.time+20){
+                        that.die(item.dom,index);
+                    }
+                }else{
+                    item.dom.style.top=item.dom.offsetTop+item.speed+'px';
+                }
+                
+            })
+            //实时监测碰撞
+            that.hit();
+        },50)
+    }
+    Enemy.prototype.die=function(obj,index){
+        this.wrap.removeChild(obj);
+        this.pos.splice(index,1);
+    }
+    Enemy.prototype.hit=function(){
+        //碰撞检测 value.dom  敌机    item子弹
+        var that=this;
+        this.pos.forEach(function(value,num){
+            biu.pos.forEach(function(item,index){
+                if(!value.die){
+                    if(!(value.dom.offsetLeft > item.offsetLeft + item.offsetWidth || item.offsetLeft > value.dom.offsetLeft + value.dom.offsetWidth || value.dom.offsetTop > item.offsetTop + item.offsetHeight ||
+                        item.offsetTop > value.dom.offsetTop + value.dom.offsetHeight)){
+                            //销毁子弹
+                        that.wrap.removeChild(item);
+                        biu.pos.splice(index,1);
+                        value.time=that.num;//记录撞击的时间
+                        value.die=true;
+                    }
+                }
+                
+            })
+        })
+    }
+    var enemy=new Enemy();
+    enemy.move();
+    var biu=new Biu();
+    biu.move();
+    
+</script>
+</html>

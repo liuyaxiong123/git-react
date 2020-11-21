@@ -1,0 +1,93 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			-webkit-perspective:3000;
+		}
+		.box{
+			width: 400px;
+			height: 400px;
+			border: 1px solid red;
+			position: absolute;
+			left: 50%;
+			top:50%;
+			margin-top: 200px;
+			transform-style:preserve-3d;
+			animation: name 2s linear infinite;
+		}
+		@-webkit-keyframes name{
+			from{transform:rotateX(0) rotateX(0);}
+			to{transform: rotate(360deg) rotateX(360deg);}
+		}
+		.box>div{
+			width: 400px;
+			height: 400px;
+			position: absolute;
+			top:0;
+			left:0;
+			text-align: center;
+			line-height: 400px;
+			font-size: 30px;
+			color: #fff;
+			transition:all 1s linear;
+		}
+		.box>div:nth-of-type(1){
+			background: red;
+			transform:translateZ(-200px);
+		}
+		.box>div:nth-of-type(2){
+			background: blue;
+			transform:rotateX(90deg) translateZ(200px);
+		}
+		.box>div:nth-of-type(3){
+			background: pink;
+			transform: rotateX(90deg) translateZ(-200px);
+		}
+		.box>div:nth-of-type(4){
+			background: yellow;
+			transform: rotateY(90deg) translateZ(200px);
+		}
+		.box>div:nth-of-type(5){
+			background: green;
+			transform: rotateY(90deg) translateZ(-200px);
+		}
+		.box>div:nth-of-type(6){
+			background: orange;
+			transform: translateZ(200px);
+		}
+		.box:hover div:nth-of-type(6){
+			transform: translateZ(400px);
+		}
+		.box:hover div:nth-of-type(1){
+			transform: translateZ(-400px);
+		}
+		.box:hover div:nth-of-type(2){
+			transform: rotateX(90deg) translateZ(400px);
+		}
+		.box:hover div:nth-of-type(3){
+			transform: rotateX(90deg) translateZ(-400px);
+		}
+		.box:hover div:nth-of-type(4){
+			transform: rotateY(90deg) translateZ(400px);
+		}
+		.box:hover div:nth-of-type(5){
+			transform: rotateY(90deg) translateZ(-400px);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+	</div>
+</body>
+</html>

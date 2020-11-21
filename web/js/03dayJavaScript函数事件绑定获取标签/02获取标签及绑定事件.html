@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取标签</title>
+    <style>
+        #box{
+            width: 200px;height: 200px;border:1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+</body>
+<script>
+    //通过id获取标签，只能获取一个
+    //console.log(document.getElementById('box'));
+    var box=document.getElementById('box');
+    var sdfds=document.getElementById('box')
+    console.log(box);
+    //通过标签名获取元素,获取的是一组元素
+    var div =document.getElementsByTagName('div');
+    console.log(div[0],div[1],div[2],div);
+    //div[0]:获取一组元素中的某一个元素 [0]代表角标  0代表第一个  角标从0开始计算。
+    //绑定事件(只能给指定的某一个元素绑定事件，不能给一组元素绑定事件)：
+    box.onclick=function(){
+        //alert('abc');
+        box.style.backgroundColor='yellow';
+        box.style.fontSize='30px';
+        box.style.fontWeight='bold';
+    }
+    div[1].onclick=function(){
+        alert('bcd');
+    }
+</script>  
+</html>

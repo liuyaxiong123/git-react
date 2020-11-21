@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //最小
+    var arr=[77,88,3,1,99,99,88,10,22];
+    var Newarr=arr.sort(function(n1,n2){
+        return n1-n2;
+    })[0];
+    console.log(Newarr);
+    //最大
+    var Newarr2=arr.sort(function(n1,n2){
+        return n2-n1;
+    })[0];
+    console.log(Newarr2);
+    //数组去重
+    arr.sort();
+    var temp=[arr[0]];
+    for(var i=0;i<arr.length;i++){
+        if(arr[i]!==temp[temp.length-1]){
+            temp.push(arr[i]);
+        }
+    }
+    console.log(temp);
+    //冒泡排序
+    for(var i=0;i<arr.length-1;i++){
+        var gh=arr[i];
+        for(var j=i+1;j<arr.length;j++){
+            var dh=arr[j];
+        }
+        if(gh>dh){
+            arr[i]=dh;
+            arr[j]=gh;
+        }
+    }
+    console.log(arr);
+</script>
+</html>

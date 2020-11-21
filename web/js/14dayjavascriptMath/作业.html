@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+</head>
+<body>
+    <p>促销价：￥1799.00</p>
+    <p>数量：</p>
+    <span id="sl">0</span><br>
+    <input type="button" value="添加" id="btn1">
+    <input type="button" value="减少" id="btn2">
+    <p>
+        <span>花呗分期：</span><br>
+        <span>￥</span>
+        <span id="fq"></span>
+        <span>×3期</span><br>
+        <span>￥</span>
+        <span id="fq2"></span>
+        <span>×6期</span><br>
+        <span>￥</span>
+        <span id="fq3"></span>
+        <span>×12期</span><br>
+        <span>￥</span>
+        <span id="fq4"></span>
+        <span>×24期</span>
+    </p>
+</body>
+<script>
+    var t=0;
+    btn1.onclick=function(){
+        t++;
+        sl.innerHTML=t;
+        fq.innerHTML=(Math.round(1799*t/3*100))/100;
+        fq2.innerHTML=(Math.round(1799*t/6*100))/100;
+        fq3.innerHTML=(Math.round(1799*t/12*100))/100;
+        fq4.innerHTML=(Math.round(1799*t/24*100))/100;
+    }
+    btn2.onclick=function(){
+        t--;
+        if(t==0){
+            t=1;
+        }
+        sl.innerHTML=t;
+        fq.innerHTML=(Math.round(1799*t/3*100))/100;  
+        fq2.innerHTML=(Math.round(1799*t/6*100))/100;
+        fq3.innerHTML=(Math.round(1799*t/12*100))/100;
+        fq4.innerHTML=(Math.round(1799*t/24*100))/100;
+    }
+</script>
+</html>

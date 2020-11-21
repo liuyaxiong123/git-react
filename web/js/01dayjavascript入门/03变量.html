@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量</title>
+</head>
+<body>
+
+</body>
+<script>
+	//变量：用于存储东西（数据）值是可变的
+	//var abc='hello';
+	//abc='你好'
+	/*alert(abc);*/
+	//常量：用于存储东西（数据）值不可变的（兼容IE11 IE10以下低版本浏览器不支持）
+	//const bcd='world';
+	//bcd='世界';错误
+	//alert(bcd);
+	//变量命名规范：
+	//var a1='a1';
+	//var $a='$a'
+	//var _a='_a';
+	//var 1a='1a'; 不能以数字开头
+	//var a b='a b';变量名中间不能有空格
+	//var var='var';不能用关键词命名
+	//var super='if';不能用保留字命名
+	//console.log(a1);
+	//console.log($a);
+	//console.log(_a);
+	var num=10;
+	var str='abc';
+	var t=true;
+	var f=false;
+	var n=null;
+	var arr=[1,2,3];
+	var j={a:5};
+	var u;
+	//typeof:用于检测变量的数据类型
+	console.log(typeof num);//number
+	console.log(typeof str);//string
+	console.log(typeof t);//boolean
+	console.log(typeof f);//boolean
+	console.log(typeof n);//object
+	console.log(typeof u);//undefined
+	console.log(typeof arr);//object
+	console.log(typeof j);//object
+	/*总结：6种数据类型
+	5种简单的类型：number string boolean（布尔类型） undefined（未定义）
+	null（空）
+	1种复杂的类型：object（对象）
+	*/
+
+</script>
+</html>

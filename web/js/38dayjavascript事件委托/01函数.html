@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数</title>
+</head>
+<body>
+    <input type="button" value="1">
+    <input type="button" value="2">
+    <input type="button" value="3">
+</body>
+<script>
+    // 闭包函数：闭包是指有权访问另一个函数作用域的函数，创建闭包的通常方式，是在一个函数内部创建另一个函数
+    // function a(){
+    //     var x=1;
+    //     function B(){
+    //         x++;
+    //         console.log(x);
+    //     }
+    //     return B;
+    // }
+    // var b=a();
+    // b();//2
+    // b();//3
+    // b();//4
+    // 原因：在于a函数是B函数的父函数，而a函数内部B函数被赋予给了一个全局变量，这导致函数B始终存在内存中，而内部函数B存在依赖于a，所以导致a也始终存在内存中，不会再函数调用后被系统释放。
+    //总结:闭包作用用来访问函数内部的局部变量，缺点：会导致局部变量始终存在内存中，耗性能
+    //------------------------------------
+    //  var btns=document.querySelectorAll('input');
+    // // function a(){
+    // //     function B(i){
+    // //         btns[i].onclick=function(){
+    // //             console.log(i);
+    // //         }
+    // //     }
+    // //     return B;
+    // // }
+    // // var b=a();
+    // for(var i=0;i<btns.length;i++){
+    //     (function B(j){
+    //         btns[j].onclick=function(){
+    //             console.log(j);
+    //         }
+    //     })(i);
+    // }
+    //------------------------------------
+    // function a(){
+    //     var x=1;
+    //     function B(y){
+    //         y++;
+    //         console.log(y);
+    //     }
+    //     return B;
+    // }
+    // var b=a();
+    // b(5);//6
+    // b(8);//9
+    // b(10);//11
+    //------------------------------------
+    // 递归函数：
+    // var x=1;
+    // function a(){
+    //     x++;
+    //     console.log(x);
+    //     if(x>=10){
+    //         return;
+    //     }
+    //     setTimeout(function(){
+    //         a();
+    //     },1000)
+    // };
+    // a(); 
+    //------------------------------------
+    // 回调函数：把一个函数作为另一个函数的参数，当调用这个函数时，这个函数就是回调函数
+    function a(a,b,c){
+        alert(a+b);
+        c();
+    }
+    a(5,10,function(){
+        console.log('回调函数',this);
+    });
+    // ----------------------------
+
+</script>
+</html>

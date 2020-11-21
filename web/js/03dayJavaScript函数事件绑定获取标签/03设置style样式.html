@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 500px;height: 500px;
+            background: blue;
+            position: absolute;
+            left: 50%;
+            margin-left:-250px;
+            top: 50%;
+            margin-top:-250px;
+            display: none;
+        }
+        #box i{
+            float:right;font-size:40px;
+            font-style:normal;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value='登录' id="btn">
+    <div id="box">
+        <i id="close">x</i>
+    </div>
+</body>
+<script>
+    var btn=document.getElementById('btn');
+    var box=document.getElementById('box');
+    var close=document.getElementById('close');
+    console.log(btn,box,close);
+    btn.onclick=function(){
+        box.style.display='block';
+    }
+    close.onclick=function(){
+        box.style.display='none';
+    }
+</script>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微博发布</title>
+    <style>
+        #outer{
+            width: 580px;height: 580px;
+            margin:0 auto;
+            background:#ccc;
+            border:1px solid #000;
+            padding:20px;
+            overflow: auto;
+        }
+        #inp1{
+            width: 500px;height: 30px;
+        }
+        #inp2{
+            width: 500px;
+        }
+        #pp{
+            margin-left:400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <p>姓名:</p>
+        <input type="text" id="inp1">
+        <p>内容：</p>
+        <textarea name="" id="inp2" cols="30" rows="10" maxlength="200"></textarea>
+        <p id="pp">
+            <span>还可以输入 <i id="i">200</i> 个字</span>
+        </p>
+        <input type="button" id="btn" value="发布留言">
+        <h1>显示留言</h1>
+        <ul id="ul"></ul>
+    </div>
+</body>
+<script>
+    //1.构造函数
+    function bnm(id){
+        this.outer=document.getElementById(id);
+        this.btn=this.outer.querySelector('#btn');
+        this.inp1=this.outer.querySelector('#inp1');
+        this.inp2=this.outer.querySelector('#inp2');
+        this.ul=this.outer.querySelector('#ul');
+        this.i=this.outer.querySelector('#i');
+        this.fn();
+    }
+    bnm.prototype.fn=function(){
+        var that=this;
+        this.btn.onclick=function(){
+            that.fn1();
+        }
+        this.inp2.oninput=function(){
+            that.fn2();
+        }
+    }
+    bnm.prototype.fn1=function(){
+        if(this.inp1.value==''||this.inp2.value==''){
+            alert('您的姓名或内容为空');
+        }else{
+            var ali=document.createElement('li');
+            ali.innerHTML='<h5 style="width:500px;height:40px;background:red;">'+this.inp1.value+'<span style="float:right;">×</span></h5><p style="width:500px;height:50px;">'+this.inp2.value+'</p>';
+            ali.style.listStyle='none';
+            var h=document.getElementsByTagName('h5');
+            var spans=ali.getElementsByTagName('span');
+            var pp=document.getElementsByTagName('p');
+            if(this.ul.children.length>0){
+               this.ul.insertBefore(ali,this.ul.children[0]);
+            
+            }else{
+                this.ul.appendChild(ali);
+            }
+            this.inp1.value='';this.inp2.value='';
+            for(var i=0;i<spans.length;i++){
+                spans[i].index=i;
+                spans[i].onclick=function(){
+                    var tan=confirm('是否确定删除');
+                    if(tan==true){
+                        this.ul.remove();
+                    }
+                }.bind(this);
+            }
+        }
+    }
+    bnm.prototype.fn2=function(){
+        this.i.innerHTML=200-this.inp2.value.length;
+        if(this.i.innerHTML==0){
+            this.i.style.color='red';
+        }else{
+            this.i.style.color='#000';
+        }
+    }
+    new bnm('outer');
+</script>
+</html>

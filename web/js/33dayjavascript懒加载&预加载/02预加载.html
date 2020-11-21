@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预加载</title>
+    <style>
+        *{margin:0;padding:0;}
+        ul li{
+            width: 60px;height: 32px;line-height:32px;
+            text-align: center;background:#ccc;
+            margin:10px;cursor:pointer;
+            float:left;
+            list-style: none;
+        }
+        img{
+            border:2px solid #ccc;
+            width: 300px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <ul id="btn">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div>
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+    </div>
+</body>
+<script>
+    // 图片预加载(preLoad)
+    var arr=['http://img3.duitang.com/uploads/item/201510/28/20151028092944_FWXJn.jpeg',
+            'http://p.nanrenwo.net/uploads/allimg/170619/8478-1F6191K114.jpg',
+            'http://www.ishowx.com/uploads/allimg/150819/43-150Q9162443-51.jpg',
+            'http://img3.duitang.com/uploads/item/201511/25/20151125151729_GBVyF.jpeg'
+            ];
+    var tempImgs=[];
+    for(var i=0;i<arr.length;i++){
+        tempImgs[i]=new Image();
+        tempImgs[i].src=arr[i];
+        tempImgs[i].idx=i;
+        tempImgs[i].onload=function(){
+            console.log(this.idx);
+            tempImgs[this.idx].flag=true;
+        }
+        tempImgs[i].onerror=function(){
+            console.log(this.idx);
+            tempImgs[this.idx].flag=false;
+        }
+    }
+    var imgs=document.querySelectorAll('img');
+    for(var j=0;j<btn.children.length;j++){
+        btn.children[j].index=j;
+        btn.children[j].onclick=function(){
+            if(tempImgs[this.index].flag){
+                imgs[this.index].src=tempImgs[this.index].src;
+            }else{
+                imgs[this.index].alt='图片加载失败';
+            }
+        }
+    }
+</script>
+</html>

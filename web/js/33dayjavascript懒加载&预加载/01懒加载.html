@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懒加载</title>
+    <style>
+        *{margin:0;padding:0;}
+        .main{
+            width: 1000px;
+            margin:0 auto;
+            overflow: hidden;
+        }
+        h2{
+            font-size:30px;
+            text-align:center;
+        }
+        #inner{
+            width: 1000px;
+            overflow: hidden;
+        }
+        #inner img{
+            float:left;
+            width: 450px;
+            height: 300px;
+            margin:20px 40px 20px 0;
+            border:1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>北京旅游景点</h2>
+        <div id="inner">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    // 懒加载(lazyLoad) 不是新技术，是程序员为了服务器优化，减少请求数。
+    var ImgArr = [
+		'http://img3.duitang.com/uploads/item/201510/28/20151028092944_FWXJn.jpeg',
+		'http://p.nanrenwo.net/uploads/allimg/170619/8478-1F6191K114.jpg',
+		'http://www.ishowx.com/uploads/allimg/150819/43-150Q9162443-51.jpg',
+		'http://img3.duitang.com/uploads/item/201511/25/20151125151729_GBVyF.jpeg',
+		'http://img3.duitang.com/uploads/item/201604/12/20160412195913_mQr3R.thumb.700_0.jpeg',
+		'http://img.zybus.com/uploads/allimg/140301/1-140301162402.jpg',
+		'http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20180625/a00eee5e8a4b4f8abf0f5356a468c4d6.jpeg',
+		'http://img5q.duitang.com/uploads/item/201411/28/20141128152555_hF5ha.jpeg',
+		'http://n.sinaimg.cn/sinacn/w522h348/20180309/bd2a-fxpwyhw2194315.jpg',
+		'http://p2.wmpic.me/article/2017/09/04/1504504972_erGDuTvM.jpg',
+		'http://07.imgmini.eastday.com/mobile/20180626/0deb937204a587b84074bc7f96c723f7_wmk.jpeg',
+		'http://img3.duitang.com/uploads/item/201512/02/20151202215313_5irZN.thumb.700_0.jpeg',
+		'http://p0.ssl.cdn.btime.com/t0129d9d2811d731f7a.jpg?size=674x960',
+		'http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20180626/a3e64fb958bc4b8d95599ee5e6d668e4.jpeg',
+		'http://upload.hljtv.com/2016/0411/1460353986363.jpg',
+		'http://cdn.duitang.com/uploads/item/201508/20/20150820133637_3fMAs.thumb.700_0.jpeg',
+		'http://img4.duitang.com/uploads/item/201602/16/20160216152649_UKxaW.jpeg',
+		'http://cms-bucket.nosdn.127.net/catchpic/a/aa/aa0331a78328fe73b5156971aaf3d402.jpg?imageView&thumbnail=550x0',
+		'http://e.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=2e4ba05c748da9774e7a8e2f8561d42f/c83d70cf3bc79f3d9c07875fbda1cd11738b29fe.jpg',
+		'http://n.sinaimg.cn/sinacn/w560h462/20180210/7c32-fyrkuxs8790030.jpg',
+		'http://img2.a0bi.com/upload/ttq/20160704/1467594997249.jpg',
+		'http://cimage.tianjimedia.com/uploadImages/thirdImages/2017/277/3JEY1AO1H67.png'
+		];
+    var aImg=document.querySelectorAll('img');
+
+    for(var i=0;i<aImg.length;i++){
+        aImg[i].style.background='url(img/loading.gif) center center no-repeat';
+    }
+    window.onload=window.onscroll=function(ev){
+        var s_t=document.documentElement.scrollTop||document.body.scrollTop;
+        var w_h=document.documentElement.clientHeight;
+        console.log(w_h);
+        //如果图片距离浏览器顶端的位置<=滚动条滚走的距离+浏览器自身的高度 图片要开始加载
+        for(var i=0;i<aImg.length;i++){
+            var t=offsetLT(aImg[i]).top;
+            if(t<(s_t+w_h)){
+                loadImg(aImg[i],ImgArr[i]);
+            }
+        }
+    }
+    function loadImg(oImg,img_src){
+        var Img=new Image();
+        Img.src=img_src;
+        Img.onload=function(){//图片加载成功
+            oImg.src=Img.src;
+        }
+        Img.onerror=function(){//加载失败
+            oImg.src='';
+            oImg.style.background='';
+            oImg.alt='图片加载失败';
+        }
+    }
+    // var img=document.createElement('img');
+    // img.src='img/loading.gif';
+    // var img2=new Image();
+    // img2.src='img/loading.gif';
+    // console.log(typeof img,typeof img2);
+    function offsetLT(obj){
+        var l=0,t=0;
+        while(obj){
+            l+=obj.offsetLeft;
+            t+=obj.offsetTop;
+            obj=obj.offsetParent;
+        }
+        return {left:l,top:t};
+    }
+</script>
+</html>

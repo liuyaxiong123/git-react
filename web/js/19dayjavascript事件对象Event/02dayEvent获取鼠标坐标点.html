@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event获取鼠标坐标点</title>
+    <style>
+        #box{
+            width: 300px;height: 300px;
+            border:10px solid;
+            background:red;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body style="height:2000px;">
+    <div id="box"></div>
+</body>
+<script>    
+    box.onclick=function(ev){
+        var ev = ev || window.event;
+        //鼠标在页面上的位置，从页面的左上角开始，即以页面为参考点
+        console.log('以HTML页面为参考点',ev.pageX,ev.pageY);
+        //以浏览器窗口为参考点
+        console.log('以浏览器窗口为参考点',ev.clientX,ev.clientY);
+        //以显示屏的左上角为参考点
+        console.log('以显示屏的左上角为参考点',ev.screenX,ev.screenY);
+        //以触发该事件的DOM元素为参考点(确切的说是到边框内边距的距离)
+        console.log('以触发该事件的DOM元素为参考点',ev.offsetX,ev.offsetY);
+    }
+</script>
+</html>

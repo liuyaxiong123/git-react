@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义加载条</title>
+    <style>
+        li{
+            list-style: none;
+            width: 100px;height: 80px;
+            background: #ccc;
+        }
+        ul{
+            display:none;
+            position:absolute;
+            left:0;
+            top:0;
+            /* user-select: none; */
+        }
+    </style>   
+</head>
+<body>
+    <ul id="ul">
+        <li>重新加载</li>
+        <li>等</li>
+        <li>等</li>
+    </ul>
+</body>
+<script>
+    document.oncontextmenu=function(ev){
+        var ev=ev||window.event;
+        if(ev.preventDefault){
+            ev.preventDefault();
+        }else{
+            ev.returnValue=false;
+        }
+    }
+</script>
+</html>

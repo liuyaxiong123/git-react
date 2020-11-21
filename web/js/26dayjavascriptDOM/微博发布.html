@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微博发布</title>
+    <style>
+        #outer{
+            width: 580px;height: 580px;
+            margin:0 auto;
+            background:#ccc;
+            border:1px solid #000;
+            padding:20px;
+            overflow: auto;
+        }
+        #inp1{
+            width: 500px;height: 30px;
+        }
+        #inp2{
+            width: 500px;
+        }
+        #pp{
+            margin-left:400px;
+        }
+        span{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <p>姓名:</p>
+        <input type="text" id="inp1">
+        <p>内容：</p>
+        <textarea name="" id="inp2" cols="30" rows="10" maxlength="200"></textarea>
+        <p id="pp">
+           <span>还可以输入 <i id="i">200</i> 个字</span>
+        </p>
+        <input type="button" id="btn" value="发布留言">
+        <h1>显示留言</h1>
+        <ul id="ul"></ul>
+    </div>
+</body>
+<script>
+    btn.onclick=function(){
+        if(inp1.value==''||inp2.value==''){
+            alert('您的姓名或内容为空');
+        }else{
+            var ali=document.createElement('li');
+            ali.innerHTML='<h5 style="width:500px;height:40px;background:red;">'+inp1.value+'<span style="float:right;">×</span></h5><p style="width:500px;height:50px;">'+inp2.value+'</p>';
+            ali.style.listStyle='none';
+            var h=document.getElementsByTagName('h5');
+            var spans=ali.getElementsByTagName('span');
+            var pp=document.getElementsByTagName('p');
+            if(ul.children.length>0){
+                ul.insertBefore(ali,ul.children[0]);
+            
+            }else{
+                ul.appendChild(ali);
+            }
+            inp1.value='';inp2.value='';
+            for(var i=0;i<spans.length;i++){
+                spans[i].index=i;
+                spans[i].onclick=function(){
+                    var tan=confirm('是否确定删除');
+                    if(tan==true){
+                        ul.removeChild(this.parentNode.parentNode);
+                    }
+                    
+                }
+            }
+        }
+    }
+    inp2.oninput=function(){
+        i.innerHTML=200-this.value.length;
+        if(i.innerHTML==0){
+            i.style.color='red';
+        }else{
+            i.style.color='#000';
+        }
+    }
+</script>
+</html>

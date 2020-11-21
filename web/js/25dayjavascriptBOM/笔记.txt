@@ -1,0 +1,22 @@
+window对象：
+完整URL路径：
+https：//www.baidu.com：80/web/a.html#12？a=b&b=6
+协议      主机域名      端口  文件路径 哈希值() 参数
+01).window.location
+window.location.hash：哈希值 #15
+window.location.host:主机UTL地址(包含端口)
+window.location.hostname:主机域名
+windiw.location.href:完整URL路径
+window.location.origin:主机地址(不包含文件路径，hash以及参数)
+window.olcation.pathname:当前文件的路径和文件名
+window.olcation.port:监听端口(一般web项目为80端口 数据库是3306)
+window.olcation.protocol:使用web协议(http:或者https：)
+window.location.search:网址参数？a=5&b=6
+window.location.reload(url);重新加载本页
+window.location.assign(url);加载新文档（会存到浏览器历史记录中）
+window.location.replace(url);替换本页的路径（不会存到浏览器历史记录中）
+
+02).window.history:返回或前进页面
+window.history.back():返回上一页
+window.history.forward():前进一页
+window.history.go(数字)：返回或前进指定页数

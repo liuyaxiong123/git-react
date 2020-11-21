@@ -1,0 +1,196 @@
+body{
+    background: url(/account/creation/static/images/backgrounds/overwatch.1oBwP.jpg) center -200px no-repeat #161616;
+    background-size:contain;
+    margin:0 auto;  
+}
+.logo{
+    height: 160px;
+    width:100%;
+}
+.logo .lg_t{
+    width: 200px;height: 105px;
+    background:url(https://www.battlenet.com.cn/account/creation/static/images/toolkit/defaults/logos/blizzard/blizzard-default-2x.2mOLL.png);
+    margin:0 auto;
+    margin-top:45px;
+    margin-bottom:10px;
+    background-size: 200px 105px;
+}
+.fm{
+    width: 500px;
+    margin:0 auto;
+}
+.zck{
+    width: 500px;
+}
+.zck h1{
+    text-align: center;
+    color:#fff;
+    font-weight: 300;
+    line-height: 40px;
+    font-size:30px;
+    margin-bottom:28px;
+}
+.zck button{
+    height: 40px;
+    background-color: #d60000;
+    border: none;
+    border-radius: 1px;
+    width: 500px;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 15px;
+}
+.sacil{
+    clear: both;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 20px 0;
+}
+.sacil span{
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    color: #fff;
+    color: rgba(255,255,255,.3);
+}
+.sacil span::before{
+    content: "";
+    width: 500px;
+    height: 1px;
+    background-color: #fff;
+    background-color: rgba(255,255,255,.1);
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-right: 20px;
+}
+.sacil span::after{
+    content: "";
+    width: 500px;
+    height: 1px;
+    background-color: #fff;
+    background-color: rgba(255,255,255,.1);
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-left: 20px;
+}
+.zck p{
+    margin-bottom: 10px;
+    margin: 0 0 33px 0;
+    line-height: 25px;
+    color: rgba(255,255,255,.8);
+    font-size: 15px;
+}
+.fm input{
+    width: 476px;height: 34px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    line-height: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background-color: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.7);
+    border-radius: 2px;
+    transition: border 0.5s;
+}
+.fm input:hover{
+    border:1px solid rgba(255,255,255,1);
+}
+#txt6{
+    width: 348px;
+}
+#yzm{
+    margin-left: -1px;
+    width: 125px;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 20px;
+    padding-top:10px;
+    height: 36px;
+    background-color: rgba(0,0,0,0.4);
+    color: #00aeff;
+    border: 1px solid #0d639f;
+    transition:border-color .2s;
+}
+#yzm:hover{
+    border:1px solid #00aeff;
+}
+#txt7{
+    width: 20px;height: 20px;
+    margin-bottom:0;
+}
+label{
+    color:#fff;
+    cursor:pointer;
+    margin-bottom:25px;
+    vertical-align: middle;
+}
+#tj{
+    background-color: #0d639f;
+    color: #fff;
+    border-color: #00aeff;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #10a1de;
+    transition:all .5s ease;
+}
+#tj:hover{
+    background-color:#00aeff;
+    border-color:#0d639f;
+}
+#txz{
+    margin-top: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    font-size: 15px;
+    line-height: 34px;
+    height: 34px;
+    background-color: rgba(0,0,0,0.4);
+    color: #00aeff;
+    border: 1px solid #0d639f;
+    box-shadow: 0 0 rgba(0,0,0,0);
+}
+.swb{
+    color:#fff;
+    padding:19px;
+    background: #272E3B;
+    font-size:15px;
+}
+#r_d{
+    width: 394px;height: 40px;
+    padding:20px 45px 20px 59px;
+    background-color: #360e10;
+    box-shadow: 0 0 0 1px #551e21 inset, 0 5px 10px rgba(0,0,0,0.75);
+    color:#fff;
+    position: relative;
+    display: none;
+}
+#r_d::before{
+    background-image:url(../img/cha.png);
+    content: "";
+    display: block;
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    width: 24px;
+    height: 24px;
+    z-index: 999;
+    background-repeat: no-repeat;
+}
+.footer{
+    width: 1903px;height: 390px;
+    margin-top:20px;
+    margin:0 auto;
+}
+.footer img{
+    width: 1903px;height: 390px;
+}

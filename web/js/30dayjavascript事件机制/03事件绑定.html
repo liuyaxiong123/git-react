@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件绑定</title>
+</head>
+<body>
+    <input type="button" id="btn" value="按钮">
+</body>
+<script>
+    
+    //事件监听：元素.addEventListener(事件名称，执行函数，Boolean)；
+    // btn.addEventListener('click',function(){
+    //     alert('a');
+    // },false);
+    // btn.addEventListener('click',function(){
+    //     alert('b');
+    // },false);
+    //------------------------
+    btn.onclick=function(){
+        alert('a');
+    }
+    btn.onclick=function(){
+        alert('b');
+    }
+</script>
+</html>

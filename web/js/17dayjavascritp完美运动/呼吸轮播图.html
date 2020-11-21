@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>呼吸轮播图</title>
+    <style>
+        *{margin:0;padding:0;}
+        li{
+            list-style:none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #outer{
+            width: 500px;height: 400px;margin:50px auto;
+            position: relative;
+            border:3px solid pink;
+            background: green;
+        }
+        #inner1 li{
+            position:absolute;
+            width: 500px;height: 400px;left:0;top:0;
+            opacity: 0;
+            filter:alpha(opacity=0);
+        }
+        #inner1 li img{
+            width: 500px;height: 400px;
+        }
+        #inner2 li{
+            width: 30px;height: 30px;
+            border-radius:50%;
+            background:green;
+            float:left;
+            margin-right:10px;
+        }
+        #left,#right{
+            font-size:40px;
+            font-weight:700;
+            position:absolute;
+            top:50%;
+        }
+        #left{
+            left:5px;
+        }
+        #right{
+            right:5px;
+        }
+        #inner2{
+            position:absolute;
+            left:50px;
+            bottom:5px;
+        }
+        #inner2 li.active{
+            background:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner1">
+            <ul>
+                <li style='opacity:1;filter:alpha(opacity=100);'><a href=""><img src="img/1.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/2.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/3.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/4.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/5.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div id="inner2">
+            <ol>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+        <a href="javascript:;" id="left">&lt;</a>
+        <a href="javascript:;" id="right">&gt;</a>
+    </div>
+</body>
+<script>
+    var big_lis=inner1.getElementsByTagName('li');
+    var small_lis=inner2.getElementsByTagName('li');
+    var outer=document.getElementById('outer');
+    var left=document.getElementById('left');
+    var right=document.getElementById('right');
+    var now=0;
+    //第一步：点击小圆点切换大li的透明度
+for(var i=0;i<small_lis.length;i++){
+    small_lis[i].index=i;
+    small_lis[i].onmouseover=function(){
+        for(var j=0;j<small_lis.length;j++){
+            small_lis[j].className='';
+            startMove(big_lis[j],0,'opacity');
+            now=this.index;
+        }
+        this.className='active';
+        startMove(big_lis[this.index],100,'opacity');
+    }
+}
+    //第二步：点击左右按钮切换大li的透明度
+right.onclick=function(){
+    now++;
+    if(now>=small_lis.length){
+        now=0;
+    }
+    for(var j=0;j<small_lis.length;j++){
+        small_lis[j].className='';
+        startMove(big_lis[j],0,'opacity');
+    }
+    small_lis[now].className='active';
+    startMove(big_lis[now],100,'opacity');
+}
+left.onclick=function(){
+    now--;
+    if(now<0){
+        now=4;
+    }
+    for(var j=0;j<small_lis.length;j++){
+        small_lis[j].className='';
+        startMove(big_lis[j],0,'opacity');
+    }
+    small_lis[now].className='active';
+    startMove(big_lis[now],100,'opacity');
+}
+    //第三部：自动轮播
+    timer=setInterval(right.onclick,2000);
+    outer.onmouseover=function(){
+        clearInterval(timer);
+    }
+    outer.onmouseout=function(){
+        timer=setInterval(right.onclick,2000);
+    }
+    //运动函数
+function startMove(obj,iTarget,cur){
+    clearInterval(obj.time);
+    obj.time=setInterval(function(){
+        var style=parseFloat(getStyle(obj,cur))*100;//元素当前的透明度值
+        var speed=(iTarget-style)/100;
+        speed=speed>0?Math.ceil(speed):Math.floor(speed);
+        if(style==iTarget){
+            clearInterval(obj.time);
+        }else{
+            obj.style.opacity=(style+speed)/100;
+            obj.style.filter='alpha(opacity='+(style+speed)+')';
+        }
+    },10);
+}
+function getStyle(obj,cur){
+    if(obj.currentStyle){
+        return obj.currentStyle[cur]; 
+    }else{
+        return getComputedStyle(obj)[cur];
+    }
+}
+</script>
+</html>

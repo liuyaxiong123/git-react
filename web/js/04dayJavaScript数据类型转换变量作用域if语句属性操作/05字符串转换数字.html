@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串转换数字</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // var str='10.89abc';
+    // console.log(str,typeof str);// 10.89 string
+    //将字符串转换为整形数字  会把以数字开头的字符串后面的英文自动抹掉
+    //如果字符串开头是字母 转换结果为NaN:not a number
+    //var num= parseInt (str);
+    //console.log( num,typeof num);//10 string
+    //-------------------------------------------
+    //将字符串内容转换为浮点型数字
+    //var num=parseFloat(str);
+    //console.log(num,typeof num);//10.89 number
+    //------------------------------------------
+    //将字符串内容转换成浮点型数字，要求必须转换的字符串是纯数字内容，否则返回NaN    
+    // var num =Number(str);
+    // console.log(num,typeof num);
+    //----------------------------
+    //检测一个变量的值是不是NaN，如果是NaN返回true，否则返回false
+    //console.log(isNaN(num));
+    //----------------------------
+    //eval():可以将字符串内的表达式转换成数学运算
+    var str ='4+5';
+    console.log(str);
+    var res=eval(str);
+    console.log(res);
+</script>
+</html>

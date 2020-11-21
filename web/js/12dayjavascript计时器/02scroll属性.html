@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scroll属性</title>
+    <style>
+        *{margin:0;padding:0;}
+        #outer{
+            width: 300px;height: 300px;
+            border:1px solid;
+            overflow:scroll;
+            margin:50px;
+        }
+        #inner{
+            width: 500px;height: 500px;
+            background: blue;
+        }
+        #btn{
+            position:fixed;
+            top:0;
+        }
+    </style>
+</head>
+<body style="width:2000px;height:2000px;">
+    <input type="button" id="btn" value="按钮">
+    <div id="outer">
+        <div id="inner">
+            内容
+        </div>
+    </div>
+</body>
+<script>
+    var btn=document.getElementById('btn');
+    var outer=document.getElementById('outer');
+    btn.onclick=function(){
+        //获取元素滚轮滚走的距离
+        // console.log(outer.scrollLeft);
+        // console.log(outer.scrollTop);
+        //设置元素滚轮的距离
+        // outer.scrollLeft=100;
+        // outer.scrollTop=50;
+        //获取浏览器滚轮的值
+        var t=document.documentElement.scrollTop ||  document.body.scrollTop;
+        var l=document.documentElement.scrollLeft ||  document.body.scrollLeft;
+        console.log(t,l);
+        //设置浏览器滚轮的距离
+        document.documentElement.scrollTop=500;//兼容谷歌  火狐   IE
+        document.body.scrollTop=500;//兼容苹果浏览器
+    }
+</script>
+</html>

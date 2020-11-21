@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //正则内基本组合部分：
+    //方括号：[] 官方元字符  通俗一点叫方括号
+    //用法：[abc]:代表方括号内的内容哪个出现都可以
+    // var str='apc bpc cpc dpc epc fpc';
+    // var reg=/[abd]pc/g;
+    // console.log(str.match(reg));
+    //-------------------
+    //用法2：[0-9]  [a-z] [A-Z] :代表范围
+    var str='ad 23A42 jsdlB4k _ $ 23 .-=he23';
+    // //var reg=/\d+/g;
+    var reg=/[0-9]+/g;
+     //var reg=/[0-9a-z_$]+/g;
+     console.log(str.match(reg));
+    //--------------------
+    //用法3：[^]:排除
+    // var str='ad 23A42 jsdlB4k _ $ 23 .-=he23';
+    // var reg=/[^0-9]+/g;
+    // console.log(str.match(reg));
+    //-----------------------
+
+    
+
+</script>
+</html>
